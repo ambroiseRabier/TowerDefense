@@ -1,6 +1,5 @@
-#include "Header.h"
-#include "Managers/GameManager.h"
-#include "Utils/Singleton.h"
+#include "stdafx.h"
+#include "Managers/GameManager.hpp"
 
 using namespace TowerDefense::Managers;
 

@@ -1,5 +1,5 @@
-#include "GameManager.h"
-#include "Header.h"
+#include "GameManager.hpp"
+#include "stdafx.h"
 
 namespace TowerDefense 
 {

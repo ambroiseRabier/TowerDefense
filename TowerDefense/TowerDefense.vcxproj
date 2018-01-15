@@ -19,14 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Source\Header.h" />
-    <ClInclude Include="..\Source\Managers\GameManager.h" />
-    <ClInclude Include="..\Source\Utils\Singleton.h" />
+    <ClInclude Include="..\Source\Managers\GameManager.hpp" />
+    <ClInclude Include="..\Source\stdafx.h" />
+    <ClInclude Include="..\Source\targetver.h" />
+    <ClInclude Include="..\Source\Utils\Singleton.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp" />
     <ClCompile Include="..\Source\Managers\GameManager.cpp" />
-    <ClCompile Include="..\Source\Utils\Singleton.cpp" />
+    <ClCompile Include="..\Source\stdafx.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
