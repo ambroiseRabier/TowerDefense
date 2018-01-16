@@ -18,7 +18,7 @@ namespace TowerDefense
 			
 		}
 
-		void GameManager::Update()
+		void GameManager::update()
 		{
 			deltaTime = clock.restart().asSeconds();
 			// appeler delegate Update, metter pause ici.

@@ -9,7 +9,7 @@ namespace TowerDefense
 		{
 
 		}
-		void UIManager::Update()
+		void UIManager::update()
 		{
 		}
 		void UIManager::OpenPause()

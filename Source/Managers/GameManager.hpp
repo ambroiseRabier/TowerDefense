@@ -16,7 +16,7 @@ namespace TowerDefense
 			//~GameManager() {}
 			static void StartLevel(int i);
 			static void Init();
-			static void Update();
+			static void update();
 			static float get_deltaTime(); // const :'(, static do not take const
 			static void RestartLevel();
 			static GameState state;

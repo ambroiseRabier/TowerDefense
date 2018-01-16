@@ -1,10 +1,11 @@
 #include "BaseMonoBehaviour.hpp"
+#include "Scene.hpp"
 
 namespace TowerDefense
 {
-	namespace Utils
+	namespace GameEngine
 	{
-		BaseMonoBehaviour::BaseMonoBehaviour()
+		BaseMonoBehaviour::BaseMonoBehaviour()//: MonoBehaviour() // euh, ya pas de base. ?
 		{
 			BaseMonoBehaviour::awake();
 		}
@@ -27,6 +28,7 @@ namespace TowerDefense
 		void BaseMonoBehaviour::start()
 		{
 			BaseMonoBehaviour::listenToEvents();
+			//Scene::add(*this);
 		}
 
 		void BaseMonoBehaviour::listenToEvents()
@@ -46,12 +48,14 @@ namespace TowerDefense
 
 		void BaseMonoBehaviour::recycle()
 		{
+			//Scene::remove(*this);
 			BaseMonoBehaviour::unListenToEvents();
 			BaseMonoBehaviour::initVar();
 		}
 
 		void BaseMonoBehaviour::onDestroy()
 		{
+			//Scene::remove(*this);
 			BaseMonoBehaviour::unListenToEvents();
 		}
 	}

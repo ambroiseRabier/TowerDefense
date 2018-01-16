@@ -14,7 +14,7 @@ namespace TowerDefense
 			~UIManager() {};
 			static void OpenPause();
 			static void Init();
-			static void Update();
+			static void update();
 		private:
 		};
 	}

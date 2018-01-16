@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics/Drawable.hpp>
+#include "MonoBehaviour.hpp"
 
 namespace TowerDefense
 {
-	namespace Utils
+	namespace GameEngine
 	{
-		class BaseMonoBehaviour
+		class BaseMonoBehaviour//: MonoBehaviour
 		{
 		public:
 			BaseMonoBehaviour();
@@ -17,7 +18,7 @@ namespace TowerDefense
 			virtual void awake();
 			/// Initialize variables
 			virtual void initVar();
-			virtual void listenToEvents();
+			virtual void listenToEvents(); 
 			virtual void unListenToEvents();
 			/// Called every frame.
 			virtual void update();
@@ -25,8 +26,6 @@ namespace TowerDefense
 			virtual void recycle();
 			/// Called by decontructor.
 			virtual void onDestroy();
-			//sf::Drawable
-			//sf:Transform
 		};
 
 	}

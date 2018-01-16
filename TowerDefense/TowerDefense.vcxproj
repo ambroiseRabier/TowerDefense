@@ -26,7 +26,7 @@
     <ClInclude Include="..\Source\Utils\Singleton.hpp" />
     <ClInclude Include="BaseButton.hpp" />
     <ClInclude Include="BaseMonoBehaviour.hpp" />
-    <ClInclude Include="MonoBehaviour.h" />
+    <ClInclude Include="MonoBehaviour.hpp" />
     <ClInclude Include="Scene.hpp" />
   </ItemGroup>
   <ItemGroup>
