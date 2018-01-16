@@ -5,10 +5,33 @@ namespace TowerDefense
 {
 	namespace Managers
 	{
-		bool GameManager::closeLogFile(const string me)
+		GameState GameManager::state = GameState::Menu;
+		float GameManager::deltaTime = 0.0;
+		sf::Clock GameManager::clock;
+
+		void GameManager::StartLevel(int i)
 		{
-			std::cout << me;
-			return false;
+		}
+
+		void GameManager::Init()
+		{
+			
+		}
+
+		void GameManager::Update()
+		{
+			deltaTime = clock.restart().asSeconds();
+			// appeler delegate Update, metter pause ici.
+		}
+
+		float GameManager::get_deltaTime () 
+		{
+			return deltaTime;
+		}
+
+		void GameManager::RestartLevel()
+		{
+
 		}
 	}
 }

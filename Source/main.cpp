@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Managers/GameManager.hpp"
+#include "Managers/UIManager.hpp"
+#include <iomanip>
 
 using namespace TowerDefense::Managers;
 
@@ -14,22 +16,43 @@ int main()
 	window.setFramerateLimit(144);
 	sf::CircleShape shape(55.f);
 	shape.setFillColor(sf::Color::Green);
-	std::cout << "helloworld";
 
-	LoggerSingleton::Instance()->closeLogFile("logFile.txt yes");
-
+	UIManager::Init();
+	GameManager::Init();
 	while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		//float dt = clock.restart().asSeconds();
-		// update et autre
-		// gamemanager, singleton
+		// Handle events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Window closed or escape key pressed: exit
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+                break;
+			}
+			if (GameManager::state == GameState::Playing)
+			{
+				if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+				{
+					UIManager::OpenPause();
+				}
+				if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
+				{
+					GameManager::RestartLevel();
+				}				
+				if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R && event.key.code == sf::Keyboard::LControl)
+				{
+					GameManager::StartLevel(0);
+				}
+			}
+			UIManager::Update();
+        }
 		window.clear();
+		GameManager::Update();
+		std::cout << GameManager::get_deltaTime();
+		// UIManager Update for animation UI if needed
+
 		window.draw(shape);
 		window.display();
 	}
