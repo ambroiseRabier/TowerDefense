@@ -26,6 +26,7 @@
     <ClInclude Include="..\Source\Utils\Singleton.hpp" />
     <ClInclude Include="BaseButton.hpp" />
     <ClInclude Include="BaseMonoBehaviour.hpp" />
+    <ClInclude Include="MonoBehaviour.h" />
     <ClInclude Include="Scene.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +36,7 @@
     <ClCompile Include="..\Source\stdafx.cpp" />
     <ClCompile Include="BaseButton.cpp" />
     <ClCompile Include="BaseMonoBehaviour.cpp" />
+    <ClCompile Include="MonoBehaviour.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

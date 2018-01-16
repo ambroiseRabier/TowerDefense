@@ -24,14 +24,16 @@ namespace TowerDefense
 			// appeler delegate Update, metter pause ici.
 		}
 
-		float GameManager::get_deltaTime () 
-		{
-			return deltaTime;
-		}
-
 		void GameManager::RestartLevel()
 		{
 
+		}
+
+		// region getter setter
+
+		float GameManager::get_deltaTime () 
+		{
+			return deltaTime;
 		}
 	}
 }

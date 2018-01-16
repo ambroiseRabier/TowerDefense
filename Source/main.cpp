@@ -50,9 +50,7 @@ int main()
         }
 		window.clear();
 		GameManager::Update();
-		std::cout << GameManager::get_deltaTime();
 		// UIManager Update for animation UI if needed
-
 		window.draw(shape);
 		window.display();
 	}

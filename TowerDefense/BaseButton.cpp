@@ -7,18 +7,19 @@ namespace TowerDefense
 	{
 		BaseButton::BaseButton()
 		{
-			/*// Declare and load a texture
+			/*
+			// Declare and load a texture
 			sf::Texture texture;
-			texture.loadFromFile("texture.png");
+			texture.loadFromFile("Assets/orange_btn.jpg");
 			// Create a sprite
 			sf::Sprite sprite;
 			sprite.setTexture(texture);
 			sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
 			sprite.setColor(sf::Color(255, 255, 255, 200));
 			sprite.setPosition(100, 25);
-			sprite.getTransform().
 			// Draw it
-			window.draw(sprite);*/
+			window.draw(sprite);
+			*/
 		}
 
 
