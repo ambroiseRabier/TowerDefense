@@ -42,6 +42,12 @@
     <ClInclude Include="MonoBehaviour.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FPS.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp">

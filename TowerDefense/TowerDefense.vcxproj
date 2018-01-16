@@ -26,6 +26,8 @@
     <ClInclude Include="..\Source\Utils\Singleton.hpp" />
     <ClInclude Include="BaseButton.hpp" />
     <ClInclude Include="BaseMonoBehaviour.hpp" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="FPS.hpp" />
     <ClInclude Include="MonoBehaviour.hpp" />
     <ClInclude Include="Scene.hpp" />
   </ItemGroup>
