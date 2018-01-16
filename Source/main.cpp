@@ -36,8 +36,8 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
  */
 int main()
 {
-	RenderWindow window(VideoMode(800, 600), Constants::game_name);
-	window.setFramerateLimit(Constants::fps_limit);
+	RenderWindow window(VideoMode(800, 600), Constants::Config::game_name);
+	window.setFramerateLimit(Constants::Config::fps_limit);
 	// loading init
 	// alocating on heap since I won't need it after loading.
 	std::unique_ptr<Texture> loading_texture = std::make_unique<Texture>();

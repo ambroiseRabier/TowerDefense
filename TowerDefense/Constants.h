@@ -5,8 +5,19 @@ namespace TowerDefense
 {
 	namespace Constants
 	{
-		const std::string game_name = "TowerDefense"; // if you change this, you probably need to change namespaces ;)
-		const unsigned int fps_limit = 144;
+
+		/**
+		 * \brief Config for the game.
+		 */
+		namespace Config
+		{
+			const std::string game_name = "TowerDefense"; // if you change this, you probably need to change namespaces ;)
+			const unsigned int fps_limit = 144;
+		}
+
+		/**
+		 * \brief Path of the assets (images, sounds, ...)
+		 */
 		namespace Assets
 		{
 			const std::string loading_background = "Assets/loading_background_inverted.png";
@@ -14,6 +25,9 @@ namespace TowerDefense
 			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 		}
 	}
+	/**
+	 * \brief Texture, font, and other assets reference that I need trough the game many times, or that I want to preload.
+	 */
 	namespace GlobalShared
 	{
 		/**
