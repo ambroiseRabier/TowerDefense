@@ -106,24 +106,13 @@ int main()
 	//CircleShape shape(55.f);
 	//shape.setFillColor(Color::Green);
 
-	//good
-	std::unique_ptr<CircleShape> shape = std::make_unique<CircleShape>(70.f);
-	shape->setFillColor(Color::Red);
-	// upcast to Drawable
-	GameObject* mono = new GameObject(static_cast<std::unique_ptr<Drawable>>(std::move(shape)), 1);
-	mono->get_transformable().setPosition(100,100);
-	Scene::addChild(*mono);
-
-	// dont do that only you know what you do
-	CircleShape shape2(55.f);
-	shape2.setFillColor(Color::Green);
-	GameObject* mono2 = new GameObject(&shape2, 2);
-	Scene::addChild(*mono2);
-
 	// 
 	UI::BaseButton* base_button = new UI::BaseButton();
 	base_button->get_transformable().setPosition(200,200);
 	base_button->auto_start();
+	base_button->destroy();
+	delete base_button;
+	base_button = nullptr;
 
 	// work, stack
 	/*UI::BaseButton base_buttonStack;

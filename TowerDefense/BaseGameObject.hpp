@@ -17,10 +17,18 @@ namespace TowerDefense
 			 * For lazy peoples.
 			 */
 			void auto_start();
-			/// Initialize variables
+			/**
+			 * \brief Initialize BaseGameObject variables.
+			 */
 			virtual void init();
-			/// Start BaseMonoBehaviour, called by the one instanciating him. You need to call base.start().
+			/**
+			 * \brief Start BaseGameObject.
+			 */
 			virtual void start();
+			/**
+			 * \brief You should call it before deleting BaseGameObject from memory.
+			 */
+			virtual void destroy();
 		protected:
 			virtual void listenToEvents(); 
 			virtual void unListenToEvents();
@@ -28,10 +36,9 @@ namespace TowerDefense
 			virtual void update();
 			/// Reset state (for pooling).
 			virtual void recycle();
-			/// Called by decontructor.
-			virtual void onDestroy();
 		private:
 			bool flag_is_init;
+			bool flag_is_destroyed;
 		};
 
 	}

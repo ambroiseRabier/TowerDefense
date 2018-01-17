@@ -12,7 +12,6 @@ namespace TowerDefense
 		void BaseButton::init()
 		{
 			BaseGameObject::init();
-			Debug::log("base btn initVar");
 			set_drawable(
 				static_cast<std::unique_ptr<sf::Drawable>>(
 					std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn)
@@ -34,9 +33,9 @@ namespace TowerDefense
 			*/
 		}
 
-		void BaseButton::onDestroy()
+		void BaseButton::destroy()
 		{
-			Debug::log("bgm onDestroy");
+			BaseGameObject::destroy();
 		}
 	}
 }

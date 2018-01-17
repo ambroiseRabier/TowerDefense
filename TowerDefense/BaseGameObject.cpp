@@ -12,7 +12,8 @@ namespace TowerDefense
 
 		BaseGameObject::~BaseGameObject()
 		{
-			BaseGameObject::onDestroy();
+			Debug::assert_m(flag_is_destroyed, "BaseGameObject: Did you forgot to call destroy() before deleting me? Or maybe you forgot to add base call to overriden destroy function.");
+			Debug::log("bgo deconstructor");
 		}
 
 		void BaseGameObject::auto_start()
@@ -32,7 +33,7 @@ namespace TowerDefense
 		{
 			Debug::assert_m(flag_is_init, "BaseGameObject: Call init() before calling start().");
 			listenToEvents();
-			// It is better if oyu addchild them yourselve
+			// It is better if you addchild them yourselve
 			//Scene::addChild(*this);
 		}
 
@@ -59,12 +60,14 @@ namespace TowerDefense
 			init();
 		}
 
-		void BaseGameObject::onDestroy()
+		void BaseGameObject::destroy()
 		{
-			Debug::log("bgm onDestroy");
-			// remove from scene in case removechildre has been forgotten
-			Scene::removeChild(*this);
+			// actually, it would be better to set this flag to true at the end of
+			// last overrided destroy, but it's ok it will still work without flaw
+			// since program is run synchronousely.
+			flag_is_destroyed = true;
 			unListenToEvents();
+			Scene::removeChild(*this);
 		}
 	}
 }
