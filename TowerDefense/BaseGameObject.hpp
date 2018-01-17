@@ -7,6 +7,16 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+		/**
+		 * \brief 
+		 * Example of useage:
+		 * UI::BaseButton* base_button = new UI::BaseButton();
+		 * base_button->get_transformable().setPosition(200,200);
+		 * base_button->auto_start();
+		 * base_button->destroy();
+		 * delete base_button;
+		 * base_button = nullptr;
+		 */
 		class BaseGameObject: public GameObject
 		{
 		public:

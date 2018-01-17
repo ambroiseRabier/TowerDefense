@@ -1,7 +1,6 @@
 #include "BaseButton.hpp"
 #include "stdafx.h"
 #include "Constants.hpp"
-#include "Debug.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -17,7 +16,7 @@ namespace TowerDefense
 					std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn)
 				)
 			);
-			z_index = 4;
+			z_index = Constants::ZIndex::ui_start;
 			/*
 			// Declare and load a texture
 			sf::Texture texture;

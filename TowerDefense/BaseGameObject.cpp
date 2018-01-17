@@ -1,6 +1,7 @@
 #include "BaseGameObject.hpp"
 #include "Scene.hpp"
 #include "Debug.hpp"
+#include "Managers/GameManager.hpp"
 
 namespace TowerDefense
 {
@@ -39,17 +40,17 @@ namespace TowerDefense
 
 		void BaseGameObject::listenToEvents()
 		{
-			
+			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, this);
 		}
 
 		void BaseGameObject::unListenToEvents()
 		{
-			
+			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
 		}
 
 		void BaseGameObject::update()
 		{
-			
+
 		}
 
 		void BaseGameObject::recycle()

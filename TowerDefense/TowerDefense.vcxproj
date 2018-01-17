@@ -28,6 +28,7 @@
     <ClInclude Include="BaseGameObject.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Debug.hpp" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="FPS.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Scene.hpp" />

@@ -1,6 +1,7 @@
 #include "GameObject.hpp"
 #include "stdafx.h"
 #include "Debug.hpp"
+#include "Constants.hpp"
 
 using namespace sf;
 
@@ -42,8 +43,8 @@ namespace TowerDefense
 
 		void GameObject::constructor_internal_init(unsigned int newZIndex)
 		{
-			// arbitrary limit of 999
-			Debug::assert_m(newZIndex <= 999, "z_index should be inferior or egal to 999");
+			// arbitrary limit of zIndex
+			Debug::assert_m(newZIndex <= Constants::ZIndex::max, "z_index should be inferior or egal to " + std::to_string(Constants::ZIndex::max));
 			transformable = std::make_unique<Transformable>();
 		}
 

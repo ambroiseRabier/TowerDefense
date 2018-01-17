@@ -3,6 +3,7 @@
 #ifndef GAME_MANAGER_HPP
 #define GAME_MANAGER_HPP
 #include <SFML/System/Clock.hpp>
+#include "../../TowerDefense/Event.h"
 
 namespace TowerDefense
 {
@@ -11,9 +12,8 @@ namespace TowerDefense
 		enum class GameState { Menu, Playing, Pause };
 		class GameManager
 		{
-		public:
-			//GameManager() {}
-			//~GameManager() {}
+		public: 
+			static Sharp::Event<void> on_update;
 			static void StartLevel(int i);
 			static void Init();
 			static void update();

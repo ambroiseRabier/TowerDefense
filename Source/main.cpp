@@ -7,7 +7,6 @@
 #include "../TowerDefense/BaseButton.hpp"
 #include "../TowerDefense/Debug.hpp"
 
-
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
 using namespace TowerDefense;
@@ -110,9 +109,9 @@ int main()
 	UI::BaseButton* base_button = new UI::BaseButton();
 	base_button->get_transformable().setPosition(200,200);
 	base_button->auto_start();
-	base_button->destroy();
-	delete base_button;
-	base_button = nullptr;
+	//base_button->destroy();
+	//delete base_button;
+	//base_button = nullptr;
 
 	// work, stack
 	/*UI::BaseButton base_buttonStack;

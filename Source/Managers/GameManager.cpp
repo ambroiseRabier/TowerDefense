@@ -8,6 +8,7 @@ namespace TowerDefense
 		GameState GameManager::state = GameState::Menu;
 		float GameManager::deltaTime = 0.0;
 		sf::Clock GameManager::clock;
+		Sharp::Event<void> GameManager::on_update;
 
 		void GameManager::StartLevel(int i)
 		{
@@ -22,6 +23,7 @@ namespace TowerDefense
 		{
 			deltaTime = clock.restart().asSeconds();
 			// appeler delegate Update, metter pause ici.
+			on_update();
 		}
 
 		void GameManager::RestartLevel()
