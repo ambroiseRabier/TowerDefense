@@ -9,8 +9,27 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		/// orignal name that I never took from another engine.
-		class MonoBehaviour
+		/**
+		 * \brief 
+		 * 
+		 * Usage (unique_ptr):
+		 * std::unique_ptr<CircleShape> shape = std::make_unique<CircleShape>(70.f);
+		 * shape->setFillColor(Color::Red);
+		 * // upcast to Drawable
+		 * MonoBehaviour* mono = new MonoBehaviour(static_cast<std::unique_ptr<Drawable>>(std::move(shape)), 1);
+		 * Scene::addChild(*mono);
+		 * 
+		 * Usage (shared_ptr):
+		 * // todo
+		 * 
+		 * Usage (IF YOU KNOW WHAT YOU'R DOING):
+		 * CircleShape shape2(55.f);
+		 * shape2.setFillColor(Color::Green);
+		 * MonoBehaviour* mono2 = new MonoBehaviour(&shape2, 2);
+		 * Scene::addChild(*mono2);
+		 * 
+		 */
+		class GameObject
 		{
 		public:
 			/**
@@ -18,29 +37,29 @@ namespace TowerDefense
 			 * \param newZIndex 0 to 999 included.
 			 * \param newDrawable 
 			 */
-			MonoBehaviour(std::unique_ptr<sf::Drawable> newDrawable, unsigned int newZIndex = 0);
+			GameObject(std::unique_ptr<sf::Drawable> newDrawable, unsigned int newZIndex = 0);
 
 			/**
 			 * \brief shared pointer for sharing Drawable, you might prefer using unique_ptr.
 			 * \param newDrawable 
 			 * \param newZIndex 
 			 */
-			MonoBehaviour(const std::shared_ptr<sf::Drawable>& newDrawable, unsigned int newZIndex = 0);
+			GameObject(const std::shared_ptr<sf::Drawable>& newDrawable, unsigned int newZIndex = 0);
 			
 			/**
 			 * \brief FOR EXAMPLE ONLY, DO NOT USE THIS;
 			 * \param newDrawable 
 			 * \param newZIndex 
 			 */
-			MonoBehaviour(sf::Drawable* newDrawable, unsigned int newZIndex = 0);
+			GameObject(sf::Drawable* newDrawable, unsigned int newZIndex = 0);
 
 			/**
 			 * \brief Create a MonoBehaviour with no graphic.
 			 * \param newZIndex 
 			 */
-			MonoBehaviour(unsigned int newZIndex = 0);
+			GameObject(unsigned int newZIndex = 0);
 
-			virtual ~MonoBehaviour();
+			virtual ~GameObject();
 			sf::Transformable& get_transformable() const;
 			// using pointer instead of reference because it can be null. Check for null before using.
 			/**

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Managers/GameManager.hpp"
 #include "Managers/UIManager.hpp"
-#include "../TowerDefense/MonoBehaviour.hpp"
+#include "../TowerDefense/GameObject.hpp"
 #include "../TowerDefense/Scene.hpp"
 #include "../TowerDefense/Constants.hpp"
 #include "../TowerDefense/BaseButton.hpp"
@@ -102,18 +102,21 @@ int main()
 	//CircleShape shape(55.f);
 	//shape.setFillColor(Color::Green);
 
-	//test monobheaviour heap
+	//good
 	std::unique_ptr<CircleShape> shape = std::make_unique<CircleShape>(70.f);
 	shape->setFillColor(Color::Red);
 	// upcast to Drawable
-	MonoBehaviour* mono = new MonoBehaviour(static_cast<std::unique_ptr<Drawable>>(std::move(shape)), 1);
+	GameObject* mono = new GameObject(static_cast<std::unique_ptr<Drawable>>(std::move(shape)), 1);
+	mono->get_transformable().setPosition(100,100);
 	Scene::addChild(*mono);
 
-	// this is ok
+	// dont do that only you know what you do
 	CircleShape shape2(55.f);
 	shape2.setFillColor(Color::Green);
-	MonoBehaviour* mono2 = new MonoBehaviour(&shape2, 2);
+	GameObject* mono2 = new GameObject(&shape2, 2);
 	Scene::addChild(*mono2);
+
+	// b
 
 	while (window.isOpen())
 	{

@@ -25,11 +25,11 @@
     <ClInclude Include="..\Source\targetver.h" />
     <ClInclude Include="..\Source\Utils\Singleton.hpp" />
     <ClInclude Include="BaseButton.hpp" />
-    <ClInclude Include="BaseMonoBehaviour.hpp" />
+    <ClInclude Include="BaseGameObject.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Debug.hpp" />
     <ClInclude Include="FPS.hpp" />
-    <ClInclude Include="MonoBehaviour.hpp" />
+    <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Scene.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,10 +38,10 @@
     <ClCompile Include="..\Source\Managers\UIManager.cpp" />
     <ClCompile Include="..\Source\stdafx.cpp" />
     <ClCompile Include="BaseButton.cpp" />
-    <ClCompile Include="BaseMonoBehaviour.cpp" />
+    <ClCompile Include="BaseGameObject.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Debug.cpp" />
-    <ClCompile Include="MonoBehaviour.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

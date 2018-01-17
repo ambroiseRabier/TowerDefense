@@ -1,7 +1,7 @@
 #pragma once
 #ifndef SCENE_HPP
 #define SCENE_HPP
-#include "MonoBehaviour.hpp"
+#include "GameObject.hpp"
 #include <list>
 
 namespace TowerDefense
@@ -21,12 +21,12 @@ namespace TowerDefense
 			 * And the MonoBehaviour should be able to remove from Scene::childrens at any time.)
 			 * \param mono_behaviour 
 			 */
-			static void addChild(const MonoBehaviour& mono_behaviour);
+			static void addChild(const GameObject& mono_behaviour);
 			/**
 			 * \brief Remove the MonoBehaviour from scene. (won't be draw anymore)
 			 * \param mono_behaviour 
 			 */
-			static void removeChild(const MonoBehaviour& mono_behaviour);
+			static void removeChild(const GameObject& mono_behaviour);
 						
 			/**
 			 * \brief Render with zIndex.
@@ -35,11 +35,11 @@ namespace TowerDefense
 			 * \param states 
 			 */
 			static void render(sf::RenderTarget& window);
-			static bool compare_z_index(const MonoBehaviour* first, const MonoBehaviour* second);
+			static bool compare_z_index(const GameObject* first, const GameObject* second);
 
 			// debug shot hitbox bool ?
 		private:
-			static std::list<const MonoBehaviour*> childrens;
+			static std::list<const GameObject*> childrens;
 		};
 	}
 }

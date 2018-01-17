@@ -1,17 +1,17 @@
 #pragma once
 #ifndef BASE_MONO_BEHAVIOUR_HPP
 #define BASE_MONO_BEHAVIOUR_HPP
-#include "MonoBehaviour.hpp"
+#include "GameObject.hpp"
 
 namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		class BaseMonoBehaviour: public MonoBehaviour
+		class BaseGameObject: public GameObject
 		{
 		public:
-			BaseMonoBehaviour();
-			~BaseMonoBehaviour();
+			BaseGameObject();
+			~BaseGameObject();
 			/// Start BaseMonoBehaviour, called by the one instanciating him. You need to call base.start().
 			virtual void start();
 		protected:

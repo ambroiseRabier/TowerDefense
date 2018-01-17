@@ -7,19 +7,19 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		std::list<const MonoBehaviour*> Scene::childrens;
+		std::list<const GameObject*> Scene::childrens;
 
 		void Scene::init()
 		{
 
 		}
 
-		void Scene::addChild(const MonoBehaviour& mono_behaviour)
+		void Scene::addChild(const GameObject& mono_behaviour)
 		{
 			childrens.push_back(&mono_behaviour);
 		}
 
-		void Scene::removeChild(const MonoBehaviour& mono_behaviour)
+		void Scene::removeChild(const GameObject& mono_behaviour)
 		{
 			// hope it work the same as in c# :o (don't throw error if not found, find index alone)
 			childrens.remove(&mono_behaviour);
@@ -29,16 +29,20 @@ namespace TowerDefense
 		void Scene::render(sf::RenderTarget& window)
 		{
 			childrens.sort(compare_z_index);
-			for (const MonoBehaviour* children : childrens)
+			for (const GameObject* children : childrens)
 			{
 				if (children->get_drawable())
 				{
-					window.draw(*children->get_drawable()); // todo: add transform ?
+					// combine GameObject "transform" to the GameObject "graphic"
+					window.draw(
+						*children->get_drawable(),
+						children->get_transformable().getTransform()
+					);
 				}
 			}
 		}
 
-		bool Scene::compare_z_index (const MonoBehaviour* first, const MonoBehaviour* second)
+		bool Scene::compare_z_index (const GameObject* first, const GameObject* second)
 		{
 			return first->get_zIndex() < second->get_zIndex();
 		}

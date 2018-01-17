@@ -1,4 +1,4 @@
-#include "MonoBehaviour.hpp"
+#include "GameObject.hpp"
 #include "stdafx.h"
 #include "Debug.hpp"
 
@@ -8,27 +8,27 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		MonoBehaviour::MonoBehaviour(std::unique_ptr<Drawable> newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableUnique(std::move(newDrawable))
+		GameObject::GameObject(std::unique_ptr<Drawable> newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableUnique(std::move(newDrawable))
 		{
 			constructor_internal_init(newZIndex);
 		}
 
-		MonoBehaviour::MonoBehaviour(const std::shared_ptr<Drawable>& newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableShared(std::move(newDrawable))
+		GameObject::GameObject(const std::shared_ptr<Drawable>& newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableShared(std::move(newDrawable))
 		{
 			constructor_internal_init(newZIndex);
 		}
 
-		MonoBehaviour::MonoBehaviour(Drawable* newDrawable, unsigned int newZIndex) : drawableRaw(newDrawable), z_index(newZIndex)
+		GameObject::GameObject(Drawable* newDrawable, unsigned int newZIndex) : drawableRaw(newDrawable), z_index(newZIndex)
 		{
 			constructor_internal_init(newZIndex);
 		}
 
-		MonoBehaviour::MonoBehaviour(unsigned int newZIndex) : z_index(newZIndex)
+		GameObject::GameObject(unsigned int newZIndex) : z_index(newZIndex)
 		{
 			constructor_internal_init(newZIndex);
 		}
 
-		MonoBehaviour::~MonoBehaviour()
+		GameObject::~GameObject()
 		{
 			transformable.reset(nullptr);
 			if (drawableUnique) drawableUnique.reset(nullptr);
@@ -40,7 +40,7 @@ namespace TowerDefense
 			}
 		}
 
-		void MonoBehaviour::constructor_internal_init(unsigned int newZIndex)
+		void GameObject::constructor_internal_init(unsigned int newZIndex)
 		{
 			// arbitrary limit of 999
 			Debug::assert_m(newZIndex <= 999, "z_index should be inferior or egal to 999");
@@ -49,12 +49,12 @@ namespace TowerDefense
 
 		// region getter setter
 
-		Transformable& MonoBehaviour::get_transformable() const
+		Transformable& GameObject::get_transformable() const
 		{
 			return *transformable;
 		}
 
-		Drawable* MonoBehaviour::get_drawable() const
+		Drawable* GameObject::get_drawable() const
 		{
 			if (drawableRaw) return drawableRaw;
 			else if (drawableUnique) return drawableUnique.get();
@@ -62,17 +62,17 @@ namespace TowerDefense
 			else return nullptr;
 		}
 
-		void MonoBehaviour::set_drawable(std::unique_ptr<Drawable> newDrawableUnique)
+		void GameObject::set_drawable(std::unique_ptr<Drawable> newDrawableUnique)
 		{
 			drawableUnique = std::move(newDrawableUnique);
 		}
 
-		void MonoBehaviour::set_drawable(const std::shared_ptr<Drawable>& newDrawableShared)
+		void GameObject::set_drawable(const std::shared_ptr<Drawable>& newDrawableShared)
 		{
 			drawableShared = newDrawableShared;
 		}
 
-		void MonoBehaviour::set_drawable(Drawable* newDrawableRaw)
+		void GameObject::set_drawable(Drawable* newDrawableRaw)
 		{
 			drawableRaw = newDrawableRaw;
 		}
