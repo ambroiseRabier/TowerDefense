@@ -10,7 +10,8 @@ namespace TowerDefense
 		class BaseButton:public GameEngine::BaseGameObject
 		{
 		protected:
-			void initVar() override;
+			void init() override;
+			void onDestroy() override;
 		};
 	}
 }

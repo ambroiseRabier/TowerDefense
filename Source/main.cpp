@@ -125,6 +125,7 @@ int main()
 	Scene::addChild(*base_button);
 	UI::BaseButton base_buttonStack;
 	Scene::addChild(base_buttonStack);
+	base_buttonStack.auto_start();
 
 	while (window.isOpen())
 	{
