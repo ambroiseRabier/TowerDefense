@@ -3,7 +3,8 @@
 #include "Managers/UIManager.hpp"
 #include "../TowerDefense/MonoBehaviour.hpp"
 #include "../TowerDefense/Scene.hpp"
-#include "../TowerDefense/Constants.h"
+#include "../TowerDefense/Constants.hpp"
+#include "../TowerDefense/BaseButton.hpp"
 
 
 using namespace TowerDefense::Managers;
@@ -30,6 +31,18 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
 	window.draw(loading_sprite);
 }
 
+void preloading()
+{
+	// allocate on heap since this will stay longer then the stack of this function
+	// then copy pointer on GlobalShared
+	Font* font = new Font();
+	font->loadFromFile(Constants::Assets::default_font);
+	GlobalShared::default_font = font;
+	Texture* texture = new Texture();
+	texture->loadFromFile(Constants::Assets::default_ui_btn);
+	GlobalShared::default_ui_btn = texture;
+}
+
 /**
  * @author: ambroise
  * todo: Use singleton instead of static to fasten loadtime of application?
@@ -38,6 +51,7 @@ int main()
 {
 	RenderWindow window(VideoMode(800, 600), Constants::Config::game_name);
 	window.setFramerateLimit(Constants::Config::fps_limit);
+
 	// loading init
 	// alocating on heap since I won't need it after loading.
 	std::unique_ptr<Texture> loading_texture = std::make_unique<Texture>();
@@ -45,14 +59,11 @@ int main()
 	displayLoading(*loading_texture, *loading_sprite, window);
 	window.display();
 
-	//fps debug only
-	// Declare and load a font
-	Font font;
-	font.loadFromFile(Constants::Assets::default_font);
-	GlobalShared::default_font = &font;
+	// preloading
+	preloading();
 
-	// Create a text
-	Text fpsText("FPS", font);
+	//fps text (debug only)
+	Text fpsText("FPS", *GlobalShared::default_font);
 	fpsText.setCharacterSize(30);
 	fpsText.setStyle(Text::Bold);
 	fpsText.setFillColor(Color::Red);
@@ -63,17 +74,13 @@ int main()
 	unsigned int fps = 0;
 	unsigned int frame_count = 0;
 
-	// Confirm that all GlobalShared variable that should have been setted are setted
-	assert(GlobalShared::default_font != nullptr);
-
 	// Init all managers
 	UIManager::Init();
 	GameManager::Init();
 	Scene::init();
-
 	// wait a bit to see the loading/credit screen.
 	// (forget asynchrone setTimeout like js. Gonna be too hard)
-	Time creditLoadingDuration = seconds(2.0f);
+	const Time creditLoadingDuration = seconds(Constants::Config::min_loading_duration);
 	sleep(creditLoadingDuration);
 	
 	// delete loading/credit stuff
@@ -82,11 +89,31 @@ int main()
 
 	// open menu
 	//todo
+	// test stack btn
+	//UI::BaseButton btnTest;
+	//Scene::addChild(btnTest);
 
+	// test heap btn, not ok ?
+	//UI::BaseButton* btnTest = new UI::BaseButton();
+	//Scene::addChild(*btnTest);
+	//std::cout << "init base btn ok"  << std::endl;
+
+	//test monobehaviour stack
 	//CircleShape shape(55.f);
 	//shape.setFillColor(Color::Green);
-	//MonoBehaviour* mono = new MonoBehaviour(0, &shape);
-	//Scene::add(*mono);
+
+	//test monobheaviour heap
+	std::unique_ptr<CircleShape> shape = std::make_unique<CircleShape>(70.f);
+	shape->setFillColor(Color::Red);
+	// upcast to Drawable
+	MonoBehaviour* mono = new MonoBehaviour(static_cast<std::unique_ptr<Drawable>>(std::move(shape)), 1);
+	Scene::addChild(*mono);
+
+	// this is ok
+	CircleShape shape2(55.f);
+	shape2.setFillColor(Color::Green);
+	MonoBehaviour* mono2 = new MonoBehaviour(&shape2, 2);
+	Scene::addChild(*mono2);
 
 	while (window.isOpen())
 	{
@@ -121,21 +148,22 @@ int main()
 		GameManager::update();
 		Scene::render(window);
 
+		// fps overlay
 		if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
 		{
 			fps = frame_count;
 			frame_count = 0;
 			fpsClock.restart();
 		}
- 
 		++frame_count;
-		
 		fpsText.setString(std::to_string(
 			// prefer the long way of doing it instead of this shortcut, the fps displayed is more stable.
 			//static_cast<int>(std::floor(getFPS(fpsClock.restart())))
 			fps
 		));
 		window.draw(fpsText);
+
+
 		/*window.draw(shape);
 
 		// UIManager Update for animation UI if needed

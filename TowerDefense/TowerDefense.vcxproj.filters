@@ -45,7 +45,10 @@
     <ClInclude Include="FPS.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Constants.h">
+    <ClInclude Include="Constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,6 +75,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonoBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

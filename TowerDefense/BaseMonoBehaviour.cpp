@@ -5,7 +5,7 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		BaseMonoBehaviour::BaseMonoBehaviour()//: MonoBehaviour() // euh, ya pas de base. ?
+		BaseMonoBehaviour::BaseMonoBehaviour()
 		{
 			BaseMonoBehaviour::awake();
 		}
@@ -28,7 +28,8 @@ namespace TowerDefense
 		void BaseMonoBehaviour::start()
 		{
 			BaseMonoBehaviour::listenToEvents();
-			//Scene::add(*this);
+			// It is better if oyu addchild them yourselve
+			//Scene::addChild(*this);
 		}
 
 		void BaseMonoBehaviour::listenToEvents()
@@ -48,14 +49,16 @@ namespace TowerDefense
 
 		void BaseMonoBehaviour::recycle()
 		{
-			//Scene::remove(*this);
+			// remove from scene in case removechildre has been forgotten
+			Scene::removeChild(*this);
 			BaseMonoBehaviour::unListenToEvents();
 			BaseMonoBehaviour::initVar();
 		}
 
 		void BaseMonoBehaviour::onDestroy()
 		{
-			//Scene::remove(*this);
+			// remove from scene in case removechildre has been forgotten
+			Scene::removeChild(*this);
 			BaseMonoBehaviour::unListenToEvents();
 		}
 	}

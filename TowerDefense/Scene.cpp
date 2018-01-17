@@ -14,12 +14,12 @@ namespace TowerDefense
 
 		}
 
-		void Scene::add(const MonoBehaviour& mono_behaviour)
+		void Scene::addChild(const MonoBehaviour& mono_behaviour)
 		{
 			childrens.push_back(&mono_behaviour);
 		}
 
-		void Scene::remove(const MonoBehaviour& mono_behaviour)
+		void Scene::removeChild(const MonoBehaviour& mono_behaviour)
 		{
 			// hope it work the same as in c# :o (don't throw error if not found, find index alone)
 			childrens.remove(&mono_behaviour);
@@ -31,7 +31,10 @@ namespace TowerDefense
 			childrens.sort(compare_z_index);
 			for (const MonoBehaviour* children : childrens)
 			{
-				window.draw(children->get_drawable()); // todo: add transform ?
+				if (children->get_drawable())
+				{
+					window.draw(*children->get_drawable()); // todo: add transform ?
+				}
 			}
 		}
 

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef SCENE_HPP
+#define SCENE_HPP
 #include "MonoBehaviour.hpp"
 #include <list>
 
@@ -19,12 +21,12 @@ namespace TowerDefense
 			 * And the MonoBehaviour should be able to remove from Scene::childrens at any time.)
 			 * \param mono_behaviour 
 			 */
-			static void add(const MonoBehaviour& mono_behaviour);
+			static void addChild(const MonoBehaviour& mono_behaviour);
 			/**
 			 * \brief Remove the MonoBehaviour from scene. (won't be draw anymore)
 			 * \param mono_behaviour 
 			 */
-			static void remove(const MonoBehaviour& mono_behaviour);
+			static void removeChild(const MonoBehaviour& mono_behaviour);
 						
 			/**
 			 * \brief Render with zIndex.
@@ -41,3 +43,4 @@ namespace TowerDefense
 		};
 	}
 }
+#endif

@@ -1,15 +1,18 @@
 #pragma once
+#ifndef BASE_BUTTON_HPP
+#define BASE_BUTTON_HPP
+#include "BaseMonoBehaviour.hpp"
 
 namespace TowerDefense
 {
 	namespace UI
 	{
-		class BaseButton
+		class BaseButton:public GameEngine::BaseMonoBehaviour
 		{
-		public:
-			BaseButton();
-
-			~BaseButton();
+		protected:
+			void initVar() override;
 		};
 	}
 }
+#endif
+

@@ -1,12 +1,13 @@
 #pragma once
-#include <SFML/Graphics/Drawable.hpp>
+#ifndef BASE_MONO_BEHAVIOUR_HPP
+#define BASE_MONO_BEHAVIOUR_HPP
 #include "MonoBehaviour.hpp"
 
 namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		class BaseMonoBehaviour//: MonoBehaviour
+		class BaseMonoBehaviour: public MonoBehaviour
 		{
 		public:
 			BaseMonoBehaviour();
@@ -26,7 +27,10 @@ namespace TowerDefense
 			virtual void recycle();
 			/// Called by decontructor.
 			virtual void onDestroy();
+
 		};
 
 	}
 }
+#endif
+
