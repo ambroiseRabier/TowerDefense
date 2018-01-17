@@ -1,6 +1,7 @@
 #include "Scene.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "stdafx.h"
+#include "Debug.hpp"
 
 using namespace std;
 namespace TowerDefense
@@ -16,7 +17,15 @@ namespace TowerDefense
 
 		void Scene::addChild(const GameObject& mono_behaviour)
 		{
-			childrens.push_back(&mono_behaviour);
+			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &mono_behaviour) != childrens.end();
+			if (!allready_exit)
+			{
+				childrens.push_back(&mono_behaviour);
+			}
+			else
+			{
+				Debug::warn("Scene: The element you are trying to push on scene is already on the scene.");
+			}
 		}
 
 		void Scene::removeChild(const GameObject& mono_behaviour)

@@ -19,7 +19,7 @@ namespace TowerDefense
 			cout << get_time_as_string() << " INFO: " << message << endl;
 		}
 
-		void Debug::warning(const string& message)
+		void Debug::warn(const string& message)
 		{
 			cout << get_time_as_string() << " WARNING: " << message << endl;
 		}

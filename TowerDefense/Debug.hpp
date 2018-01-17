@@ -21,9 +21,9 @@ namespace TowerDefense
 			 */
 			static void info(const std::string& message);
 			/**
-			 * \brief Simple warning function with date.
+			 * \brief Simple warn function with date.
 			 */
-			static void warning(const std::string& message);
+			static void warn(const std::string& message);
 			/**
 			 * \brief Wrap assert function with date and message.
 			 * \param assertion 

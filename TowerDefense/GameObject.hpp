@@ -31,6 +31,17 @@ namespace TowerDefense
 		 */
 		class GameObject
 		{
+
+			friend bool operator==(const GameObject& lhs, const GameObject& rhs)
+			{
+				return lhs.transformable == rhs.transformable;
+			}
+
+			friend bool operator!=(const GameObject& lhs, const GameObject& rhs)
+			{
+				return !(lhs == rhs);
+			}
+
 		public:
 			/**
 			 * \brief 

@@ -120,12 +120,16 @@ int main()
 	GameObject* mono2 = new GameObject(&shape2, 2);
 	Scene::addChild(*mono2);
 
-	// basegm
+	// 
 	UI::BaseButton* base_button = new UI::BaseButton();
-	Scene::addChild(*base_button);
-	UI::BaseButton base_buttonStack;
+	base_button->get_transformable().setPosition(200,200);
+	base_button->auto_start();
+
+	// work, stack
+	/*UI::BaseButton base_buttonStack;
 	Scene::addChild(base_buttonStack);
-	base_buttonStack.auto_start();
+	base_buttonStack.get_transformable().setPosition(200,200);
+	base_buttonStack.auto_start();*/
 
 	while (window.isOpen())
 	{
