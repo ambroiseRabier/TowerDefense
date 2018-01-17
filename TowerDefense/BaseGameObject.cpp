@@ -1,5 +1,6 @@
 #include "BaseGameObject.hpp"
 #include "Scene.hpp"
+#include "Debug.hpp"
 
 namespace TowerDefense
 {
@@ -17,12 +18,13 @@ namespace TowerDefense
 
 		void BaseGameObject::awake()
 		{
+			Debug::log("bgm awake");
 			BaseGameObject::initVar();
 		}
 
 		void BaseGameObject::initVar()
 		{
-			
+			Debug::log("bgm initvar");
 		}
 
 		void BaseGameObject::start()

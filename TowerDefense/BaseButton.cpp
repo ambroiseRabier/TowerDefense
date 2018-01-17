@@ -1,6 +1,7 @@
 #include "BaseButton.hpp"
 #include "stdafx.h"
 #include "Constants.hpp"
+#include "Debug.hpp"
 
 namespace TowerDefense
 {
@@ -9,11 +10,13 @@ namespace TowerDefense
 
 		void BaseButton::initVar()
 		{
+			GameEngine::Debug::log("initVar");
 			set_drawable(
 				static_cast<std::unique_ptr<sf::Drawable>>(
 					std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn)
 				)
 			);
+			z_index = 4;
 						/*
 			// Declare and load a texture
 			sf::Texture texture;

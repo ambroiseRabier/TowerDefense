@@ -5,6 +5,7 @@
 #include "../TowerDefense/Scene.hpp"
 #include "../TowerDefense/Constants.hpp"
 #include "../TowerDefense/BaseButton.hpp"
+#include "../TowerDefense/Debug.hpp"
 
 
 using namespace TowerDefense::Managers;
@@ -49,9 +50,9 @@ void preloading()
  */
 int main()
 {
+	Debug::info("Application started.");
 	RenderWindow window(VideoMode(800, 600), Constants::Config::game_name);
 	window.setFramerateLimit(Constants::Config::fps_limit);
-
 	// loading init
 	// alocating on heap since I won't need it after loading.
 	std::unique_ptr<Texture> loading_texture = std::make_unique<Texture>();
@@ -61,6 +62,7 @@ int main()
 
 	// preloading
 	preloading();
+	Debug::info("Preloading done.");
 
 	//fps text (debug only)
 	Text fpsText("FPS", *GlobalShared::default_font);
@@ -78,6 +80,8 @@ int main()
 	UIManager::Init();
 	GameManager::Init();
 	Scene::init();
+	Debug::info("Managers inited.");
+
 	// wait a bit to see the loading/credit screen.
 	// (forget asynchrone setTimeout like js. Gonna be too hard)
 	const Time creditLoadingDuration = seconds(Constants::Config::min_loading_duration);
@@ -116,7 +120,11 @@ int main()
 	GameObject* mono2 = new GameObject(&shape2, 2);
 	Scene::addChild(*mono2);
 
-	// b
+	// basegm
+	UI::BaseButton* base_button = new UI::BaseButton();
+	Scene::addChild(*base_button);
+	UI::BaseButton base_buttonStack;
+	Scene::addChild(base_buttonStack);
 
 	while (window.isOpen())
 	{

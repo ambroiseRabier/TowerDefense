@@ -76,7 +76,7 @@ namespace TowerDefense
 			/**
 			 * \brief Is rendered from 0 to 999 included.
 			 */
-			unsigned const int z_index = 0;
+			unsigned int z_index = 0;
 
 			/**
 			 * \brief Equivalent to unity transform (2D only)
