@@ -35,7 +35,6 @@ namespace TowerDefense
 			 * \param states 
 			 */
 			static void render(sf::RenderTarget& window);
-			static bool compare_z_index(const GameObject* first, const GameObject* second);
 
 			// debug shot hitbox bool ?
 		private:

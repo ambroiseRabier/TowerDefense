@@ -9,6 +9,12 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+		// static
+		bool GameObject::compare_z_index (const GameObject* first, const GameObject* second)
+		{
+			return first->get_zIndex() < second->get_zIndex();
+		}
+
 		GameObject::GameObject(std::unique_ptr<Drawable> newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableUnique(std::move(newDrawable))
 		{
 			constructor_internal_init(newZIndex);
@@ -32,13 +38,15 @@ namespace TowerDefense
 		GameObject::~GameObject()
 		{
 			transformable.reset(nullptr);
-			if (drawableUnique) drawableUnique.reset(nullptr);
-			if (drawableShared) drawableShared.reset();
+			// smartpointer should be explicitely cast to bool, even if Resharper is not ok.
+			if (drawableUnique.get()) drawableUnique.reset(nullptr);
+			if (drawableShared.get()) drawableShared.reset();
 			if (drawableRaw)
 			{
 				delete drawableRaw;
 				drawableRaw = nullptr;
 			}
+			if (collider) collider.reset();
 		}
 
 		void GameObject::constructor_internal_init(unsigned int newZIndex)
@@ -61,6 +69,11 @@ namespace TowerDefense
 			else if (drawableUnique) return drawableUnique.get();
 			else if (drawableShared) return drawableShared.get();
 			else return nullptr;
+		}
+
+		std::shared_ptr<Collider> GameObject::get_collider() const
+		{
+			return collider;
 		}
 
 		void GameObject::set_drawable(std::unique_ptr<Drawable> newDrawableUnique)

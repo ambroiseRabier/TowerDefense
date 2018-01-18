@@ -5,6 +5,7 @@
 #include "../TowerDefense/Constants.hpp"
 #include "../TowerDefense/BaseButton.hpp"
 #include "../TowerDefense/Debug.hpp"
+#include "../TowerDefense/Physics.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -144,6 +145,21 @@ int main()
 					GameManager::StartLevel(0);
 				}
 			}
+
+
+			// mouse 
+			// get global mouse position, always put before any Physics click
+			Physics::mouse_position = Mouse::getPosition();
+        	
+        	if (Mouse::isButtonPressed(Mouse::Right))
+			{
+				Physics::on_right_click();
+			}
+			if (Mouse::isButtonPressed(Mouse::Left))
+			{
+				Physics::on_left_click();
+			}
+
         }
 		window.clear();
 		GameManager::update();

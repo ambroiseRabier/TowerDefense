@@ -4,6 +4,7 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include <memory>
+#include "Collider.hpp"
 
 namespace TowerDefense
 {
@@ -43,6 +44,7 @@ namespace TowerDefense
 			}
 
 		public:
+			static bool compare_z_index(const GameObject* first, const GameObject* second);
 			/**
 			 * \brief 
 			 * \param newZIndex 0 to 999 included.
@@ -82,6 +84,8 @@ namespace TowerDefense
 			 */
 			sf::Drawable* get_drawable() const;
 
+			std::shared_ptr<Collider> get_collider() const;
+
 			/**
 			 * \brief Is rendered from 0 to 999 included.
 			 */
@@ -111,6 +115,7 @@ namespace TowerDefense
 			 */
 			void set_drawable(sf::Drawable* newDrawableRaw);
 
+			std::shared_ptr<Collider> collider;
 			// mettre sur objet hitbox ?
 			//Rect ou circle, bref struct ? MAth truc ? geometry, etc ?
 			//bool hitBoxActive;

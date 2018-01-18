@@ -1,7 +1,9 @@
+#include "stdafx.h"
 #include "BaseGameObject.hpp"
 #include "Scene.hpp"
 #include "Debug.hpp"
 #include "Managers/GameManager.hpp"
+#include "Physics.hpp"
 
 namespace TowerDefense
 {
@@ -13,21 +15,31 @@ namespace TowerDefense
 
 		BaseGameObject::~BaseGameObject()
 		{
-			Debug::assert_m(flag_is_destroyed, "BaseGameObject: Did you forgot to call destroy() before deleting me? Or maybe you forgot to add base call to overriden destroy function.");
+			Debug::assert_m(
+				flag_is_destroyed, 
+				"BaseGameObject: Did you forgot to call destroy() before deleting me? Or maybe you forgot to add base call to overriden destroy function."
+			);
 			Debug::log("bgo deconstructor");
 		}
 
 		void BaseGameObject::auto_start()
 		{
 			init();
-			Scene::addChild(*this);
+			if (get_drawable())
+			{
+				isVisible = true; // default is true, but just in case of.
+				Scene::addChild(*this);
+			}
+			if (get_collider().get())
+			{
+				Physics::addChild(*this);
+			}
 			start();
 		}
 
 		void BaseGameObject::init()
 		{
 			flag_is_init = true;
-			Debug::log("bgm initvar");
 		}
 
 		void BaseGameObject::start()

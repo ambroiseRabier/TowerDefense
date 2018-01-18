@@ -1,5 +1,4 @@
 #include "Scene.hpp"
-#include <SFML/Graphics/RenderTarget.hpp>
 #include "stdafx.h"
 #include "Debug.hpp"
 
@@ -15,12 +14,13 @@ namespace TowerDefense
 
 		}
 
-		void Scene::addChild(const GameObject& mono_behaviour)
+		void Scene::addChild(const GameObject& gameobject)
 		{
-			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &mono_behaviour) != childrens.end();
+			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &gameobject) != childrens.end();
 			if (!allready_exit)
 			{
-				childrens.push_back(&mono_behaviour);
+				Debug::assert_m((&gameobject)->get_drawable(), "Scene: A gameobject you add to the scene should have a drawable setted.");
+				childrens.push_back(&gameobject);
 			}
 			else
 			{
@@ -28,18 +28,17 @@ namespace TowerDefense
 			}
 		}
 
-		void Scene::removeChild(const GameObject& mono_behaviour)
+		void Scene::removeChild(const GameObject& gameobject)
 		{
-			// hope it work the same as in c# :o (don't throw error if not found, find index alone)
-			childrens.remove(&mono_behaviour);
+			childrens.remove(&gameobject);
 		}
 
-		//for (MonoBehaviour* children : childrens)
 		void Scene::render(sf::RenderTarget& window)
 		{
-			childrens.sort(compare_z_index);
+			childrens.sort(GameObject::compare_z_index);
 			for (const GameObject* children : childrens)
 			{
+				// well, you could remove the drawable without error, but that is not encouraged.
 				if (children->isVisible && children->get_drawable())
 				{
 					// combine GameObject "transform" to the GameObject "graphic"
@@ -49,11 +48,6 @@ namespace TowerDefense
 					);
 				}
 			}
-		}
-
-		bool Scene::compare_z_index (const GameObject* first, const GameObject* second)
-		{
-			return first->get_zIndex() < second->get_zIndex();
 		}
 	}
 }
