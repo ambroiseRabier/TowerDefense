@@ -33,6 +33,7 @@ namespace TowerDefense
 		namespace Assets
 		{
 			const std::string loading_background = "Assets/loading_background_inverted.png";
+			const std::string menu_background = "Assets/menu_background.jpg";
 			const std::string default_ui_btn = "Assets/orange_btn.jpg";
 			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 		}
@@ -41,7 +42,7 @@ namespace TowerDefense
 		 * \brief You should use them as guideline for z-index assignation to gameobjects.
 		 * If you ever happen to think you might overlap on another range of z-index, just up max and add a bigger range.
 		 */
-		namespace ZIndex
+		namespace ZIndex // use a contexpr with math.max and math.min to check if in range ?
 		{
 			const unsigned int background_start = 0;
 			const unsigned int game_objects_start = 100;
@@ -55,8 +56,9 @@ namespace TowerDefense
 	 */
 	namespace GlobalShared
 	{
-		extern sf::Font* default_font;
+		extern sf::Texture* menu_background;
 		extern sf::Texture* default_ui_btn;
+		extern sf::Font* default_font;
 	}
 }
 #endif

@@ -14,7 +14,7 @@ namespace TowerDefense
 			BaseGameObject::init();
 			// shared_ptr is removed when going out of scope.
 			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(*GlobalShared::default_ui_btn);
-			my_sprite->setPosition(0,0);
+			//my_sprite->setPosition(0,0);
 			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
 			//sprite.setColor(sf::Color(255, 255, 255, 200));
 			set_drawable(
@@ -29,7 +29,7 @@ namespace TowerDefense
 
 			z_index = Constants::ZIndex::ui_start;
 			collider = std::make_shared<Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,300,300)),
+				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,341,148)),
 				Collider::Tag::UI
 			);
 			//collider->tag = Collider::Tag::UI;

@@ -6,6 +6,7 @@
 #include "../TowerDefense/BaseButton.hpp"
 #include "../TowerDefense/Debug.hpp"
 #include "../TowerDefense/Physics.hpp"
+#include "../TowerDefense/MenuBackground.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -31,7 +32,7 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
 	window.draw(loading_sprite);
 }
 
-void preloading()
+void preloading() // todo factorize
 {
 	// allocate on heap since this will stay longer then the stack of this function
 	// then copy pointer on GlobalShared
@@ -41,6 +42,9 @@ void preloading()
 	Texture* texture = new Texture();
 	texture->loadFromFile(Constants::Assets::default_ui_btn);
 	GlobalShared::default_ui_btn = texture;
+	texture = new Texture();
+	texture->loadFromFile(Constants::Assets::menu_background);
+	GlobalShared::menu_background = texture;
 }
 
 /**
@@ -109,6 +113,8 @@ int main()
 	UI::BaseButton* base_button = new UI::BaseButton();
 	base_button->get_transformable().setPosition(150,150);
 	base_button->auto_start();
+	UI::MenuBackground* menu_background = new UI::MenuBackground();
+	menu_background->auto_start();
 	//base_button->destroy();
 	//delete base_button;
 	//base_button = nullptr;
