@@ -11,25 +11,21 @@ namespace TowerDefense
 		void BaseButton::init()
 		{
 			BaseGameObject::init();
+			// shared_ptr is removed when going out of scope.
+			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(*GlobalShared::default_ui_btn);
 			set_drawable(
-				static_cast<std::unique_ptr<sf::Drawable>>(
-					std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn)
+				static_cast<std::shared_ptr<sf::Drawable>>(
+					// cannot downcast or keep a reference of Sprite, unique pointer for a Sprite being
+					// kept as Drawable is rather problematic.
+					//std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn)
+					my_sprite
 				)
 			);
+			//sprite.setTexture(texture);
+			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
+			//sprite.setColor(sf::Color(255, 255, 255, 200));
+			my_sprite->setPosition(0,0);
 			z_index = Constants::ZIndex::ui_start;
-			/*
-			// Declare and load a texture
-			sf::Texture texture;
-			texture.loadFromFile("Assets/orange_btn.jpg");
-			// Create a sprite
-			sf::Sprite sprite;
-			sprite.setTexture(texture);
-			sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
-			sprite.setColor(sf::Color(255, 255, 255, 200));
-			sprite.setPosition(100, 25);
-			// Draw it
-			window.draw(sprite);
-			*/
 		}
 
 		void BaseButton::destroy()

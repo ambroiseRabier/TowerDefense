@@ -40,7 +40,7 @@ namespace TowerDefense
 			childrens.sort(compare_z_index);
 			for (const GameObject* children : childrens)
 			{
-				if (children->get_drawable())
+				if (children->isVisible && children->get_drawable())
 				{
 					// combine GameObject "transform" to the GameObject "graphic"
 					window.draw(

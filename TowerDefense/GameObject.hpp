@@ -71,10 +71,13 @@ namespace TowerDefense
 			GameObject(unsigned int newZIndex = 0);
 
 			virtual ~GameObject();
+
 			sf::Transformable& get_transformable() const;
-			// using pointer instead of reference because it can be null. Check for null before using.
+
+			// 
 			/**
-			 * \brief A Sprite/Text/Shape/VertexArray
+			 * \brief A Sprite/Text/Shape/VertexArray.
+			 * Using pointer instead of reference because it can be null. Check for null before using.
 			 * \return 
 			 */
 			sf::Drawable* get_drawable() const;
@@ -82,7 +85,12 @@ namespace TowerDefense
 			/**
 			 * \brief Is rendered from 0 to 999 included.
 			 */
-			unsigned int get_zIndex() const { return z_index; };
+			unsigned int get_zIndex() const { return z_index; }
+
+			/**
+			 * \brief Scene draw loop will skip this gameobject if set to false;
+			 */
+			bool isVisible = true;
 		protected:
 			/**
 			 * \brief Is rendered from 0 to 999 included.

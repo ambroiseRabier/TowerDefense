@@ -10,6 +10,9 @@ namespace TowerDefense
 	namespace Managers
 	{
 		enum class GameState { Menu, Playing, Pause };
+		/**
+		 * \brief Manbage game states, also manage UI. (making an UIManager seem overkil)
+		 */
 		class GameManager
 		{
 		public: 
@@ -19,6 +22,7 @@ namespace TowerDefense
 			static void update();
 			static float get_deltaTime(); // const :'(, static do not take const
 			static void RestartLevel();
+			static void pause();
 			static GameState state;
 		private:
 			static float deltaTime;

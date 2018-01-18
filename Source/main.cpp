@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Managers/GameManager.hpp"
-#include "Managers/UIManager.hpp"
 #include "../TowerDefense/GameObject.hpp"
 #include "../TowerDefense/Scene.hpp"
 #include "../TowerDefense/Constants.hpp"
@@ -76,9 +75,8 @@ int main()
 	unsigned int frame_count = 0;
 
 	// Init all managers
-	UIManager::Init();
-	GameManager::Init();
 	Scene::init();
+	GameManager::Init();
 	Debug::info("Managers inited.");
 
 	// wait a bit to see the loading/credit screen.
@@ -135,7 +133,7 @@ int main()
 			{
 				if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
 				{
-					UIManager::OpenPause();
+					GameManager::pause();
 				}
 				if (event.type == Event::KeyPressed && event.key.code == Keyboard::R)
 				{
@@ -146,7 +144,6 @@ int main()
 					GameManager::StartLevel(0);
 				}
 			}
-			UIManager::update();
         }
 		window.clear();
 		GameManager::update();

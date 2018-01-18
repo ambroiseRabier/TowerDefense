@@ -12,6 +12,7 @@ namespace TowerDefense
 
 		void GameManager::StartLevel(int i)
 		{
+			state = GameState::Playing;
 		}
 
 		void GameManager::Init()
@@ -28,7 +29,12 @@ namespace TowerDefense
 
 		void GameManager::RestartLevel()
 		{
+			state = GameState::Playing;
+		}
 
+		void GameManager::pause()
+		{
+			state = GameState::Pause;
 		}
 
 		// region getter setter

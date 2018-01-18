@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Managers\GameManager.hpp" />
-    <ClInclude Include="..\Source\Managers\UIManager.hpp" />
     <ClInclude Include="..\Source\stdafx.h" />
     <ClInclude Include="..\Source\targetver.h" />
     <ClInclude Include="..\Source\Utils\Singleton.hpp" />
@@ -36,7 +35,6 @@
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp" />
     <ClCompile Include="..\Source\Managers\GameManager.cpp" />
-    <ClCompile Include="..\Source\Managers\UIManager.cpp" />
     <ClCompile Include="..\Source\stdafx.cpp" />
     <ClCompile Include="BaseButton.cpp" />
     <ClCompile Include="BaseGameObject.cpp" />
