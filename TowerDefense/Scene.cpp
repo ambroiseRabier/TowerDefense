@@ -1,5 +1,5 @@
-#include "Scene.hpp"
 #include "stdafx.h"
+#include "Scene.hpp"
 #include "Debug.hpp"
 
 using namespace std;

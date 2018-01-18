@@ -1,5 +1,5 @@
-#include "BaseButton.hpp"
 #include "stdafx.h"
+#include "BaseButton.hpp"
 #include "Constants.hpp"
 
 using namespace TowerDefense::GameEngine;

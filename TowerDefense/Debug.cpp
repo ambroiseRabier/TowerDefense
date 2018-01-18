@@ -1,5 +1,5 @@
-#include "Debug.hpp"
 #include "stdafx.h"
+#include "Debug.hpp"
 
 using namespace std;
 

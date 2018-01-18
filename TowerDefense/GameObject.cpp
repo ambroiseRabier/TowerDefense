@@ -1,5 +1,5 @@
-#include "GameObject.hpp"
 #include "stdafx.h"
+#include "GameObject.hpp"
 #include "Debug.hpp"
 #include "Constants.hpp"
 
