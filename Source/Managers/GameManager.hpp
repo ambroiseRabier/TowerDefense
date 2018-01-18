@@ -23,6 +23,7 @@ namespace TowerDefense
 			static float get_deltaTime(); // const :'(, static do not take const
 			static void RestartLevel();
 			static void pause();
+			static void un_pause();
 			static GameState state;
 		private:
 			static float deltaTime;

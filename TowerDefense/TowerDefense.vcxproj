@@ -32,6 +32,7 @@
     <ClInclude Include="Event.h" />
     <ClInclude Include="FPS.hpp" />
     <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MenuBackground.hpp" />
     <ClInclude Include="Physics.hpp" />
     <ClInclude Include="Scene.hpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MenuBackground.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Scene.cpp" />

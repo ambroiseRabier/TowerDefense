@@ -7,6 +7,7 @@
 #include "../TowerDefense/Debug.hpp"
 #include "../TowerDefense/Physics.hpp"
 #include "../TowerDefense/MenuBackground.hpp"
+#include "../TowerDefense/InputManager.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -94,23 +95,7 @@ int main()
 	loading_sprite.reset(nullptr);
 	loading_texture.reset(nullptr);
 
-	// open menu
-	//todo
-	// test stack btn
-	//UI::BaseButton btnTest;
-	//Scene::addChild(btnTest);
-
-	// test heap btn, not ok ?
-	//UI::BaseButton* btnTest = new UI::BaseButton();
-	//Scene::addChild(*btnTest);
-	//std::cout << "init base btn ok"  << std::endl;
-
-	//test monobehaviour stack
-	//CircleShape shape(55.f);
-	//shape.setFillColor(Color::Green);
-
-	// 
-	UI::BaseButton* base_button = new UI::BaseButton();
+	UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
 	base_button->get_transformable().setPosition(150,150);
 	base_button->auto_start();
 	UI::MenuBackground* menu_background = new UI::MenuBackground();
@@ -119,65 +104,16 @@ int main()
 	//delete base_button;
 	//base_button = nullptr;
 
-	// work, stack
-	/*UI::BaseButton base_buttonStack;
-	Scene::addChild(base_buttonStack);
-	base_buttonStack.get_transformable().setPosition(200,200);
-	base_buttonStack.auto_start();*/
-
 	while (window.isOpen())
 	{
-		// Handle events todo:: make an input manager
-        Event event;
-        while (window.pollEvent(event))
-        {
-            // Window closed or escape key pressed: exit
-            if (event.type == Event::Closed)
-            {
-                window.close();
-                break;
-			}
-			if (GameManager::state == GameState::Playing)
-			{
-				if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
-				{
-					GameManager::pause();
-				}
-				if (event.type == Event::KeyPressed && event.key.code == Keyboard::R)
-				{
-					GameManager::RestartLevel();
-				}				
-				if (event.type == Event::KeyPressed && event.key.code == Keyboard::R && event.key.code == Keyboard::LControl)
-				{
-					GameManager::StartLevel(0);
-				}		
-				if (event.type == Event::KeyPressed && event.key.code == Keyboard::P)
-				{
-					Debug::log("pause debug?");
-					system("pause");
-				}
-			}
-
-
-			// mouse 
-			// get relativ mouse position, always put before any Physics click
-			Physics::mouse_position = Mouse::getPosition() - window.getPosition();
-        	
-        	if (Mouse::isButtonPressed(Mouse::Right))
-			{
-				Physics::on_right_click();
-			}
-			if (Mouse::isButtonPressed(Mouse::Left))
-			{
-				Physics::on_left_click();
-			}
-
-        }
-		window.clear();
+		InputManager::update(window);
 		GameManager::update();
 		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
 		Physics::update();
+		// window.clear() was originnnaly before any game logic, but,
+		// if the game logic take time then the user might see the window blink.
+		window.clear();
 		Scene::render(window);
 
 		// fps overlay
@@ -189,37 +125,11 @@ int main()
 		}
 		++frame_count;
 		fpsText.setString(std::to_string(
-			// prefer the long way of doing it instead of this shortcut, the fps displayed is more stable.
+			// prefer the long way of doing it instead of this shortcut bellow, the fps displayed is more stable.
 			//static_cast<int>(std::floor(getFPS(fpsClock.restart())))
 			fps
 		));
 		window.draw(fpsText);
-
-
-		/*window.draw(shape);
-
-		// UIManager Update for animation UI if needed
-		// Declare and load a texture
-			Texture texture;
-			texture.loadFromFile("Assets/orange_btn.jpg");
-			// Create a sprite
-			Sprite sprite;
-			sprite.setTexture(texture);
-			sprite.setTextureRect(IntRect(10, 10, 50, 30));
-			sprite.setColor(Color(255, 255, 255, 200));
-			sprite.setPosition(100, 25);
-			// Draw it
-			window.draw(sprite);
-		// Declare and load a texture
-			texture.loadFromFile("Assets/orange_btn.jpg");
-			// Create a sprite
-			sprite.setTexture(texture);
-			sprite.setTextureRect(IntRect(10, 10, 50, 30));
-			sprite.setColor(Color(255, 255, 255, 200));
-			sprite.setPosition(50, 50);
-			// Draw it
-			window.draw(sprite);*/
-
 		window.display();
 	}
 	return 0;

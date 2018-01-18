@@ -37,6 +37,11 @@ namespace TowerDefense
 			state = GameState::Pause;
 		}
 
+		void GameManager::un_pause()
+		{
+			state = GameState::Playing;
+		}
+
 		// region getter setter
 
 		float GameManager::get_deltaTime () 

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MENU_BACKGROUND_HPP
+#define MENU_BACKGROUND_HPP
 #include "BaseGameObject.hpp"
 
 
@@ -18,3 +20,4 @@ namespace TowerDefense
 		};
 	}
 }
+#endif
