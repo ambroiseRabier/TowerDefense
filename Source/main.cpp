@@ -107,7 +107,7 @@ int main()
 
 	// 
 	UI::BaseButton* base_button = new UI::BaseButton();
-	base_button->get_transformable().setPosition(200,200);
+	base_button->get_transformable().setPosition(0,0);
 	base_button->auto_start();
 	//base_button->destroy();
 	//delete base_button;
@@ -121,7 +121,7 @@ int main()
 
 	while (window.isOpen())
 	{
-		// Handle events
+		// Handle events todo:: make an input manager
         Event event;
         while (window.pollEvent(event))
         {
@@ -144,13 +144,18 @@ int main()
 				if (event.type == Event::KeyPressed && event.key.code == Keyboard::R && event.key.code == Keyboard::LControl)
 				{
 					GameManager::StartLevel(0);
+				}		
+				if (event.type == Event::KeyPressed && event.key.code == Keyboard::P)
+				{
+					Debug::log("pause debug?");
+					system("pause");
 				}
 			}
 
 
 			// mouse 
-			// get global mouse position, always put before any Physics click
-			Physics::mouse_position = Mouse::getPosition();
+			// get relativ mouse position, always put before any Physics click
+			Physics::mouse_position = Mouse::getPosition() - window.getPosition();
         	
         	if (Mouse::isButtonPressed(Mouse::Right))
 			{
@@ -164,7 +169,7 @@ int main()
         }
 		window.clear();
 		GameManager::update();
-		// updating mouse click after update game logic will be one frame wrong
+		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
 		Physics::update();
 		Scene::render(window);

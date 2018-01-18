@@ -26,6 +26,7 @@
     <ClInclude Include="BaseButton.hpp" />
     <ClInclude Include="BaseGameObject.hpp" />
     <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="CollisionTest.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Debug.hpp" />
     <ClInclude Include="Event.h" />
@@ -41,6 +42,7 @@
     <ClCompile Include="BaseButton.cpp" />
     <ClCompile Include="BaseGameObject.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CollisionTest.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="GameObject.cpp" />

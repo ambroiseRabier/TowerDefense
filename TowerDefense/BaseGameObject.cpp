@@ -61,7 +61,6 @@ namespace TowerDefense
 
 		void BaseGameObject::update()
 		{
-
 		}
 
 		void BaseGameObject::recycle()

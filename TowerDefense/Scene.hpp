@@ -38,6 +38,8 @@ namespace TowerDefense
 
 			// debug shot hitbox bool ?
 		private:
+			// don't really know why I can't push a const GameObject& inside if
+			// I type const GameObject& here :( ?
 			static std::list<const GameObject*> childrens;
 		};
 	}

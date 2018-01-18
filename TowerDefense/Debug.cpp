@@ -14,6 +14,21 @@ namespace TowerDefense
 			cout << get_time_as_string() << " LOG: " << message << endl;
 		}
 
+		void Debug::log(const char& message)
+		{
+			cout << get_time_as_string() << " LOG: " << message << endl;
+		}
+
+		void Debug::log(const float& message)
+		{
+			cout << get_time_as_string() << " LOG: " << message << endl;
+		}
+
+		void Debug::log(const int& message)
+		{
+			cout << get_time_as_string() << " LOG: " << message << endl;
+		}
+
 		void Debug::info(const std::string& message)
 		{
 			cout << get_time_as_string() << " INFO: " << message << endl;

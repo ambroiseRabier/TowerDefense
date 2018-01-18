@@ -79,6 +79,22 @@ namespace TowerDefense
 			return collider;
 		}
 
+		void GameObject::on_mouse_overlap()
+		{
+		}
+
+		void GameObject::on_mouse_overlap_front()
+		{
+		}
+
+		void GameObject::on_mouse_click(bool left)
+		{
+		}
+
+		void GameObject::on_mouse_click_front(bool left)
+		{
+		}
+
 		void GameObject::set_drawable(std::unique_ptr<Drawable> newDrawableUnique)
 		{
 			drawableUnique = std::move(newDrawableUnique);

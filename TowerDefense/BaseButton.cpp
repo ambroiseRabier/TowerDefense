@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BaseButton.hpp"
 #include "Constants.hpp"
+#include "Debug.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -27,13 +28,26 @@ namespace TowerDefense
 			// since I used std::move, do not call my_sprite anymore !
 
 			z_index = Constants::ZIndex::ui_start;
-			collider = std::make_shared<Collider>();
+			collider = std::make_shared<Collider>(
+				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,300,300))
+			);
 			collider->tag = Collider::Tag::UI;
+
 		}
 
 		void BaseButton::destroy()
 		{
 			BaseGameObject::destroy();
+		}
+
+		void BaseButton::on_mouse_overlap()
+		{
+			//Debug::log("on_mouse_overlap");
+		}
+
+		void BaseButton::on_mouse_click(bool left)
+		{
+			Debug::log("on_mouse_click " + left);
 		}
 	}
 }

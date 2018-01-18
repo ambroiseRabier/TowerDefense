@@ -16,6 +16,9 @@ namespace TowerDefense
 			 * \brief Simple log function with date. (for debug purpose)
 			 */
 			static void log(const std::string& message);
+			static void log(const char& message);
+			static void log(const float& message);
+			static void log(const int& message);
 			/**
 			 * \brief Simple log function with date.
 			 */

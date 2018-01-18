@@ -86,6 +86,32 @@ namespace TowerDefense
 
 			std::shared_ptr<Collider> get_collider() const;
 
+			// region physics
+
+			/**
+			 * \brief ONLY called if you have a collider added in Physics.
+			 * Called every frame.
+			 */
+			virtual void on_mouse_overlap();
+
+			/**
+			 * \brief ONLY called if you have a collider added in Physics.
+			 * Called every frame.
+			 * Only if it is the front object that overlap the mouse.
+			 * Called after on_mouse_overlap.
+			 */
+			virtual void on_mouse_overlap_front();
+
+			/**
+			 * \brief When mouse click on it (ignore z-index).
+			 */
+			virtual void on_mouse_click(bool left);
+
+			/**
+			 * \brief When mouse click on it, and it is the first in z-index being clicked.
+			 */
+			virtual void on_mouse_click_front(bool left);
+
 			/**
 			 * \brief Is rendered from 0 to 999 included.
 			 */
