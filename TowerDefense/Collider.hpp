@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef COLLIDER_HPP
+#define COLLIDER_HPP
 namespace TowerDefense
 {
 	namespace GameEngine
@@ -8,7 +9,14 @@ namespace TowerDefense
 		class Collider
 		{
 		public:
-			enum Tag{ Minion, Castle, TowerShoot};
+			enum class Tag
+			{
+				None=0,
+				UI=1, 
+				Minion=2, 
+				Castle=3, 
+				TowerShoot=4
+			};
 			Collider();
 			~Collider();
 			bool mouse_enabled = true;
@@ -17,3 +25,5 @@ namespace TowerDefense
 		};
 	}
 }
+#endif
+

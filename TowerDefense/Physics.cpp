@@ -21,8 +21,8 @@ namespace TowerDefense
 					"Physics: A gameobject you add to the physic should have a collider setted."
 				);
 				Debug::assert_m(
-					(&gameobject)->get_collider()->tag,
-					"Physics: The collider you are adding has no tag setted."
+					(&gameobject)->get_collider()->tag != Collider::Tag::None,
+					"Physics: The collider you are adding has None tag setted that is invalid. (if you insist to have None then don't put any collider)"
 				);
 				childrens.push_back(&gameobject);
 			}

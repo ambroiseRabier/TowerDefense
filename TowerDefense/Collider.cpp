@@ -1,6 +1,4 @@
 #include "Collider.hpp"
-#ifndef COLLIDER_HPP
-#define COLLIDER_HPP
 
 namespace TowerDefense
 {
@@ -17,5 +15,4 @@ namespace TowerDefense
 	}
 
 }
-#endif
 

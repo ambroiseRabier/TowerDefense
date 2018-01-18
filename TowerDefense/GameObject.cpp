@@ -69,7 +69,7 @@ namespace TowerDefense
 		Drawable* GameObject::get_drawable() const
 		{
 			if (drawableRaw) return drawableRaw;
-			else if (drawableUnique) return drawableUnique.get();
+			else if (drawableUnique) return drawableUnique.get(); // using get() since it is allowed to be null.
 			else if (drawableShared) return drawableShared.get();
 			else return nullptr;
 		}

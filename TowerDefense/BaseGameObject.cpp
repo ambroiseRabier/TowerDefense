@@ -19,7 +19,6 @@ namespace TowerDefense
 				flag_is_destroyed, 
 				"BaseGameObject: Did you forgot to call destroy() before deleting me? Or maybe you forgot to add base call to overriden destroy function."
 			);
-			Debug::log("bgo deconstructor");
 		}
 
 		void BaseGameObject::auto_start()

@@ -1,10 +1,8 @@
 #pragma once
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
-#include <string>
-#include <utility>
-#include <SFML/Graphics/Font.hpp>
 #include "Collider.hpp"
+#include <SFML/Graphics/Font.hpp>
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
