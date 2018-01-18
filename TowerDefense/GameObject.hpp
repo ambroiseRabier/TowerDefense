@@ -44,7 +44,8 @@ namespace TowerDefense
 			}
 
 		public:
-			static bool compare_z_index(const GameObject* first, const GameObject* second);
+			static bool compare_z_index(const GameObject& first, const GameObject& second);
+			static bool compare_z_index_p(const GameObject* first, const GameObject* second);
 			/**
 			 * \brief 
 			 * \param newZIndex 0 to 999 included.
@@ -121,6 +122,8 @@ namespace TowerDefense
 			 * \brief Scene draw loop will skip this gameobject if set to false;
 			 */
 			bool isVisible = true;
+
+			sf::Vector2f to_local(const sf::Vector2f&) const;
 		protected:
 			/**
 			 * \brief Is rendered from 0 to 999 included.

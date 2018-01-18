@@ -23,7 +23,9 @@ namespace TowerDefense
 		public:
 			void destroy() override;
 			void on_mouse_overlap() override;
+			void on_mouse_overlap_front() override;
 			void on_mouse_click(bool left) override;
+			void on_mouse_click_front(bool left) override;
 		protected:
 			void init() override;
 		};

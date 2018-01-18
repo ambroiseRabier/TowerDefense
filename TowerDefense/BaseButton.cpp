@@ -29,9 +29,10 @@ namespace TowerDefense
 
 			z_index = Constants::ZIndex::ui_start;
 			collider = std::make_shared<Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,300,300))
+				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,300,300)),
+				Collider::Tag::UI
 			);
-			collider->tag = Collider::Tag::UI;
+			//collider->tag = Collider::Tag::UI;
 
 		}
 
@@ -42,12 +43,22 @@ namespace TowerDefense
 
 		void BaseButton::on_mouse_overlap()
 		{
-			//Debug::log("on_mouse_overlap");
+			
+		}
+
+		void BaseButton::on_mouse_overlap_front()
+		{
+
 		}
 
 		void BaseButton::on_mouse_click(bool left)
 		{
 			Debug::log("on_mouse_click " + left);
+		}
+
+		void BaseButton::on_mouse_click_front(bool left)
+		{
+			Debug::log("on_mouse_click_front " + left);
 		}
 	}
 }

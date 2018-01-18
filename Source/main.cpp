@@ -107,7 +107,7 @@ int main()
 
 	// 
 	UI::BaseButton* base_button = new UI::BaseButton();
-	base_button->get_transformable().setPosition(0,0);
+	base_button->get_transformable().setPosition(150,150);
 	base_button->auto_start();
 	//base_button->destroy();
 	//delete base_button;

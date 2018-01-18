@@ -54,19 +54,24 @@ namespace TowerDefense
 		{
 			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
 			{
+				// mouse_position.toLocal(game_object)
 				return game_object.get_collider()->get_rect().contains(
-					game_object.get_transformable().getPosition().x + mouse_position.x,
-					game_object.get_transformable().getPosition().y + mouse_position.y 
+					game_object.to_local(static_cast<sf::Vector2f>(mouse_position))
 				);
 			}
 			Debug::warn("Physics WIP: collider type not supported.");
 			return false;
 		}
 
+		/**
+		 * \brief Test collisions and send event to GameObjects
+		 * Calling the collider would a bit more sense regarding oriented object design
+		 * But it is more KISS to call GameObject instead.
+		 */
 		void Physics::update()
 		{
 			// yes this look like a duplicate of scene, but I think it's better to have a clear separation between both.
-			childrens.sort(GameObject::compare_z_index);
+			childrens.sort(GameObject::compare_z_index_p);
 			for (GameObject* children : childrens)
 			{
 				// well, you could remove the collider without error, but that is not encouraged.
@@ -78,34 +83,55 @@ namespace TowerDefense
 						{
 							//if ()
 						}
-					}
-					if (children->get_collider()->mouse_enabled)
-					{
-						if (collide_mouse(*children))
-						{
-							children->on_mouse_overlap();
-							if (left_clicked)
-							{
-								children->on_mouse_click(false);
-							}
-							if (right_clicked)
-							{
-								children->on_mouse_click(true);
-							}
-
-							mouseCollisionBuffer.push_back(children);
-						}
+						updateMouseCollisions(*children);
 					}
 				}
 			}
-			for (GameObject* game_object : mouseCollisionBuffer)
-			{
-				// Calling the collider would a bit more sense regarding oriented object design
-				// But it is more KISS to call GameObject methods.
-			}
+			updateMouseCollisionFront();
 			left_clicked = false;
 			right_clicked = false;
 			mouseCollisionBuffer.clear();
+		}
+
+		void Physics::updateMouseCollisions(GameObject& game_object)
+		{
+			if (game_object.get_collider()->mouse_enabled)
+			{
+				if (collide_mouse(game_object))
+				{
+					game_object.on_mouse_overlap();
+					if (left_clicked)
+					{
+						game_object.on_mouse_click(false);
+					}
+					if (right_clicked)
+					{
+						game_object.on_mouse_click(true);
+					}
+					mouseCollisionBuffer.push_back(&game_object); // huum bon pointeur?
+				}
+			}
+		}
+
+		void Physics::updateMouseCollisionFront()
+		{
+			if (!mouseCollisionBuffer.empty())
+			{
+				GameObject* game_object_hightest_z = *std::max_element(
+					mouseCollisionBuffer.begin(),
+					mouseCollisionBuffer.end(),
+					GameObject::compare_z_index_p
+				);
+				game_object_hightest_z->on_mouse_overlap_front();
+				if (left_clicked)
+				{
+					game_object_hightest_z->on_mouse_click_front(false);
+				}
+				if (right_clicked)
+				{
+					game_object_hightest_z->on_mouse_click_front(true);
+				}
+			}
 		}
 
 		void Physics::on_left_click()

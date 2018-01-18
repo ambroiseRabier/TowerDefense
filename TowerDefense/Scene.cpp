@@ -35,7 +35,7 @@ namespace TowerDefense
 
 		void Scene::render(sf::RenderTarget& window)
 		{
-			childrens.sort(GameObject::compare_z_index);
+			childrens.sort(GameObject::compare_z_index_p);
 			for (const GameObject* children : childrens)
 			{
 				// well, you could remove the drawable without error, but that is not encouraged.

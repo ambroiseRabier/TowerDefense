@@ -10,10 +10,15 @@ namespace TowerDefense
 	namespace GameEngine
 	{
 		// static
-		bool GameObject::compare_z_index (const GameObject* first, const GameObject* second)
+		bool GameObject::compare_z_index (const GameObject& first, const GameObject& second)
+		{
+			return first.get_zIndex() < second.get_zIndex();
+		}
+		bool GameObject::compare_z_index_p (const GameObject* first, const GameObject* second)
 		{
 			return first->get_zIndex() < second->get_zIndex();
 		}
+		///end static
 
 		GameObject::GameObject(std::unique_ptr<Drawable> newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableUnique(std::move(newDrawable))
 		{
@@ -93,6 +98,14 @@ namespace TowerDefense
 
 		void GameObject::on_mouse_click_front(bool left)
 		{
+		}
+
+		Vector2f GameObject::to_local(const sf::Vector2f& global_vector2) const
+		{
+			return Vector2f(
+				global_vector2.x - transformable->getPosition().x,
+				global_vector2.y - transformable->getPosition().y 
+			);
 		}
 
 		void GameObject::set_drawable(std::unique_ptr<Drawable> newDrawableUnique)
