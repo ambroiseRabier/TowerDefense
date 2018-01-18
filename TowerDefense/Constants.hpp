@@ -2,8 +2,11 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 #include <string>
+#include <utility>
 #include <SFML/Graphics/Font.hpp>
+#include "Collider.hpp"
 
+using namespace TowerDefense::GameEngine;
 namespace TowerDefense
 {
 	namespace Constants
@@ -17,6 +20,13 @@ namespace TowerDefense
 			const std::string game_name = "TowerDefense"; // if you change this, you probably need to change namespaces ;)
 			const unsigned int fps_limit = 144;
 			const float min_loading_duration = 2.0f;
+			/**
+			 * \brief Assigned at start to Physics::testedCollisions.
+			 */
+			const std::vector<std::pair<Collider::Tag, Collider::Tag>> tested_collisions = {
+				std::make_pair(Collider::Tag::Minion, Collider::Tag::Castle),
+				std::make_pair(Collider::Tag::Minion, Collider::Tag::TowerShoot)
+			};
 		}
 
 		/**

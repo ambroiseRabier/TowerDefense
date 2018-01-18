@@ -9,13 +9,21 @@ namespace TowerDefense
 	{
 		std::list<const GameObject*> Physics::childrens;
 		sf::Vector2i Physics::mouse_position;
+		std::vector<std::pair<Collider::Tag, Collider::Tag>> Physics::testedCollisions;
 
 		void Physics::addChild(const GameObject& gameobject)
 		{
 			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &gameobject) != childrens.end();
 			if (!allready_exit)
 			{
-				Debug::assert_m((&gameobject)->get_collider().get(), "Physics: A gameobject you add to the scene should have a collider setted.");
+				Debug::assert_m(
+					(&gameobject)->get_collider().get(),
+					"Physics: A gameobject you add to the physic should have a collider setted."
+				);
+				Debug::assert_m(
+					(&gameobject)->get_collider()->tag,
+					"Physics: The collider you are adding has no tag setted."
+				);
 				childrens.push_back(&gameobject);
 			}
 			else
@@ -35,12 +43,16 @@ namespace TowerDefense
 			childrens.sort(GameObject::compare_z_index);
 			for (const GameObject* children : childrens)
 			{
+
 				// well, you could remove the collider without error, but that is not encouraged.
 				if (children->get_collider())
 				{
 					if (children->get_collider()->gameobject_enabled)
 					{
-						//todo
+						for (const GameObject* children2 : childrens)
+						{
+							//if ()
+						}
 					}
 					if (children->get_collider()->mouse_enabled)
 					{
@@ -48,6 +60,11 @@ namespace TowerDefense
 					}
 				}
 			}
+		}
+
+		void Physics::init(std::vector<std::pair<Collider::Tag, Collider::Tag>> configTestedCollisions)
+		{
+			testedCollisions = configTestedCollisions;
 		}
 
 		void Physics::on_left_click()

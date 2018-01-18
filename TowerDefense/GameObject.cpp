@@ -52,7 +52,10 @@ namespace TowerDefense
 		void GameObject::constructor_internal_init(unsigned int newZIndex)
 		{
 			// arbitrary limit of zIndex
-			Debug::assert_m(newZIndex <= Constants::ZIndex::max, "z_index should be inferior or egal to " + std::to_string(Constants::ZIndex::max));
+			Debug::assert_m(
+				newZIndex <= Constants::ZIndex::max, 
+				"z_index should be inferior or egal to " + std::to_string(Constants::ZIndex::max)
+			);
 			transformable = std::make_unique<Transformable>();
 		}
 

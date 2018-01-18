@@ -4,16 +4,16 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		enum ColligerTag{ Minion, Castle, TowerShoot};
 
 		class Collider
 		{
 		public:
+			enum Tag{ Minion, Castle, TowerShoot};
 			Collider();
 			~Collider();
 			bool mouse_enabled = true;
 			bool gameobject_enabled = true;
-			ColligerTag tag;
+			Tag tag;
 		};
 	}
 }

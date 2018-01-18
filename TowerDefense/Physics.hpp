@@ -10,10 +10,12 @@ namespace TowerDefense
 		class Physics
 		{
 		public:
+			static void init(std::vector<std::pair<Collider::Tag, Collider::Tag>> configTestedCollisions);
 			static void on_left_click();
 			static void on_right_click();
 			static std::list<const GameObject*> childrens;
 			static sf::Vector2i mouse_position;
+			static std::vector<std::pair<Collider::Tag, Collider::Tag>> testedCollisions;
 			/**
 			 * \brief Will trigger mouse and collision events on gameobject.
 			 * You need to assign a collider on your gameobject to make it work.

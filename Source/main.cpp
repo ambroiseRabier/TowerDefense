@@ -77,6 +77,7 @@ int main()
 
 	// Init all managers
 	Scene::init();
+	Physics::init(Constants::Config::tested_collisions);
 	GameManager::Init();
 	Debug::info("Managers inited.");
 
@@ -163,6 +164,9 @@ int main()
         }
 		window.clear();
 		GameManager::update();
+		// updating mouse click after update game logic will be one frame wrong
+		// relatively to what the user experience, but let's deal with it.
+		Physics::update();
 		Scene::render(window);
 
 		// fps overlay

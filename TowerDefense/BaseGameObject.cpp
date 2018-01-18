@@ -68,6 +68,7 @@ namespace TowerDefense
 		void BaseGameObject::recycle()
 		{
 			// remove from scene in case removechildre has been forgotten
+			Physics::removeChild(*this);
 			Scene::removeChild(*this);
 			unListenToEvents();
 			init();
@@ -80,6 +81,7 @@ namespace TowerDefense
 			// since program is run synchronousely.
 			flag_is_destroyed = true;
 			unListenToEvents();
+			Physics::removeChild(*this);
 			Scene::removeChild(*this);
 		}
 	}
