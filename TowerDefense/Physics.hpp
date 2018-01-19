@@ -7,6 +7,12 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+		/**
+		 * \brief 
+		 *  The name is a bit misleading, if you compare to unity, all the collision box are isTrigger=true.
+		 *  Handle collisions between gameobjects, and between mouse and gameobjects, using their collider.
+		 *  A gameobject callback is called when an event happen.
+		 */
 		class Physics
 		{
 		public:

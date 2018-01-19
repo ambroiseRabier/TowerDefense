@@ -8,6 +8,12 @@ namespace TowerDefense
 	namespace GameEngine
 	{
 
+		/**
+		 * \brief 
+		 * Collider, similar to unity collider, the constructor called define the type of collider you use.
+		 * The type can be a rectangle, a circle, ...
+		 * The tag will determine accroding to Config settings between wich gameobjects the collisions is tested.
+		 */
 		class Collider
 		{
 		public:

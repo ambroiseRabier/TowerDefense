@@ -7,6 +7,10 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+		/**
+		 * \brief 
+		 * Contain collisions methods used by Physics.
+		 */
 		class CollisionTest
 		{
 		public:

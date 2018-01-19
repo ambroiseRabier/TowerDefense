@@ -8,6 +8,10 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+		/**
+		 * \brief 
+		 * Display all gameobjects that you add on the Scene with z-sorting.
+		 */
 		class Scene
 		{
 		public:

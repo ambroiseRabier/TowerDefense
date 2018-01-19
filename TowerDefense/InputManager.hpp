@@ -6,6 +6,10 @@ namespace TowerDefense
 {
 	namespace Managers
 	{
+		/**
+		 * \brief 
+		 * Handle inputs and call methods from others Managers.
+		 */
 		class InputManager
 		{
 		public:
