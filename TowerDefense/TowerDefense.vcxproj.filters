@@ -27,7 +27,7 @@
     <ClInclude Include="Source\Managers\GameManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseButton.hpp">
+    <ClInclude Include="Source\GameObjects\BaseButton.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameEngine\Scene.hpp">
@@ -60,7 +60,7 @@
     <ClInclude Include="Source\GameEngine\CollisionTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MenuBackground.hpp">
+    <ClInclude Include="Source\GameObjects\MenuBackground.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Managers\InputManager.hpp">
@@ -80,7 +80,7 @@
     <ClCompile Include="Source\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BaseButton.cpp">
+    <ClCompile Include="Source\GameObjects\BaseButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\Scene.cpp">
@@ -107,7 +107,7 @@
     <ClCompile Include="Source\GameEngine\CollisionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MenuBackground.cpp">
+    <ClCompile Include="Source\GameObjects\MenuBackground.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Managers\InputManager.cpp">
