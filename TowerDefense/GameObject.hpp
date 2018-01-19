@@ -1,9 +1,6 @@
 #pragma once
 #ifndef MONO_BEHAVIOUR_HPP
 #define MONO_BEHAVIOUR_HPP
-#include <SFML/Graphics/Transformable.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <memory>
 #include "Collider.hpp"
 
 namespace TowerDefense
