@@ -42,10 +42,10 @@
     <ClInclude Include="Source\GameEngine\Debug.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.hpp">
+    <ClInclude Include="Source\GameEngine\GameObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseGameObject.hpp">
+    <ClInclude Include="Source\GameEngine\BaseGameObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utils\Event.h">
@@ -54,7 +54,7 @@
     <ClInclude Include="Source\GameEngine\Physics.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.hpp">
+    <ClInclude Include="Source\GameEngine\Collider.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameEngine\CollisionTest.hpp">
@@ -92,16 +92,16 @@
     <ClCompile Include="Source\GameEngine\Debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
+    <ClCompile Include="Source\GameEngine\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BaseGameObject.cpp">
+    <ClCompile Include="Source\GameEngine\BaseGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp">
+    <ClCompile Include="Source\GameEngine\Collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\CollisionTest.cpp">
