@@ -1,6 +1,8 @@
 #pragma once
 #ifndef COLLIDER_HPP
 #define COLLIDER_HPP
+#include <set>
+
 namespace TowerDefense
 {
 	namespace GameEngine
@@ -28,9 +30,10 @@ namespace TowerDefense
 				SpritePixelPerfect=6,
 				
 			};
-			Collider();
-			Collider(std::unique_ptr<sf::FloatRect> newRect, Tag tag = Tag::None);
+			Collider(std::unique_ptr<sf::Vector2f> newDot = std::make_unique<sf::Vector2f>(0,0), Tag newTag = Tag::None);
+			Collider(std::unique_ptr<sf::FloatRect> newRect, Tag newTag = Tag::None);
 			~Collider();
+			sf::Vector2f& get_dot() const;
 			bool mouse_enabled = true;
 			bool gameobject_enabled = true;
 			Tag tag = Tag::None;
@@ -39,6 +42,7 @@ namespace TowerDefense
 		private:
 			Type type;
 			std::unique_ptr<sf::FloatRect> rect;
+			std::unique_ptr<sf::Vector2f> dot;
 		};
 	}
 }

@@ -6,20 +6,24 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		Collider::Collider()
-		{
-			type = Type::None;
-			Debug::warn("Collider: you should not call default constructor, there is no way to set collider elsewhere then constructor.");
-		}
-
 		Collider::Collider(std::unique_ptr<sf::FloatRect> newRect, Tag newTag) : tag(newTag), rect(std::move(newRect))
 		{
 			type = Type::Rect;
 		}
 
+		Collider::Collider(std::unique_ptr<sf::Vector2f> newDot, Tag newTag) : tag(newTag), dot(std::move(newDot))
+		{
+			type = Type::Dot;
+		}
+
 		Collider::~Collider()
 		{
 			if (rect.get()) rect.reset(nullptr);
+		}
+
+		sf::Vector2f& Collider::get_dot() const
+		{
+			return *dot;
 		}
 
 		Collider::Type Collider::get_type() const

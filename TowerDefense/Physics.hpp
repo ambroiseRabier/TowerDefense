@@ -28,9 +28,12 @@ namespace TowerDefense
 			static void addChild(GameObject& gameobject);
 			static void removeChild(GameObject& gameobject);
 			static void update();
+		private:
+			static void update_game_object_collision(GameObject& game_object1);
 			static void updateMouseCollisions(GameObject& game_object);
 			static void updateMouseCollisionFront();
-		private:
+			static bool collision_is_tested(Collider::Tag tag1, Collider::Tag tag2);
+			static bool collision_is_tested(std::pair<Collider::Tag, Collider::Tag> tag_pair);
 			static bool collide_mouse(const GameObject& game_object);
 			static bool left_clicked;
 			static bool right_clicked;

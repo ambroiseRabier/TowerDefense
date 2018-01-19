@@ -23,7 +23,8 @@ namespace TowerDefense
 			 */
 			const std::vector<std::pair<Collider::Tag, Collider::Tag>> tested_collisions = {
 				std::make_pair(Collider::Tag::Minion, Collider::Tag::Castle),
-				std::make_pair(Collider::Tag::Minion, Collider::Tag::TowerShoot)
+				std::make_pair(Collider::Tag::Minion, Collider::Tag::TowerShoot),
+				std::make_pair(Collider::Tag::UI, Collider::Tag::UI) // for demo only !
 			};
 		}
 

@@ -43,12 +43,12 @@ namespace TowerDefense
 
 		void BaseButton::on_mouse_overlap()
 		{
-			
+			//Debug::log("on_mouse_overlap");
 		}
 
 		void BaseButton::on_mouse_overlap_front()
 		{
-
+			//Debug::log("on_mouse_overlap_front");
 		}
 
 		void BaseButton::on_mouse_click(bool left)
@@ -59,6 +59,11 @@ namespace TowerDefense
 		void BaseButton::on_mouse_click_front(bool left)
 		{
 			Debug::log("on_mouse_click_front " + left);
+		}
+
+		void BaseButton::on_collide(GameObject& game_object)
+		{
+			//Debug::log("on_collide base_btn");
 		}
 	}
 }

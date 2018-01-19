@@ -2,6 +2,7 @@
 #include "Physics.hpp"
 #include "GameObject.hpp"
 #include "Debug.hpp"
+#include "CollisionTest.hpp"
 
 namespace TowerDefense
 {
@@ -50,19 +51,6 @@ namespace TowerDefense
 			childrens.remove(&game_object);
 		}
 
-		bool Physics::collide_mouse(const GameObject& game_object)
-		{
-			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
-			{
-				// mouse_position.toLocal(game_object)
-				return game_object.get_collider()->get_rect().contains(
-					game_object.to_local(static_cast<sf::Vector2f>(mouse_position))
-				);
-			}
-			Debug::warn("Physics WIP: collider type not supported.");
-			return false;
-		}
-
 		/**
 		 * \brief Test collisions and send event to GameObjects
 		 * Calling the collider would a bit more sense regarding oriented object design
@@ -75,14 +63,15 @@ namespace TowerDefense
 			for (GameObject* children : childrens)
 			{
 				// well, you could remove the collider without error, but that is not encouraged.
+				// better use gameobject_enabled && mouse_enabled
 				if (children->get_collider())
 				{
 					if (children->get_collider()->gameobject_enabled)
 					{
-						for (const GameObject* children2 : childrens)
-						{
-							//if ()
-						}
+						update_game_object_collision(*children);
+					}
+					if (children->get_collider()->mouse_enabled)
+					{
 						updateMouseCollisions(*children);
 					}
 				}
@@ -95,24 +84,24 @@ namespace TowerDefense
 
 		void Physics::updateMouseCollisions(GameObject& game_object)
 		{
-			if (game_object.get_collider()->mouse_enabled)
+			if (collide_mouse(game_object))
 			{
-				if (collide_mouse(game_object))
+				game_object.on_mouse_overlap();
+				if (left_clicked)
 				{
-					game_object.on_mouse_overlap();
-					if (left_clicked)
-					{
-						game_object.on_mouse_click(false);
-					}
-					if (right_clicked)
-					{
-						game_object.on_mouse_click(true);
-					}
-					mouseCollisionBuffer.push_back(&game_object); // huum bon pointeur?
+					game_object.on_mouse_click(false);
 				}
+				if (right_clicked)
+				{
+					game_object.on_mouse_click(true);
+				}
+				mouseCollisionBuffer.push_back(&game_object); // huum bon pointeur?
 			}
 		}
 
+		/**
+		 * \brief Depend on updateMouseCollisions
+		 */
 		void Physics::updateMouseCollisionFront()
 		{
 			if (!mouseCollisionBuffer.empty())
@@ -122,16 +111,76 @@ namespace TowerDefense
 					mouseCollisionBuffer.end(),
 					GameObject::compare_z_index_p
 				);
-				game_object_hightest_z->on_mouse_overlap_front();
-				if (left_clicked)
+				if (game_object_hightest_z->get_collider()->mouse_enabled)
 				{
-					game_object_hightest_z->on_mouse_click_front(false);
-				}
-				if (right_clicked)
-				{
-					game_object_hightest_z->on_mouse_click_front(true);
+					game_object_hightest_z->on_mouse_overlap_front();
+					if (left_clicked)
+					{
+						game_object_hightest_z->on_mouse_click_front(false);
+					}
+					if (right_clicked)
+					{
+						game_object_hightest_z->on_mouse_click_front(true);
+					}
 				}
 			}
+		}
+
+		void Physics::update_game_object_collision(GameObject& game_object)
+		{
+			for (GameObject* children2 : childrens)
+			{
+				const bool should_test_collision = collision_is_tested(
+					game_object.get_collider()->tag,
+					children2->get_collider()->tag
+				);
+				if (should_test_collision)
+				{
+					// this make lot of useless calls. Could be optimize
+					// and if someone destroy the object right when on_collide then bug. no ?
+					if (CollisionTest::collide(*game_object.get_collider(), *children2->get_collider()))
+					{
+						game_object.on_collide(*children2);
+					}
+				}
+			}
+		}
+
+		bool Physics::collision_is_tested(Collider::Tag tag1, Collider::Tag tag2) 
+		{
+			bool result = false;
+			for (std::pair<Collider::Tag, Collider::Tag> pair : testedCollisions)
+			{
+				// test a matching pair, order is of pair is ignored.
+				if ((pair.first == tag1 
+					&& pair.second == tag2)
+					|| (pair.first == tag2 
+					&& pair.second == tag1))
+				{
+					result = true;
+				}
+			}
+			return result;
+		}
+		
+		bool Physics::collide_mouse(const GameObject& game_object)
+		{
+			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
+			{
+				return CollisionTest::rect_dot(
+					game_object.get_collider()->get_rect(),
+					game_object.to_local(
+						static_cast<sf::Vector2f>(mouse_position)
+					)
+				);
+			}
+			Debug::warn("Physics WIP: collider type not supported.");
+			return false;
+		}
+		
+		bool Physics::collision_is_tested(std::pair<Collider::Tag, Collider::Tag> pair)
+		{
+			return collision_is_tested(pair.first, pair.second);
 		}
 
 		void Physics::on_left_click()

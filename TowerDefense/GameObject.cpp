@@ -100,6 +100,10 @@ namespace TowerDefense
 		{
 		}
 
+		void GameObject::on_collide(GameObject& game_object)
+		{
+		}
+
 		Vector2f GameObject::to_local(const sf::Vector2f& global_vector2) const
 		{
 			return Vector2f(

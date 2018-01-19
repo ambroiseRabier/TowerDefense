@@ -28,7 +28,7 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
 	loading_sprite.setTexture(texture);
 	//loading_sprite.setTextureRect(IntRect(30, 40, 374, 126));
 	//loading_sprite.setColor(Color(255, 255, 255, 200));
-	loading_sprite.setPosition(window.getSize().x/2  - 374/2, window.getSize().y/2 - 126/2);
+	loading_sprite.setPosition(window.getSize().x/2  - 374.0f/2.0f, window.getSize().y/2 - 126.0f/2.0f);
 	window.clear();
 	window.draw(loading_sprite);
 }
