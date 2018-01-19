@@ -11,6 +11,16 @@ namespace TowerDefense
 			type = Type::Rect;
 		}
 
+		Collider::Collider(const sf::Sprite& newSprite, Tag newTag, Type newType) : tag(newTag), sprite(&newSprite), type(newType)
+		{
+			Debug::assert_m(
+				type == Type::SpriteRect 
+			 || type == Type::SpriteCircle 
+			 || type == Type::SpritePixelPerfect,
+				"Collider: the type must be SpriteRect or SpriteCircle or SpritePixelPerfect."
+			);
+		}
+
 		Collider::Collider(std::unique_ptr<sf::Vector2f> newDot, Tag newTag) : tag(newTag), dot(std::move(newDot))
 		{
 			type = Type::Dot;
@@ -19,21 +29,43 @@ namespace TowerDefense
 		Collider::~Collider()
 		{
 			if (rect.get()) rect.reset(nullptr);
+			if (dot.get()) dot.reset(nullptr);
+			if (sprite) sprite = nullptr; // useless ? (don't delete it, you don't have authority)
 		}
 
-		sf::Vector2f& Collider::get_dot() const
-		{
-			return *dot;
-		}
-
+		
 		Collider::Type Collider::get_type() const
 		{	
 			return type;
 		}
 
-		sf::FloatRect& Collider::get_rect() const
+		const sf::Vector2f& Collider::get_dot() const
 		{
+			Debug::assert_m(
+				type == Type::Dot, 
+				"Collider: collider is not of type Dot. But you are trying to access it."
+			);
+			return *dot;
+		}
+
+		const sf::FloatRect& Collider::get_rect() const
+		{
+			Debug::assert_m(
+				type == Type::Rect, 
+				"Collider: collider is not of type Rect. But you are trying to access it."
+			);
 			return *rect;
+		}
+
+		const sf::Sprite& Collider::get_sprite() const
+		{
+			Debug::assert_m(
+				type == Type::SpriteRect 
+			 || type == Type::SpriteCircle 
+			 || type == Type::SpritePixelPerfect,
+				"Collider: collider is neither of type SpriteRect or SpriteCircle or SpritePixelPerfect. But you are trying to access it."
+			);
+			return *sprite;
 		}
 	}
 
