@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "InputManager.hpp"
-#include "Debug.hpp"
 #include "Managers/GameManager.hpp"
-#include "Physics.hpp"
-#include "BaseGameObject.hpp"
+#include "GameEngine/Physics.hpp"
 
 using namespace sf;
 using namespace TowerDefense::GameEngine;

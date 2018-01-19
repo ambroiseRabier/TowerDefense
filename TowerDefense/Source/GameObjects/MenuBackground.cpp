@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MenuBackground.hpp"
 #include "Constants.hpp"
-#include "Debug.hpp"
+#include "GameEngine/Debug.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense

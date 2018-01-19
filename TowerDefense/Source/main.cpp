@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "Managers/GameManager.hpp"
-#include "../../TowerDefense/GameObject.hpp"
-#include "../../TowerDefense/Scene.hpp"
-#include "../../TowerDefense/Constants.hpp"
-#include "../../TowerDefense/BaseButton.hpp"
-#include "../../TowerDefense/Debug.hpp"
-#include "../../TowerDefense/Physics.hpp"
-#include "../../TowerDefense/MenuBackground.hpp"
-#include "../../TowerDefense/InputManager.hpp"
+#include "Constants.hpp"
+#include "GameEngine/Debug.hpp"
+#include "GameEngine/Scene.hpp"
+#include "GameEngine/Physics.hpp"
+#include "GameObjects/BaseButton.hpp"
+#include "GameObjects/MenuBackground.hpp"
+#include "Managers/InputManager.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;

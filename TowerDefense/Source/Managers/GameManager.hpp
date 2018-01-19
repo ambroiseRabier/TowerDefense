@@ -3,7 +3,7 @@
 #ifndef GAME_MANAGER_HPP
 #define GAME_MANAGER_HPP
 #include <SFML/System/Clock.hpp>
-#include "../../TowerDefense/Event.h"
+#include "Utils/Event.h"
 
 namespace TowerDefense
 {

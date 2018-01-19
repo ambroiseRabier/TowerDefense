@@ -1,7 +1,7 @@
 #pragma once
 #ifndef BASE_BUTTON_HPP
 #define BASE_BUTTON_HPP
-#include "BaseGameObject.hpp"
+#include "GameEngine/BaseGameObject.hpp"
 
 namespace TowerDefense
 {

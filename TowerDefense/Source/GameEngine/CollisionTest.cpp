@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CollisionTest.hpp"
 #include "Debug.hpp"
-#include "Collision.h"
+#include "Utils/Collision.h"
 
 namespace TowerDefense
 {

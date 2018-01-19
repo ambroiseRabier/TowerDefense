@@ -1,7 +1,7 @@
 #pragma once
 #ifndef MENU_BACKGROUND_HPP
 #define MENU_BACKGROUND_HPP
-#include "BaseGameObject.hpp"
+#include "GameEngine/BaseGameObject.hpp"
 
 
 namespace TowerDefense

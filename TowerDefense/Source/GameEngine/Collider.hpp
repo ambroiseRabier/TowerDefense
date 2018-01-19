@@ -1,7 +1,6 @@
 #pragma once
 #ifndef COLLIDER_HPP
 #define COLLIDER_HPP
-#include <set>
 
 namespace TowerDefense
 {
