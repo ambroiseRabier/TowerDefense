@@ -137,10 +137,10 @@ namespace TowerDefense
 				if (should_test_collision)
 				{
 					// this make lot of useless calls. Could be optimize
-					// and if someone destroy the object right when on_collide then bug. no ?
+					// and if someone destroy the object right when on_game_object_overlap then bug. no ?
 					if (CollisionTest::collide(*game_object.get_collider(), *children2->get_collider()))
 					{
-						game_object.on_collide(*children2);
+						game_object.on_game_object_overlap(*children2);
 					}
 				}
 			}

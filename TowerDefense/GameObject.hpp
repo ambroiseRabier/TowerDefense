@@ -113,7 +113,7 @@ namespace TowerDefense
 			 */
 			virtual void on_mouse_click_front(bool left);
 
-			virtual void on_collide(GameObject& game_object);
+			virtual void on_game_object_overlap(GameObject& game_object);
 
 			/**
 			 * \brief Is rendered from 0 to 999 included.

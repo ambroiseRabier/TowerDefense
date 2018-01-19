@@ -51,8 +51,24 @@ namespace TowerDefense
 			bool gameobject_enabled = true;
 			Tag tag = Tag::None;
 			Type get_type() const;
+
+			// I could use a pointer bellow, since the value can be nullptr actually.
+			// But if you do call when it is nullptr, then you have made an error in your code logic,
+			// And I do not wish to hide that.
+			/**
+			 * \brief Make sure your colldier is of type dot before calling this.
+			 * \return 
+			 */
 			const sf::Vector2f& get_dot() const;
+			/**
+			 * \brief Make sure your colldier is of type rect before calling this.
+			 * \return 
+			 */
 			const sf::FloatRect& get_rect() const;
+			/**
+			 * \brief Make sure your colldier is of type SpriteRect or SpriteCircle or SpritePixelPerfect before calling this.
+			 * \return 
+			 */
 			const sf::Sprite& get_sprite() const;
 		private:
 			Type type;

@@ -100,7 +100,7 @@ namespace TowerDefense
 		{
 		}
 
-		void GameObject::on_collide(GameObject& game_object)
+		void GameObject::on_game_object_overlap(GameObject& game_object)
 		{
 		}
 

@@ -26,7 +26,7 @@ namespace TowerDefense
 			void on_mouse_overlap_front() override;
 			void on_mouse_click(bool left) override;
 			void on_mouse_click_front(bool left) override;
-			void on_collide(GameObject& game_object) override;
+			void on_game_object_overlap(GameObject& game_object) override;
 		protected:
 			void init() override;
 		};
