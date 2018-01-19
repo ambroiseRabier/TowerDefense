@@ -70,6 +70,17 @@ namespace Collision {
 	/// Supports scaling and rotation
 	//////
 	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
+
+	//////
+	/// Convert flaot to int properly. (Added by Ambroise 19/01/18) (avoid warning in console)
+	/// A prvalue of a floating point type can be converted to a prvalue of an integer type.
+	/// The conversion truncates; that is, the fractional part is discarded. 
+	/// The behavior is undefined if the truncated value cannot be represented in the destination type.
+	/// https://stackoverflow.com/questions/7493109/what-happens-if-i-assign-a-number-with-a-decimal-point-to-an-integer-rather-than
+	//////
+	int ToInt(const float& Float);
+	float ToFloat(const int& Int);
+
 }
 
 #endif	/* COLLISION_H */
