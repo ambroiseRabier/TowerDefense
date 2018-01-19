@@ -21,13 +21,13 @@ namespace TowerDefense
 				return rect_dot(collider2.get_rect(), collider1.get_dot());
 			if (collider1.get_type() == Collider::Type::SpriteRect
 				&& collider2.get_type() == Collider::Type::SpriteRect)
-				return Collision::BoundingBoxTest(collider1.get_sprite(), collider2.get_sprite());
+				return bounding_box_test(collider1.get_sprite(), collider2.get_sprite());
 			if (collider1.get_type() == Collider::Type::SpriteCircle
 				&& collider2.get_type() == Collider::Type::SpriteCircle)
-				return Collision::CircleTest(collider1.get_sprite(), collider2.get_sprite());
+				return circle_test(collider1.get_sprite(), collider2.get_sprite());
 			if (collider1.get_type() == Collider::Type::SpritePixelPerfect
 				&& collider2.get_type() == Collider::Type::SpritePixelPerfect)
-				return Collision::PixelPerfectTest(collider1.get_sprite(), collider2.get_sprite());
+				return pixel_perfect_test(collider1.get_sprite(), collider2.get_sprite());
 			
 
 			Debug::warn("CollisionTest: No available collision test for this collider type. Add one. Or it will always be false.");
@@ -49,6 +49,26 @@ namespace TowerDefense
 				&& right1 > rect2.left 
 				&& rect1.top > bottom2 
 				&& bottom1 < rect2.top);
+		}
+
+		bool CollisionTest::pixel_perfect_test(const sf::Sprite& sprite1, const sf::Sprite& sprite2, sf::Uint8 alpha_limit)
+		{
+			return Collision::PixelPerfectTest(sprite1, sprite2, alpha_limit);
+		}
+
+		bool CollisionTest::create_texture_and_bitmask(sf::Texture& load_into, const std::string& file_name)
+		{
+			return Collision::CreateTextureAndBitmask(load_into, file_name);
+		}
+
+		bool CollisionTest::circle_test(const sf::Sprite& sprite1, const sf::Sprite& sprite2)
+		{
+			return Collision::CircleTest(sprite1, sprite2);
+		}
+
+		bool CollisionTest::bounding_box_test(const sf::Sprite& sprite1, const sf::Sprite& sprite2)
+		{
+			return Collision::BoundingBoxTest(sprite1, sprite2);
 		}
 	}
 }
