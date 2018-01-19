@@ -17,11 +17,11 @@ namespace TowerDefense
 		{
 		public: 
 			static Sharp::Event<void> on_update;
-			static void StartLevel(int i);
-			static void Init();
+			static void start_level(int i);
+			static void init();
 			static void update();
 			static float get_deltaTime(); // const :'(, static do not take const
-			static void RestartLevel();
+			static void restart_level();
 			static void pause();
 			static void un_pause();
 			static GameState state;

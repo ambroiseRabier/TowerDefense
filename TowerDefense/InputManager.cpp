@@ -63,7 +63,7 @@ namespace TowerDefense
 			switch (event.key.code)
 			{
 			// no break in case of two key.code ?
-			case Keyboard::Return: GameManager::StartLevel(0);
+			case Keyboard::Return: GameManager::start_level(0);
 			}
 		}
 
@@ -72,7 +72,7 @@ namespace TowerDefense
 			switch (event.key.code)
 			{
 			// no break in case of two key.code ?
-			case Keyboard::R: GameManager::RestartLevel();
+			case Keyboard::R: GameManager::restart_level();
 			case Keyboard::P: GameManager::pause();
 			}
 		}
@@ -82,7 +82,7 @@ namespace TowerDefense
 			switch (event.key.code)
 			{
 			// no break in case of two key.code ?
-			case Keyboard::R: GameManager::RestartLevel();
+			case Keyboard::R: GameManager::restart_level();
 			case Keyboard::P: GameManager::un_pause();
 			}
 		}

@@ -10,12 +10,12 @@ namespace TowerDefense
 		sf::Clock GameManager::clock;
 		Sharp::Event<void> GameManager::on_update;
 
-		void GameManager::StartLevel(int i)
+		void GameManager::start_level(int i)
 		{
 			state = GameState::Playing;
 		}
 
-		void GameManager::Init()
+		void GameManager::init()
 		{
 			
 		}
@@ -27,7 +27,7 @@ namespace TowerDefense
 			on_update();
 		}
 
-		void GameManager::RestartLevel()
+		void GameManager::restart_level()
 		{
 			state = GameState::Playing;
 		}
