@@ -30,7 +30,7 @@
     <ClInclude Include="BaseButton.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.hpp">
+    <ClInclude Include="Source\GameEngine\Scene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FPS.hpp">
@@ -39,7 +39,7 @@
     <ClInclude Include="Constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.hpp">
+    <ClInclude Include="Source\GameEngine\Debug.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.hpp">
@@ -51,13 +51,13 @@
     <ClInclude Include="Event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Physics.hpp">
+    <ClInclude Include="Source\GameEngine\Physics.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Collider.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionTest.hpp">
+    <ClInclude Include="Source\GameEngine\CollisionTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuBackground.hpp">
@@ -83,13 +83,13 @@
     <ClCompile Include="BaseButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="Source\GameEngine\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Constants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Debug.cpp">
+    <ClCompile Include="Source\GameEngine\Debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
@@ -98,13 +98,13 @@
     <ClCompile Include="BaseGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Physics.cpp">
+    <ClCompile Include="Source\GameEngine\Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionTest.cpp">
+    <ClCompile Include="Source\GameEngine\CollisionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MenuBackground.cpp">
