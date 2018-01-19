@@ -2,7 +2,6 @@
 // to know : https://stackoverflow.com/questions/152555/h-or-hpp-for-your-class-definitions
 #ifndef GAME_MANAGER_HPP
 #define GAME_MANAGER_HPP
-#include <SFML/System/Clock.hpp>
 #include "Utils/Event.h"
 
 namespace TowerDefense

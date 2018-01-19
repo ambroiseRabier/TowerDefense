@@ -1,7 +1,6 @@
 #pragma once
 #ifndef FPS_HPP
 #define FPS_HPP
-#include <SFML/System/Clock.hpp>
 
 class FPS
 { 

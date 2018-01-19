@@ -1,8 +1,6 @@
 #pragma once
 #ifndef DEBUG_HPP
 #define DEBUG_HPP
-#include <string>
-#include <SFML/System/Clock.hpp>
 
 namespace TowerDefense
 {
