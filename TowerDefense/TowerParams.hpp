@@ -1,4 +1,6 @@
 #pragma once
+#ifndef TOWER_PARAMS_HPP
+#define TOWER_PARAMS_HPP
 #include "ProjectileParams.hpp"
 
 struct TowerParams
@@ -14,3 +16,4 @@ struct TowerParams
 	 */
 	const std::vector<ProjectileParams> projectile_params;
 };
+#endif

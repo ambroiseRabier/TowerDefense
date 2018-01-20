@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef SCREEN_HPP
+#define SCREEN_HPP
 /**
  * \brief 
  * You should handle your childrens pointer yourself.
@@ -29,4 +30,5 @@ public:
 private:
 	bool is_open;
 };
+#endif
 

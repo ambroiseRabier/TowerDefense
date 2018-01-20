@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UPGRADE_BTN
+#define UPGRADE_BTN
 /**
  * \brief 
  * Upgrade button for tower, appear only when upgradable, display price
@@ -9,4 +11,4 @@ public:
 	UpgradeBtn();
 	~UpgradeBtn();
 };
-
+#endif

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MINION_HPP
+#define MINION_HPP
 namespace TowerDefense
 {
 	namespace Game
@@ -36,3 +38,4 @@ namespace TowerDefense
 		}
 	}
 }
+#endif

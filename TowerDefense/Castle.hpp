@@ -1,4 +1,6 @@
 #pragma once
+#ifndef CASTLE_HPP
+#define CASTLE_HPP
 #include "GameEngine/BaseGameObject.hpp"
 #include "Health.hpp"
 
@@ -12,4 +14,5 @@ private:
 	// I prefer having money here, so It can more easely become part of the gameplay (minions stealing money)
 	float money;
 };
+#endif
 

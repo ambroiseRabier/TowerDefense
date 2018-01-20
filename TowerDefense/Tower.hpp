@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef TOWER_HPP
+#define TOWER_HPP
 /**
 * \brief 
 * Enum representing the tower type, should be unique to class.
@@ -21,4 +22,5 @@ public:
 	Tower();
 	~Tower();
 };
+#endif
 

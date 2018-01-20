@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef PROJECTILE_PARAMS_HPP
+#define PROJECTILE_PARAMS_HPP
 struct ProjectileParams
 {
 	ProjectileParams(
@@ -49,3 +50,4 @@ struct ProjectileParams
 	 */
 	const float upgrade_cost;
 };
+#endif

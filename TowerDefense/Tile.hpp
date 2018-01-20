@@ -1,4 +1,6 @@
 #pragma once
+#ifndef TILE_HPP
+#define TILE_HPP
 #include "GameEngine/BaseGameObject.hpp"
 
 namespace TowerDefense
@@ -78,3 +80,4 @@ namespace TowerDefense
 		}
 	}
 }
+#endif

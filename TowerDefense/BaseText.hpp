@@ -1,4 +1,6 @@
 #pragma once
+#ifndef BASE_TEXT_HPP
+#define BASE_TEXT_HPP
 #include "GameEngine/BaseGameObject.hpp"
 
 /**
@@ -15,4 +17,5 @@ private:
 	std::shared_ptr<sf::Text> text; // don't forget to reset it on destroy.
 
 };
+#endif
 

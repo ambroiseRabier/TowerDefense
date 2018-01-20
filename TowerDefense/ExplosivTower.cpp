@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ExplosivTower.h"
+#include "ExplosivTower.hpp"
 
 
 ExplosivTower::ExplosivTower()

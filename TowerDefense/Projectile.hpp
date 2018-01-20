@@ -1,4 +1,6 @@
 #pragma once
+#ifndef PROJECTILE_HPP
+#define PROJECTILE_HPP
 #include "GameEngine/BaseGameObject.hpp"
 
 
@@ -9,4 +11,5 @@ public:
 	~Projectile();
 
 };
+#endif
 

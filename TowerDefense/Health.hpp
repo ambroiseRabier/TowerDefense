@@ -1,4 +1,6 @@
 #pragma once
+#ifndef HEALTH_HPP
+#define HEALTH_HPP
 #include "GameEngine/BaseGameObject.hpp"
 #include "Utils/Event.h"
 
@@ -22,4 +24,5 @@ public:
 private:
 	float health;
 };
+#endif
 

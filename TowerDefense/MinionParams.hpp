@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MINION_PARAMS_HPP
+#define MINION_PARAMS_HPP
 struct MinionParams
 {
 	MinionParams(const float speed = 1.f, const float health = 1.f, const float damage = 1.f, const float money = 10.f)
@@ -14,3 +16,4 @@ struct MinionParams
 	const float damage;
 	const float money;
 };
+#endif

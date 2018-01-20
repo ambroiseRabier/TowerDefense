@@ -1,5 +1,6 @@
 #pragma once
-#include "Castle.hpp"
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
 /**
  * \brief 
@@ -15,4 +16,5 @@ public:
 	Player();
 	~Player();
 };
+#endif
 

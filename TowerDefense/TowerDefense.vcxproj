@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClInclude Include="BaseText.hpp" />
     <ClInclude Include="Castle.hpp" />
-    <ClInclude Include="ExplosivTower.h" />
+    <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
     <ClInclude Include="HealMinion.hpp" />
     <ClInclude Include="Health.hpp" />
@@ -57,6 +57,7 @@
     <ClInclude Include="Tile.hpp" />
     <ClInclude Include="Tower.hpp" />
     <ClInclude Include="TowerParams.hpp" />
+    <ClInclude Include="UpgradeBtn.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseText.cpp" />
@@ -90,6 +91,7 @@
     <ClCompile Include="TankMinion.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="UpgradeBtn.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef HUD_HPP
+#define HUD_HPP
 #include "Screen.hpp"
 #include "BaseText.hpp"
 #include "GameObjects/BaseButton.hpp"
@@ -25,4 +27,6 @@ private:
 	 */
 	std::unique_ptr<TowerDefense::UI::BaseButton> up_speed_btn;
 };
+#endif
+
 

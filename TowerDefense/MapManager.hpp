@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MAP_MANAGER_HPP
+#define MAP_MANAGER_HPP
 #include "Castle.hpp"
 
 namespace TowerDefense
@@ -36,3 +38,4 @@ namespace TowerDefense
 		};
 	}
 }
+#endif

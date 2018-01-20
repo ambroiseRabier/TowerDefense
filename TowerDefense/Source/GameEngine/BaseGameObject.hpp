@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BASE_MONO_BEHAVIOUR_HPP
-#define BASE_MONO_BEHAVIOUR_HPP
+#ifndef BASE_GAME_OBJECT_HPP
+#define BASE_GAME_OBJECT_HPP
 #include "GameObject.hpp"
 
 namespace TowerDefense

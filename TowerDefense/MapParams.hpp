@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MAP_PARAMS_HPP
+#define MAP_PARAMS_HPP
 #include "Tile.hpp"
 #include "Minion.hpp"
 
@@ -66,3 +68,4 @@ namespace TowerDefense
 		}
 	}
 }
+#endif
