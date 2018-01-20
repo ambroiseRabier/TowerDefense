@@ -21,14 +21,19 @@
   <ItemGroup>
     <ClInclude Include="BaseText.hpp" />
     <ClInclude Include="Castle.hpp" />
-    <ClInclude Include="HealerMinion.hpp" />
+    <ClInclude Include="ExplosivTower.h" />
+    <ClInclude Include="FreezeTower.hpp" />
+    <ClInclude Include="HealMinion.hpp" />
     <ClInclude Include="Health.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="MapManager.hpp" />
     <ClInclude Include="MapParams.hpp" />
     <ClInclude Include="Minion.hpp" />
+    <ClInclude Include="MinionParams.hpp" />
+    <ClInclude Include="PauseScreen.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Projectile.hpp" />
+    <ClInclude Include="ProjectileParams.hpp" />
     <ClInclude Include="Screen.hpp" />
     <ClInclude Include="Source\Managers\GameManager.hpp" />
     <ClInclude Include="Source\stdafx.h" />
@@ -51,15 +56,19 @@
     <ClInclude Include="TankMinion.hpp" />
     <ClInclude Include="Tile.hpp" />
     <ClInclude Include="Tower.hpp" />
+    <ClInclude Include="TowerParams.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseText.cpp" />
     <ClCompile Include="Castle.cpp" />
-    <ClCompile Include="HealerMinion.cpp" />
+    <ClCompile Include="ExplosivTower.cpp" />
+    <ClCompile Include="FreezeTower.cpp" />
+    <ClCompile Include="HealMinion.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Screen.cpp" />

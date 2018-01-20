@@ -8,9 +8,9 @@ namespace TowerDefense
 	{
 		namespace Map
 		{
-			struct MinionParams
+			struct MinionWaveParams
 			{
-				MinionParams(float delay_before_next, MinionId minion_id)
+				MinionWaveParams(float delay_before_next, MinionId minion_id)
 					: delay_before_next(delay_before_next),
 					  minion_id(minion_id)
 				{
@@ -26,14 +26,14 @@ namespace TowerDefense
 			 */
 			struct WaveParams
 			{
-				WaveParams(float delay_before_next, const std::vector<MinionParams>& minion_params_vector)
+				WaveParams(float delay_before_next, const std::vector<MinionWaveParams>& minion_params_vector)
 					: delay_before_next(delay_before_next),
 					  minion_params_vector(minion_params_vector)
 				{
 				}
 
 				const float delay_before_next;
-				const std::vector<MinionParams> minion_params_vector{};
+				const std::vector<MinionWaveParams> minion_params_vector{};
 			};
 
 			/**
@@ -43,13 +43,17 @@ namespace TowerDefense
 			 */
 			struct MapParams
 			{
-				MapParams(const std::vector<std::vector<TileId>>& map_background_tile_array,
+				MapParams(const float start_money,
+						  const std::vector<std::vector<TileId>>& map_background_tile_array,
 				          const std::vector<WaveParams>& wave_params_vector)
-					: map_background_tile_array(map_background_tile_array),
+					: start_money(start_money),
+					  map_background_tile_array(map_background_tile_array),
 					  wave_params_vector(wave_params_vector)
+					  
 				{
 				}
 
+				const float start_money;
 				/**
 				 * \brief 
 				 * Fixed size to 28 on x, 21 on y (should be choose according to default screen size and gd).

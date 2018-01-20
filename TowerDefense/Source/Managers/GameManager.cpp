@@ -19,7 +19,7 @@ namespace TowerDefense
 
 		void GameManager::init()
 		{
-			game_speed_index = Constants::Config::game_speed_default_index;
+			game_speed_index = Constants::GameDesign::game_speed_default_index;
 		}
 
 		void GameManager::update()
@@ -46,7 +46,7 @@ namespace TowerDefense
 
 		const float GameManager::get_game_speed()
 		{
-			return Constants::Config::game_speed_choices[game_speed_index];
+			return Constants::GameDesign::game_speed_choices[game_speed_index];
 		}
 
 		// region getter setter

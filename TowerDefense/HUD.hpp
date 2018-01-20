@@ -3,6 +3,10 @@
 #include "BaseText.hpp"
 #include "GameObjects/BaseButton.hpp"
 
+/**
+ * \brief 
+ * Should handle loose and win screen.
+ */
 class HUD: Screen
 {
 public:
@@ -12,6 +16,7 @@ private:
 	std::unique_ptr<BaseText> level_text;
 	std::unique_ptr<BaseText> money_text;
 	std::unique_ptr<TowerDefense::UI::BaseButton> pause_btn;
+	std::unique_ptr<TowerDefense::UI::BaseButton> restart_btn;
 	std::unique_ptr<TowerDefense::UI::BaseButton> menu_btn;
 	/**
 	 * \brief 

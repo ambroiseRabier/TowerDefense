@@ -3,7 +3,8 @@
 #include "Utils/Event.h"
 
 /**
- * \brief Contain life logic and the health bar.
+ * \brief Contain health logic and the health bar.
+ * Sprite can be partially rendered to reduce healthbar.
  */
 class Health : TowerDefense::GameEngine::BaseGameObject
 {

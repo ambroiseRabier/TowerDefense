@@ -1,8 +1,12 @@
 #pragma once
-class Projectile
+#include "GameEngine/BaseGameObject.hpp"
+
+
+class Projectile: public TowerDefense::GameEngine::BaseGameObject
 {
 public:
 	Projectile();
 	~Projectile();
+
 };
 

@@ -18,7 +18,7 @@ namespace TowerDefense
 
 			/**
 			 * \brief 
-			 * For loading from file. 
+			 * For loading from file.
 			 * (you should use " " column separator)
 			 */
 			static std::unordered_map<std::string, MinionId> stringToMinionIdEnum = {

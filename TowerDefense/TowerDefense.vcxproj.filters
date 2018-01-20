@@ -78,9 +78,6 @@
     <ClInclude Include="Tower.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HealerMinion.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Projectile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -109,6 +106,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapParams.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosivTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreezeTower.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealMinion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileParams.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionParams.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerParams.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,9 +185,6 @@
     <ClCompile Include="Tower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HealerMinion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -195,6 +210,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosivTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreezeTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HealMinion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
