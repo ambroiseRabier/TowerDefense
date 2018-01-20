@@ -3,13 +3,16 @@
 #define PROJECTILE_HPP
 #include "GameEngine/BaseGameObject.hpp"
 
-
-class Projectile: public TowerDefense::GameEngine::BaseGameObject
+namespace TowerDefense
 {
-public:
-	Projectile();
-	~Projectile();
-
-};
+	namespace Game
+	{
+		class Projectile : public TowerDefense::GameEngine::BaseGameObject
+		{
+		public:
+			Projectile();
+			~Projectile();
+		};
+	}
+}
 #endif
-

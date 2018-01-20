@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "Tower.hpp"
 
-
-Tower::Tower()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		Tower::Tower()
+		{
+		}
 
 
-Tower::~Tower()
-{
+		Tower::~Tower()
+		{
+		}
+	}
 }

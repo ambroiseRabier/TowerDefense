@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "PauseScreen.hpp"
 
-
-PauseScreen::PauseScreen()
+namespace TowerDefense
 {
-}
+	namespace UI
+	{
+		PauseScreen::PauseScreen()
+		{
+		}
 
 
-PauseScreen::~PauseScreen()
-{
+		PauseScreen::~PauseScreen()
+		{
+		}
+	}
 }

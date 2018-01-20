@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "ExplosivTower.hpp"
 
-
-ExplosivTower::ExplosivTower()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		ExplosivTower::ExplosivTower()
+		{
+		}
 
 
-ExplosivTower::~ExplosivTower()
-{
+		ExplosivTower::~ExplosivTower()
+		{
+		}
+	}
 }

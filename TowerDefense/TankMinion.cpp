@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "TankMinion.hpp"
 
-
-TankMinion::TankMinion()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		TankMinion::TankMinion()
+		{
+		}
 
 
-TankMinion::~TankMinion()
-{
+		TankMinion::~TankMinion()
+		{
+		}
+	}
 }

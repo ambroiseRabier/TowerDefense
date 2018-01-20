@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "HealMinion.hpp"
 
-
-HealMinion::HealMinion()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		HealMinion::HealMinion()
+		{
+		}
 
 
-HealMinion::~HealMinion()
-{
+		HealMinion::~HealMinion()
+		{
+		}
+	}
 }

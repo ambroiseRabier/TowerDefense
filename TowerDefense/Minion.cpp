@@ -5,16 +5,13 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		namespace Map
+		Minion::Minion()
 		{
-			Minion::Minion()
-			{
-			}
+		}
 
 
-			Minion::~Minion()
-			{
-			}
+		Minion::~Minion()
+		{
 		}
 	}
 }

@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "UpgradeBtn.hpp"
 
-
-UpgradeBtn::UpgradeBtn()
+namespace TowerDefense
 {
-}
+	namespace UI
+	{
+		UpgradeBtn::UpgradeBtn()
+		{
+		}
 
 
-UpgradeBtn::~UpgradeBtn()
-{
+		UpgradeBtn::~UpgradeBtn()
+		{
+		}
+	}
 }

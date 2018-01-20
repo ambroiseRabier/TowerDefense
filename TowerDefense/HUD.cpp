@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "HUD.hpp"
 
-
-HUD::HUD()
+namespace TowerDefense
 {
-}
+	namespace UI
+	{
+		HUD::HUD()
+		{
+		}
 
 
-HUD::~HUD()
-{
+		HUD::~HUD()
+		{
+		}
+	}
 }

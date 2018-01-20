@@ -8,7 +8,7 @@
 #include "../TowerParams.hpp"
 #include "../Tower.hpp"
 using namespace TowerDefense::GameEngine;
-using namespace TowerDefense::Game::Map;
+using namespace TowerDefense::Game;
 namespace TowerDefense
 {
 	namespace Constants

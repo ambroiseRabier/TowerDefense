@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "FreezeTower.hpp"
 
-
-FreezeTower::FreezeTower()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		FreezeTower::FreezeTower()
+		{
+		}
 
 
-FreezeTower::~FreezeTower()
-{
+		FreezeTower::~FreezeTower()
+		{
+		}
+	}
 }

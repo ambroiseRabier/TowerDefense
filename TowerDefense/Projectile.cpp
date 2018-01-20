@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "Projectile.hpp"
 
-
-Projectile::Projectile()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		Projectile::Projectile()
+		{
+		}
 
 
-Projectile::~Projectile()
-{
+		Projectile::~Projectile()
+		{
+		}
+	}
 }

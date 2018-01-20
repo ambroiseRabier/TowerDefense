@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "Player.hpp"
 
-
-Player::Player()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		Player::Player()
+		{
+		}
 
 
-Player::~Player()
-{
+		Player::~Player()
+		{
+		}
+	}
 }

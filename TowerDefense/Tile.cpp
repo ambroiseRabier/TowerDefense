@@ -5,21 +5,18 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		namespace Map
+		Tile::Tile()
 		{
-			Tile::Tile()
-			{
-			}
+		}
 
 
-			Tile::~Tile()
-			{
-			}
+		Tile::~Tile()
+		{
+		}
 
-			const TileId Tile::get_tile_id() const
-			{
-				return id;
-			}
+		const TileId Tile::get_tile_id() const
+		{
+			return id;
 		}
 	}
 }

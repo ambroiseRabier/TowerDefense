@@ -2,7 +2,7 @@
 #ifndef MAP_MANAGER_HPP
 #define MAP_MANAGER_HPP
 #include "Castle.hpp"
-
+using namespace TowerDefense::Game;
 namespace TowerDefense
 {
 	namespace Managers

@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "Castle.hpp"
 
-
-Castle::Castle()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		Castle::Castle()
+		{
+		}
 
 
-Castle::~Castle()
-{
+		Castle::~Castle()
+		{
+		}
+	}
 }
