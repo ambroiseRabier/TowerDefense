@@ -25,7 +25,7 @@ namespace TowerDefense
 					my_sprite
 				))
 			);
-			// since I used std::move, do not call my_sprite anymore !
+			// since I used std::move, do not call my_sprite anymore ! But I can still use drawable field.
 
 			z_index = Constants::ZIndex::ui_start;
 			collider = std::make_shared<Collider>(
@@ -64,6 +64,16 @@ namespace TowerDefense
 		void BaseButton::on_game_object_overlap(GameObject& game_object)
 		{
 			//Debug::log("on_game_object_overlap base_btn");
+		}
+
+		void BaseButton::set_text(std::string new_text)
+		{
+			//todo
+		}
+
+		std::string BaseButton::get_text()
+		{
+			return "todo";
 		}
 	}
 }

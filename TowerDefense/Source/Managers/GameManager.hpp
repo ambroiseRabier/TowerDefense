@@ -24,7 +24,13 @@ namespace TowerDefense
 			static void pause();
 			static void un_pause();
 			static GameState state;
+			static const float get_game_speed();
 		private:
+			/**
+			 * \brief 
+			 * Speed the turret and minions.
+			 */
+			static unsigned int game_speed_index;
 			static float deltaTime;
 			static sf::Clock clock;
 		};

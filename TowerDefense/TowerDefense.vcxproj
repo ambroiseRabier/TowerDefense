@@ -19,6 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseText.hpp" />
+    <ClInclude Include="Castle.hpp" />
+    <ClInclude Include="HealerMinion.hpp" />
+    <ClInclude Include="Health.hpp" />
+    <ClInclude Include="HUD.hpp" />
+    <ClInclude Include="MapManager.hpp" />
+    <ClInclude Include="Minion.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Projectile.hpp" />
+    <ClInclude Include="Screen.hpp" />
     <ClInclude Include="Source\Managers\GameManager.hpp" />
     <ClInclude Include="Source\stdafx.h" />
     <ClInclude Include="Source\targetver.h" />
@@ -37,8 +47,20 @@
     <ClInclude Include="Source\GameObjects\MenuBackground.hpp" />
     <ClInclude Include="Source\GameEngine\Physics.hpp" />
     <ClInclude Include="Source\GameEngine\Scene.hpp" />
+    <ClInclude Include="TankMinion.hpp" />
+    <ClInclude Include="Tower.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseText.cpp" />
+    <ClCompile Include="Castle.cpp" />
+    <ClCompile Include="HealerMinion.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Managers\GameManager.cpp" />
     <ClCompile Include="Source\stdafx.cpp" />
@@ -54,6 +76,8 @@
     <ClCompile Include="Source\GameObjects\MenuBackground.cpp" />
     <ClCompile Include="Source\GameEngine\Physics.cpp" />
     <ClCompile Include="Source\GameEngine\Scene.cpp" />
+    <ClCompile Include="TankMinion.cpp" />
+    <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

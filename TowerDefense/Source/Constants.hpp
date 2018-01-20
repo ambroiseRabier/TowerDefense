@@ -17,6 +17,8 @@ namespace TowerDefense
 			const std::string game_name = "TowerDefense"; // if you change this, you probably need to change namespaces ;)
 			const unsigned int fps_limit = 144;
 			const float min_loading_duration = 2.0f;
+			const int game_speed_default_index = 1;
+			const float game_speed_choices[4] = {0.5f, 1.0f, 2.0f, 3.0f};
 			/**
 			 * \brief Assigned at start to Physics::testedCollisions.
 			 */
@@ -42,7 +44,7 @@ namespace TowerDefense
 		 * \brief You should use them as guideline for z-index assignation to gameobjects.
 		 * If you ever happen to think you might overlap on another range of z-index, just up max and add a bigger range.
 		 */
-		namespace ZIndex // use a contexpr with math.max and math.min to check if in range ?
+		namespace ZIndex // use a contexpr with math.max and math.min to check if in range ? use enum ?
 		{
 			const unsigned int background_start = 0;
 			const unsigned int game_objects_start = 100;
