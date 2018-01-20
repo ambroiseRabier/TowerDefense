@@ -1,6 +1,10 @@
 #pragma once
 #include "GameEngine/BaseGameObject.hpp"
 
+/**
+ * \brief 
+ * Class to display text (for hud mostly)
+ */
 class BaseText:public TowerDefense::GameEngine::BaseGameObject
 {
 public:

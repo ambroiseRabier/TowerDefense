@@ -10,6 +10,8 @@ namespace TowerDefense
 	{
 		/**
 		 * \brief 
+		 * Class to display a simple button with custom text.
+		 * For UI screens mostly.
 		 * 
 		 * Usage example:
 		 * 	UI::BaseButton* base_button = new UI::BaseButton();
