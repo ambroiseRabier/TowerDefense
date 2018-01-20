@@ -1,13 +1,25 @@
 #include "stdafx.h"
 #include "Tile.hpp"
 
-
-Tile::Tile()
+namespace TowerDefense
 {
-	Tileid.
-}
+	namespace Game
+	{
+		namespace Map
+		{
+			Tile::Tile()
+			{
+			}
 
 
-Tile::~Tile()
-{
+			Tile::~Tile()
+			{
+			}
+
+			const TileId Tile::get_tile_id() const
+			{
+				return id;
+			}
+		}
+	}
 }

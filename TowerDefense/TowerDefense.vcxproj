@@ -25,6 +25,7 @@
     <ClInclude Include="Health.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="MapManager.hpp" />
+    <ClInclude Include="MapParams.hpp" />
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Projectile.hpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="Source\GameEngine\Physics.hpp" />
     <ClInclude Include="Source\GameEngine\Scene.hpp" />
     <ClInclude Include="TankMinion.hpp" />
+    <ClInclude Include="Tile.hpp" />
     <ClInclude Include="Tower.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +79,7 @@
     <ClCompile Include="Source\GameEngine\Physics.cpp" />
     <ClCompile Include="Source\GameEngine\Scene.cpp" />
     <ClCompile Include="TankMinion.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

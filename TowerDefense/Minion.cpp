@@ -1,12 +1,20 @@
 #include "stdafx.h"
 #include "Minion.hpp"
 
-
-Minion::Minion()
+namespace TowerDefense
 {
-}
+	namespace Game
+	{
+		namespace Map
+		{
+			Minion::Minion()
+			{
+			}
 
 
-Minion::~Minion()
-{
+			Minion::~Minion()
+			{
+			}
+		}
+	}
 }

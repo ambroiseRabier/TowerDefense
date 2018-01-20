@@ -2,13 +2,14 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 #include "GameEngine/Collider.hpp"
-
+#include "../MapManager.hpp"
+#include "../MapParams.hpp"
 using namespace TowerDefense::GameEngine;
+using namespace TowerDefense::Game::Map;
 namespace TowerDefense
 {
 	namespace Constants
 	{
-
 		/**
 		 * \brief Config for the game.
 		 */
@@ -50,6 +51,41 @@ namespace TowerDefense
 			const unsigned int game_objects_start = 100;
 			const unsigned int ui_start = 900;
 			const unsigned int max = 999;
+		}
+
+		namespace LevelDesign
+		{
+			const MapParams level0 = {
+				// tiles
+				{
+					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
+					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
+					{{Spawn_Other}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Castle_Other},},
+					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
+					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
+				},
+				// waveParams
+				{
+					{
+						10.0f, // time before next wave
+						{
+							{1.f, Peon}, // time before next minon and current minion spawned.
+							{1.f, Peon},
+							{1.f, Peon},
+							{0, Peon},
+						},
+					},					
+					{
+						20.0f,
+						{
+							{1.f, Tank},
+							{3.f, Peon},
+							{1.f, Tank},
+							{0, Peon},
+						},
+					},
+				}
+			};
 		}
 	}
 	/**
