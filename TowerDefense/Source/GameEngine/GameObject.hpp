@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MONO_BEHAVIOUR_HPP
-#define MONO_BEHAVIOUR_HPP
+#ifndef GAME_OBJECT_HPP
+#define GAME_OBJECT_HPP
 #include "Collider.hpp"
 
 namespace TowerDefense

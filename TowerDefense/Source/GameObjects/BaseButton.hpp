@@ -2,6 +2,7 @@
 #ifndef BASE_BUTTON_HPP
 #define BASE_BUTTON_HPP
 #include "GameEngine/BaseGameObject.hpp"
+#include "Utils/Event.h"
 
 namespace TowerDefense
 {
@@ -9,6 +10,8 @@ namespace TowerDefense
 	{
 		/**
 		 * \brief 
+		 * Class to display a simple button with custom text.
+		 * For UI screens mostly.
 		 * 
 		 * Usage example:
 		 * 	UI::BaseButton* base_button = new UI::BaseButton();
@@ -27,7 +30,14 @@ namespace TowerDefense
 			void on_mouse_click(bool left) override;
 			void on_mouse_click_front(bool left) override;
 			void on_game_object_overlap(GameObject& game_object) override;
+			void set_text(std::string new_text);
+			std::string get_text();
+			/**
+			 * \brief Called on click.
+			 */
+			Sharp::Event<void> on_click;
 		protected:
+			sf::Text text;
 			void init() override;
 		};
 	}
