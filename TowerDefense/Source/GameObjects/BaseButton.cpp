@@ -35,6 +35,7 @@ namespace TowerDefense
 				Collider::Tag::UI
 			);
 			//collider->tag = Collider::Tag::UI;
+			z_index = Constants::ZIndex::ui_start;
 		}
 
 		//keep this or only parent object will have destroy() called
@@ -46,7 +47,6 @@ namespace TowerDefense
 		void BaseButton::init()
 		{
 			BaseGameObject::init();
-			z_index = Constants::ZIndex::ui_start;
 		}
 
 		void BaseButton::update()

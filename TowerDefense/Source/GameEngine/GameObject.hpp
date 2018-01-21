@@ -83,6 +83,20 @@ namespace TowerDefense
 			 */
 			sf::Drawable* get_drawable() const;
 
+			/**
+			 * \brief 
+			 * Wait what ? Drawable do not have a transformable !
+			 * Exactly ! And in my opinion having multiple inheritance for sprite/shape/text,vertexarray
+			 * is an design error. Yes ! Because I either need to keep reference of:
+			 * - drawable and transformable
+			 * or
+			 * - sprite,shape,text,vertexarray
+			 * And there is no common unique inheritance for those four last.
+			 * So I choose the first solution.
+			 */
+			sf::Transformable* get_drawable_transformable() const;
+
+
 			std::shared_ptr<Collider> get_collider() const;
 
 			// region physics

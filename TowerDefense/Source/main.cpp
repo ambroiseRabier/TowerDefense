@@ -7,6 +7,8 @@
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
 #include "GameObjects/MenuBackground.hpp"
+#include "../HUD.hpp"
+#include "../PauseScreen.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -84,6 +86,8 @@ int main()
 	Scene::init();
 	Physics::init(Config::tested_collisions);
 	UI::MenuScreen::init();
+	UI::HUD::init();
+	UI::PauseScreen::init();
 	GameManager::init(&window);
 	Debug::info("Managers inited.");
 

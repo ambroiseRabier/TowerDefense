@@ -79,6 +79,14 @@ namespace TowerDefense
 			else return nullptr;
 		}
 
+		Transformable* GameObject::get_drawable_transformable() const
+		{
+			if (drawableRaw) return dynamic_cast<Transformable*>(drawableRaw);
+			else if (drawableUnique) return dynamic_cast<Transformable*>(drawableUnique.get());
+			else if (drawableShared) return dynamic_cast<Transformable*>(drawableShared.get());
+			else return nullptr;
+		}
+
 		std::shared_ptr<Collider> GameObject::get_collider() const
 		{
 			return collider;
