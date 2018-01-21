@@ -5,6 +5,7 @@
 #include "Utils/Event.h"
 #include "../../Player.hpp"
 #include <memory>
+#include "../../Tile.hpp"
 
 namespace TowerDefense
 {
@@ -21,7 +22,7 @@ namespace TowerDefense
 			static void init(sf::RenderWindow* new_window_ref);
 			static void start();
 			static void update();
-			static void start_level(int i);
+			static void start_level(const unsigned int& i);
 			static void restart_level();
 			static void pause();
 			static void un_pause();
@@ -31,6 +32,7 @@ namespace TowerDefense
 			static GameState state;
 			static const float get_game_speed();
 			static float get_deltaTime();
+			static Game::Player& get_player();
 		private:
 			/**
 			 * \brief 

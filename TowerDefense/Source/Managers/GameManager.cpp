@@ -38,7 +38,7 @@ namespace TowerDefense
 			on_update();
 		}
 		
-		void GameManager::start_level(int i)
+		void GameManager::start_level(const unsigned int& i)
 		{
 			Debug::info("GameManager: start_level " + std::to_string(i));
 			// if was not already into a level.
@@ -48,6 +48,7 @@ namespace TowerDefense
 				spawn_player();
 			}
 			UI::HUD::open();
+			MapManager::load_level(i);
 		}
 
 		void GameManager::restart_level()
@@ -104,6 +105,11 @@ namespace TowerDefense
 		float GameManager::get_deltaTime () 
 		{
 			return deltaTime;
+		}
+
+		Player& GameManager::get_player()
+		{
+			return *player;
 		}
 
 		const float GameManager::get_game_speed()

@@ -35,6 +35,7 @@ namespace TowerDefense
 			static std::unique_ptr<Castle> castle;
 			static bool level_loaded_flag;
 			static void load_level_internal(const unsigned int& level_number);
+			static void spawn_tile(TileId tile_id);
 		};
 	}
 }
