@@ -11,6 +11,7 @@ namespace TowerDefense
 	{
 		void BaseButton::init()
 		{
+			Debug::log("basebtn init");
 			BaseGameObject::init();
 			// shared_ptr is removed when going out of scope.
 			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(*GlobalShared::default_ui_btn);

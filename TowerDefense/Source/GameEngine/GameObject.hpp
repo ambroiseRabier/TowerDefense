@@ -66,6 +66,7 @@ namespace TowerDefense
 
 			/**
 			 * \brief Create a MonoBehaviour with no graphic.
+			 * This is also the default constructor used by BaseGameObjects.
 			 * \param newZIndex 
 			 */
 			GameObject(unsigned int newZIndex = 0);

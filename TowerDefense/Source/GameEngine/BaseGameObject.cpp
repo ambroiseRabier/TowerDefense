@@ -38,6 +38,7 @@ namespace TowerDefense
 
 		void BaseGameObject::init()
 		{
+			Debug::assert_m(!flag_is_init, "BaseGameObject: already inited !");
 			flag_is_init = true;
 		}
 
@@ -69,7 +70,7 @@ namespace TowerDefense
 			Physics::removeChild(*this);
 			Scene::removeChild(*this);
 			unListenToEvents();
-			init();
+			flag_is_init = false;
 		}
 
 		void BaseGameObject::destroy()

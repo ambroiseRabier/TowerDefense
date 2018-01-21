@@ -5,7 +5,7 @@ namespace TowerDefense
 {
 	namespace UI
 	{
-		BaseText::BaseText()
+		BaseText::BaseText(const std::string& text)
 		{
 		}
 

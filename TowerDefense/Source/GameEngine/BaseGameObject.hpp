@@ -32,6 +32,9 @@ namespace TowerDefense
 			void auto_start();
 			/**
 			 * \brief Initialize BaseGameObject variables.
+			 * This can be called again after using recycle().
+			 * You should put initialization of elements that might change later here.
+			 * But avoid creating texture/drawable here if they won't change in the gameobject lifetime (pooling).
 			 */
 			virtual void init();
 			/**
@@ -45,9 +48,17 @@ namespace TowerDefense
 		protected:
 			virtual void listenToEvents(); 
 			virtual void unListenToEvents();
-			/// Called every frame.
+			
+			/**
+			 * \brief 
+			 * Called every frame.
+			 */
 			virtual void update();
-			/// Reset state (for pooling).
+			
+			/**
+			 * \brief 
+			 * Reset state. (for pooling)
+			 */
 			virtual void recycle();
 		private:
 			bool flag_is_init;

@@ -14,7 +14,7 @@ namespace TowerDefense
 		class BaseText : public TowerDefense::GameEngine::BaseGameObject
 		{
 		public:
-			BaseText();
+			BaseText(const std::string& text);
 			~BaseText();
 			void set_text(const std::string& new_text);
 		private:
