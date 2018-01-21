@@ -39,7 +39,7 @@ namespace TowerDefense
 			for (const GameObject* children : childrens)
 			{
 				// well, you could remove the drawable without error, but that is not encouraged.
-				if (children->isVisible && children->get_drawable())
+				if (children->isVisible && children->isActive && children->get_drawable())
 				{
 					// combine GameObject "transform" to the GameObject "graphic"
 					window.draw(

@@ -123,6 +123,11 @@ namespace TowerDefense
 			 */
 			bool isVisible = true;
 
+			/**
+			 * \brief If isActive is false, it won't be displayed or do any collision or events.
+			 */
+			bool isActive = true;
+
 			sf::Vector2f to_local(const sf::Vector2f&) const;
 		protected:
 			/**

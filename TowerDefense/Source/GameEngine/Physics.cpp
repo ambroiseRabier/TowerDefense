@@ -64,7 +64,7 @@ namespace TowerDefense
 			{
 				// well, you could remove the collider without error, but that is not encouraged.
 				// better use gameobject_enabled && mouse_enabled
-				if (children->get_collider())
+				if (children->isActive && children->get_collider())
 				{
 					if (children->get_collider()->gameobject_enabled)
 					{

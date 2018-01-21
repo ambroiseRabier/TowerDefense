@@ -7,9 +7,11 @@
 #include "GameObjects/BaseButton.hpp"
 #include "GameObjects/MenuBackground.hpp"
 #include "Managers/InputManager.hpp"
+#include "../MenuScreen.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
+using namespace TowerDefense::Constants;
 using namespace TowerDefense;
 using namespace sf;
 
@@ -22,7 +24,7 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
 {
 	// Declare and load a texture
 	// todo: add credits too !
-	texture.loadFromFile(Constants::Assets::loading_background);
+	texture.loadFromFile(Assets::loading_background);
 	// Create a sprite
 	loading_sprite.setTexture(texture);
 	//loading_sprite.setTextureRect(IntRect(30, 40, 374, 126));
@@ -37,13 +39,13 @@ void preloading() // todo factorize
 	// allocate on heap since this will stay longer then the stack of this function
 	// then copy pointer on GlobalShared
 	Font* font = new Font();
-	font->loadFromFile(Constants::Assets::default_font);
+	font->loadFromFile(Assets::default_font);
 	GlobalShared::default_font = font;
 	Texture* texture = new Texture();
-	texture->loadFromFile(Constants::Assets::default_ui_btn);
+	texture->loadFromFile(Assets::default_ui_btn);
 	GlobalShared::default_ui_btn = texture;
 	texture = new Texture();
-	texture->loadFromFile(Constants::Assets::menu_background);
+	texture->loadFromFile(Assets::menu_background);
 	GlobalShared::menu_background = texture;
 }
 
@@ -54,8 +56,8 @@ void preloading() // todo factorize
 int main()
 {
 	Debug::info("Application started.");
-	RenderWindow window(VideoMode(800, 600), Constants::Config::game_name);
-	window.setFramerateLimit(Constants::Config::fps_limit);
+	RenderWindow window(VideoMode(Config::window_width, Config::window_height), Config::game_name);
+	window.setFramerateLimit(Config::fps_limit);
 	// loading init
 	// alocating on heap since I won't need it after loading.
 	std::unique_ptr<Texture> loading_texture = std::make_unique<Texture>();
@@ -81,24 +83,30 @@ int main()
 
 	// Init all managers
 	Scene::init();
-	Physics::init(Constants::Config::tested_collisions);
+	Physics::init(Config::tested_collisions);
+	UI::MenuScreen::init();
 	GameManager::init();
 	Debug::info("Managers inited.");
 
 	// wait a bit to see the loading/credit screen.
 	// (forget asynchrone setTimeout like js. Gonna be too hard)
-	const Time creditLoadingDuration = seconds(Constants::Config::min_loading_duration);
+	const Time creditLoadingDuration = seconds(Config::min_loading_duration);
 	sleep(creditLoadingDuration);
 	
 	// delete loading/credit stuff
 	loading_sprite.reset(nullptr);
 	loading_texture.reset(nullptr);
 
-	UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
+	// start the game !
+	GameManager::start();
+	Debug::info("Game started.");
+
+	// exemples stuff, to delete.
+	/*UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
 	base_button->get_transformable().setPosition(150,150);
 	base_button->auto_start();
 	UI::MenuBackground* menu_background = new UI::MenuBackground();
-	menu_background->auto_start();
+	menu_background->auto_start();*/
 	//base_button->destroy();
 	//delete base_button;
 	//base_button = nullptr;

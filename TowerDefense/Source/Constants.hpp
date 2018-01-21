@@ -29,6 +29,8 @@ namespace TowerDefense
 				std::make_pair(Collider::Tag::Minion, Collider::Tag::TowerShoot),
 				std::make_pair(Collider::Tag::UI, Collider::Tag::UI) // for demo only !
 			};
+			const unsigned int window_width = 800;
+			const unsigned int window_height = 600;
 		}
 
 		/**
@@ -38,7 +40,7 @@ namespace TowerDefense
 		{
 			const std::string loading_background = "Assets/loading_background_inverted.png";
 			const std::string menu_background = "Assets/menu_background.jpg";
-			const std::string default_ui_btn = "Assets/orange_btn.jpg";
+			const std::string default_ui_btn = "Assets/base_btn.png";
 			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 		}
 

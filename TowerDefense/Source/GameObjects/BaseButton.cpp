@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "BaseButton.hpp"
 #include "Constants.hpp"
-#include "GameEngine/Debug.hpp"
+#include "../../CastUtils.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -9,32 +9,38 @@ namespace TowerDefense
 {
 	namespace UI
 	{
-		void BaseButton::init()
+		BaseButton::BaseButton()
 		{
-			Debug::log("basebtn init");
-			BaseGameObject::init();
-			// shared_ptr is removed when going out of scope.
-			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(*GlobalShared::default_ui_btn);
-			//my_sprite->setPosition(0,0);
-			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
-			//sprite.setColor(sf::Color(255, 255, 255, 200));
+			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn);
+			// I prefer avoiding downcast of the drawable into sprite
+			// sprite get a pointer, that will be null after destroy() method being called.
+			// It do not own the sprite memory.
+			sprite = my_sprite.get();
 			set_drawable(
-				std::move(static_cast<std::shared_ptr<sf::Drawable>>(
-					// cannot downcast or keep a reference of Sprite, unique pointer for a Sprite being
-					// kept as Drawable is rather problematic.
-					//std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn)
+				// std::move(static_cast<std::unique_ptr<sf::Drawable>>( not ok
+				// std::move(static_cast<std::shared_ptr<sf::Drawable>>( ok
+				// weird
+				std::move(static_cast_ptr<sf::Drawable>(
 					my_sprite
 				))
 			);
-			// since I used std::move, do not call my_sprite anymore ! But I can still use drawable field.
+			// since I used std::move, do not call my_sprite anymore ! 
+			// But I can still use drawable field. or sprite field.
+			//sprite->setPosition(0,0);
+			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
+			//sprite.setColor(sf::Color(255, 255, 255, 200));
 
-			z_index = Constants::ZIndex::ui_start;
 			collider = std::make_shared<Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,341,148)),
+				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,137,60)),
 				Collider::Tag::UI
 			);
 			//collider->tag = Collider::Tag::UI;
+		}
 
+		void BaseButton::init()
+		{
+			BaseGameObject::init();
+			z_index = Constants::ZIndex::ui_start;
 		}
 
 		void BaseButton::destroy()
@@ -54,12 +60,13 @@ namespace TowerDefense
 
 		void BaseButton::on_mouse_click(bool left)
 		{
-			Debug::log("on_mouse_click " + left);
+			//Debug::log("on_mouse_click " + left);
 		}
 
 		void BaseButton::on_mouse_click_front(bool left)
 		{
-			Debug::log("on_mouse_click_front " + left);
+			//Debug::log("on_mouse_click_front " + left);
+			on_click();
 		}
 
 		void BaseButton::on_game_object_overlap(GameObject& game_object)

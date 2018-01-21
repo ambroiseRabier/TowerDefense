@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Align.hpp" />
     <ClInclude Include="BaseText.hpp" />
     <ClInclude Include="Castle.hpp" />
+    <ClInclude Include="CastUtils.hpp" />
     <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
     <ClInclude Include="HealMinion.hpp" />
@@ -28,6 +30,7 @@
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="MapManager.hpp" />
     <ClInclude Include="MapParams.hpp" />
+    <ClInclude Include="MenuScreen.hpp" />
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="MinionParams.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
@@ -60,6 +63,7 @@
     <ClInclude Include="UpgradeBtn.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Align.cpp" />
     <ClCompile Include="BaseText.cpp" />
     <ClCompile Include="Castle.cpp" />
     <ClCompile Include="ExplosivTower.cpp" />
@@ -68,6 +72,7 @@
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
