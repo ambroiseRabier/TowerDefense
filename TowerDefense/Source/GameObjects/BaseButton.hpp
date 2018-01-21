@@ -43,6 +43,9 @@ namespace TowerDefense
 			sf::Sprite* sprite;
 			sf::Text text;
 			void init() override;
+			void update() override;
+		private:
+			bool base_btn_destroyed = false;
 		};
 	}
 }

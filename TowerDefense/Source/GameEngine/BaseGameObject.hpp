@@ -26,8 +26,6 @@ namespace TowerDefense
 			 * \brief Do `init(); Scene::addChild(*this); Physics::addChild(*this); start();` in this order.
 			 * addChild are being done only if you provided a drawable, collider.
 			 * For lazy peoples.
-			 * \param hasCollider (default:false)
-			 * \param hasGraphic (default:true)
 			 */
 			void auto_start();
 			/**

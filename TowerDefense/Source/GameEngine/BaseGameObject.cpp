@@ -53,17 +53,17 @@ namespace TowerDefense
 
 		void BaseGameObject::listenToEvents()
 		{
-			//Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, static_cast<BaseGameObject*>(this));
+			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, static_cast<BaseGameObject*>(this));
 		}
 
 		void BaseGameObject::unListenToEvents()
 		{
-			//Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
+			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
 		}
 
 		void BaseGameObject::update()
 		{
-			//Debug::log("BaseGameObject:: update");
+
 		}
 
 		void BaseGameObject::recycle()

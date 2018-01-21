@@ -37,7 +37,7 @@ namespace TowerDefense
 			//collider->tag = Collider::Tag::UI;
 		}
 
-		//keep this or only parent object will have destroyed called when alt-f4
+		//keep this or only parent object will have destroy() called
 		BaseButton::~BaseButton()
 		{
 			destroy();
@@ -49,15 +49,26 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::ui_start;
 		}
 
+		void BaseButton::update()
+		{
+			//BaseGameObject::update(); there is nothing to call, so we can ignore base call here.
+			// your code here
+		}
+
 		void BaseButton::destroy()
 		{
-			Debug::log("BaseButton::destroy()");
-			BaseGameObject::destroy();
+			// make sure it is called one time only if someone inherit from you.
+			if (!base_btn_destroyed)
+			{
+				base_btn_destroyed = true;
+				//your code here
+				BaseGameObject::destroy();
+			}
 		}
 
 		void BaseButton::unListenToEvents()
 		{
-			Debug::log("BaseButton::unListenToEvents()");
+			//your code here
 			BaseGameObject::unListenToEvents();
 		}
 

@@ -407,6 +407,10 @@ namespace Sharp    // short for SharpTools
 			{
 				return *this;  // a null passed, so nothing to do
 			}
+			if (m_eventHandlers.empty())
+			{
+				return *this; // (ambroise) When exiting application, the eventhandler my already be null when we try to -= an event.
+			}
 			
 #ifndef SHARP_EVENT_NO_BOOST
 			// we start by searching the handlers list and modify it ONLY when the passed handler is found
