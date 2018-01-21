@@ -44,6 +44,7 @@ namespace TowerDefense
 			// don't really know why I can't push a const GameObject& inside if
 			// I type const GameObject& here :( ?
 			static std::list<const GameObject*> childrens;
+			static void draw_debug_collider(sf::RenderTarget& window, const GameObject* game_object);
 		};
 	}
 }

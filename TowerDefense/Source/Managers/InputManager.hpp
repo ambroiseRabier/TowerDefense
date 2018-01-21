@@ -18,7 +18,7 @@ namespace TowerDefense
 			static void update_menu_events(const sf::Event& event);
 			static void update_playing_events(const sf::Event& event);
 			static void update_pause_events(const sf::Event& event);
-			static void update_mouse(const sf::Event& event, const sf::Window& window);
+			static void update_mouse_btn_pressed(const sf::Event& event, const sf::Window& window);
 
 		};
 	}

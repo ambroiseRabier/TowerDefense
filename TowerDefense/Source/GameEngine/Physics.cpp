@@ -167,11 +167,16 @@ namespace TowerDefense
 		{
 			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
 			{
+				// local to gameobject
+				sf::Vector2f mouse_position_local = game_object.to_local(
+					static_cast<sf::Vector2f>(mouse_position)
+				);
+				// local to collider
+				mouse_position_local.x -= game_object.get_collider()->get_rect().left;
+				mouse_position_local.y -= game_object.get_collider()->get_rect().top;
 				return CollisionTest::rect_dot(
 					game_object.get_collider()->get_rect(),
-					game_object.to_local(
-						static_cast<sf::Vector2f>(mouse_position)
-					)
+					mouse_position_local
 				);
 			}
 			Debug::warn("Physics WIP: collider type not supported.");

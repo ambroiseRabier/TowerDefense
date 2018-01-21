@@ -29,7 +29,6 @@ namespace TowerDefense
 			//sprite->setPosition(0,0);
 			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
 			//sprite.setColor(sf::Color(255, 255, 255, 200));
-
 			collider = std::make_shared<Collider>(
 				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,137,60)),
 				Collider::Tag::UI

@@ -4,8 +4,6 @@
 #include "GameEngine/Debug.hpp"
 #include "GameEngine/Scene.hpp"
 #include "GameEngine/Physics.hpp"
-#include "GameObjects/BaseButton.hpp"
-#include "GameObjects/MenuBackground.hpp"
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
 

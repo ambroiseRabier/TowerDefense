@@ -15,8 +15,8 @@ namespace TowerDefense
 		{
 			play_btn = std::make_unique<BaseButton>();
 			quit_btn = std::make_unique<BaseButton>();
-			Align::center(play_btn->get_transformable(), sf::Vector2f(0, 100));
-			Align::center(quit_btn->get_transformable(), sf::Vector2f(0, -100));
+			Align::center(play_btn->get_transformable(), sf::Vector2f(0, 200));
+			Align::center(quit_btn->get_transformable(), sf::Vector2f(0, -200));
 			play_btn->isActive = false;
 			quit_btn->isActive = false;
 			play_btn->on_click += Sharp::EventHandler::Bind(&MenuScreen::on_click_play);
