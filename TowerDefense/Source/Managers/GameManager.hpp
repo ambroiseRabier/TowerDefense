@@ -19,16 +19,17 @@ namespace TowerDefense
 		public: 
 			static Sharp::Event<void> on_update;
 			static void start_level(int i);
-			static void init();
+			static void init(sf::RenderWindow* new_window_ref);
 			static void start();
 			static void update();
 			static void restart_level();
 			static void pause();
 			static void un_pause();
 			static void return_menu();
+			static void exit_game();
 			static GameState state;
 			static const float get_game_speed();
-			static float get_deltaTime(); // const :'(, static do not take const
+			static float get_deltaTime();
 		private:
 			/**
 			 * \brief 
@@ -39,7 +40,7 @@ namespace TowerDefense
 			static float deltaTime;
 			static sf::Clock clock;
 			static void spawn_player();
-
+			static sf::RenderWindow* window_ref;
 		};
 		//constexpr
 		

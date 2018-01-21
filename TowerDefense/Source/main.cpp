@@ -84,7 +84,7 @@ int main()
 	Scene::init();
 	Physics::init(Config::tested_collisions);
 	UI::MenuScreen::init();
-	GameManager::init();
+	GameManager::init(&window);
 	Debug::info("Managers inited.");
 
 	// wait a bit to see the loading/credit screen.

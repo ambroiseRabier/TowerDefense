@@ -77,7 +77,6 @@ namespace TowerDefense
 
 		void BaseGameObject::destroy()
 		{
-			Debug::log("BaseGameObject::destroy()");
 			if (!flag_is_destroyed)
 			{
 				flag_is_destroyed = true;

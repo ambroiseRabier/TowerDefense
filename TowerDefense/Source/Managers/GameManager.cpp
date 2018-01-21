@@ -15,7 +15,7 @@ namespace TowerDefense
 		Sharp::Event<void> GameManager::on_update;
 		unsigned int GameManager::game_speed_index;
 		std::unique_ptr<Player> GameManager::player;
-
+		sf::RenderWindow* GameManager::window_ref;
 
 		void GameManager::start_level(int i)
 		{
@@ -27,8 +27,10 @@ namespace TowerDefense
 			state = GameState::Playing;
 		}
 
-		void GameManager::init()
+		void GameManager::init(sf::RenderWindow* new_window_ref)
 		{
+			Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
+			window_ref = new_window_ref;
 			game_speed_index = Constants::GameDesign::game_speed_default_index;
 		}
 
@@ -62,6 +64,13 @@ namespace TowerDefense
 		void GameManager::return_menu()
 		{
 			player.reset(nullptr);
+		}
+
+		void GameManager::exit_game()
+		{
+			// in theory this will never be null when called.
+			if (window_ref)
+				window_ref->close();
 		}
 
 		void GameManager::spawn_player()
