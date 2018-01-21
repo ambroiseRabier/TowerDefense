@@ -32,7 +32,11 @@ namespace TowerDefense
 
 		void Scene::removeChild(const GameObject& gameobject)
 		{
-			childrens.remove(&gameobject);
+			// can be empty when exiting application.
+			if (!childrens.empty())
+			{
+				childrens.remove(&gameobject);
+			}
 		}
 
 		void Scene::render(sf::RenderTarget& window)

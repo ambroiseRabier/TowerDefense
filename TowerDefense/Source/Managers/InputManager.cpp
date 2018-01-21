@@ -2,6 +2,7 @@
 #include "InputManager.hpp"
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Physics.hpp"
+#include "Constants.hpp"
 
 using namespace sf;
 using namespace TowerDefense::GameEngine;
@@ -28,7 +29,7 @@ namespace TowerDefense
 
 		void InputManager::update(Window& window)
 		{
-			// Handle events todo:: make an input manager
+			// Handle events
 			Event event;
 			while (window.pollEvent(event))
 			{
@@ -36,6 +37,7 @@ namespace TowerDefense
 				if (event.type == Event::Closed 
 					|| (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
 				{
+					GlobalShared::on_window_close();
 					window.close();
 					break;
 				}

@@ -48,7 +48,11 @@ namespace TowerDefense
 
 		void Physics::removeChild(GameObject& game_object)
 		{
-			childrens.remove(&game_object);
+			// can be empty when exiting application.
+			if (!childrens.empty())
+			{
+				childrens.remove(&game_object);
+			}
 		}
 
 		/**

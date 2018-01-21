@@ -3,7 +3,7 @@
 // (C) Copyright 2015 Amer Saffo (amer_saffo@yahoo.com)
 // Distributed under the Code Project Open License 1.02 (CPOL)
 // http://www.codeproject.com/info/cpol10.aspx
-// 
+// https://www.codeproject.com/Tips/1069718/Sharp-Tools-A-NET-like-Event-in-Cplusplus
 //=============================================================================
 
 //=============================================================================

@@ -2,6 +2,7 @@
 #include "BaseButton.hpp"
 #include "Constants.hpp"
 #include "../../CastUtils.hpp"
+#include "GameEngine/Debug.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -36,6 +37,12 @@ namespace TowerDefense
 			//collider->tag = Collider::Tag::UI;
 		}
 
+		//keep this or only parent object will have destroyed called when alt-f4
+		BaseButton::~BaseButton()
+		{
+			destroy();
+		}
+
 		void BaseButton::init()
 		{
 			BaseGameObject::init();
@@ -44,7 +51,14 @@ namespace TowerDefense
 
 		void BaseButton::destroy()
 		{
+			Debug::log("BaseButton::destroy()");
 			BaseGameObject::destroy();
+		}
+
+		void BaseButton::unListenToEvents()
+		{
+			Debug::log("BaseButton::unListenToEvents()");
+			BaseGameObject::unListenToEvents();
 		}
 
 		void BaseButton::on_mouse_overlap()

@@ -15,10 +15,11 @@ namespace TowerDefense
 
 		BaseGameObject::~BaseGameObject()
 		{
-			Debug::assert_m(
-				flag_is_destroyed, 
-				"BaseGameObject: Did you forgot to call destroy() before deleting me? Or maybe you forgot to add base call to overriden destroy function."
-			);
+			// if not already destroyed by teh call of a children of BaseGameObject then call it.
+			if (!flag_is_destroyed)
+			{
+				destroy();
+			}
 		}
 
 		void BaseGameObject::auto_start()
@@ -52,16 +53,17 @@ namespace TowerDefense
 
 		void BaseGameObject::listenToEvents()
 		{
-			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, this);
+			//Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, static_cast<BaseGameObject*>(this));
 		}
 
 		void BaseGameObject::unListenToEvents()
 		{
-			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
+			//Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
 		}
 
 		void BaseGameObject::update()
 		{
+			//Debug::log("BaseGameObject:: update");
 		}
 
 		void BaseGameObject::recycle()
@@ -75,13 +77,14 @@ namespace TowerDefense
 
 		void BaseGameObject::destroy()
 		{
-			// actually, it would be better to set this flag to true at the end of
-			// last overrided destroy, but it's ok it will still work without flaw
-			// since program is run synchronousely.
-			flag_is_destroyed = true;
-			unListenToEvents();
-			Physics::removeChild(*this);
-			Scene::removeChild(*this);
+			Debug::log("BaseGameObject::destroy()");
+			if (!flag_is_destroyed)
+			{
+				flag_is_destroyed = true;
+				unListenToEvents();
+				Physics::removeChild(*this);
+				Scene::removeChild(*this);
+			}
 		}
 	}
 }

@@ -11,5 +11,6 @@ namespace TowerDefense
 		sf::Font* default_font;
 		sf::Texture* menu_background;
 		sf::Texture* default_ui_btn;
+		Sharp::Event<void> on_window_close;
 	}
 }

@@ -6,6 +6,7 @@
 #include "GameEngine/Physics.hpp"
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
+#include "GameObjects/MenuBackground.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -103,11 +104,18 @@ int main()
 	/*UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
 	base_button->get_transformable().setPosition(150,150);
 	base_button->auto_start();
+
+	std::unique_ptr<UI::BaseButton> base_button_unique = std::make_unique<UI::BaseButton>();
+	base_button_unique->auto_start();
+
 	UI::MenuBackground* menu_background = new UI::MenuBackground();
-	menu_background->auto_start();*/
+	menu_background->auto_start();
 	//base_button->destroy();
-	//delete base_button;
-	//base_button = nullptr;
+	delete base_button;
+	base_button = nullptr;
+	delete menu_background;
+	base_button = nullptr;
+	base_button_unique.reset(nullptr);*/
 
 	while (window.isOpen())
 	{
