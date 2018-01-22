@@ -5,12 +5,8 @@ namespace TowerDefense
 {
 	namespace UI
 	{
-		PauseScreen::PauseScreen()
-		{
-		}
 
-
-		PauseScreen::~PauseScreen()
+		void PauseScreen::init()
 		{
 		}
 	}

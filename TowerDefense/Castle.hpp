@@ -8,7 +8,7 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		class Castle : Tile
+		class Castle : public Tile
 		{
 		public:
 			Castle();

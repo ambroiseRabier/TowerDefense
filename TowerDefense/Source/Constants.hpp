@@ -29,6 +29,10 @@ namespace TowerDefense
 				std::make_pair(Collider::Tag::Minion, Collider::Tag::TowerShoot),
 				std::make_pair(Collider::Tag::UI, Collider::Tag::UI) // for demo only !
 			};
+			const unsigned int window_width = 800;
+			const unsigned int window_height = 600;
+			const bool debug_draw_collider = true;
+			const sf::Color collider_debug_color = sf::Color(240,10,15,100);
 		}
 
 		/**
@@ -36,10 +40,10 @@ namespace TowerDefense
 		 */
 		namespace Assets
 		{
+			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 			const std::string loading_background = "Assets/loading_background_inverted.png";
 			const std::string menu_background = "Assets/menu_background.jpg";
-			const std::string default_ui_btn = "Assets/orange_btn.jpg";
-			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
+			const std::string default_ui_btn = "Assets/base_btn.png";
 		}
 
 		/**
@@ -152,9 +156,17 @@ namespace TowerDefense
 	 */
 	namespace GlobalShared
 	{
+		extern sf::Font* default_font;
 		extern sf::Texture* menu_background;
 		extern sf::Texture* default_ui_btn;
-		extern sf::Font* default_font;
+		extern sf::Texture* grass_build_texture;
+		extern sf::Texture* road_walk_texture;
+
+		/**
+		 * \brief 
+		 * You could use it to save something quickly before exiting.
+		 */
+		extern Sharp::Event<void> on_window_close;
 	}
 }
 #endif

@@ -48,7 +48,11 @@ namespace TowerDefense
 
 		void Physics::removeChild(GameObject& game_object)
 		{
-			childrens.remove(&game_object);
+			// can be empty when exiting application.
+			if (!childrens.empty())
+			{
+				childrens.remove(&game_object);
+			}
 		}
 
 		/**
@@ -64,7 +68,7 @@ namespace TowerDefense
 			{
 				// well, you could remove the collider without error, but that is not encouraged.
 				// better use gameobject_enabled && mouse_enabled
-				if (children->get_collider())
+				if (children->isActive && children->get_collider())
 				{
 					if (children->get_collider()->gameobject_enabled)
 					{
@@ -167,11 +171,16 @@ namespace TowerDefense
 		{
 			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
 			{
+				// local to gameobject
+				sf::Vector2f mouse_position_local = game_object.to_local(
+					static_cast<sf::Vector2f>(mouse_position)
+				);
+				// local to collider
+				mouse_position_local.x -= game_object.get_collider()->get_rect().left;
+				mouse_position_local.y -= game_object.get_collider()->get_rect().top;
 				return CollisionTest::rect_dot(
 					game_object.get_collider()->get_rect(),
-					game_object.to_local(
-						static_cast<sf::Vector2f>(mouse_position)
-					)
+					mouse_position_local
 				);
 			}
 			Debug::warn("Physics WIP: collider type not supported.");

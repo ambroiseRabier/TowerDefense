@@ -62,12 +62,15 @@ namespace TowerDefense
 		};
 
 
-		class Tile : public TowerDefense::GameEngine::BaseGameObject
+		class Tile : public GameEngine::BaseGameObject
 		{
 		public:
 			Tile();
+			Tile(const sf::Texture* texture);
 			~Tile();
 			const TileId get_tile_id() const;
+			int x;
+			int y;
 		private:
 			/**
 			 * \brief 

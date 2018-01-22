@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Align.hpp" />
     <ClInclude Include="BaseText.hpp" />
     <ClInclude Include="Castle.hpp" />
+    <ClInclude Include="CastUtils.hpp" />
     <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
     <ClInclude Include="HealMinion.hpp" />
@@ -28,6 +30,8 @@
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="MapManager.hpp" />
     <ClInclude Include="MapParams.hpp" />
+    <ClInclude Include="MapWaveManager.hpp" />
+    <ClInclude Include="MenuScreen.hpp" />
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="MinionParams.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
@@ -53,13 +57,16 @@
     <ClInclude Include="Source\GameObjects\MenuBackground.hpp" />
     <ClInclude Include="Source\GameEngine\Physics.hpp" />
     <ClInclude Include="Source\GameEngine\Scene.hpp" />
+    <ClInclude Include="Spawn.hpp" />
     <ClInclude Include="TankMinion.hpp" />
     <ClInclude Include="Tile.hpp" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Tower.hpp" />
     <ClInclude Include="TowerParams.hpp" />
     <ClInclude Include="UpgradeBtn.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Align.cpp" />
     <ClCompile Include="BaseText.cpp" />
     <ClCompile Include="Castle.cpp" />
     <ClCompile Include="ExplosivTower.cpp" />
@@ -68,6 +75,8 @@
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="MapWaveManager.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -88,8 +97,10 @@
     <ClCompile Include="Source\GameObjects\MenuBackground.cpp" />
     <ClCompile Include="Source\GameEngine\Physics.cpp" />
     <ClCompile Include="Source\GameEngine\Scene.cpp" />
+    <ClCompile Include="Spawn.cpp" />
     <ClCompile Include="TankMinion.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="UpgradeBtn.cpp" />
   </ItemGroup>

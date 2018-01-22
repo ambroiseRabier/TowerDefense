@@ -19,6 +19,7 @@ namespace TowerDefense
 		public:
 			Player();
 			~Player();
+			void set_money(const float& value);
 		};
 	}
 }

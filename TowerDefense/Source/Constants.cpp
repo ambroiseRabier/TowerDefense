@@ -8,8 +8,9 @@ namespace TowerDefense
 	 */
 	namespace GlobalShared
 	{
+		sf::Font* default_font;
 		sf::Texture* menu_background;
 		sf::Texture* default_ui_btn;
-		sf::Font* default_font;
+		Sharp::Event<void> on_window_close;
 	}
 }

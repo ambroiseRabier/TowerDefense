@@ -1,17 +1,16 @@
 #pragma once
 #ifndef PAUSE_SCREEN_HPP
 #define PAUSE_SCREEN_HPP
-#include "Screen.hpp"
 
 namespace TowerDefense
 {
 	namespace UI
 	{
-		class PauseScreen : public Screen
+		class PauseScreen
 		{
 		public:
-			PauseScreen();
-			~PauseScreen();
+			//static std::unique_ptr<BaseButton> menu_btn;
+			static void init();
 		};
 	}
 }

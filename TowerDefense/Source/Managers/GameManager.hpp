@@ -3,6 +3,9 @@
 #ifndef GAME_MANAGER_HPP
 #define GAME_MANAGER_HPP
 #include "Utils/Event.h"
+#include "../../Player.hpp"
+#include <memory>
+#include "../../Tile.hpp"
 
 namespace TowerDefense
 {
@@ -16,23 +19,31 @@ namespace TowerDefense
 		{
 		public: 
 			static Sharp::Event<void> on_update;
-			static void start_level(int i);
-			static void init();
+			static void init(sf::RenderWindow* new_window_ref);
+			static void start();
 			static void update();
-			static float get_deltaTime(); // const :'(, static do not take const
+			static void start_level(const unsigned int& i);
 			static void restart_level();
 			static void pause();
 			static void un_pause();
+			static void return_menu();
+			static void exit_game();
+			static void up_game_speed();
 			static GameState state;
 			static const float get_game_speed();
+			static float get_deltaTime();
+			static Game::Player& get_player();
 		private:
 			/**
 			 * \brief 
 			 * Speed the turret and minions.
 			 */
 			static unsigned int game_speed_index;
+			static std::unique_ptr<Game::Player> player;
 			static float deltaTime;
 			static sf::Clock clock;
+			static void spawn_player();
+			static sf::RenderWindow* window_ref;
 		};
 		//constexpr
 		

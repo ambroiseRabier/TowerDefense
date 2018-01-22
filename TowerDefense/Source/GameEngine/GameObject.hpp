@@ -66,6 +66,7 @@ namespace TowerDefense
 
 			/**
 			 * \brief Create a MonoBehaviour with no graphic.
+			 * This is also the default constructor used by BaseGameObjects.
 			 * \param newZIndex 
 			 */
 			GameObject(unsigned int newZIndex = 0);
@@ -81,6 +82,20 @@ namespace TowerDefense
 			 * \return 
 			 */
 			sf::Drawable* get_drawable() const;
+
+			/**
+			 * \brief 
+			 * Wait what ? Drawable do not have a transformable !
+			 * Exactly ! And in my opinion having multiple inheritance for sprite/shape/text,vertexarray
+			 * is an design error. Yes ! Because I either need to keep reference of:
+			 * - drawable and transformable
+			 * or
+			 * - sprite,shape,text,vertexarray
+			 * And there is no common unique inheritance for those four last.
+			 * So I choose the first solution.
+			 */
+			sf::Transformable* get_drawable_transformable() const;
+
 
 			std::shared_ptr<Collider> get_collider() const;
 
@@ -121,6 +136,11 @@ namespace TowerDefense
 			 * \brief Scene draw loop will skip this gameobject if set to false;
 			 */
 			bool isVisible = true;
+
+			/**
+			 * \brief If isActive is false, it won't be displayed or do any collision or events.
+			 */
+			bool isActive = true;
 
 			sf::Vector2f to_local(const sf::Vector2f&) const;
 		protected:

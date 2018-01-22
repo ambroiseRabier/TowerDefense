@@ -2,6 +2,8 @@
 #ifndef MAP_MANAGER_HPP
 #define MAP_MANAGER_HPP
 #include "Castle.hpp"
+#include "MapParams.hpp"
+#include "Spawn.hpp"
 using namespace TowerDefense::Game;
 namespace TowerDefense
 {
@@ -31,10 +33,16 @@ namespace TowerDefense
 			 * Destroy current level.
 			 */
 			static void destroy_current_level();
+			static const MapParams* map_params;
+			static const bool get_level_loaded_flag();
 		private:
-			static std::unique_ptr<Castle> castle;
+			static std::shared_ptr<Castle> castle;
+			static std::shared_ptr<Spawn> spawn;
 			static bool level_loaded_flag;
 			static void load_level_internal(const unsigned int& level_number);
+			static void create_tiles(const MapParams l_map_params);
+			static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);
+			static std::vector<std::vector<std::shared_ptr<Tile>>> all_tiles;
 		};
 	}
 }

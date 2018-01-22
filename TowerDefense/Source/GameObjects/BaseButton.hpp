@@ -24,7 +24,10 @@ namespace TowerDefense
 		class BaseButton:public GameEngine::BaseGameObject
 		{
 		public:
+			BaseButton();
+			~BaseButton();
 			void destroy() override;
+			void unListenToEvents() override;
 			void on_mouse_overlap() override;
 			void on_mouse_overlap_front() override;
 			void on_mouse_click(bool left) override;
@@ -37,8 +40,12 @@ namespace TowerDefense
 			 */
 			Sharp::Event<void> on_click;
 		protected:
+			sf::Sprite* sprite;
 			sf::Text text;
 			void init() override;
+			void update() override;
+		private:
+			bool base_btn_destroyed = false;
 		};
 	}
 }

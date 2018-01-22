@@ -2,6 +2,7 @@
 #include "InputManager.hpp"
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Physics.hpp"
+#include "Constants.hpp"
 
 using namespace sf;
 using namespace TowerDefense::GameEngine;
@@ -14,12 +15,8 @@ namespace TowerDefense
 		{
 		}
 		// todo: having manager doing engine stuff do not seem correct
-		void InputManager::update_mouse(const sf::Event& event, const Window& window)
+		void InputManager::update_mouse_btn_pressed(const sf::Event& event, const Window& window)
 		{
-			// mouse 
-			// get relativ mouse position, always put before any Physics click
-			Physics::mouse_position = Mouse::getPosition() - window.getPosition();
-        	
         	if (Mouse::isButtonPressed(Mouse::Right))
 			{
 				Physics::on_right_click();
@@ -32,7 +29,7 @@ namespace TowerDefense
 
 		void InputManager::update(Window& window)
 		{
-			// Handle events todo:: make an input manager
+			// Handle events
 			Event event;
 			while (window.pollEvent(event))
 			{
@@ -40,6 +37,7 @@ namespace TowerDefense
 				if (event.type == Event::Closed 
 					|| (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
 				{
+					GlobalShared::on_window_close();
 					window.close();
 					break;
 				}
@@ -52,7 +50,16 @@ namespace TowerDefense
 						case GameState::Pause: update_pause_events(event); break;
 					}
 				}
-				update_mouse(event, window);
+				if (event.type == Event::MouseMoved)
+				{
+					// get relativ mouse position, always put before any Physics click
+					// Mouse::getPosition() - window.getPosition(); give local position with offset of 30 on y because ou window top bar.
+					Physics::mouse_position = Mouse::getPosition(window);
+				}
+				if (event.type == Event::MouseButtonPressed)
+				{
+					update_mouse_btn_pressed(event, window);
+				}
 			}
 		}
 

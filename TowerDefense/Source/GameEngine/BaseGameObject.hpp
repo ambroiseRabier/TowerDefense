@@ -26,31 +26,54 @@ namespace TowerDefense
 			 * \brief Do `init(); Scene::addChild(*this); Physics::addChild(*this); start();` in this order.
 			 * addChild are being done only if you provided a drawable, collider.
 			 * For lazy peoples.
-			 * \param hasCollider (default:false)
-			 * \param hasGraphic (default:true)
 			 */
 			void auto_start();
 			/**
 			 * \brief Initialize BaseGameObject variables.
+			 * This can be called again after using recycle().
+			 * You should put initialization of elements that might change later here.
+			 * But avoid creating texture/drawable here if they won't change in the gameobject lifetime (pooling).
 			 */
 			virtual void init();
 			/**
 			 * \brief Start BaseGameObject.
 			 */
 			virtual void start();
-			/**
-			 * \brief You should call it before deleting BaseGameObject from memory.
-			 */
-			virtual void destroy();
 		protected:
 			virtual void listenToEvents(); 
 			virtual void unListenToEvents();
-			/// Called every frame.
+
+			/**
+			 * \brief 
+			 * Called every frame.
+			 */
 			virtual void update();
-			/// Reset state (for pooling).
+			
+			/**
+			 * \brief 
+			 * Reset state. (for pooling)
+			 */
 			virtual void recycle();
+
+			
+			/**
+			 * \brief
+			 * It is called in descontructor (no manual public call since alt-f4, pressing red creutz would not call it).
+			 * You cannot call virtual children methods in deconstructor.
+			 * That mean the override of unlistenEvents() IS NOT CALLED if you call destroy() in deconstructor of BaseGameObject.
+			 * (same for destroy() override)
+			 * BUT if you call destroy() in BaseButton (as exemple) that inherit from BaseGameObject then BaseGameObject destroy() will be called.
+			 * 
+			 * If you want your override of destroy and unlistenToEvents to work you need to call destroy() from your own deconstructor.
+			 */
+			virtual void destroy();
 		private:
 			bool flag_is_init;
+			/**
+			 * \brief 
+			 * Avoid callind destroy two time when some children in inheritance call it too.
+			 * (Calling it two time do not make it crash)
+			 */
 			bool flag_is_destroyed;
 		};
 
