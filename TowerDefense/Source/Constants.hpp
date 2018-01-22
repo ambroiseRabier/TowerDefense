@@ -159,6 +159,9 @@ namespace TowerDefense
 		extern sf::Font* default_font;
 		extern sf::Texture* menu_background;
 		extern sf::Texture* default_ui_btn;
+		extern sf::Texture* grass_build_texture;
+		extern sf::Texture* road_walk_texture;
+
 		/**
 		 * \brief 
 		 * You could use it to save something quickly before exiting.

@@ -9,6 +9,10 @@ namespace TowerDefense
 		{
 		}
 
+		Tile::Tile(const sf::Texture* texture)
+		{
+		}
+
 
 		Tile::~Tile()
 		{
