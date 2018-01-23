@@ -44,6 +44,13 @@ namespace TowerDefense
 			const std::string loading_background = "Assets/loading_background_inverted.png";
 			const std::string menu_background = "Assets/menu_background.jpg";
 			const std::string default_ui_btn = "Assets/base_btn.png";
+			const std::string road_walk = "Assets/Tile/road.png";
+			const std::string grass_build = "Assets/Tile/grass.png";
+			const std::string spawn_others = "Assets/Tile/spawn.png";
+			const std::string castle_others = "Assets/Tile/castle.png";
+			const std::string missing_texture_tile = "Assets/Tile/missing_texture.png";
+
+			// faire vector des assets et boucle for pr load.
 		}
 
 		/**
@@ -53,6 +60,7 @@ namespace TowerDefense
 		namespace ZIndex // use a contexpr with math.max and math.min to check if in range ? use enum ?
 		{
 			const unsigned int background_start = 0;
+			const unsigned int tile_background = 20;
 			const unsigned int game_objects_start = 100;
 			const unsigned int ui_start = 900;
 			const unsigned int max = 999;
@@ -161,12 +169,15 @@ namespace TowerDefense
 		extern sf::Texture* default_ui_btn;
 		extern sf::Texture* grass_build_texture;
 		extern sf::Texture* road_walk_texture;
+		extern sf::Texture* spawn_others_texture;
+		extern sf::Texture* castle_others_texture;
 
 		/**
 		 * \brief 
 		 * You could use it to save something quickly before exiting.
 		 */
 		extern Sharp::Event<void> on_window_close;
+		extern sf::Texture* missing_texture_tile_texture;
 	}
 }
 #endif

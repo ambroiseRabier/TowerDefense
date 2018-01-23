@@ -14,11 +14,16 @@ namespace TowerDefense
 		std::shared_ptr<Spawn> MapManager::spawn;
 		bool MapManager::level_loaded_flag;
 		const MapParams* MapManager::map_params;
-		std::vector<std::vector<std::shared_ptr<Tile>>> MapManager::all_tiles;
+		std::map<int, std::map<int, std::shared_ptr<Tile>>> MapManager::all_tiles;
 
 		Castle& MapManager::get_castle()
 		{
 			return *castle.get();
+		}
+
+		void MapManager::init()
+		{
+			// nothing :/
 		}
 
 		void MapManager::load_level(const unsigned int& level_number)
@@ -40,15 +45,13 @@ namespace TowerDefense
 				spawn.reset();
 			if (!all_tiles.empty())
 			{
-				for (int x = 0; x < all_tiles.size(); x++)
+				for (auto all_tile : all_tiles)
 				{
-					std::vector<std::shared_ptr<Tile>> row = all_tiles.at(x);
-					for (int y = 0; y < row.size(); y++)
+					for (auto tile_id : all_tile.second)
 					{
-						std::shared_ptr<Tile> tile_id = row.at(y);
-						tile_id.reset();
+						tile_id.second.reset();
 					}
-					row.clear();
+					all_tile.second.clear();
 				}
 				all_tiles.clear();
 			}
@@ -81,11 +84,22 @@ namespace TowerDefense
 				std::vector<TileId> row =l_map_params.map_background_tile_array.at(x);
 				for(int y = 0; y < row.size() ; y++) {
 					const TileId tile_id = row.at(y);
-					Debug::log("making array, is this gonna crash ?");
+					/*if (all_tiles.empty())
+					{
+						all_tiles = {};
+					}
+					if (all_tiles[x].empty())
+					{
+						all_tiles[x] = {};
+					}*/
+					auto cc = spawn_tile(tile_id);
+					cc->auto_start();
+					cc->get_transformable().setPosition(x*100, y*100);/*
 					all_tiles[x][y] = spawn_tile(tile_id);
 					all_tiles[x][y]->x = x;
 					all_tiles[x][y]->y = y;
-					all_tiles[x][y]->auto_start();
+					all_tiles[x][y]->get_transformable().setPosition(x*100, y*100);*/
+					//all_tiles[x][y]->auto_start();
 				}
 			}
 		}
@@ -101,11 +115,13 @@ namespace TowerDefense
 				spawn = std::make_shared<Spawn>();
 				return static_cast<std::shared_ptr<Tile>>(spawn);
 			case Grass_Build:
-				return std::make_shared<Tile>(GlobalShared::grass_build_texture);
+				return std::make_shared<Tile>(GlobalShared::grass_build_texture, Grass_Build);
 			case Road_Walk:
-				return std::make_shared<Tile>(GlobalShared::road_walk_texture);
+				return std::make_shared<Tile>(GlobalShared::road_walk_texture, Road_Walk);
+			default:
+				Debug::warn("MapManager: No tile corresponding to TileId found. Add one.");
+				return std::make_shared<Tile>(GlobalShared::missing_texture_tile_texture, Missing_texture);
 			}
-			Debug::warn("MapManager: No tile corresponding to TileId found. Add one.");
 		}
 	}
 }

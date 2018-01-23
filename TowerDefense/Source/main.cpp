@@ -48,6 +48,19 @@ void preloading() // todo factorize
 	texture = new Texture();
 	texture->loadFromFile(Assets::menu_background);
 	GlobalShared::menu_background = texture;
+	// tiles
+	texture = new Texture();
+	texture->loadFromFile(Assets::road_walk);
+	GlobalShared::road_walk_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::grass_build);
+	GlobalShared::grass_build_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::spawn_others);
+	GlobalShared::spawn_others_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::castle_others);
+	GlobalShared::castle_others_texture = texture;
 }
 
 /**
@@ -85,6 +98,7 @@ int main()
 	// Init all managers
 	Scene::init();
 	Physics::init(Config::tested_collisions);
+	MapManager::init();
 	UI::MenuScreen::init();
 	UI::HUD::init();
 	UI::PauseScreen::init();

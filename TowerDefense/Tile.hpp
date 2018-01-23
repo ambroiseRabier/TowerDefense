@@ -43,6 +43,10 @@ namespace TowerDefense
 			 * \brief Decoration grass;
 			 */
 			Grass_Deco,
+			/**
+			 * \brief Missing texture, default.
+			 */
+			Missing_texture,
 		};
 
 		/**
@@ -66,12 +70,12 @@ namespace TowerDefense
 		{
 		public:
 			Tile();
-			Tile(const sf::Texture* texture);
-			~Tile();
-			const TileId get_tile_id() const;
+			Tile(const sf::Texture* texture, TileId id);
+			TileId get_tile_id() const;
 			int x;
 			int y;
-		private:
+		protected:
+			void init() override;
 			/**
 			 * \brief 
 			 * Should be unique to the class.

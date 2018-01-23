@@ -11,7 +11,6 @@ namespace TowerDefense
 		{
 		public:
 			Spawn();
-			~Spawn();
 		};
 	}
 }

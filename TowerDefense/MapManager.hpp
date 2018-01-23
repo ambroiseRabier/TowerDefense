@@ -21,6 +21,7 @@ namespace TowerDefense
 			 * \return Castle.
 			 */
 			static Castle& get_castle();
+			static void init();
 			/**
 			 * \brief 
 			 * Generate Level according to Config.
@@ -42,7 +43,7 @@ namespace TowerDefense
 			static void load_level_internal(const unsigned int& level_number);
 			static void create_tiles(const MapParams l_map_params);
 			static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);
-			static std::vector<std::vector<std::shared_ptr<Tile>>> all_tiles;
+			static std::map<int, std::map<int, std::shared_ptr<Tile>>> all_tiles;
 		};
 	}
 }
