@@ -29,8 +29,8 @@ namespace TowerDefense
 				std::make_pair(Collider::Tag::Minion, Collider::Tag::TowerShoot),
 				std::make_pair(Collider::Tag::UI, Collider::Tag::UI) // for demo only !
 			};
-			const unsigned int window_width = 800;
-			const unsigned int window_height = 600;
+			const unsigned int window_width = 1280;
+			const unsigned int window_height = 720;
 			const bool debug_draw_collider = true;
 			const sf::Color collider_debug_color = sf::Color(240,10,15,100);
 		}

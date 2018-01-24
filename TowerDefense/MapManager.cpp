@@ -5,6 +5,7 @@
 #include "Constants.hpp"
 #include "Player.hpp"
 #include "Managers/GameManager.hpp"
+#include "Align.hpp"
 
 namespace TowerDefense
 {
@@ -16,6 +17,7 @@ namespace TowerDefense
 		const MapParams* MapManager::map_params;
 		//std::map<int, std::map<int, std::shared_ptr<Tile>*>> MapManager::all_tiles;
 		std::map<unsigned int, std::map<unsigned int, Tile*>> MapManager::all_tiles_p;
+		sf::Transformable map_origin;
 
 		Castle& MapManager::get_castle()
 		{
@@ -84,17 +86,32 @@ namespace TowerDefense
 			}
 			map_params = &Constants::LevelDesign::level0;
 			GameManager::get_player().set_money(map_params->start_money);
+			align_center(*map_params);
 			create_tiles(*map_params);
+		}
+
+		void MapManager::align_center(const MapParams l_map_params)
+		{
+			auto game_object_hightest_z = *std::max_element(
+			l_map_params.map_background_tile_array.begin(),
+				l_map_params.map_background_tile_array.end(),
+				compare_row_size_p
+			);
+			const sf::Vector2f map_size(
+				l_map_params.map_background_tile_array.size() * Constants::Assets::tile_size,
+				game_object_hightest_z.size() * Constants::Assets::tile_size
+			);
+			UI::Align::center(
+				map_origin,
+				sf::Vector2f(
+					-map_size.x/2,
+					-map_size.y/2
+				)
+			);
 		}
 
 		void MapManager::create_tiles(const MapParams l_map_params)
 		{
-			// temp, should take in account widht and height of screen and map.
-			const sf::Vector2f position(
-				100.f, //l_map_params.map_background_tile_array.last
-				100.f // l_map_params.map_background_tile_array.find ... last
-			);
-
 			const int length = l_map_params.map_background_tile_array.size();
 			for(int y = 0; y < length ; y++) {
 				std::vector<TileId> row =l_map_params.map_background_tile_array.at(y);
@@ -123,8 +140,8 @@ namespace TowerDefense
 					all_tiles[x][y]->auto_start();*/
 					all_tiles_p[x][y] = spawn_tile(tile_id);
 					all_tiles_p[x][y]->get_transformable().setPosition(
-						position.x + x * Constants::Assets::tile_size,
-						position.y + y * Constants::Assets::tile_size
+						map_origin.getPosition().x + x * Constants::Assets::tile_size,
+						map_origin.getPosition().y + y * Constants::Assets::tile_size
 					);
 					all_tiles_p[x][y]->auto_start();
 				}
@@ -171,6 +188,11 @@ namespace TowerDefense
 				Debug::warn("MapManager: No tile corresponding to TileId found. Add one.");
 				return new Tile(GlobalShared::missing_texture_tile_texture, Missing_texture);
 			}
+		}
+
+		bool MapManager::compare_row_size_p(const std::vector<TileId> first, const std::vector<TileId> second)
+		{
+			return first.size() < second.size();
 		}
 	}
 }

@@ -19,7 +19,8 @@ namespace TowerDefense
 					))
 			);
 			collider = std::make_shared<Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 50, 50))
+				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 50, 50)),
+				Collider::Tag::Minion
 				);
 			//collider->tag = Collider::Tag::UI;
 			z_index = Constants::ZIndex::minions_start;

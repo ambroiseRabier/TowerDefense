@@ -41,9 +41,11 @@ namespace TowerDefense
 			static Spawn* spawn;
 			static bool level_loaded_flag;
 			static void load_level_internal(const unsigned int& level_number);
+			static void align_center(const MapParams l_map_params);
 			static void create_tiles(const MapParams l_map_params);
 			//static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);
 			static Tile* spawn_tile(const TileId tile_id);
+			static bool compare_row_size_p(const std::vector<TileId> first, const std::vector<TileId> second);
 			//static Tile* spawn_tile(const TileId tile_id);
 			//static std::map<int, std::map<int, std::shared_ptr<Tile>*>> all_tiles;
 			static std::map<unsigned int, std::map<unsigned int, Tile*>> all_tiles_p;
