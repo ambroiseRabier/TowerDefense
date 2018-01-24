@@ -2,6 +2,7 @@
 #include "HUD.hpp"
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
+#include "Constants.hpp"
 
 namespace TowerDefense
 {
@@ -17,9 +18,9 @@ namespace TowerDefense
 		{
 			level_text = std::make_unique<BaseText>("*Level");
 			money_text = std::make_unique<BaseText>("*Money");
-			pause_btn = std::make_unique<BaseButton>();
-			restart_btn = std::make_unique<BaseButton>();
-			up_speed_btn = std::make_unique<BaseButton>();
+			pause_btn = std::make_unique<BaseButton>(GlobalShared::pause_btn_texture);
+			restart_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
+			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::speedUp_btn_texture);
 			Align::top_center(level_text->get_transformable(), sf::Vector2f(-200, 30));
 			Align::top_center(money_text->get_transformable(), sf::Vector2f(200, 30));
 			Align::top_right(pause_btn->get_transformable(), sf::Vector2f(30, 30));

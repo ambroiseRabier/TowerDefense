@@ -3,6 +3,7 @@
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Debug.hpp"
+#include "Constants.hpp"
 
 namespace TowerDefense
 {
@@ -13,8 +14,8 @@ namespace TowerDefense
 
 		void MenuScreen::init()
 		{
-			play_btn = std::make_unique<BaseButton>();
-			quit_btn = std::make_unique<BaseButton>();
+			play_btn = std::make_unique<BaseButton>(GlobalShared::play_btn_texture);
+			quit_btn = std::make_unique<BaseButton>(GlobalShared::quit_btn_texture);
 			Align::center(play_btn->get_transformable(), sf::Vector2f(0, -100));
 			Align::center(quit_btn->get_transformable(), sf::Vector2f(0, 100));
 			close();

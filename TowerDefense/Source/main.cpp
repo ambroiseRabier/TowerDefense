@@ -72,6 +72,43 @@ void preloading() // todo factorize
 	texture = new Texture();
 	texture->loadFromFile(Assets::hpBar_background);
 	GlobalShared::hpBar_background_texture = texture;
+
+	//Buttons
+	texture = new Texture();
+	texture->loadFromFile(Assets::level1_btn);
+	GlobalShared::level1_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::level2_btn);
+	GlobalShared::level2_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::level3_btn);
+	GlobalShared::level3_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::pause_btn);
+	GlobalShared::pause_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::play_btn);
+	GlobalShared::play_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::tower1_btn);
+	GlobalShared::tower1_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::tower2_btn);
+	GlobalShared::tower2_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::tower3_btn);
+	GlobalShared::tower3_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::quit_btn);
+	GlobalShared::quit_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::restart_btn);
+	GlobalShared::restart_btn_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::speedUp_btn);
+	GlobalShared::speedUp_btn_texture = texture;
+
+
 }
 
 /**

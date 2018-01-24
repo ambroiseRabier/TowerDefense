@@ -12,7 +12,16 @@ namespace TowerDefense
 	{
 		BaseButton::BaseButton()
 		{
-			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*GlobalShared::default_ui_btn);
+			CreateButton(GlobalShared::default_ui_btn);
+		}
+
+		BaseButton::BaseButton(sf::Texture* pTexture)
+		{
+			CreateButton(pTexture);
+		}
+
+		BaseButton::CreateButton(sf::Texture* pTexture) {
+			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(pTexture);
 			// I prefer avoiding downcast of the drawable into sprite
 			// sprite get a pointer, that will be null after destroy() method being called.
 			// It do not own the sprite memory.
@@ -23,17 +32,18 @@ namespace TowerDefense
 				// weird
 				std::move(static_cast_ptr<sf::Drawable>(
 					my_sprite
-				))
+					))
 			);
+
 			// since I used std::move, do not call my_sprite anymore ! 
 			// But I can still use drawable field. or sprite field.
 			//sprite->setPosition(0,0);
 			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
 			//sprite.setColor(sf::Color(255, 255, 255, 200));
 			collider = std::make_shared<Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,137,60)),
+				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 137, 60)),
 				Collider::Tag::UI
-			);
+				);
 			//collider->tag = Collider::Tag::UI;
 			z_index = Constants::ZIndex::ui_start;
 		}
@@ -100,12 +110,12 @@ namespace TowerDefense
 
 		void BaseButton::set_text(std::string new_text)
 		{
-			//todo
+
 		}
 
 		std::string BaseButton::get_text()
 		{
-			return "todo";
+			return "text";
 		}
 	}
 }

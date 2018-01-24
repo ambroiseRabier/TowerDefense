@@ -19,6 +19,19 @@ namespace TowerDefense
 		sf::Texture* minion_red_texture;
 		sf::Texture* hpBar_background_texture;
 		sf::Texture* hpBar_jauge_texture;
+
+		sf::Texture* level1_btn_texture;
+		sf::Texture* level2_btn_texture;
+		sf::Texture* level3_btn_texture;
+		sf::Texture* pause_btn_texture;
+		sf::Texture* play_btn_texture;
+		sf::Texture* quit_btn_texture;
+		sf::Texture* tower1_btn_texture;
+		sf::Texture* tower2_btn_texture;
+		sf::Texture* tower3_btn_texture;
+		sf::Texture* speedUp_btn_texture;
+		sf::Texture* restart_btn_texture;
+
 		Sharp::Event<void> on_window_close;
 	}
 }

@@ -39,7 +39,7 @@ namespace TowerDefense
 
 		void Health::heal(float value)
 		{
-			if (actualHealth == maxHealth || actualHealth + value >= maxHealth) {
+			if (actualHealth + value >= maxHealth) {
 				actualHealth = maxHealth;
 			}
 			else

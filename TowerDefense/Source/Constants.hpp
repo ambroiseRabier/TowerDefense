@@ -57,6 +57,18 @@ namespace TowerDefense
 			const std::string hpBar_background = "Assets/healthbar_background.png";
 			const std::string hpBar_jauge = "Assets/healthbar_jauge.png";
 
+			const std::string level1_btn = "Assets/level1_btn.png";
+			const std::string level2_btn = "Assets/level2_btn.png";
+			const std::string level3_btn = "Assets/level3_btn.png";
+			const std::string pause_btn = "Assets/pause_btn.png";
+			const std::string play_btn = "Assets/play_btn.png";
+			const std::string quit_btn = "Assets/quit_btn.png";
+			const std::string tower1_btn = "Assets/tower1_btn.png";
+			const std::string tower2_btn = "Assets/tower2_btn.png";
+			const std::string tower3_btn = "Assets/tower3_btn.png";
+			const std::string restart_btn = "Assets/restart_btn.png";
+			const std::string speedUp_btn = "Assets/speedUp_btn.png";
+
 			// faire vector des assets et boucle for pr load.
 		}
 
@@ -184,6 +196,18 @@ namespace TowerDefense
 		extern sf::Texture* minion_red_texture;
 		extern sf::Texture* hpBar_background_texture;
 		extern sf::Texture* hpBar_jauge_texture;
+
+		extern sf::Texture* level1_btn_texture;
+		extern sf::Texture* level2_btn_texture;
+		extern sf::Texture* level3_btn_texture;
+		extern sf::Texture* pause_btn_texture;
+		extern sf::Texture* play_btn_texture;
+		extern sf::Texture* quit_btn_texture;
+		extern sf::Texture* tower1_btn_texture;
+		extern sf::Texture* tower2_btn_texture;
+		extern sf::Texture* tower3_btn_texture;
+		extern sf::Texture* speedUp_btn_texture;
+		extern sf::Texture* restart_btn_texture;
 
 		/**
 		 * \brief 

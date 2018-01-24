@@ -22,7 +22,7 @@ namespace TowerDefense
 				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 50, 50)),
 				Collider::Tag::Minion
 				);
-			//collider->tag = Collider::Tag::UI;
+			collider->tag = Collider::Tag::Minion;
 			z_index = Constants::ZIndex::minions_start;
 		}
 

@@ -4,6 +4,7 @@
 #include "GameEngine/BaseGameObject.hpp"
 #include "Utils/Event.h"
 
+
 namespace TowerDefense
 {
 	namespace UI
@@ -25,6 +26,7 @@ namespace TowerDefense
 		{
 		public:
 			BaseButton();
+			BaseButton(sf::Texture* pTexture);
 			~BaseButton();
 			void destroy() override;
 			void unListenToEvents() override;
@@ -43,6 +45,7 @@ namespace TowerDefense
 			sf::Sprite* sprite;
 			sf::Text text;
 			void init() override;
+			void CreateButton(sf::Texture* pTexture);
 			void update() override;
 		private:
 			bool base_btn_destroyed = false;
