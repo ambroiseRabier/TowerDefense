@@ -34,5 +34,7 @@ namespace TowerDefense
 		sf::Texture* restart_btn_texture;
 
 		Sharp::Event<void> on_window_close;
+		Sharp::Event<void> on_window_close_game_engine_pass;
+;
 	}
 }

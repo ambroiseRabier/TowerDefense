@@ -33,7 +33,6 @@ namespace TowerDefense
 				SpriteRect=4,
 				SpriteCircle=5,
 				SpritePixelPerfect=6,
-				
 			};
 			/**
 			 * \brief This is also the default constructor. But you better add a Tag other then Tag::None.

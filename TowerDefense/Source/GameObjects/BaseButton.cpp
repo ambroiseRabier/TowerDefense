@@ -33,7 +33,7 @@ namespace TowerDefense
 				// weird
 				std::move(static_cast_ptr<sf::Drawable>(
 					my_sprite
-					))
+				))
 			);
 
 			// since I used std::move, do not call my_sprite anymore ! 

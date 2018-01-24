@@ -4,6 +4,7 @@
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Debug.hpp"
 #include "GlobalShared.hpp"
+#include "HUD.hpp"
 
 namespace TowerDefense
 {
@@ -23,6 +24,14 @@ namespace TowerDefense
 			quit_btn->on_click += Sharp::EventHandler::Bind(&MenuScreen::on_click_quit);
 			play_btn->auto_start();
 			quit_btn->auto_start();
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
+		}
+
+		void MenuScreen::destroy()
+		{
+			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
+			play_btn.reset(nullptr);
+			quit_btn.reset(nullptr);
 		}
 
 		void MenuScreen::on_click_play()
@@ -46,5 +55,6 @@ namespace TowerDefense
 			play_btn->isActive = false;
 			quit_btn->isActive = false;
 		}
+
 	}
 }

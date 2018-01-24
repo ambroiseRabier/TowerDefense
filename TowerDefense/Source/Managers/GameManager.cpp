@@ -7,6 +7,7 @@
 #include "../../HUD.hpp"
 #include "../../GameDesign.hpp"
 #include "../../MapManager.hpp"
+#include "../../GlobalShared.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -24,9 +25,20 @@ namespace TowerDefense
 
 		void GameManager::init(sf::RenderWindow* new_window_ref)
 		{
-			GameEngine::Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
+			Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
 			window_ref = new_window_ref;
 			game_speed_index = Constants::GameDesign::game_speed_default_index;
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
+		}
+
+		void GameManager::destroy()
+		{
+			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
+			MapManager::destroy_current_level();
+			//window_ref = nullptr; DONT DO THAT, or cna't close window.
+			if (player.get()) {
+				player.reset(nullptr);
+			}
 		}
 
 		void GameManager::start()
@@ -88,9 +100,11 @@ namespace TowerDefense
 
 		void GameManager::exit_game()
 		{
-			// in theory this will never be null when called.
-			if (window_ref)
-				window_ref->close();
+			GlobalShared::on_window_close();
+			Debug::log("this work ? up or down");
+			GlobalShared::on_window_close_game_engine_pass();
+			Debug::assert_m(window_ref, "GameManager: window_ref should never be null");
+			window_ref->close();
 		}
 
 		void GameManager::up_game_speed()

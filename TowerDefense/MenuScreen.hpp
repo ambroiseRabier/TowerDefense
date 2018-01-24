@@ -11,6 +11,7 @@ namespace TowerDefense
 		{
 		public:
 			static void init();
+			static void destroy();
 			static void open();
 			static void close();
 		private:

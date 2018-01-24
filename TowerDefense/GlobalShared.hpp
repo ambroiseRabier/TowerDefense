@@ -37,9 +37,17 @@ namespace TowerDefense
 
 		/**
 		 * \brief 
+		 * Use this one managers or screen that have static variable having memory on heap.
 		 * You could use it to save something quickly before exiting.
 		 */
 		extern Sharp::Event<void> on_window_close;
+		
+		/**
+		 * \brief 
+		 * This is reserved for GameEngine. (could be for destroying manager if they were singleton).
+		 * (Anything outside of the scope of the game tower defense itself.
+		 */
+		extern Sharp::Event<void> on_window_close_game_engine_pass;
 		extern sf::Texture* missing_texture_tile_texture;
 	}
 }

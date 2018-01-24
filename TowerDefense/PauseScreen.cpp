@@ -2,7 +2,6 @@
 #include "PauseScreen.hpp"
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
-#include "GameEngine/Debug.hpp"
 #include "GlobalShared.hpp"
 
 namespace TowerDefense
@@ -23,6 +22,14 @@ namespace TowerDefense
 			menu_return_btn->on_click += Sharp::EventHandler::Bind(&PauseScreen::on_click_menu_return);
 			resume_btn->auto_start();
 			menu_return_btn->auto_start();
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
+		}
+
+		void PauseScreen::destroy()
+		{
+			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
+			resume_btn.reset(nullptr);
+			menu_return_btn.reset(nullptr);
 		}
 
 		void PauseScreen::on_click_resume()

@@ -17,6 +17,7 @@ namespace TowerDefense
 		{
 		public:
 			static void init();
+			static void destroy();
 			static void open();
 			static void close();
 			static void set_level_text(const std::string& text);

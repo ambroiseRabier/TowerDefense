@@ -4,7 +4,6 @@
 #define GAME_MANAGER_HPP
 #include "Utils/Event.h"
 #include "../../Player.hpp"
-#include <memory>
 #include "../../Tile.hpp"
 
 namespace TowerDefense
@@ -34,6 +33,7 @@ namespace TowerDefense
 			static float get_deltaTime();
 			static Game::Player& get_player();
 		private:
+			static void destroy();
 			/**
 			 * \brief 
 			 * Speed the turret and minions.

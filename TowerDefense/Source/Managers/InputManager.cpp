@@ -37,8 +37,7 @@ namespace TowerDefense
 				if (event.type == Event::Closed 
 					|| (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
 				{
-					GlobalShared::on_window_close();
-					window.close();
+					GameManager::exit_game();
 					break;
 				}
 				if (event.type == Event::KeyPressed)

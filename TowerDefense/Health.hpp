@@ -12,7 +12,7 @@ namespace TowerDefense
 		 * \brief Contain health logic and the health bar.
 		 * Sprite can be partially rendered to reduce healthbar.
 		 */
-		class Health : public  TowerDefense::GameEngine::BaseGameObject
+		class Health : public  GameEngine::BaseGameObject
 		{
 		public:
 			Health(const float maxHealth = 1);

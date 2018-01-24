@@ -35,6 +35,17 @@ namespace TowerDefense
 			pause_btn->auto_start();
 			restart_btn->auto_start();
 			up_speed_btn->auto_start();
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
+		}
+
+		void HUD::destroy()
+		{
+			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
+			level_text.reset(nullptr);
+			money_text.reset(nullptr);
+			pause_btn.reset(nullptr);
+			restart_btn.reset(nullptr);
+			up_speed_btn.reset(nullptr);
 		}
 
 		void HUD::open()

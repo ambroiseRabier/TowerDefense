@@ -518,6 +518,10 @@ namespace Sharp    // short for SharpTools
 		*/
 		void operator()()
 		{
+			/*if (m_eventHandlers.empty())
+			{
+				return; // (ambroise) If the event handler has no one listening, do nothing. (Actually that was not the bug)
+			}*/
 #ifndef SHARP_EVENT_NO_BOOST
 			// this event just go through the list without modifying it, so a read lock is enough.
 			// we could have copied the handler list and released the lock, but we didn't do that for two reasons:
