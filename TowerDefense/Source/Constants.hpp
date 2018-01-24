@@ -49,6 +49,9 @@ namespace TowerDefense
 			const std::string spawn_others = "Assets/Tile/spawn.png";
 			const std::string castle_others = "Assets/Tile/castle.png";
 			const std::string missing_texture_tile = "Assets/Tile/missing_texture.png";
+			const std::string minion_red = "Assets/Minion/minion_red.png";
+			const std::string hpBar_background = "Assets/healthbar_background.png";
+			const std::string hpBar_jauge = "Assets/healthbar_jauge.png";
 
 			// faire vector des assets et boucle for pr load.
 		}
@@ -62,6 +65,9 @@ namespace TowerDefense
 			const unsigned int background_start = 0;
 			const unsigned int tile_background = 20;
 			const unsigned int game_objects_start = 100;
+			const unsigned int minions_start = 200;
+			const unsigned int hpBars_background_start = 300;
+			const unsigned int hpBars_jauge_start = 301;
 			const unsigned int ui_start = 900;
 			const unsigned int max = 999;
 		}
@@ -171,6 +177,9 @@ namespace TowerDefense
 		extern sf::Texture* road_walk_texture;
 		extern sf::Texture* spawn_others_texture;
 		extern sf::Texture* castle_others_texture;
+		extern sf::Texture* minion_red_texture;
+		extern sf::Texture* hpBar_background_texture;
+		extern sf::Texture* hpBar_jauge_texture;
 
 		/**
 		 * \brief 

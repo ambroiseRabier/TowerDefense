@@ -61,6 +61,17 @@ void preloading() // todo factorize
 	texture = new Texture();
 	texture->loadFromFile(Assets::castle_others);
 	GlobalShared::castle_others_texture = texture;
+	//Minions
+	texture = new Texture();
+	texture->loadFromFile(Assets::minion_red);
+	GlobalShared::minion_red_texture = texture;
+	//HpBar
+	texture = new Texture();
+	texture->loadFromFile(Assets::hpBar_jauge);
+	GlobalShared::hpBar_jauge_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::hpBar_background);
+	GlobalShared::hpBar_background_texture = texture;
 }
 
 /**
@@ -118,6 +129,15 @@ int main()
 	GameManager::start();
 	Debug::info("Game started.");
 
+	//Try to instantiate ennemy
+	Game::Minion* minion_Peon = new Game::Minion();
+	minion_Peon->get_transformable().setPosition(200, 200);
+	minion_Peon->auto_start();
+
+	Game::Health* minion_Health = new Game::Health(1000);//setHp
+	minion_Health->get_transformable().setPosition(200, 190);
+	minion_Health->auto_start();
+
 	// exemples stuff, to delete.
 	/*UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
 	base_button->get_transformable().setPosition(150,150);
@@ -146,7 +166,6 @@ int main()
 		// if the game logic take time then the user might see the window blink.
 		window.clear();
 		Scene::render(window);
-
 		// fps overlay
 		if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
 		{

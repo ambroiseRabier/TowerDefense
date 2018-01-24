@@ -16,6 +16,9 @@ namespace TowerDefense
 		sf::Texture* spawn_others_texture;
 		sf::Texture* castle_others_texture;
 		sf::Texture* missing_texture_tile_texture;
+		sf::Texture* minion_red_texture;
+		sf::Texture* hpBar_background_texture;
+		sf::Texture* hpBar_jauge_texture;
 		Sharp::Event<void> on_window_close;
 	}
 }

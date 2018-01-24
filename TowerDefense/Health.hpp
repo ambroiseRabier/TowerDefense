@@ -12,10 +12,10 @@ namespace TowerDefense
 		 * \brief Contain health logic and the health bar.
 		 * Sprite can be partially rendered to reduce healthbar.
 		 */
-		class Health : TowerDefense::GameEngine::BaseGameObject
+		class Health : public  TowerDefense::GameEngine::BaseGameObject
 		{
 		public:
-			Health();
+			Health(float hpValue =0 );
 			~Health();
 			float money_on_death = 0;
 			void damage(float value);
@@ -25,8 +25,12 @@ namespace TowerDefense
 			 * \brief When health is at 0 or beyond, send an event with money_on_death value.
 			 */
 			static Sharp::Event<float> on_death;
-		private:
-			float health;
+		protected:
+			void setGraphismScale();
+			float maxHealth;
+			float actualHealth;
+			sf::Sprite* sprite_background;
+			sf::Sprite* sprite_jauge;
 		};
 	}
 }
