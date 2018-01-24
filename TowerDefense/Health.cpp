@@ -49,7 +49,7 @@ namespace TowerDefense
 
 		void Health::setGraphismScale() {
 			float lScale = actualHealth / maxHealth;
-			if(lScale >=0 && lScale < 1)
+			if(lScale >=0 && lScale <= 1)
 				sprite_jauge->setScale(lScale, 1);
 		}
 

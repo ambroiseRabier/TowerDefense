@@ -3,6 +3,7 @@
 #include "Constants.hpp"
 #include "../../Player.hpp"
 #include "../../MenuScreen.hpp"
+#include "../../PauseScreen.hpp"
 #include "GameEngine/Debug.hpp"
 #include "../../HUD.hpp"
 
@@ -61,14 +62,16 @@ namespace TowerDefense
 		{
 			state = GameState::Pause;
 			Debug::log("GameManager: pause");
-			// PauseScreen::open();
+			UI::PauseScreen::open();
+			UI::HUD::close();
 		}
 
 		void GameManager::un_pause()
 		{
 			state = GameState::Playing;
 			Debug::log("GameManager: unpause");
-			// PauseScreen::close();
+			UI::PauseScreen::close();
+			UI::HUD::open();
 		}
 
 		void GameManager::return_menu()
