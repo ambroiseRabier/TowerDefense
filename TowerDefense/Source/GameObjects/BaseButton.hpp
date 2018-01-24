@@ -45,7 +45,7 @@ namespace TowerDefense
 			sf::Sprite* sprite;
 			sf::Text text;
 			void init() override;
-			void CreateButton(sf::Texture* pTexture);
+			void create_button(sf::Texture* pTexture);
 			void update() override;
 		private:
 			bool base_btn_destroyed = false;

@@ -12,16 +12,16 @@ namespace TowerDefense
 	{
 		BaseButton::BaseButton()
 		{
-			CreateButton(GlobalShared::default_ui_btn);
+			create_button(GlobalShared::default_ui_btn);
 		}
 
 		BaseButton::BaseButton(sf::Texture* pTexture)
 		{
-			CreateButton(pTexture);
+			create_button(pTexture);
 		}
 
-		BaseButton::CreateButton(sf::Texture* pTexture) {
-			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(pTexture);
+		void BaseButton::create_button(sf::Texture* pTexture) {
+			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*pTexture);
 			// I prefer avoiding downcast of the drawable into sprite
 			// sprite get a pointer, that will be null after destroy() method being called.
 			// It do not own the sprite memory.
