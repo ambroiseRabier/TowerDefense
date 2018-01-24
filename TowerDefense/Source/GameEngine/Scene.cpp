@@ -2,7 +2,7 @@
 #include "Scene.hpp"
 #include "Debug.hpp"
 #include "Physics.hpp"
-#include "Constants.hpp"
+#include "../../Config.hpp"
 
 using namespace std;
 namespace TowerDefense
@@ -53,6 +53,7 @@ namespace TowerDefense
 						children->get_transformable().getTransform()
 					);
 
+					// ReSharper disable once CppRedundantBooleanExpressionArgument
 					if (Constants::Config::debug_draw_collider && children->get_collider())
 					{
 						draw_debug_collider(window, children);

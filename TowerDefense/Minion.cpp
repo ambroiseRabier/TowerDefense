@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Minion.hpp"
-#include "Constants.hpp"
 #include "../../CastUtils.hpp"
-#include "GameEngine/Debug.hpp"
+#include "Config.hpp"
+#include "GlobalShared.hpp"
 
 namespace TowerDefense
 {
@@ -16,13 +16,12 @@ namespace TowerDefense
 			set_drawable(
 				std::move(static_cast_ptr<sf::Drawable>(
 					my_sprite
-					))
+				))
 			);
-			collider = std::make_shared<Collider>(
+			collider = std::make_shared<GameEngine::Collider>(
 				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 50, 50)),
-				Collider::Tag::Minion
-				);
-			collider->tag = Collider::Tag::Minion;
+				GameEngine::Collider::Tag::Minion
+			);
 			z_index = Constants::ZIndex::minions_start;
 		}
 

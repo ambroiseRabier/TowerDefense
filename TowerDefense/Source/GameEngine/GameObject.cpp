@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameObject.hpp"
 #include "Debug.hpp"
-#include "Constants.hpp"
+#include "../../Config.hpp"
 
 using namespace sf;
 
@@ -18,7 +18,7 @@ namespace TowerDefense
 		{
 			return first->get_zIndex() < second->get_zIndex();
 		}
-		///end static
+		//end static
 
 		GameObject::GameObject(std::unique_ptr<Drawable> newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableUnique(std::move(newDrawable))
 		{

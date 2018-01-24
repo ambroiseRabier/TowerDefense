@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "Health.hpp"
-#include "Constants.hpp"
 #include "../../CastUtils.hpp"
 #include "GameEngine/Debug.hpp"
+#include "GlobalShared.hpp"
+#include "Config.hpp"
 
 namespace TowerDefense
 {
@@ -39,18 +40,15 @@ namespace TowerDefense
 
 		void Health::heal(float value)
 		{
-			if (actualHealth + value >= maxHealth) {
-				actualHealth = maxHealth;
-			}
-			else
-				actualHealth += value;
+			Debug::assert_m(value > 0, "Health: healing value should be positiv and not egal to 0.");
+			actualHealth = std::min(actualHealth + value, maxHealth);
 			setGraphismScale();
 		}
 
 		void Health::setGraphismScale() {
-			float lScale = actualHealth / maxHealth;
-			if(lScale >=0 && lScale <= 1)
-				sprite_jauge->setScale(lScale, 1);
+			const float lScale = actualHealth / maxHealth;
+			Debug::assert_m(lScale >=0 && lScale <= 1, "actualHealth / maxHealth should give a value between 0 and 1 included.");
+			sprite_jauge->setScale(lScale, 1);
 		}
 
 		const float& Health::get_health()

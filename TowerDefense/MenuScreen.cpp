@@ -3,7 +3,7 @@
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Debug.hpp"
-#include "Constants.hpp"
+#include "GlobalShared.hpp"
 
 namespace TowerDefense
 {

@@ -2,10 +2,12 @@
 #include "MapManager.hpp"
 #include "GameEngine/Debug.hpp"
 #include "MapParams.hpp"
-#include "Constants.hpp"
 #include "Player.hpp"
 #include "Managers/GameManager.hpp"
 #include "Align.hpp"
+#include "LevelDesign.hpp"
+#include "Assets.hpp"
+#include "GlobalShared.hpp"
 
 namespace TowerDefense
 {

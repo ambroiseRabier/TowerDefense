@@ -150,9 +150,6 @@
     <ClInclude Include="MapManager.hpp">
       <Filter>Header Files\TowerDefense\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Constants.hpp">
-      <Filter>Header Files\TowerDefense\Constants</Filter>
-    </ClInclude>
     <ClInclude Include="MapParams.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
     </ClInclude>
@@ -216,6 +213,21 @@
     <ClInclude Include="UpgradeBtn.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Config.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDesign.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelDesign.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalShared.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -247,9 +259,6 @@
     </ClCompile>
     <ClCompile Include="Source\GameEngine\CollisionTest.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Constants.cpp">
-      <Filter>Source Files\TowerDefense\Constants</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\Debug.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
@@ -328,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="UpgradeBtn.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GlobalShared.cpp">
+      <Filter>Source Files\TowerDefense\Constants</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

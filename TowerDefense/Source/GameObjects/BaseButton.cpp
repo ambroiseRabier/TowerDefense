@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "BaseButton.hpp"
-#include "Constants.hpp"
 #include "../../CastUtils.hpp"
 #include "GameEngine/Debug.hpp"
+#include "../../GlobalShared.hpp"
+#include "../../Config.hpp"
 
 using namespace TowerDefense::GameEngine;
 

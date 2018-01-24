@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "BaseText.hpp"
 #include "CastUtils.hpp"
-#include "Constants.hpp"
+#include "Config.hpp"
+#include "GlobalShared.hpp"
 
 namespace TowerDefense
 {

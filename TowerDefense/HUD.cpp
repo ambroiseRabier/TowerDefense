@@ -2,7 +2,7 @@
 #include "HUD.hpp"
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
-#include "Constants.hpp"
+#include "GlobalShared.hpp"
 
 namespace TowerDefense
 {

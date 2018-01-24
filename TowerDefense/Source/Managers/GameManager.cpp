@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "GameManager.hpp"
-#include "Constants.hpp"
 #include "../../Player.hpp"
 #include "../../MenuScreen.hpp"
 #include "../../PauseScreen.hpp"
 #include "GameEngine/Debug.hpp"
 #include "../../HUD.hpp"
+#include "../../GameDesign.hpp"
+#include "../../MapManager.hpp"
 
+using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
 {
 	namespace Managers
@@ -16,13 +18,13 @@ namespace TowerDefense
 		sf::Clock GameManager::clock;
 		Sharp::Event<void> GameManager::on_update;
 		unsigned int GameManager::game_speed_index;
-		std::unique_ptr<Player> GameManager::player;
+		std::unique_ptr<Game::Player> GameManager::player;
 		sf::RenderWindow* GameManager::window_ref;
 
 
 		void GameManager::init(sf::RenderWindow* new_window_ref)
 		{
-			Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
+			GameEngine::Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
 			window_ref = new_window_ref;
 			game_speed_index = Constants::GameDesign::game_speed_default_index;
 		}

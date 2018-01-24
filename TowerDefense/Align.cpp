@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Align.hpp"
-#include "Constants.hpp"
+#include "GlobalShared.hpp"
+#include "Config.hpp"
 
 using namespace TowerDefense::Constants::Config;
 namespace TowerDefense

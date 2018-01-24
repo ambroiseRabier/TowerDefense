@@ -2,7 +2,7 @@
 #include "InputManager.hpp"
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Physics.hpp"
-#include "Constants.hpp"
+#include "../../GlobalShared.hpp"
 
 using namespace sf;
 using namespace TowerDefense::GameEngine;

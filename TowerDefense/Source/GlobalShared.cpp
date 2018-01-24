@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "Constants.hpp"
+#include "../GlobalShared.hpp"
+#include "Utils/Event.h"
 
 namespace TowerDefense
 {

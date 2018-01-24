@@ -20,14 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Align.hpp" />
+    <ClInclude Include="Assets.hpp" />
     <ClInclude Include="BaseText.hpp" />
     <ClInclude Include="Castle.hpp" />
     <ClInclude Include="CastUtils.hpp" />
+    <ClInclude Include="Config.hpp" />
     <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
+    <ClInclude Include="GameDesign.hpp" />
+    <ClInclude Include="GlobalShared.hpp" />
     <ClInclude Include="HealMinion.hpp" />
     <ClInclude Include="Health.hpp" />
     <ClInclude Include="HUD.hpp" />
+    <ClInclude Include="LevelDesign.hpp" />
     <ClInclude Include="MapManager.hpp" />
     <ClInclude Include="MapParams.hpp" />
     <ClInclude Include="MapWaveManager.hpp" />
@@ -48,7 +53,6 @@
     <ClInclude Include="Source\GameEngine\Collider.hpp" />
     <ClInclude Include="Source\Utils\Collision.h" />
     <ClInclude Include="Source\GameEngine\CollisionTest.hpp" />
-    <ClInclude Include="Source\Constants.hpp" />
     <ClInclude Include="Source\GameEngine\Debug.hpp" />
     <ClInclude Include="Source\Utils\Event.h" />
     <ClInclude Include="Source\Utils\FPS.hpp" />
@@ -90,7 +94,7 @@
     <ClCompile Include="Source\GameEngine\Collider.cpp" />
     <ClCompile Include="Source\Utils\Collision.cpp" />
     <ClCompile Include="Source\GameEngine\CollisionTest.cpp" />
-    <ClCompile Include="Source\Constants.cpp" />
+    <ClCompile Include="Source\GlobalShared.cpp" />
     <ClCompile Include="Source\GameEngine\Debug.cpp" />
     <ClCompile Include="Source\GameEngine\GameObject.cpp" />
     <ClCompile Include="Source\Managers\InputManager.cpp" />

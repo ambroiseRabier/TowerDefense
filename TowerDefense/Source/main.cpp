@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Managers/GameManager.hpp"
-#include "Constants.hpp"
 #include "GameEngine/Debug.hpp"
 #include "GameEngine/Scene.hpp"
 #include "GameEngine/Physics.hpp"
@@ -9,6 +8,12 @@
 #include "GameObjects/MenuBackground.hpp"
 #include "../HUD.hpp"
 #include "../PauseScreen.hpp"
+#include "../Assets.hpp"
+#include "../GlobalShared.hpp"
+#include "../Config.hpp"
+#include "../Health.hpp"
+#include "../Minion.hpp"
+#include "../MapManager.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
