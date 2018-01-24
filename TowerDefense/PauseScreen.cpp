@@ -16,8 +16,8 @@ namespace TowerDefense
 		{
 			resume_btn = std::make_unique<BaseButton>(GlobalShared::play_btn_texture);
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::quit_btn_texture);
-			Align::center(resume_btn->get_transformable(), sf::Vector2f(0, -100));
-			Align::center(menu_return_btn->get_transformable(), sf::Vector2f(0, 100));
+			Align::center(resume_btn->get_transformable(), sf::Vector2f(0, -50));
+			Align::center(menu_return_btn->get_transformable(), sf::Vector2f(0, 50));
 			close();
 			resume_btn->on_click += Sharp::EventHandler::Bind(&PauseScreen::on_click_resume);
 			menu_return_btn->on_click += Sharp::EventHandler::Bind(&PauseScreen::on_click_menu_return);

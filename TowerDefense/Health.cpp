@@ -9,7 +9,7 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		Health::Health(float hpValue)
+		Health::Health(const float maxHealth) : maxHealth(maxHealth)
 		{
 			//SetJauge
 			std::unique_ptr<sf::Sprite> my_sprite_jauge = std::make_unique<sf::Sprite>(*GlobalShared::hpBar_jauge_texture);
@@ -22,8 +22,6 @@ namespace TowerDefense
 			);
 
 			z_index = Constants::ZIndex::hpBars_jauge_start;
-
-			maxHealth = hpValue;
 			actualHealth = maxHealth;
 		}
 
@@ -34,7 +32,7 @@ namespace TowerDefense
 
 		void Health::damage(float value)
 		{
-			actualHealth -= value;
+			actualHealth = std::max(0.f, actualHealth - value);
 			setGraphismScale();
 		}
 

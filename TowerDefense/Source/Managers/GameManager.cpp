@@ -38,7 +38,10 @@ namespace TowerDefense
 		{
 			deltaTime = clock.restart().asSeconds();
 			// appeler delegate Update, metter pause ici.
-			on_update();
+			if (state != GameState::Pause)
+			{
+				on_update();
+			}
 		}
 		
 		void GameManager::start_level(const unsigned int& i)
@@ -63,7 +66,6 @@ namespace TowerDefense
 		void GameManager::pause()
 		{
 			state = GameState::Pause;
-			Debug::log("GameManager: pause");
 			UI::PauseScreen::open();
 			UI::HUD::close();
 		}
@@ -71,7 +73,6 @@ namespace TowerDefense
 		void GameManager::un_pause()
 		{
 			state = GameState::Playing;
-			Debug::log("GameManager: unpause");
 			UI::PauseScreen::close();
 			UI::HUD::open();
 		}
@@ -79,7 +80,10 @@ namespace TowerDefense
 		void GameManager::return_menu()
 		{
 			Debug::log("GameManager: return_menu");
+			MapManager::destroy_current_level();
 			player.reset(nullptr);
+			UI::PauseScreen::close();
+			UI::MenuScreen::open();
 		}
 
 		void GameManager::exit_game()

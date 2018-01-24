@@ -15,7 +15,7 @@ namespace TowerDefense
 		class Health : public  TowerDefense::GameEngine::BaseGameObject
 		{
 		public:
-			Health(float hpValue =0 );
+			Health(const float maxHealth = 1);
 			~Health();
 			float money_on_death = 0;
 			void damage(float value);
