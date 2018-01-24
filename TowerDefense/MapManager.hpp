@@ -37,13 +37,16 @@ namespace TowerDefense
 			static const MapParams* map_params;
 			static const bool get_level_loaded_flag();
 		private:
-			static std::shared_ptr<Castle> castle;
-			static std::shared_ptr<Spawn> spawn;
+			static Castle* castle;
+			static Spawn* spawn;
 			static bool level_loaded_flag;
 			static void load_level_internal(const unsigned int& level_number);
 			static void create_tiles(const MapParams l_map_params);
-			static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);
-			static std::map<int, std::map<int, std::shared_ptr<Tile>>> all_tiles;
+			//static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);
+			static Tile* spawn_tile(const TileId tile_id);
+			//static Tile* spawn_tile(const TileId tile_id);
+			//static std::map<int, std::map<int, std::shared_ptr<Tile>*>> all_tiles;
+			static std::map<int, std::map<int, Tile*>> all_tiles_p;
 		};
 	}
 }

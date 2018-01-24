@@ -20,6 +20,7 @@ namespace TowerDefense
 
 		void Tile::init()
 		{
+			BaseGameObject::init();
 			// fallback in case someone used Tile default constructor without provind any drawable.
 			if (!get_drawable())
 			{
