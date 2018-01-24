@@ -46,7 +46,7 @@ namespace TowerDefense
 			static Tile* spawn_tile(const TileId tile_id);
 			//static Tile* spawn_tile(const TileId tile_id);
 			//static std::map<int, std::map<int, std::shared_ptr<Tile>*>> all_tiles;
-			static std::map<int, std::map<int, Tile*>> all_tiles_p;
+			static std::map<unsigned int, std::map<unsigned int, Tile*>> all_tiles_p;
 		};
 	}
 }

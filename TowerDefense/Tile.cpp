@@ -29,6 +29,10 @@ namespace TowerDefense
 					static_cast_ptr<sf::Drawable>(std::make_unique<sf::Sprite>(*GlobalShared::missing_texture_tile_texture)));
 				z_index = Constants::ZIndex::tile_background;
 			}
+			/* todo
+			Debug::assert_m(
+				 == Constants::Assets::tile_size
+			);*/
 		}
 
 		TileId Tile::get_tile_id() const

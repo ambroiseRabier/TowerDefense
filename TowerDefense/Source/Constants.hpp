@@ -40,6 +40,10 @@ namespace TowerDefense
 		 */
 		namespace Assets
 		{
+			/**
+			 * \brief All tiles should do 50x50 in size.
+			 */
+			const unsigned int tile_size = 50;
 			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 			const std::string loading_background = "Assets/loading_background_inverted.png";
 			const std::string menu_background = "Assets/menu_background.jpg";
@@ -135,7 +139,7 @@ namespace TowerDefense
 				{
 					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
 					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
-					//{{Spawn_Other}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Castle_Other},},
+					{{Spawn_Other}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Castle_Other},},
 					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
 					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
 				},

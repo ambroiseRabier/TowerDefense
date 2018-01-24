@@ -15,8 +15,7 @@ namespace TowerDefense
 		bool MapManager::level_loaded_flag;
 		const MapParams* MapManager::map_params;
 		//std::map<int, std::map<int, std::shared_ptr<Tile>*>> MapManager::all_tiles;
-		std::map<int, std::map<int, Tile*>> MapManager::all_tiles_p;
-
+		std::map<unsigned int, std::map<unsigned int, Tile*>> MapManager::all_tiles_p;
 
 		Castle& MapManager::get_castle()
 		{
@@ -90,11 +89,17 @@ namespace TowerDefense
 
 		void MapManager::create_tiles(const MapParams l_map_params)
 		{
+			// temp, should take in account widht and height of screen and map.
+			const sf::Vector2f position(
+				100.f, //l_map_params.map_background_tile_array.last
+				100.f // l_map_params.map_background_tile_array.find ... last
+			);
+
 			const int length = l_map_params.map_background_tile_array.size();
-			for(int x = 0; x < length ; x++) {
-				std::vector<TileId> row =l_map_params.map_background_tile_array.at(x);
-				for(int y = 0; y < row.size() ; y++) {
-					const TileId tile_id = row.at(y);
+			for(int y = 0; y < length ; y++) {
+				std::vector<TileId> row =l_map_params.map_background_tile_array.at(y);
+				for(int x = 0; x < row.size() ; x++) {
+					const TileId tile_id = row.at(x);
 					/*if (all_tiles.empty())
 					{
 						all_tiles = {};
@@ -117,7 +122,10 @@ namespace TowerDefense
 					all_tiles[x][y]->get_transformable().setPosition(x*100,y*100);
 					all_tiles[x][y]->auto_start();*/
 					all_tiles_p[x][y] = spawn_tile(tile_id);
-					all_tiles_p[x][y]->get_transformable().setPosition(x*100,y*100);
+					all_tiles_p[x][y]->get_transformable().setPosition(
+						position.x + x * Constants::Assets::tile_size,
+						position.y + y * Constants::Assets::tile_size
+					);
 					all_tiles_p[x][y]->auto_start();
 				}
 			}
