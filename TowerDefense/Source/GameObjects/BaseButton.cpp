@@ -118,5 +118,11 @@ namespace TowerDefense
 		{
 			return "text";
 		}
+
+		sf::Sprite& BaseButton::get_sprite() const
+		{
+			Debug::assert_m(sprite, "BaseButton: Sprite being nullptr is unexpected.");
+			return *sprite;
+		}
 	}
 }

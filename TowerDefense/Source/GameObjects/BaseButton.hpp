@@ -41,6 +41,7 @@ namespace TowerDefense
 			 * \brief Called on click.
 			 */
 			Sharp::Event<void> on_click;
+			sf::Sprite& get_sprite() const;
 		protected:
 			sf::Sprite* sprite;
 			sf::Text text;

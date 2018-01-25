@@ -23,6 +23,10 @@ namespace TowerDefense
 			static void top_center(sf::Transformable& transformable, const sf::Vector2f& offset);
 			static void bottom_center(sf::Transformable& transformable, const sf::Vector2f& offset);
 
+			// posbbilité pour aligner tout seul le prite, faire un get width et get height ds gameobject calculé automatiquement
+			// à partir des sprite, shape, text qu'il contient, sachant qu'il peut en contenir plusieurs pas vertex array...
+			// à partir de cet widht/height calculé l'offset nécessaire.
+
 			// surcharge mvoe the gameobject transformalbe and sprite transformable 
 			/*static void top(GameObject& game_object, const float& offset=0.f);
 			static void bottom(GameObject& game_object, const float& offset=0.f);

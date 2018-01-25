@@ -62,7 +62,7 @@ namespace TowerDefense
 		void Align::top_right(sf::Transformable& transformable, const sf::Vector2f& offset)
 		{
 			transformable.setPosition(
-				window_width - offset.x * 8,
+				window_width - offset.x,
 				offset.y
 			);
 		}
@@ -78,8 +78,8 @@ namespace TowerDefense
 		void Align::bottom_right(sf::Transformable& transformable, const sf::Vector2f& offset)
 		{
 			transformable.setPosition(
-				window_width - offset.x * 8,
-				window_height - offset.y * 4
+				window_width - offset.x,
+				window_height - offset.y
 			);
 		}
 
@@ -100,24 +100,7 @@ namespace TowerDefense
 				window_height - offset.y
 			);
 		}
-
-		// region gameobject surcharge
-
-		/*void Align::top(sf::Sprite& sprite, const float& offset)
-		{
-		}
-
-		void Align::bottom(GameObject& game_object, const float& offset)
-		{
-		}
-
-		void Align::top_right(sf::Sprite& sprite, const sf::Vector2f offset)
-		{
-			offset.x -= sprite.getGlobalBounds().left - sprite.getGlobalBounds().width
-			top_right(
-				,
-			);
-		}*/
+		//todo surcharge avec 3 param au lieu de vec2
 
 		// end region
 	}
