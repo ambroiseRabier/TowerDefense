@@ -21,6 +21,7 @@ namespace TowerDefense
 			 * \return Castle.
 			 */
 			static Castle& get_castle();
+			static Spawn& get_spawn();
 			static void init();
 			/**
 			 * \brief 

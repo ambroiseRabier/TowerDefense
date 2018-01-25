@@ -23,7 +23,14 @@ namespace TowerDefense
 
 		Castle& MapManager::get_castle()
 		{
+			Debug::assert_m(castle, "MapManager: castle being nullptr is unexpected.");
 			return *castle;
+		}
+
+		Spawn& MapManager::get_spawn()
+		{
+			Debug::assert_m(spawn, "MapManager: spawn being nullptr is unexpected.");
+			return *spawn;
 		}
 
 		void MapManager::init()

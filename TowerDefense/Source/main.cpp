@@ -171,15 +171,6 @@ int main()
 	GameManager::start();
 	Debug::info("Game started.");
 
-	//Try to instantiate ennemy
-	Game::Minion* minion_Peon = new Game::Minion();
-	minion_Peon->get_transformable().setPosition(200, 200);
-	minion_Peon->auto_start();
-
-	Game::Health* minion_Health = new Game::Health(1000);//setHp
-	minion_Health->get_transformable().setPosition(200, 190);
-	minion_Health->auto_start();
-
 	// exemples stuff, to delete.
 	/*UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
 	base_button->get_transformable().setPosition(150,150);

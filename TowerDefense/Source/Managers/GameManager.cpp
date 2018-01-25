@@ -8,6 +8,7 @@
 #include "../../GameDesign.hpp"
 #include "../../MapManager.hpp"
 #include "../../GlobalShared.hpp"
+#include "../../MapWaveManager.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -70,6 +71,8 @@ namespace TowerDefense
 			}
 			UI::HUD::open();
 			MapManager::load_level(i);
+			// add delay here ? to let the player prepare his stuff.
+			MapWaveManager::start_wave_spawn();
 		}
 
 		void GameManager::restart_level()
