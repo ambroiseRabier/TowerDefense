@@ -35,12 +35,11 @@ namespace TowerDefense
 				SpritePixelPerfect=6,
 			};
 			/**
-			 * \brief This is also the default constructor. But you better add a Tag other then Tag::None.
-			 * \param newDot 
-			 * \param newTag 
+			 * \brief This is the default constructor. But you better add a Tag other then Tag::None.
 			 */
-			Collider(std::unique_ptr<sf::Vector2f> newDot = std::make_unique<sf::Vector2f>(0,0), Tag newTag = Tag::None);
-			Collider(std::unique_ptr<sf::FloatRect> newRect, Tag newTag = Tag::None);
+			Collider(Tag newTag = Tag::None);
+			Collider(sf::Vector2f newDot, Tag newTag = Tag::None);
+			Collider(sf::FloatRect newRect, Tag newTag = Tag::None);
 			/**
 			 * \brief 
 			 * Note: if you intend on using pixel perfect collision, 
@@ -76,8 +75,8 @@ namespace TowerDefense
 			const sf::Sprite& get_sprite() const;
 		private:
 			Type type;
-			std::unique_ptr<sf::FloatRect> rect;
-			std::unique_ptr<sf::Vector2f> dot;
+			sf::FloatRect rect;
+			sf::Vector2f dot;
 			const sf::Sprite* sprite;
 		};
 	}

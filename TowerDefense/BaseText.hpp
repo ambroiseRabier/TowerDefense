@@ -16,6 +16,8 @@ namespace TowerDefense
 		public:
 			BaseText(const std::string& text = "");
 			void set_text(const std::string& new_text) const;
+			const sf::Text& get_text() const;
+
 		private:
 			sf::Text* text;
 		};

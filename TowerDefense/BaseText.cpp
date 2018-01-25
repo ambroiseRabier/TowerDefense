@@ -3,6 +3,7 @@
 #include "CastUtils.hpp"
 #include "Config.hpp"
 #include "GlobalShared.hpp"
+#include "GameEngine/Debug.hpp"
 
 namespace TowerDefense
 {
@@ -28,6 +29,12 @@ namespace TowerDefense
 		void BaseText::set_text(const std::string& new_text) const
 		{
 			text->setString(new_text);
+		}
+
+		const sf::Text& BaseText::get_text() const
+		{
+			Debug::assert_m(text, "BaseText: text being nullptr is unexpected.");
+			return *text;
 		}
 	}
 }

@@ -18,9 +18,9 @@ namespace TowerDefense
 					my_sprite
 				))
 			);
-			collider = std::make_shared<GameEngine::Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 50, 50)),
-				GameEngine::Collider::Tag::Minion
+			collider = std::make_shared<Collider>(
+				sf::FloatRect(0, 0, 50, 50),
+				Collider::Tag::Minion
 			);
 			z_index = Constants::ZIndex::minions_start;
 		}

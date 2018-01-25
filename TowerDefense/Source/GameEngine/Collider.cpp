@@ -6,7 +6,11 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		Collider::Collider(std::unique_ptr<sf::FloatRect> newRect, Tag newTag) : tag(newTag), rect(std::move(newRect))
+		Collider::Collider(Tag newTag)
+		{
+		}
+
+		Collider::Collider(const sf::FloatRect newRect, Tag newTag) : tag(newTag), rect(newRect)
 		{
 			type = Type::Rect;
 		}
@@ -21,15 +25,13 @@ namespace TowerDefense
 			);
 		}
 
-		Collider::Collider(std::unique_ptr<sf::Vector2f> newDot, Tag newTag) : tag(newTag), dot(std::move(newDot))
+		Collider::Collider(const sf::Vector2f newDot, Tag newTag) : tag(newTag), dot(newDot)
 		{
 			type = Type::Dot;
 		}
 
 		Collider::~Collider()
 		{
-			if (rect.get()) rect.reset(nullptr);
-			if (dot.get()) dot.reset(nullptr);
 			if (sprite) sprite = nullptr; // useless ? (don't delete it, you don't have authority)
 		}
 
@@ -45,7 +47,7 @@ namespace TowerDefense
 				type == Type::Dot, 
 				"Collider: collider is not of type Dot. But you are trying to access it."
 			);
-			return *dot;
+			return dot;
 		}
 
 		const sf::FloatRect& Collider::get_rect() const
@@ -54,7 +56,7 @@ namespace TowerDefense
 				type == Type::Rect, 
 				"Collider: collider is not of type Rect. But you are trying to access it."
 			);
-			return *rect;
+			return rect;
 		}
 
 		const sf::Sprite& Collider::get_sprite() const

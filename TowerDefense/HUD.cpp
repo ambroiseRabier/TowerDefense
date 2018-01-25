@@ -4,6 +4,7 @@
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
 #include "CastUtils.hpp"
+#include "GameEngine/Debug.hpp"
 
 namespace TowerDefense
 {
@@ -22,11 +23,24 @@ namespace TowerDefense
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::pause_btn_texture);
 			restart_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
 			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::speedUp_btn_texture);
-			Align::top_center(level_text->get_transformable(), sf::Vector2f(-200, 30));
-			Align::top_center(money_text->get_transformable(), sf::Vector2f(200, 30));
-			Align::top_right(pause_btn->get_transformable(), sf::Vector2f(30, 30));
+			Debug::log(std::to_string(pause_btn->get_sprite().getGlobalBounds().width));
+			Align::top_center(level_text->get_transformable(), sf::Vector2f(
+				-200, 
+				30
+			));
+			Align::top_center(money_text->get_transformable(), sf::Vector2f(
+				200, 
+				30
+			));
+			Align::top_right(pause_btn->get_transformable(), sf::Vector2f(
+				30 + pause_btn->get_sprite().getGlobalBounds().width, 
+				30
+			));
 			Align::top_left(restart_btn->get_transformable(), sf::Vector2f(30, 30));
-			Align::bottom_right(up_speed_btn->get_transformable(), sf::Vector2f(30, 30));
+			Align::bottom_right(up_speed_btn->get_transformable(), sf::Vector2f(
+				30 + up_speed_btn->get_sprite().getGlobalBounds().width, 
+				30 + up_speed_btn->get_sprite().getGlobalBounds().height
+			));
 			close();
 			pause_btn->on_click += Sharp::EventHandler::Bind(&HUD::on_click_pause);
 			restart_btn->on_click += Sharp::EventHandler::Bind(&HUD::on_click_restart);

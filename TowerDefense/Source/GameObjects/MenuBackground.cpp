@@ -21,7 +21,7 @@ namespace TowerDefense
 
 			z_index = Constants::ZIndex::ui_start-1;
 			collider = std::make_shared<Collider>( // todo: unique would be better no ?
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0,0,200,200)),
+				sf::FloatRect(0,0,200,200),
 				Collider::Tag::UI
 			);
 			transformable->setPosition(200,200);

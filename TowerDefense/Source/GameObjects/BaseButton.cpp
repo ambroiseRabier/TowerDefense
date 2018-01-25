@@ -41,8 +41,9 @@ namespace TowerDefense
 			//sprite->setPosition(0,0);
 			//sprite.setTextureRect(sf::IntRect(10, 10, 50, 30));
 			//sprite.setColor(sf::Color(255, 255, 255, 200));
+			// take collision box of sprite
 			collider = std::make_shared<Collider>(
-				std::make_unique<sf::FloatRect>(sf::FloatRect(0, 0, 137, 60)),
+				sprite->getGlobalBounds(),
 				Collider::Tag::UI
 				);
 			//collider->tag = Collider::Tag::UI;
