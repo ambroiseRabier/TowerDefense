@@ -44,6 +44,7 @@
     <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="ProjectileParams.hpp" />
     <ClInclude Include="Screen.hpp" />
+    <ClInclude Include="SetTimeout.hpp" />
     <ClInclude Include="Source\Managers\GameManager.hpp" />
     <ClInclude Include="Source\stdafx.h" />
     <ClInclude Include="Source\targetver.h" />

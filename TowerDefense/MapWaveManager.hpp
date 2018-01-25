@@ -2,9 +2,7 @@
 #ifndef MAP_WAVE_MANAGER_HPP
 #define MAP_WAVE_MANAGER_HPP
 #include "Minion.hpp"
-#include <memory>
 #include "Health.hpp"
-#include <memory>
 
 // s'occupe du spawn des wave du minion
 // s'assure que get_level_loaded_flag == true

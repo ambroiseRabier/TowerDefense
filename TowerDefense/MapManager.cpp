@@ -107,8 +107,9 @@ namespace TowerDefense
 				compare_row_size_p
 			);
 			const sf::Vector2f map_size(
-				l_map_params.map_background_tile_array.size() * Constants::Assets::tile_size,
-				game_object_hightest_z.size() * Constants::Assets::tile_size
+				// converting to float will make it lose precision, but it's okay there never will be so many tiles.
+				static_cast<float>(l_map_params.map_background_tile_array.size()) * Constants::Assets::tile_size,
+				static_cast<float>(game_object_hightest_z.size()) * Constants::Assets::tile_size
 			);
 			UI::Align::center(
 				map_origin,
@@ -121,10 +122,12 @@ namespace TowerDefense
 
 		void MapManager::create_tiles(const MapParams l_map_params)
 		{
-			const int length = l_map_params.map_background_tile_array.size();
-			for(int y = 0; y < length ; y++) {
+			// should I really cache the length ?? (regarding performance)
+			const auto length = l_map_params.map_background_tile_array.size();
+			for(unsigned int y = 0; y < length ; y++) {
 				std::vector<TileId> row =l_map_params.map_background_tile_array.at(y);
-				for(int x = 0; x < row.size() ; x++) {
+				const auto length2 = row.size();
+				for(unsigned int x = 0; x < length2 ; x++) {
 					const TileId tile_id = row.at(x);
 					/*if (all_tiles.empty())
 					{

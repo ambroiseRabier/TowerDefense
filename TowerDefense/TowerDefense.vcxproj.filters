@@ -228,6 +228,9 @@
     <ClInclude Include="GlobalShared.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
     </ClInclude>
+    <ClInclude Include="SetTimeout.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

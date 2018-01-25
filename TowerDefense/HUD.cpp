@@ -23,7 +23,6 @@ namespace TowerDefense
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::pause_btn_texture);
 			restart_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
 			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::speedUp_btn_texture);
-			Debug::log(std::to_string(pause_btn->get_sprite().getGlobalBounds().width));
 			Align::top_center(level_text->get_transformable(), sf::Vector2f(
 				-200, 
 				30

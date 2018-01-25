@@ -9,6 +9,7 @@
 #include "../../MapManager.hpp"
 #include "../../GlobalShared.hpp"
 #include "../../MapWaveManager.hpp"
+#include "../../SetTimeout.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -71,8 +72,17 @@ namespace TowerDefense
 			}
 			UI::HUD::open();
 			MapManager::load_level(i);
+
+			
+        std::function<void(int,std::string)> func3 = [&](int param1,std::string param2)
+        {
+            std::cout << "func 3 is trigged:" << "   int: " << param1 << ";  string: " << param2 << std::endl;
+        };
+
 			// add delay here ? to let the player prepare his stuff.
-			MapWaveManager::start_wave_spawn();
+			//set_time_out<void>(3000, MapWaveManager::start_wave_spawn);
+			set_time_out<int,std::string>(3000, func3,333,"fds");
+			//MapWaveManager::start_wave_spawn();
 		}
 
 		void GameManager::restart_level()
