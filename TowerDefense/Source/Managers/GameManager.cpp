@@ -33,8 +33,11 @@ namespace TowerDefense
 
 		void GameManager::destroy()
 		{
-			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
-			MapManager::destroy_current_level();
+			//GlobalShared::on_window_close -= Sharp::gEventHandler::Bind(&destroy);
+			if (state == GameState::Pause || state == GameState::Playing)
+			{
+				MapManager::destroy_current_level();
+			}
 			//window_ref = nullptr; DONT DO THAT, or cna't close window.
 			if (player.get()) {
 				player.reset(nullptr);
@@ -103,6 +106,8 @@ namespace TowerDefense
 			GlobalShared::on_window_close();
 			Debug::log("this work ? up or down");
 			GlobalShared::on_window_close_game_engine_pass();
+			Debug::log("second");
+
 			Debug::assert_m(window_ref, "GameManager: window_ref should never be null");
 			window_ref->close();
 		}

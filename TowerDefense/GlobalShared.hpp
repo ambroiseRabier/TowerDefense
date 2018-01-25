@@ -49,6 +49,13 @@ namespace TowerDefense
 		 */
 		extern Sharp::Event<void> on_window_close_game_engine_pass;
 		extern sf::Texture* missing_texture_tile_texture;
+
+		/**
+		 * \brief 
+		 * Delete all global pointer.
+		 * Only use this when exiting the game.
+		 */
+		void destroy();
 	}
 }
 #endif

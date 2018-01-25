@@ -224,5 +224,7 @@ int main()
 		window.draw(fpsText);
 		window.display();
 	}
+	// destroy any global here.
+	GlobalShared::destroy();
 	return 0;
 }
