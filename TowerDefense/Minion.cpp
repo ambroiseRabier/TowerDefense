@@ -8,7 +8,7 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		Minion::Minion()
+		Minion::Minion(sf::Vector2u current_tile_pos) : current_tile_pos(current_tile_pos)
 		{
 			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*GlobalShared::minion_red_texture);
 
@@ -27,6 +27,18 @@ namespace TowerDefense
 
 		Minion::~Minion()
 		{
+		}
+
+
+		void Minion::start()
+		{
+			BaseGameObject::start();
+			
+		}
+
+		void Minion::update()
+		{
+
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace TowerDefense
 		class Castle : public Tile
 		{
 		public:
-			Castle();
+			Castle(const sf::Vector2u map_pos);
 		private:
 			Health life;
 			// I prefer having money here, so It can more easely become part of the gameplay (minions stealing money)

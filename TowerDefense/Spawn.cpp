@@ -8,11 +8,8 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		Spawn::Spawn()
+		Spawn::Spawn(const sf::Vector2u map_pos) : Tile(GlobalShared::spawn_others_texture, Spawn_Other, map_pos)
 		{
-			set_drawable(static_cast_ptr<sf::Drawable>(std::make_unique<sf::Sprite>(*GlobalShared::spawn_others_texture)));
-			z_index = Constants::ZIndex::tile_background;
-			id = Spawn_Other;
 		}
 	}
 }

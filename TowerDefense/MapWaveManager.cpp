@@ -27,7 +27,7 @@ namespace TowerDefense
 		void MapWaveManager::start_wave_spawn()
 		{
 			//Try to instantiate ennemy
-			temp_minion = std::make_unique<Minion>();
+			temp_minion = std::make_unique<Minion>(MapManager::get_spawn().map_pos);
 			temp_minion->get_transformable().setPosition(MapManager::get_spawn().get_transformable().getPosition());
 			temp_minion->auto_start();
 

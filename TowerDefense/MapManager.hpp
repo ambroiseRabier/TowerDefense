@@ -37,7 +37,9 @@ namespace TowerDefense
 			static void destroy_current_level();
 			static const MapParams* map_params;
 			static const bool get_level_loaded_flag();
+			static const sf::Transformable& get_map_origin();
 		private:
+			static sf::Transformable map_origin;
 			static Castle* castle;
 			static Spawn* spawn;
 			static bool level_loaded_flag;
@@ -45,7 +47,7 @@ namespace TowerDefense
 			static void align_center(const MapParams l_map_params);
 			static void create_tiles(const MapParams l_map_params);
 			//static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);
-			static Tile* spawn_tile(const TileId tile_id);
+			static Tile* spawn_tile(const TileId tile_id,  const sf::Vector2u& map_pos);
 			static bool compare_row_size_p(const std::vector<TileId> first, const std::vector<TileId> second);
 			//static Tile* spawn_tile(const TileId tile_id);
 			//static std::map<int, std::map<int, std::shared_ptr<Tile>*>> all_tiles;

@@ -231,6 +231,9 @@
     <ClInclude Include="SetTimeout.hpp">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="PeonMinion.hpp">
+      <Filter>Header Files\TowerDefense\Game\Minions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -343,6 +346,9 @@
     </ClCompile>
     <ClCompile Include="Source\GlobalShared.cpp">
       <Filter>Source Files\TowerDefense\Constants</Filter>
+    </ClCompile>
+    <ClCompile Include="PeonMinion.cpp">
+      <Filter>Source Files\TowerDefense\Game\Minions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

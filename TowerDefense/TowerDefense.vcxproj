@@ -40,6 +40,7 @@
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="MinionParams.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
+    <ClInclude Include="PeonMinion.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="ProjectileParams.hpp" />
@@ -84,6 +85,7 @@
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="PeonMinion.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Screen.cpp" />

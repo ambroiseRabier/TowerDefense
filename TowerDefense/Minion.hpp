@@ -33,17 +33,16 @@ namespace TowerDefense
 		class Minion : public  GameEngine::BaseGameObject
 		{
 		public:
-			Minion();
+			Minion(sf::Vector2u current_tile_pos);
 			~Minion();
 		protected:
-			/*const std::vector<std::vector<TileId>> map_background_tile_array = {
-				{ { Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build }, },
-				{ { Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build }, },
-				{ { Spawn_Other },{ Road_Walk },{ Road_Walk },{ Road_Walk },{ Road_Walk },{ Castle_Other }, },
-				{ { Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build }, },
-				{ { Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build },{ Grass_Build }, },
-			};*/
 			sf::Sprite* sprite;
+			sf::Vector2i current_tile_pos;
+			sf::Vector2i next_tile_pos;
+			// faire un speed, non clamp à la position, du coup si un gars va trop vite il se décalera sur le côté
+			// dans un tournant, l'effet peut être sympa et est tolérable.
+			void start() override;
+			void update() override;
 		};
 	}
 }

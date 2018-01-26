@@ -19,7 +19,7 @@ namespace TowerDefense
 		const MapParams* MapManager::map_params;
 		//std::map<int, std::map<int, std::shared_ptr<Tile>*>> MapManager::all_tiles;
 		std::map<unsigned int, std::map<unsigned int, Tile*>> MapManager::all_tiles_p;
-		sf::Transformable map_origin;
+		sf::Transformable MapManager::map_origin;
 
 		Castle& MapManager::get_castle()
 		{
@@ -83,6 +83,11 @@ namespace TowerDefense
 		const bool MapManager::get_level_loaded_flag()
 		{
 			return level_loaded_flag;
+		}
+
+		const sf::Transformable& MapManager::get_map_origin()
+		{
+			return map_origin;
 		}
 
 		void MapManager::load_level_internal(const unsigned int& level_number)
@@ -150,11 +155,7 @@ namespace TowerDefense
 					/*all_tiles[x][y] = spawn_tile(tile_id);
 					all_tiles[x][y]->get_transformable().setPosition(x*100,y*100);
 					all_tiles[x][y]->auto_start();*/
-					all_tiles_p[x][y] = spawn_tile(tile_id);
-					all_tiles_p[x][y]->get_transformable().setPosition(
-						map_origin.getPosition().x + x * Constants::Assets::tile_size,
-						map_origin.getPosition().y + y * Constants::Assets::tile_size
-					);
+					all_tiles_p[x][y] = spawn_tile(tile_id, sf::Vector2u(x,y));
 					all_tiles_p[x][y]->auto_start();
 				}
 			}
@@ -182,23 +183,23 @@ namespace TowerDefense
 		}*/
 
 		
-		Tile* MapManager::spawn_tile(const TileId tile_id)
+		Tile* MapManager::spawn_tile(const TileId tile_id, const sf::Vector2u& map_pos)
 		{
 			switch (tile_id)
 			{
 			case Castle_Other:
-				castle = new Castle();
+				castle = new Castle(map_pos);
 				return static_cast<Tile*>(castle);
 			case Spawn_Other:
-				spawn = new Spawn();
+				spawn = new Spawn(map_pos);
 				return static_cast<Tile*>(spawn);
 			case Grass_Build:
-				return new Tile(GlobalShared::grass_build_texture, Grass_Build);
+				return new Tile(GlobalShared::grass_build_texture, Grass_Build, map_pos);
 			case Road_Walk:
-				return new Tile(GlobalShared::road_walk_texture, Road_Walk);
+				return new Tile(GlobalShared::road_walk_texture, Road_Walk, map_pos);
 			default:
 				Debug::warn("MapManager: No tile corresponding to TileId found. Add one.");
-				return new Tile(GlobalShared::missing_texture_tile_texture, Missing_texture);
+				return new Tile(GlobalShared::missing_texture_tile_texture, Missing_texture, map_pos);
 			}
 		}
 

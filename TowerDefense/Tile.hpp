@@ -70,12 +70,12 @@ namespace TowerDefense
 		{
 		public:
 			Tile();
-			Tile(const sf::Texture* texture, TileId id);
+			Tile(const sf::Texture* texture, TileId id, const sf::Vector2u map_pos);
 			TileId get_tile_id() const;
-			int x;
-			int y;
+			const sf::Vector2u map_pos;
 		protected:
 			void init() override;
+			void update_position();
 			/**
 			 * \brief 
 			 * Should be unique to the class.

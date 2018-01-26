@@ -10,7 +10,7 @@ namespace TowerDefense
 		class Spawn : public Tile
 		{
 		public:
-			Spawn();
+			Spawn(const sf::Vector2u map_pos);
 		};
 	}
 }
