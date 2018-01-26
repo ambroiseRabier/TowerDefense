@@ -20,6 +20,7 @@ namespace TowerDefense
 		sf::Texture* minion_red_texture;
 		sf::Texture* hpBar_background_texture;
 		sf::Texture* hpBar_jauge_texture;
+		sf::Texture* stone_tower_texture;
 
 		sf::Texture* level1_btn_texture;
 		sf::Texture* level2_btn_texture;
@@ -60,6 +61,8 @@ namespace TowerDefense
 			hpBar_background_texture = nullptr;
 			delete hpBar_jauge_texture;
 			hpBar_jauge_texture = nullptr;
+			delete stone_tower_texture;
+			stone_tower_texture = nullptr;
 
 			delete level1_btn_texture;
 			level1_btn_texture = nullptr;

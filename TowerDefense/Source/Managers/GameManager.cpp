@@ -72,7 +72,7 @@ namespace TowerDefense
 			}
 			UI::HUD::open();
 			MapManager::load_level(i);
-
+			player->create_tower(TowerId::StoneTower);
 			// add delay here ? to let the player prepare his stuff.
 			MapWaveManager::start_wave_spawn();
 		}

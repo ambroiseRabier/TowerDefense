@@ -29,7 +29,7 @@ namespace TowerDefense
 			};
 			const std::unordered_map<TowerId, TowerParams> towers = {
 				{
-					RockTower, 
+					StoneTower, 
 					// towerParams
 					{
 						// projectile params vector

@@ -1,6 +1,7 @@
 #pragma once
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
+#include "Tower.hpp"
 
 namespace TowerDefense
 {
@@ -20,6 +21,9 @@ namespace TowerDefense
 			Player();
 			~Player();
 			void set_money(const float& value);
+			void create_tower(const TowerId tower_id);
+		private:
+			std::unique_ptr<Tower> tower;
 		};
 	}
 }

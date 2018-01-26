@@ -30,6 +30,7 @@ namespace TowerDefense
 			const std::string minion_red = "Assets/Minion/minion_red.png";
 			const std::string hpBar_background = "Assets/healthbar_background.png";
 			const std::string hpBar_jauge = "Assets/healthbar_jauge.png";
+			const std::string stone_tower = "Assets/Tower/stone_tower.png";
 
 			const std::string level1_btn = "Assets/level1_btn.png";
 			const std::string level2_btn = "Assets/level2_btn.png";

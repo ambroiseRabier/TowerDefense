@@ -22,6 +22,7 @@ namespace TowerDefense
 		extern sf::Texture* minion_red_texture;
 		extern sf::Texture* hpBar_background_texture;
 		extern sf::Texture* hpBar_jauge_texture;
+		extern sf::Texture* stone_tower_texture;
 
 		extern sf::Texture* level1_btn_texture;
 		extern sf::Texture* level2_btn_texture;
