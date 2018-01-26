@@ -21,5 +21,10 @@ namespace TowerDefense
 		{
 			return (std::rand() % 2) == 0 ? true : false;
 		}
+		//cannot find :/ ? wtf not public or so ?
+		// multiply with
+		//constexpr double degToRad() { return M_PI / 180; }
+		// multiply with
+		//constexpr double radToDeg() { return 180 / M_PI; }
 	}
 }

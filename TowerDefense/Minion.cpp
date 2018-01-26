@@ -44,13 +44,9 @@ namespace TowerDefense
 		void Minion::update() // todo: split in parts.
 		{
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
-			const float speed = Constants::Assets::tile_size * 2/ 100;// * Managers::GameManager::get_deltaTime();
+			const float speed = Constants::Assets::tile_size * 2 * Managers::GameManager::get_deltaTime();
 			float dist = magnitude(target_pos - transformable->getPosition());
-			Debug::log("    ___     ");
-			Debug::log("dist:" + std::to_string(dist));
-			Debug::log("speed:" + std::to_string(speed));
 			bool overpass_target = dist < speed;
-			Debug::log("bool:" + std::to_string(overpass_target));
 			// if gonna overpass target_pos,save current map_pos, then calculate new target, if new target == previous target, do nothing.
 			if (overpass_target)
 			{
@@ -63,7 +59,6 @@ namespace TowerDefense
 					overpass_target = dist < speed;
 				}
 				// else stay on overpass_target == true
-				Debug::log("change overpass");
 			}
 			// moving normally.
 			if (!overpass_target)
@@ -76,8 +71,12 @@ namespace TowerDefense
 					rotation_to_target
 				);*/
 				transformable->setPosition(
-					calc_position(rotation_to_target, speed)
+					calc_pos(target_pos, speed)
 				);
+				// degree and radian are so error prone :/ and hard to debug !
+				/*transformable->setPosition(
+					calc_position(rotation_to_target, speed)
+				);*/
 			} 
 			// here we are stuck in a dead end.
 			else
@@ -91,11 +90,17 @@ namespace TowerDefense
 			}
 		}
 
+		sf::Vector2f Minion::calc_pos(const sf::Vector2f& target_pos, const float& speed) const
+		{
+			const sf::Vector2f dir(normalize(target_pos - transformable->getPosition()));
+			return transformable->getPosition() + dir * speed;
+		}
+
 		sf::Vector2f Minion::calc_position(const float& rotation, const float& speed) const
 		{
 			sf::Vector2f new_pos(transformable->getPosition());
-			new_pos.x += std::cos(rotation) * speed;
-			new_pos.y += std::sin(rotation) * speed;
+			new_pos.x += static_cast<float>(std::cos(rotation / 180.f * M_PI) * speed);
+			new_pos.y += static_cast<float>(std::sin(rotation / 180.f * M_PI) * speed);
 			return new_pos;
 		}
 

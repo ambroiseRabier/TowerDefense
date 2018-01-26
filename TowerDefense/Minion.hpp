@@ -44,9 +44,18 @@ namespace TowerDefense
 			void start() override;
 			void update() override;
 
+			
+			/**
+			 * \brief Same as calc_position, but no degree or radian here................
+			 * \param target_pos 
+			 * \param speed 
+			 * \return 
+			 */
+			sf::Vector2f calc_pos(const sf::Vector2f& target_pos, const float& speed) const;
+
 			/**
 			 * \brief Calculate next position based on rotation of the transform and given speed.
-			 * \param rotation 
+			 * \param rotation Degree
 			 * \param speed 
 			 * \return 
 			 */
@@ -54,8 +63,8 @@ namespace TowerDefense
 
 			/**
 			 * \brief Calculate rotation to face a given position.
-			 * \param rotateTo 
-			 * \return 
+			 * \param rotateTo Degree
+			 * \return Degree
 			 */
 			float calc_rotation(const sf::Vector2f& rotateTo) const;
 

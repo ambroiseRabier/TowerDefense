@@ -11,8 +11,6 @@
 #include "../Assets.hpp"
 #include "../GlobalShared.hpp"
 #include "../Config.hpp"
-#include "../Health.hpp"
-#include "../Minion.hpp"
 #include "../MapManager.hpp"
 
 using namespace TowerDefense::Managers;
@@ -123,7 +121,18 @@ void preloading() // todo factorize
 int main()
 {
 	Debug::info("Application started.");
-	RenderWindow window(VideoMode(Config::window_width, Config::window_height), Config::game_name);
+	RenderWindow window(
+		VideoMode(Config::window_width, Config::window_height),
+		Config::game_name,
+		Style::Default, 
+		sf::ContextSettings(
+			0,
+			0,
+			4, // anti-aliasing
+			2,
+			0 
+		)
+	);
 	window.setFramerateLimit(Config::fps_limit);
 	// loading init
 	// alocating on heap since I won't need it after loading.
