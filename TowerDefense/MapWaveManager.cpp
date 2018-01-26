@@ -35,5 +35,11 @@ namespace TowerDefense
 			temp_life_bar->get_transformable().setPosition(MapManager::get_spawn().get_transformable().getPosition());
 			temp_life_bar->auto_start();
 		}
+
+		void MapWaveManager::destroy_current_level()
+		{
+			temp_minion.reset(nullptr);
+			temp_life_bar.reset(nullptr);
+		}
 	}
 }

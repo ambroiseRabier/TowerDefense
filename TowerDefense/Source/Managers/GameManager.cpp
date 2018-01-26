@@ -79,31 +79,36 @@ namespace TowerDefense
 
 		void GameManager::restart_level()
 		{
-			state = GameState::Playing;
-			Debug::log("GameManager: restart_level");
+			assert(state == GameState::Playing);
+			MapManager::destroy_current_level();
+			MapWaveManager::destroy_current_level();
+			player.reset(nullptr);
+			MapManager::load_level(0); // todo
+			MapWaveManager::start_wave_spawn();
 		}
 
 		void GameManager::pause()
 		{
-			state = GameState::Pause;
 			UI::PauseScreen::open();
 			UI::HUD::close();
+			state = GameState::Pause;
 		}
 
 		void GameManager::un_pause()
 		{
-			state = GameState::Playing;
 			UI::PauseScreen::close();
 			UI::HUD::open();
+			state = GameState::Playing;
 		}
 
 		void GameManager::return_menu()
 		{
-			Debug::log("GameManager: return_menu");
 			MapManager::destroy_current_level();
+			MapWaveManager::destroy_current_level();
 			player.reset(nullptr);
 			UI::PauseScreen::close();
 			UI::MenuScreen::open();
+			state = GameState::Menu;
 		}
 
 		void GameManager::exit_game()

@@ -234,6 +234,9 @@
     <ClInclude Include="PeonMinion.hpp">
       <Filter>Header Files\TowerDefense\Game\Minions</Filter>
     </ClInclude>
+    <ClInclude Include="Mathf.hpp">
+      <Filter>Header Files\TowerDefense\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -349,6 +352,9 @@
     </ClCompile>
     <ClCompile Include="PeonMinion.cpp">
       <Filter>Source Files\TowerDefense\Game\Minions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathf.cpp">
+      <Filter>Source Files\TowerDefense\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

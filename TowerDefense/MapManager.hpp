@@ -35,6 +35,8 @@ namespace TowerDefense
 			 * Destroy current level.
 			 */
 			static void destroy_current_level();
+			static bool map_pos_exist(const sf::Vector2u map_pos);
+			static bool map_pos_walkable(const sf::Vector2u& map_pos);
 			static const MapParams* map_params;
 			static const bool get_level_loaded_flag();
 			static const sf::Transformable& get_map_origin();

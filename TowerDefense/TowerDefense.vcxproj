@@ -36,6 +36,7 @@
     <ClInclude Include="MapManager.hpp" />
     <ClInclude Include="MapParams.hpp" />
     <ClInclude Include="MapWaveManager.hpp" />
+    <ClInclude Include="Mathf.hpp" />
     <ClInclude Include="MenuScreen.hpp" />
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="MinionParams.hpp" />
@@ -82,6 +83,7 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="MapWaveManager.cpp" />
+    <ClCompile Include="Mathf.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PauseScreen.cpp" />

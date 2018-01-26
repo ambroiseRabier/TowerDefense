@@ -24,6 +24,7 @@ namespace TowerDefense
 			static void init();
 			static void destroy();
 			static void start_wave_spawn();
+			static void destroy_current_level();
 		};
 	}
 }

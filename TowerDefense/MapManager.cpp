@@ -80,6 +80,20 @@ namespace TowerDefense
 			level_loaded_flag = false;
 		}
 
+		bool MapManager::map_pos_exist(const sf::Vector2u map_pos)
+		{
+			return static_cast<bool>(all_tiles_p.count(map_pos.x)) 
+				&& static_cast<bool>(all_tiles_p[map_pos.x].count(map_pos.y));
+		}
+
+		bool MapManager::map_pos_walkable(const sf::Vector2u& map_pos)
+		{
+			// should use exist function on an constant array of walkable tileId, not kiss right now...
+			const TileId destination = all_tiles_p[map_pos.x][map_pos.y]->get_tile_id();
+			return destination == Road_Walk
+				|| destination == Castle_Other;
+		}
+
 		const bool MapManager::get_level_loaded_flag()
 		{
 			return level_loaded_flag;
@@ -130,7 +144,7 @@ namespace TowerDefense
 			// should I really cache the length ?? (regarding performance)
 			const auto length = l_map_params.map_background_tile_array.size();
 			for(unsigned int y = 0; y < length ; y++) {
-				std::vector<TileId> row =l_map_params.map_background_tile_array.at(y);
+				std::vector<TileId> row = l_map_params.map_background_tile_array.at(y);
 				const auto length2 = row.size();
 				for(unsigned int x = 0; x < length2 ; x++) {
 					const TileId tile_id = row.at(x);

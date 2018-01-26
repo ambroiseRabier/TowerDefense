@@ -42,13 +42,19 @@ namespace TowerDefense
 		void Tile::update_position()
 		{
 			get_transformable().setPosition(
-				Managers::MapManager::get_map_origin().getPosition() + static_cast<sf::Vector2f>(map_pos * Constants::Assets::tile_size)
+				map_pos_to_global_pos(map_pos)
 			);
 		}
 
 		TileId Tile::get_tile_id() const
 		{
 			return id;
+		}
+
+		sf::Vector2f Tile::map_pos_to_global_pos(const sf::Vector2u& map_pos)
+		{
+			return Managers::MapManager::get_map_origin().getPosition() +
+				static_cast<sf::Vector2f>(map_pos * Constants::Assets::tile_size);
 		}
 	}
 }
