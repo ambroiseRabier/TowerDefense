@@ -1,12 +1,17 @@
 #include "stdafx.h"
-#include "Timer.h"
+#include "Timer.hpp"
 
-
-Timer::Timer()
+namespace TowerDefense
 {
-}
+	namespace Utils
+	{
+		Timer::Timer()
+		{
+		}
 
 
-Timer::~Timer()
-{
+		Timer::~Timer()
+		{
+		}
+	}
 }

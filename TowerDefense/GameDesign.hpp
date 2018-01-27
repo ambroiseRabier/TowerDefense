@@ -17,10 +17,10 @@ namespace TowerDefense
 			const int game_speed_default_index = 1;
 			const float game_speed_choices[4] = {0.5f, 1.0f, 2.0f, 3.0f};
 			const std::unordered_map<MinionId, MinionParams> minions = {
-				// minion, speed, health, damage, money
-				{Peon, {2.f, 1.f, 2.f, 10.f}},
-				{Tank, {1.f, 3.f, 6.f, 30.f}},
-				{Heal, {1.5f, 2.f, 1.f, 50.f}},
+				// minion, speed, health, damage, money, life_time
+				{Peon, {2.f, 1.f, 2.f, 10.f, 5.f}},
+				{Tank, {1.f, 3.f, 6.f, 30.f, 5.f}},
+				{Heal, {1.5f, 2.f, 1.f, 50.f, 5.f}},
 			};
 			const TowerParams cdj ={ // the fuck, compiler say no problem when I add this for towers bellow. Remove this and see...
 				{ // intelliSensse problem ?

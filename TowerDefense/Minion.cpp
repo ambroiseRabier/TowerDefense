@@ -145,6 +145,7 @@ namespace TowerDefense
 			if (bottom_ok) return next_bottom;
 			if (back_ok) return next_back;
 			return current_map_pos;
+			// could slightly optimize function, but let's keep it visible.
 		}
 
 		bool Minion::validate_pos(const sf::Vector2u& new_pos) const
