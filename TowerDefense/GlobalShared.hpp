@@ -36,6 +36,8 @@ namespace TowerDefense
 		extern sf::Texture* speedUp_btn_texture;
 		extern sf::Texture* restart_btn_texture;
 
+		extern sf::Texture* stone_projectile_0_texture;
+
 		/**
 		 * \brief 
 		 * Use this one managers or screen that have static variable having memory on heap.

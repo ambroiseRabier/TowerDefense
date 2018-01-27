@@ -183,7 +183,12 @@ namespace TowerDefense
 					mouse_position_local
 				);
 			}
-			Debug::warn("Physics WIP: collider type not supported.");
+
+			
+			Debug::warn(
+				"Physics: Collider for mouse type not supported. Add support for: " 
+				+ Collider::Type_to_string(game_object.get_collider()->get_type())
+			);
 			return false;
 		}
 		

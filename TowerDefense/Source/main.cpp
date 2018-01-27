@@ -113,6 +113,9 @@ void preloading() // todo factorize
 	texture = new Texture();
 	texture->loadFromFile(Assets::stone_tower);
 	GlobalShared::stone_tower_texture = texture;
+	texture = new Texture();
+	texture->loadFromFile(Assets::stone_projectile_0);
+	GlobalShared::stone_projectile_0_texture = texture;
 
 
 }

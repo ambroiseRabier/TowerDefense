@@ -44,6 +44,7 @@ namespace TowerDefense
 			const std::string restart_btn = "Assets/restart_btn.png";
 			const std::string speedUp_btn = "Assets/speedUp_btn.png";
 			// faire vector des assets et boucle for pr load.
+			const std::string stone_projectile_0 = "Assets/Projectile/stone_projectile_0.png";
 		}
 	}
 }

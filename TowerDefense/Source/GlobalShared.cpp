@@ -34,6 +34,8 @@ namespace TowerDefense
 		sf::Texture* speedUp_btn_texture;
 		sf::Texture* restart_btn_texture;
 
+		sf::Texture* stone_projectile_0_texture;
+
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
 ;
@@ -84,6 +86,9 @@ namespace TowerDefense
 			speedUp_btn_texture = nullptr;
 			delete restart_btn_texture;
 			restart_btn_texture = nullptr;
+
+			delete stone_projectile_0_texture;
+			stone_projectile_0_texture = nullptr;
 		}
 	}
 }

@@ -7,6 +7,8 @@ namespace TowerDefense
 {
 	namespace Game
 	{
+		struct TowerParams;
+
 		/**
 		* \brief 
 		* Enum representing the tower type, should be unique to class.
@@ -30,11 +32,18 @@ namespace TowerDefense
 			Tower(const sf::Texture* texture, TowerId id, const sf::Vector2u map_pos);
 			~Tower();
 			void init() override;
+			void on_game_object_overlap(GameObject& game_object) override;
 			void update_position();
 			TowerId get_tile_id() const;
+			void temp();
 			const sf::Vector2u map_pos;
-		protected:
+		private:
+			void shoot();
+			void update() override;
 			TowerId id;
+			const TowerParams& params;
+			GameObject* target;
+			unsigned int level=0;
 		};
 	}
 }

@@ -45,7 +45,7 @@ namespace TowerDefense
 			collider = std::make_shared<Collider>(
 				sprite->getGlobalBounds(),
 				Collider::Tag::UI
-				);
+			);
 			//collider->tag = Collider::Tag::UI;
 			z_index = Constants::ZIndex::ui_start;
 		}

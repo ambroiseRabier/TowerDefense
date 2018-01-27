@@ -237,6 +237,9 @@
     <ClInclude Include="Mathf.hpp">
       <Filter>Header Files\TowerDefense\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Circle.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -355,6 +358,9 @@
     </ClCompile>
     <ClCompile Include="Mathf.cpp">
       <Filter>Source Files\TowerDefense\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

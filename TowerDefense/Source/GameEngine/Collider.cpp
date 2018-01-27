@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Collider.hpp"
 #include "Debug.hpp"
+#include "../../Circle.hpp"
 
 namespace TowerDefense
 {
@@ -10,12 +11,11 @@ namespace TowerDefense
 		{
 		}
 
-		Collider::Collider(const sf::FloatRect newRect, Tag newTag) : tag(newTag), rect(newRect)
+		Collider::Collider(const sf::FloatRect newRect, Tag newTag) : tag(newTag), type(Type::Rect), rect(newRect)
 		{
-			type = Type::Rect;
 		}
 
-		Collider::Collider(const sf::Sprite& newSprite, Tag newTag, Type newType) : tag(newTag), sprite(&newSprite), type(newType)
+		Collider::Collider(const sf::Sprite& newSprite, Tag newTag, Type newType) : tag(newTag), type(newType), sprite(&newSprite)
 		{
 			Debug::assert_m(
 				type == Type::SpriteRect 
@@ -25,9 +25,12 @@ namespace TowerDefense
 			);
 		}
 
-		Collider::Collider(const sf::Vector2f newDot, Tag newTag) : tag(newTag), dot(newDot)
+		Collider::Collider(const sf::Vector2f newDot, Tag newTag) : tag(newTag), type(Type::Dot), dot(newDot)
 		{
-			type = Type::Dot;
+		}
+
+		Collider::Collider(const Circle newCircle, Tag newTag) : tag(newTag), type(Type::Circle), circle(newCircle)
+		{
 		}
 
 		Collider::~Collider()
@@ -35,7 +38,6 @@ namespace TowerDefense
 			if (sprite) sprite = nullptr; // useless ? (don't delete it, you don't have authority)
 		}
 
-		
 		Collider::Type Collider::get_type() const
 		{	
 			return type;
@@ -57,6 +59,15 @@ namespace TowerDefense
 				"Collider: collider is not of type Rect. But you are trying to access it."
 			);
 			return rect;
+		}
+
+		const Circle& Collider::get_circle() const
+		{
+			Debug::assert_m(
+				type == Type::Circle, 
+				"Collider: collider is not of type Circle. But you are trying to access it."
+			);
+			return circle;
 		}
 
 		const sf::Sprite& Collider::get_sprite() const

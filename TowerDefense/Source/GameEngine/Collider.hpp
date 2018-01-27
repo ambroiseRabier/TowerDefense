@@ -1,6 +1,7 @@
 #pragma once
 #ifndef COLLIDER_HPP
 #define COLLIDER_HPP
+#include "../../Circle.hpp"
 
 namespace TowerDefense
 {
@@ -22,7 +23,8 @@ namespace TowerDefense
 				UI=1, 
 				Minion=2, 
 				Castle=3, 
-				TowerShoot=4
+				Projectile=4,
+				Tower=5
 			};
 			enum class Type
 			{
@@ -34,12 +36,30 @@ namespace TowerDefense
 				SpriteCircle=5,
 				SpritePixelPerfect=6,
 			};
+
+			static std::string Type_to_string(Type type)
+			{
+				switch (type)
+				{
+				case Collider::Type::None: return "None";
+				case Collider::Type::Dot: return "Dot";
+				case Collider::Type::Rect: return "Rect";
+				case Collider::Type::Circle: return "Circle";
+				case Collider::Type::SpriteRect: return "SpriteRect";
+				case Collider::Type::SpriteCircle: return "SpriteCircle";
+				case Collider::Type::SpritePixelPerfect: return "SpritePixelPerfect";
+				default: return "Unknow";
+				}
+			}	
+
 			/**
 			 * \brief This is the default constructor. But you better add a Tag other then Tag::None.
 			 */
 			Collider(Tag newTag = Tag::None);
 			Collider(sf::Vector2f newDot, Tag newTag = Tag::None);
 			Collider(sf::FloatRect newRect, Tag newTag = Tag::None);
+			Collider(Circle newCircle, Tag newTag);
+
 			/**
 			 * \brief 
 			 * Note: if you intend on using pixel perfect collision, 
@@ -63,20 +83,25 @@ namespace TowerDefense
 			 * \return 
 			 */
 			const sf::Vector2f& get_dot() const;
+
 			/**
 			 * \brief Make sure your colldier is of type rect before calling this.
 			 * \return 
 			 */
 			const sf::FloatRect& get_rect() const;
+
 			/**
 			 * \brief Make sure your colldier is of type SpriteRect or SpriteCircle or SpritePixelPerfect before calling this.
 			 * \return 
 			 */
 			const sf::Sprite& get_sprite() const;
+
+			const Circle& get_circle() const;
 		private:
 			Type type;
 			sf::FloatRect rect;
 			sf::Vector2f dot;
+			Circle circle;
 			const sf::Sprite* sprite;
 		};
 	}

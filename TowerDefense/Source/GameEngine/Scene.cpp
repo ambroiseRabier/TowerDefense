@@ -88,7 +88,10 @@ namespace TowerDefense
 			} 
 			else
 			{
-				Debug::warn("Scene: Collider type not supported by scene debug draw. Add support.");
+				Debug::warn(
+					"Scene: Collider type not supported by scene debug draw. Add support for: " 
+					+ Collider::Type_to_string(game_object->get_collider()->get_type())
+				);
 			}
 
 		}
