@@ -135,9 +135,6 @@
     <ClInclude Include="Source\GameEngine\GameObject.hpp">
       <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="HealMinion.hpp">
-      <Filter>Header Files\TowerDefense\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Health.hpp">
       <Filter>Header Files\TowerDefense\Game</Filter>
     </ClInclude>
@@ -195,9 +192,6 @@
     <ClInclude Include="Spawn.hpp">
       <Filter>Header Files\TowerDefense\Game\Tiles</Filter>
     </ClInclude>
-    <ClInclude Include="TankMinion.hpp">
-      <Filter>Header Files\TowerDefense\Game\Minions</Filter>
-    </ClInclude>
     <ClInclude Include="Tile.hpp">
       <Filter>Header Files\TowerDefense\Game\Tiles</Filter>
     </ClInclude>
@@ -231,14 +225,14 @@
     <ClInclude Include="SetTimeout.hpp">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="PeonMinion.hpp">
-      <Filter>Header Files\TowerDefense\Game\Minions</Filter>
-    </ClInclude>
     <ClInclude Include="Mathf.hpp">
       <Filter>Header Files\TowerDefense\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Circle.hpp">
       <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="HealMinion.hpp">
+      <Filter>Header Files\TowerDefense\Game\Minions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -335,9 +329,6 @@
     <ClCompile Include="Spawn.cpp">
       <Filter>Source Files\TowerDefense\Game\Tiles</Filter>
     </ClCompile>
-    <ClCompile Include="TankMinion.cpp">
-      <Filter>Source Files\TowerDefense\Game\Minions</Filter>
-    </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files\TowerDefense\Game\Tiles</Filter>
     </ClCompile>
@@ -352,9 +343,6 @@
     </ClCompile>
     <ClCompile Include="Source\GlobalShared.cpp">
       <Filter>Source Files\TowerDefense\Constants</Filter>
-    </ClCompile>
-    <ClCompile Include="PeonMinion.cpp">
-      <Filter>Source Files\TowerDefense\Game\Minions</Filter>
     </ClCompile>
     <ClCompile Include="Mathf.cpp">
       <Filter>Source Files\TowerDefense\Utils</Filter>

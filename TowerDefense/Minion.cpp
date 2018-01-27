@@ -8,13 +8,26 @@
 #include "MapManager.hpp"
 #include "Assets.hpp"
 #include "GameEngine/Debug.hpp"
+#include "MinionParams.hpp"
+#include "GameDesign.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
 {
 	namespace Game
 	{
-		Minion::Minion(sf::Vector2u map_pos) : map_pos(map_pos)
+		Minion* Minion::create_peon(const sf::Vector2u& map_pos)
+		{
+			return new Minion(map_pos, GlobalShared::minion_red_texture, MinionId::Peon);
+		}
+		
+		Minion::Minion() : params(MinionParams())  // NOLINT
+		{
+			Debug::warn("Minon: default contructor not supposed to be called.");
+		}
+
+		Minion::Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id) 
+					  : map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
 		{
 			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*GlobalShared::minion_red_texture);
 
@@ -25,11 +38,12 @@ namespace TowerDefense
 				))
 			);
 			collider = std::make_shared<Collider>(
-				sf::FloatRect(0, 0, 50, 50),
+				sprite->getLocalBounds(),
 				Collider::Tag::Minion
 			);
 			z_index = Constants::ZIndex::minions_start;
 		}
+
 
 		Minion::~Minion()
 		{

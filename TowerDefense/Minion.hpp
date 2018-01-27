@@ -8,6 +8,8 @@ namespace TowerDefense
 {
 	namespace Game
 	{
+		struct MinionParams;
+
 		/**
 		 * \brief 
 		 * Enum representing the minion type, should be unique to class.
@@ -33,12 +35,15 @@ namespace TowerDefense
 		class Minion : public  GameEngine::BaseGameObject
 		{
 		public:
-			Minion(sf::Vector2u map_pos);
+			static Minion* create_peon(const sf::Vector2u& map_pos);
+			Minion();
+			Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id);
 			~Minion();
 		protected:
 			sf::Sprite* sprite;
 			sf::Vector2u map_pos;
 			sf::Vector2u next_map_pos;
+			const MinionParams& params;
 			// faire un speed, non clamp à la position, du coup si un gars va trop vite il se décalera sur le côté
 			// dans un tournant, l'effet peut être sympa et est tolérable.
 			void start() override;

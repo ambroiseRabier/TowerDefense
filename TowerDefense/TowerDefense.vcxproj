@@ -42,7 +42,6 @@
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="MinionParams.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
-    <ClInclude Include="PeonMinion.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="ProjectileParams.hpp" />
@@ -66,7 +65,6 @@
     <ClInclude Include="Source\GameEngine\Physics.hpp" />
     <ClInclude Include="Source\GameEngine\Scene.hpp" />
     <ClInclude Include="Spawn.hpp" />
-    <ClInclude Include="TankMinion.hpp" />
     <ClInclude Include="Tile.hpp" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Tower.hpp" />
@@ -89,7 +87,6 @@
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
-    <ClCompile Include="PeonMinion.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -109,7 +106,6 @@
     <ClCompile Include="Source\GameEngine\Physics.cpp" />
     <ClCompile Include="Source\GameEngine\Scene.cpp" />
     <ClCompile Include="Spawn.cpp" />
-    <ClCompile Include="TankMinion.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Tower.cpp" />
