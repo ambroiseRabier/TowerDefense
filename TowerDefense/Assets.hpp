@@ -18,6 +18,7 @@ namespace TowerDefense
 			 * \brief All tiles should do 50x50 in size.
 			 */
 			const unsigned int tile_size = 50;
+			const sf::Vector2f tile_size_half_vec(tile_size/2.f, tile_size/2.f);
 			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 			const std::string loading_background = "Assets/loading_background_inverted.png";
 			const std::string menu_background = "Assets/menu_background.jpg";

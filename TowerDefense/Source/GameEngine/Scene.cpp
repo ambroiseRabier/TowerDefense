@@ -92,8 +92,10 @@ namespace TowerDefense
 				sf::CircleShape circle = sf::CircleShape(
 					game_object->get_collider()->get_circle().radius
 				);
+				// the circle origin is top left...
 				circle.setPosition(
-					game_object->get_collider()->get_circle().position
+					game_object->get_collider()->get_circle().position.x - game_object->get_collider()->get_circle().radius,
+					game_object->get_collider()->get_circle().position.y - game_object->get_collider()->get_circle().radius
 				);
 				//rc.setTexture(GlobalShared::collider_debug_texture); // cannot use texture and color it seems :/
 				circle.setFillColor(Constants::Config::collider_debug_color);
@@ -101,6 +103,27 @@ namespace TowerDefense
 				circle.setOutlineThickness(1.0f);
 				window.draw(
 					circle,
+					game_object->get_transformable().getTransform()
+				);
+			}
+			else if (game_object->get_collider()->get_type() == Collider::Type::Dot)
+			{
+				// stack
+				sf::RectangleShape rect = sf::RectangleShape(
+					sf::Vector2f(
+						// one pixel.
+						1.f,
+						1.f
+					)
+				);
+				// the circle origin is top left...
+				rect.setPosition(
+					game_object->get_collider()->get_dot()
+				);
+				//rc.setTexture(GlobalShared::collider_debug_texture); // cannot use texture and color it seems :/
+				rect.setFillColor(sf::Color::Red);
+				window.draw(
+					rect,
 					game_object->get_transformable().getTransform()
 				);
 			}

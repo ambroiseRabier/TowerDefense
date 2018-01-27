@@ -31,7 +31,7 @@ namespace TowerDefense
 			 */
 			const float reload_delay;
 			/**
-			 * \brief m/s
+			 * \brief tile/s
 			 */
 			const float speed;
 			/**
@@ -39,7 +39,7 @@ namespace TowerDefense
 			 */
 			const float damage;
 			/**
-			 * \brief m
+			 * \brief tile
 			 */
 			const float range;
 			/**

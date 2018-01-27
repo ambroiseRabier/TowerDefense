@@ -44,7 +44,7 @@ namespace TowerDefense
 		void Minion::update() // todo: split in parts.
 		{
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
-			const float speed = Constants::Assets::tile_size * 2 * Managers::GameManager::get_deltaTime();
+			const float speed = Constants::Assets::tile_size * Managers::GameManager::get_deltaTime() / 3.f;
 			float dist = magnitude(target_pos - transformable->getPosition());
 			bool overpass_target = dist < speed;
 			// if gonna overpass target_pos,save current map_pos, then calculate new target, if new target == previous target, do nothing.
@@ -118,13 +118,16 @@ namespace TowerDefense
 			const sf::Vector2u next_front(current_map_pos.x + 1, current_map_pos.y);
 			const sf::Vector2u next_top(current_map_pos.x, current_map_pos.y - 1);
 			const sf::Vector2u next_bottom(current_map_pos.x, current_map_pos.y + 1);
+			const sf::Vector2u next_back(current_map_pos.x -1, current_map_pos.y); // usefull for making the minion infinite loop for debug tower.
 			const bool front_ok = Managers::MapManager::map_pos_exist(next_front) && Managers::MapManager::map_pos_walkable(next_front);
 			const bool top_ok = Managers::MapManager::map_pos_exist(next_top) && Managers::MapManager::map_pos_walkable(next_top);
 			const bool bottom_ok = Managers::MapManager::map_pos_exist(next_bottom) && Managers::MapManager::map_pos_walkable(next_bottom);
+			const bool back_ok = Managers::MapManager::map_pos_exist(next_back) && Managers::MapManager::map_pos_walkable(next_back);
 			if (front_ok) return next_front;
 			if (top_ok && bottom_ok) return rand_bool() ? next_top : next_bottom;
 			if (top_ok) return next_top;
 			if (bottom_ok) return next_bottom;
+			if (back_ok) return next_back;
 			return current_map_pos;
 		}
 	}

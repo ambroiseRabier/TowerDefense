@@ -194,7 +194,6 @@ namespace TowerDefense
 				);
 			}
 
-			
 			Debug::warn(
 				"Physics: Collider for mouse type not supported. Add support for: " 
 				+ Collider::Type_to_string(game_object.get_collider()->get_type())

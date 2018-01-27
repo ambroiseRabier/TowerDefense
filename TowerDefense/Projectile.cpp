@@ -5,6 +5,7 @@
 #include "Mathf.hpp"
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
+#include "Assets.hpp"
 
 namespace TowerDefense
 {
@@ -24,8 +25,13 @@ namespace TowerDefense
 							  : params(params)
 		{
 			assert(texture);
+			std::unique_ptr<sf::Sprite> sprite_p = std::make_unique<sf::Sprite>(*texture);
+			sprite_p->setPosition(
+				-sprite_p->getLocalBounds().width/2.f,
+				-sprite_p->getLocalBounds().height/2.f
+			);
 			set_drawable(static_cast<std::unique_ptr<sf::Drawable>>(
-				std::make_unique<sf::Sprite>(*texture)
+				std::move(sprite_p)
 			));
 			z_index = Constants::ZIndex::projectile;
 			dir = Utils::look_at_dir(spawn_pos, target_pos);
@@ -36,6 +42,7 @@ namespace TowerDefense
 				sf::Vector2f(0,0), // needto think to to the aera effect.
 				Collider::Tag::Projectile
 			);
+			collider->mouse_enabled = false;
 		}
 
 		Projectile::~Projectile()
@@ -57,7 +64,7 @@ namespace TowerDefense
 		void Projectile::update()
 		{
 			transformable->setPosition(
-				dir * params.speed * Managers::GameManager::get_deltaTime()
+				transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_deltaTime() * Constants::Assets::tile_size) 
 			);
 		}
 

@@ -6,6 +6,7 @@
 #include "GlobalShared.hpp"
 #include "GameDesign.hpp"
 #include "Projectile.hpp"
+#include "Assets.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -34,9 +35,9 @@ namespace TowerDefense
 			));
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
-				Circle(params.projectile_params.at(level).range),
+				Circle(params.projectile_params.at(level).range * Constants::Assets::tile_size),
 				Collider::Tag::Tower
-			);
+			); 
 		}
 
 		Tower::~Tower()
@@ -67,21 +68,20 @@ namespace TowerDefense
 
 		void Tower::shoot()
 		{
-			if (target != nullptr)
-			{
-				new Projectile(
-					GlobalShared::stone_projectile_0_texture, 
-					params.projectile_params.at(level),
-					transformable->getPosition(), // could be position of canon
-					target->get_transformable().getPosition()
-				);
-			}
+			assert(target != nullptr);
+			Projectile* proj = new Projectile(
+				GlobalShared::stone_projectile_0_texture, 
+				params.projectile_params.at(level),
+				transformable->getPosition() + Constants::Assets::tile_size_half_vec, // could be position of canon
+				target->get_transformable().getPosition() + Constants::Assets::tile_size_half_vec
+			);
+			proj->auto_start();
 		}
 
 		unsigned int tempInt=0;
 		void Tower::update() {
 			tempInt++;
-			if (tempInt % 30 == 0)
+			if (tempInt % 30 == 0 && target != nullptr)
 			{
 				shoot();
 			}
