@@ -86,6 +86,24 @@ namespace TowerDefense
 					game_object->get_transformable().getTransform()
 				);
 			} 
+			else if (game_object->get_collider()->get_type() == Collider::Type::Circle)
+			{
+				// stack
+				sf::CircleShape circle = sf::CircleShape(
+					game_object->get_collider()->get_circle().radius
+				);
+				circle.setPosition(
+					game_object->get_collider()->get_circle().position
+				);
+				//rc.setTexture(GlobalShared::collider_debug_texture); // cannot use texture and color it seems :/
+				circle.setFillColor(Constants::Config::collider_debug_color);
+				circle.setOutlineColor(sf::Color::Red);
+				circle.setOutlineThickness(1.0f);
+				window.draw(
+					circle,
+					game_object->get_transformable().getTransform()
+				);
+			}
 			else
 			{
 				Debug::warn(

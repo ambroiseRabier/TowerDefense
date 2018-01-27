@@ -169,17 +169,27 @@ namespace TowerDefense
 		
 		bool Physics::collide_mouse(const GameObject& game_object)
 		{
+			// local to gameobject
+			sf::Vector2f mouse_position_local = game_object.to_local(
+				static_cast<sf::Vector2f>(mouse_position)
+			);
+
 			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
 			{
-				// local to gameobject
-				sf::Vector2f mouse_position_local = game_object.to_local(
-					static_cast<sf::Vector2f>(mouse_position)
-				);
 				// local to collider
 				mouse_position_local.x -= game_object.get_collider()->get_rect().left;
 				mouse_position_local.y -= game_object.get_collider()->get_rect().top;
 				return CollisionTest::rect_dot(
 					game_object.get_collider()->get_rect(),
+					mouse_position_local
+				);
+			}
+			else if (game_object.get_collider()->get_type() == Collider::Type::Circle)
+			{
+				// local to collider
+				mouse_position_local -= game_object.get_collider()->get_circle().position;
+				return CollisionTest::circle_dot(
+					game_object.get_collider()->get_circle(),
 					mouse_position_local
 				);
 			}

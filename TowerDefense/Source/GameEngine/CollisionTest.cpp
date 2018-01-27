@@ -10,9 +10,12 @@ namespace TowerDefense
 	{
 		bool CollisionTest::collide(const Collider& collider1, const Collider& collider2)
 		{
+			// rect rect
 			if (collider1.get_type() == Collider::Type::Rect 
 				&& collider2.get_type() == Collider::Type::Rect)
 				return rect_rect(collider1.get_rect(), collider2.get_rect());
+
+			// rect dot
 			if (collider1.get_type() == Collider::Type::Rect 
 				&& collider2.get_type() == Collider::Type::Dot)
 				return rect_dot(collider1.get_rect(), collider2.get_dot());
@@ -20,12 +23,21 @@ namespace TowerDefense
 				&& collider2.get_type() == Collider::Type::Rect)
 				return rect_dot(collider2.get_rect(), collider1.get_dot());
 
-			/*if (collider1.get_type() == Collider::Type::Circle 
+			// circle rect
+			if (collider1.get_type() == Collider::Type::Circle 
 				&& collider2.get_type() == Collider::Type::Rect)
 				return circle_rect(collider1.get_circle(), collider2.get_rect());
 			if (collider1.get_type() == Collider::Type::Rect 
 				&& collider2.get_type() == Collider::Type::Circle)
-				return circle_rect(collider2.get_circle(), collider1.get_rect());*/
+				return circle_rect(collider2.get_circle(), collider1.get_rect());
+
+			// circle dot
+			if (collider1.get_type() == Collider::Type::Circle 
+				&& collider2.get_type() == Collider::Type::Dot)
+				return circle_dot(collider1.get_circle(), collider2.get_dot());
+			if (collider1.get_type() == Collider::Type::Dot 
+				&& collider2.get_type() == Collider::Type::Circle)
+				return circle_dot(collider2.get_circle(), collider1.get_dot());
 
 			if (collider1.get_type() == Collider::Type::SpriteRect
 				&& collider2.get_type() == Collider::Type::SpriteRect)
@@ -66,7 +78,7 @@ namespace TowerDefense
 
 		// https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection#402010
 		// with no XOR on float.... : http://www.migapro.com/circle-and-rotated-rectangle-collision-detection/
-		/*bool CollisionTest::circle_rect(const Circle& circle, const sf::FloatRect& rect, const float& angle_radian)
+		bool CollisionTest::circle_rect(const Circle& circle, const sf::FloatRect& rect, const float& angle_radian)
 		{ 
 			const sf::Vector2f rectCenter(
 				rect.left + rect.width/2.f,
@@ -99,7 +111,7 @@ namespace TowerDefense
  
 			const double distance = Utils::findDistance(unrotatedCircleX , unrotatedCircleY, closestX, closestY);
 			return distance < circle.radius;
-		}*/
+		}
 
 		bool CollisionTest::pixel_perfect_test(const sf::Sprite& sprite1, const sf::Sprite& sprite2, sf::Uint8 alpha_limit)
 		{
@@ -121,7 +133,9 @@ namespace TowerDefense
 			return Collision::BoundingBoxTest(sprite1, sprite2);
 		}
 
-
-
+		bool CollisionTest::circle_dot(const Circle& circle, const sf::Vector2f& vector2)
+		{
+			return Utils::magnitude(circle.position - vector2) < circle.radius;
+		}
 	}
 }
