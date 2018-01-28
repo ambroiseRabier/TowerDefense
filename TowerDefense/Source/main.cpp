@@ -13,6 +13,15 @@
 #include "../MapManager.hpp"
 #include "../Timer.hpp"
 
+// https://msdn.microsoft.com/en-us/library/x98tx3cf(v=vs.140).aspx
+#ifdef _DEBUG
+    #define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+    // Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+    // allocations to be of _CLIENT_BLOCK type
+#else
+    #define DBG_NEW new
+#endif
+
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
 using namespace TowerDefense::Constants;
@@ -22,7 +31,6 @@ using namespace sf;
 float getFPS(const Time& time) {
      return (1000000.0f / time.asMicroseconds());
 }
-
 
 void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& window)
 {
@@ -42,78 +50,78 @@ void preloading() // todo factorize
 {
 	// allocate on heap since this will stay longer then the stack of this function
 	// then copy pointer on GlobalShared
-	Font* font = new Font();
+	Font* font = DBG_NEW Font();
 	font->loadFromFile(Assets::default_font);
 	GlobalShared::default_font = font;
-	Texture* texture = new Texture();
+	Texture* texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::default_ui_btn);
 	GlobalShared::default_ui_btn = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::menu_background);
 	GlobalShared::menu_background = texture;
 	// tiles
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::road_walk);
 	GlobalShared::road_walk_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::grass_build);
 	GlobalShared::grass_build_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::spawn_others);
 	GlobalShared::spawn_others_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::castle_others);
 	GlobalShared::castle_others_texture = texture;
 	//Minions
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::minion_red);
 	GlobalShared::minion_red_texture = texture;
 	//HpBar
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::hpBar_jauge);
 	GlobalShared::hpBar_jauge_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::hpBar_background);
 	GlobalShared::hpBar_background_texture = texture;
 
 	//Buttons
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::level1_btn);
 	GlobalShared::level1_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::level2_btn);
 	GlobalShared::level2_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::level3_btn);
 	GlobalShared::level3_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::pause_btn);
 	GlobalShared::pause_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::play_btn);
 	GlobalShared::play_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::tower1_btn);
 	GlobalShared::tower1_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::tower2_btn);
 	GlobalShared::tower2_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::tower3_btn);
 	GlobalShared::tower3_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::quit_btn);
 	GlobalShared::quit_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::restart_btn);
 	GlobalShared::restart_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::speedUp_btn);
 	GlobalShared::speedUp_btn_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::stone_tower);
 	GlobalShared::stone_tower_texture = texture;
-	texture = new Texture();
+	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::stone_projectile_0);
 	GlobalShared::stone_projectile_0_texture = texture;
 }
@@ -168,7 +176,7 @@ int main()
 	Clock fpsClock;
 	unsigned int fps = 0;
 	unsigned int frame_count = 0;
-	/*
+	
 	// Init all managers
 	Utils::Timer::init();
 	Scene::init();
@@ -185,7 +193,8 @@ int main()
 	const Time creditLoadingDuration = seconds(Config::min_loading_duration);
 	sleep(creditLoadingDuration);
 	
-	// delete loading/credit stuff
+	// delete loading/credit stuff because we don't need it anymore
+	// note: since this is smartpoint, they destroy themselves when out of stack.
 	loading_sprite.reset(nullptr);
 	loading_texture.reset(nullptr);
 
@@ -209,33 +218,19 @@ int main()
 	//delete menu_background;
 	//base_button = nullptr;
 	//base_button_unique.reset(nullptr);
-	*/
+	
 	while (window.isOpen())
 	{
-		 // Handle events
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // Window closed or escape key pressed: exit
-            if ((event.type == sf::Event::Closed) ||
-               ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)))
-            {
-                window.close();
-                break;
-			}
-        }
-
-
-		/*InputManager::update(window);
+		InputManager::update(window);
 		Utils::Timer::update();
 		GameManager::update();
 		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
-		Physics::update();*/
+		Physics::update();
 		// window.clear() was originnnaly before any game logic, but,
 		// if the game logic take time then the user might see the window blink.
 		window.clear();
-		/*Scene::render(window);*/
+		Scene::render(window);
 		// fps overlay
 		if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
 		{
@@ -253,7 +248,7 @@ int main()
 		window.display();
 	}
 	// destroying the quit_btn NOT when the quit_btn fire en click event avoid a null iterator problem.
-	/*UI::MenuScreen::destroy_quit_btn();*/
+	UI::MenuScreen::destroy_quit_btn();
 	// destroy any global here.
 	GlobalShared::destroy();
 
