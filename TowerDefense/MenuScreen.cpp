@@ -5,6 +5,7 @@
 #include "GameEngine/Debug.hpp"
 #include "GlobalShared.hpp"
 #include "HUD.hpp"
+#include "Timer.hpp"
 
 namespace TowerDefense
 {
@@ -29,9 +30,13 @@ namespace TowerDefense
 
 		void MenuScreen::destroy()
 		{
+			play_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_play);
+			quit_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_quit);
 			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
 			play_btn.reset(nullptr);
-			quit_btn.reset(nullptr);
+			//You cannot do that here, because otherwise it is destroyed when the delagate iterate it's function
+			// the simplest solution is to destroy the quit_btn after everything.
+			//quit_btn.reset(nullptr); 
 		}
 
 		void MenuScreen::on_click_play()
@@ -39,6 +44,7 @@ namespace TowerDefense
 			close();
 			Managers::GameManager::start_level(0);
 		}
+
 		void MenuScreen::on_click_quit()
 		{
 			Managers::GameManager::exit_game();
@@ -56,5 +62,9 @@ namespace TowerDefense
 			quit_btn->isActive = false;
 		}
 
+		void MenuScreen::destroy_quit_btn()
+		{
+			quit_btn.reset(nullptr); 
+		}
 	}
 }

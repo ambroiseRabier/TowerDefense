@@ -114,10 +114,7 @@ namespace TowerDefense
 		void GameManager::exit_game()
 		{
 			GlobalShared::on_window_close();
-			Debug::log("this work ? up or down");
-			GlobalShared::on_window_close_game_engine_pass();
-			Debug::log("second");
-
+ 			GlobalShared::on_window_close_game_engine_pass();
 			Debug::assert_m(window_ref, "GameManager: window_ref should never be null");
 			window_ref->close();
 		}

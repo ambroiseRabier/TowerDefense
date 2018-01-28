@@ -4,6 +4,8 @@
 #include "GameEngine/Debug.hpp"
 #include "../../GlobalShared.hpp"
 #include "../../Config.hpp"
+#include "../../Timer.hpp"
+#include "Managers/GameManager.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -101,7 +103,6 @@ namespace TowerDefense
 
 		void BaseButton::on_mouse_click_front(bool left)
 		{
-			//Debug::log("on_mouse_click_front " + left);
 			on_click();
 		}
 
@@ -125,5 +126,6 @@ namespace TowerDefense
 			Debug::assert_m(sprite, "BaseButton: Sprite being nullptr is unexpected.");
 			return *sprite;
 		}
+
 	}
 }

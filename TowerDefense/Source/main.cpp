@@ -5,13 +5,13 @@
 #include "GameEngine/Physics.hpp"
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
-#include "GameObjects/MenuBackground.hpp"
 #include "../HUD.hpp"
 #include "../PauseScreen.hpp"
 #include "../Assets.hpp"
 #include "../GlobalShared.hpp"
 #include "../Config.hpp"
 #include "../MapManager.hpp"
+#include "../Timer.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -127,10 +127,12 @@ void preloading() // todo factorize
 int main()
 {
 	Debug::info("Application started.");
+	//system("pause");
 	RenderWindow window(
 		VideoMode(Config::window_width, Config::window_height),
 		Config::game_name,
 		Style::Default, 
+		// ReSharper disable once CppRedundantQualifier
 		sf::ContextSettings(
 			0,
 			0,
@@ -164,6 +166,7 @@ int main()
 	unsigned int frame_count = 0;
 
 	// Init all managers
+	Utils::Timer::init();
 	Scene::init();
 	Physics::init(Config::tested_collisions);
 	MapManager::init();
@@ -206,6 +209,7 @@ int main()
 	while (window.isOpen())
 	{
 		InputManager::update(window);
+		Utils::Timer::update();
 		GameManager::update();
 		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
@@ -230,7 +234,10 @@ int main()
 		window.draw(fpsText);
 		window.display();
 	}
+	// destroying the quit_btn NOT when the quit_btn fire en click event avoid a null iterator problem.
+	UI::MenuScreen::destroy_quit_btn(); // humm nope ?
 	// destroy any global here.
 	GlobalShared::destroy();
+	//system("pause");
 	return 0;
 }

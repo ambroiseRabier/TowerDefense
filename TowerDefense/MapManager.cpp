@@ -20,6 +20,7 @@ namespace TowerDefense
 		//std::map<int, std::map<int, std::shared_ptr<Tile>*>> MapManager::all_tiles;
 		std::map<unsigned int, std::map<unsigned int, Tile*>> MapManager::all_tiles_p;
 		sf::Transformable MapManager::map_origin;
+		Sharp::Event<void> MapManager::on_destroy_level;
 
 		Castle& MapManager::get_castle()
 		{
@@ -51,6 +52,7 @@ namespace TowerDefense
 		void MapManager::destroy_current_level()
 		{
 			Debug::assert_m(level_loaded_flag, "MapManager: No level to destroy was found.");
+			on_destroy_level();
 			/*if (castle.get())
 				castle.reset();
 			if (spawn.get())

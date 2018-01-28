@@ -40,6 +40,7 @@ namespace TowerDefense
 			static const MapParams* map_params;
 			static const bool get_level_loaded_flag();
 			static const sf::Transformable& get_map_origin();
+			static Sharp::Event<void> on_destroy_level;
 		private:
 			static sf::Transformable map_origin;
 			static Castle* castle;

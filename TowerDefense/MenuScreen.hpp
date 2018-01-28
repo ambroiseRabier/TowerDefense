@@ -14,6 +14,10 @@ namespace TowerDefense
 			static void destroy();
 			static void open();
 			static void close();
+			/**
+			 * \brief Should be called by main.
+			 */
+			static void destroy_quit_btn();
 		private:
 			static std::unique_ptr<BaseButton> play_btn;
 			static std::unique_ptr<BaseButton> quit_btn;

@@ -195,9 +195,6 @@
     <ClInclude Include="Tile.hpp">
       <Filter>Header Files\TowerDefense\Game\Tiles</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Header Files\TowerDefense\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Tower.hpp">
       <Filter>Header Files\TowerDefense\Game\Towers</Filter>
     </ClInclude>
@@ -233,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="HealMinion.hpp">
       <Filter>Header Files\TowerDefense\Game\Minions</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>Header Files\TowerDefense\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

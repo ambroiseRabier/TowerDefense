@@ -29,7 +29,7 @@ namespace TowerDefense
 		 */
 		class GameObject
 		{
-
+		private:
 			friend bool operator==(const GameObject& lhs, const GameObject& rhs)
 			{
 				return lhs.transformable == rhs.transformable;
