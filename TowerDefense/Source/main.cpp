@@ -235,7 +235,7 @@ int main()
 		window.display();
 	}
 	// destroying the quit_btn NOT when the quit_btn fire en click event avoid a null iterator problem.
-	UI::MenuScreen::destroy_quit_btn(); // humm nope ?
+	UI::MenuScreen::destroy_quit_btn();
 	// destroy any global here.
 	GlobalShared::destroy();
 	//system("pause");

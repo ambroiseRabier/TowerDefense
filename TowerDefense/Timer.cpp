@@ -28,8 +28,8 @@ namespace TowerDefense
 				{
 					delete pair.to_destroy;
 				}
+				all_destroy.clear();
 			}
-			all_destroy.clear();
 			all_time_out.clear();
 		}
 

@@ -31,12 +31,11 @@ namespace TowerDefense
 		void MenuScreen::destroy()
 		{
 			play_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_play);
-			quit_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_quit);
-			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
 			play_btn.reset(nullptr);
 			//You cannot do that here, because otherwise it is destroyed when the delagate iterate it's function
 			// the simplest solution is to destroy the quit_btn after everything.
 			//quit_btn.reset(nullptr); 
+			// don't remove event to on_click either.
 		}
 
 		void MenuScreen::on_click_play()
@@ -64,6 +63,7 @@ namespace TowerDefense
 
 		void MenuScreen::destroy_quit_btn()
 		{
+			quit_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_quit);
 			quit_btn.reset(nullptr); 
 		}
 	}
