@@ -116,9 +116,11 @@ void preloading() // todo factorize
 	texture = new Texture();
 	texture->loadFromFile(Assets::stone_projectile_0);
 	GlobalShared::stone_projectile_0_texture = texture;
-
-
 }
+
+struct Pod {
+    int x;
+};
 
 /**
  * @author: ambroise
@@ -127,6 +129,8 @@ void preloading() // todo factorize
 int main()
 {
 	Debug::info("Application started.");
+	// help find memory leaks
+	_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	//system("pause");
 	RenderWindow window(
 		VideoMode(Config::window_width, Config::window_height),
@@ -164,7 +168,7 @@ int main()
 	Clock fpsClock;
 	unsigned int fps = 0;
 	unsigned int frame_count = 0;
-
+	/*
 	// Init all managers
 	Utils::Timer::init();
 	Scene::init();
@@ -190,34 +194,48 @@ int main()
 	Debug::info("Game started.");
 
 	// exemples stuff, to delete.
-	/*UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
-	base_button->get_transformable().setPosition(150,150);
-	base_button->auto_start();
+	//UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
+	//base_button->get_transformable().setPosition(150,150);
+	//base_button->auto_start();
 
-	std::unique_ptr<UI::BaseButton> base_button_unique = std::make_unique<UI::BaseButton>();
-	base_button_unique->auto_start();
+	//std::unique_ptr<UI::BaseButton> base_button_unique = std::make_unique<UI::BaseButton>();
+	//base_button_unique->auto_start();
 
-	UI::MenuBackground* menu_background = new UI::MenuBackground();
-	menu_background->auto_start();
-	//base_button->destroy();
-	delete base_button;
-	base_button = nullptr;
-	delete menu_background;
-	base_button = nullptr;
-	base_button_unique.reset(nullptr);*/
-
+	//UI::MenuBackground* menu_background = new UI::MenuBackground();
+	//menu_background->auto_start();
+	////base_button->destroy();
+	//delete base_button;
+	//base_button = nullptr;
+	//delete menu_background;
+	//base_button = nullptr;
+	//base_button_unique.reset(nullptr);
+	*/
 	while (window.isOpen())
 	{
-		InputManager::update(window);
+		 // Handle events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Window closed or escape key pressed: exit
+            if ((event.type == sf::Event::Closed) ||
+               ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)))
+            {
+                window.close();
+                break;
+			}
+        }
+
+
+		/*InputManager::update(window);
 		Utils::Timer::update();
 		GameManager::update();
 		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
-		Physics::update();
+		Physics::update();*/
 		// window.clear() was originnnaly before any game logic, but,
 		// if the game logic take time then the user might see the window blink.
 		window.clear();
-		Scene::render(window);
+		/*Scene::render(window);*/
 		// fps overlay
 		if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
 		{
@@ -235,9 +253,12 @@ int main()
 		window.display();
 	}
 	// destroying the quit_btn NOT when the quit_btn fire en click event avoid a null iterator problem.
-	UI::MenuScreen::destroy_quit_btn();
+	/*UI::MenuScreen::destroy_quit_btn();*/
 	// destroy any global here.
 	GlobalShared::destroy();
+
+	// do not use this, it take static variable as false positiv.
+	//_CrtDumpMemoryLeaks(); 
 	//system("pause");
 	return 0;
 }

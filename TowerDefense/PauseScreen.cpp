@@ -27,7 +27,8 @@ namespace TowerDefense
 
 		void PauseScreen::destroy()
 		{
-			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
+			resume_btn->on_click -= Sharp::EventHandler::Bind(&PauseScreen::on_click_resume);
+			menu_return_btn->on_click -= Sharp::EventHandler::Bind(&PauseScreen::on_click_menu_return);
 			resume_btn.reset(nullptr);
 			menu_return_btn.reset(nullptr);
 		}

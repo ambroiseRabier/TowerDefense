@@ -3,8 +3,6 @@
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
-#include "CastUtils.hpp"
-#include "GameEngine/Debug.hpp"
 
 namespace TowerDefense
 {
@@ -54,7 +52,9 @@ namespace TowerDefense
 
 		void HUD::destroy()
 		{
-			//GlobalShared::on_window_close -= Sharp::EventHandler::Bind(&destroy);
+			pause_btn->on_click -= Sharp::EventHandler::Bind(&HUD::on_click_pause);
+			restart_btn->on_click -= Sharp::EventHandler::Bind(&HUD::on_click_restart);
+			up_speed_btn->on_click -= Sharp::EventHandler::Bind(&HUD::on_click_up_speed);
 			level_text.reset(nullptr);
 			money_text.reset(nullptr);
 			pause_btn.reset(nullptr);

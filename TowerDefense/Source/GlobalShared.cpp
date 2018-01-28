@@ -41,54 +41,32 @@ namespace TowerDefense
 ;
 		void destroy()
 		{
-			delete default_font;
-			default_font = nullptr;
-			delete menu_background;
-			menu_background = nullptr;
-			delete default_ui_btn;
-			default_ui_btn = nullptr;
-			delete grass_build_texture;
-			grass_build_texture = nullptr;
-			delete road_walk_texture;
-			road_walk_texture = nullptr;
-			delete spawn_others_texture;
-			spawn_others_texture = nullptr;
-			delete castle_others_texture;
-			castle_others_texture = nullptr;
-			delete missing_texture_tile_texture;
-			missing_texture_tile_texture = nullptr;
-			delete minion_red_texture;
-			minion_red_texture = nullptr;
-			delete hpBar_background_texture;
-			hpBar_background_texture = nullptr;
-			delete hpBar_jauge_texture;
-			hpBar_jauge_texture = nullptr;
-			delete stone_tower_texture;
-			stone_tower_texture = nullptr;
+			delete default_font; default_font = nullptr;
+			delete menu_background; menu_background = nullptr;
+			delete default_ui_btn; default_ui_btn = nullptr;
+			delete grass_build_texture; grass_build_texture = nullptr;
+			delete road_walk_texture; road_walk_texture = nullptr;
+			delete spawn_others_texture; spawn_others_texture = nullptr;
+			delete castle_others_texture; castle_others_texture = nullptr;
+			delete missing_texture_tile_texture; missing_texture_tile_texture = nullptr;
+			delete minion_red_texture; minion_red_texture = nullptr;
+			delete hpBar_background_texture; hpBar_background_texture = nullptr;
+			delete hpBar_jauge_texture; hpBar_jauge_texture = nullptr;
+			delete stone_tower_texture; stone_tower_texture = nullptr;
 
-			delete level1_btn_texture;
-			level1_btn_texture = nullptr;
-			delete level2_btn_texture;
-			level2_btn_texture = nullptr;
-			delete level3_btn_texture;
-			level3_btn_texture = nullptr;
-			delete pause_btn_texture;
-			pause_btn_texture = nullptr;
-			delete quit_btn_texture;
-			quit_btn_texture = nullptr;
-			delete tower1_btn_texture;
-			tower1_btn_texture = nullptr;
-			delete tower2_btn_texture;
-			tower2_btn_texture = nullptr;
-			delete tower3_btn_texture;
-			tower3_btn_texture = nullptr;
-			delete speedUp_btn_texture;
-			speedUp_btn_texture = nullptr;
-			delete restart_btn_texture;
-			restart_btn_texture = nullptr;
+			delete level1_btn_texture; level1_btn_texture = nullptr;
+			delete level2_btn_texture; level2_btn_texture = nullptr;
+			delete level3_btn_texture; level3_btn_texture = nullptr;
+			delete pause_btn_texture; pause_btn_texture = nullptr;
+			delete play_btn_texture; play_btn_texture = nullptr;
+			delete quit_btn_texture; quit_btn_texture = nullptr;
+			delete tower1_btn_texture; tower1_btn_texture = nullptr;
+			delete tower2_btn_texture; tower2_btn_texture = nullptr;
+			delete tower3_btn_texture; tower3_btn_texture = nullptr;
+			delete speedUp_btn_texture; speedUp_btn_texture = nullptr;
+			delete restart_btn_texture; restart_btn_texture = nullptr;
 
-			delete stone_projectile_0_texture;
-			stone_projectile_0_texture = nullptr;
+			delete stone_projectile_0_texture; stone_projectile_0_texture = nullptr;
 		}
 	}
 }
