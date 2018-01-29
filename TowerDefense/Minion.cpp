@@ -53,6 +53,12 @@ namespace TowerDefense
 		Minion::~Minion()
 		{
 			health.reset(nullptr);
+			// cancel timer if map is destroyed while the timer is active. 
+			// (happen when minion is dead and map is destroyed)
+			if (death_time_out_id != 0)
+			{
+				Timer::cancel_set_time_out(death_time_out_id);
+			}
 		}
 
 		Health& Minion::get_health() const
@@ -64,24 +70,9 @@ namespace TowerDefense
 		{
 			BaseGameObject::init();
 			assert(health);
+			// we won't need to remove listener to ondeath since health is destroyed first.
 			health->on_death += Sharp::EventHandler::Bind(&Minion::on_death, this);
 			death_time_out_id = 0;
-		}
-
-		void Minion::on_destroy_map()
-		{
-			// this is probably not needed.
-			health->on_death -= Sharp::EventHandler::Bind(&Minion::on_death, this);
-			// cancel timer if map is destroyed while the timer is active.
-			// if there is no timer does nothing.
-			// don't put that in on_death or descontructor, 
-			// or you will remove a pointer reference in Timer and it will crash.
-			if (death_time_out_id != 0)
-			{
-				Timer::cancel_set_time_out(death_time_out_id);
-			}
-			Managers::MapWaveManager::temp_minion = nullptr;
-			delete this;
 		}
 
 		void Minion::on_death()
@@ -100,10 +91,11 @@ namespace TowerDefense
 
 		void Minion::destroy_self()
 		{
-			// don't let the MapManager destroy yourself a second time. (don't put thyat in on_death since map destroy has priority.
-			Managers::MapWaveManager::temp_minion = nullptr;
+			// time_out finished, put id to null.
+			death_time_out_id = 0;
+			// inform MapWaveManager that you want to be destroyed.
 			Debug::log("I probably get problems from here !");
-			delete this;
+			Managers::MapWaveManager::destroy_me(*this);
 		}
 
 		void Minion::start()

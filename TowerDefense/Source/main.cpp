@@ -12,6 +12,7 @@
 #include "../Config.hpp"
 #include "../MapManager.hpp"
 #include "../Timer.hpp"
+#include "../MapWaveManager.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -171,6 +172,7 @@ int main()
 	Scene::init();
 	Physics::init(Config::tested_collisions);
 	MapManager::init();
+	MapWaveManager::init();
 	UI::MenuScreen::init();
 	UI::Hud::init();
 	UI::PauseScreen::init();

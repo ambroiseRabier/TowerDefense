@@ -42,7 +42,6 @@ namespace TowerDefense
 			if (state == GameState::Pause || state == GameState::Playing)
 			{
 				MapManager::destroy_current_level();
-				MapWaveManager::destroy_current_level();
 			}
 			//window_ref = nullptr; DONT DO THAT, or you can't close window.
 			if (player.get()) {
@@ -91,7 +90,6 @@ namespace TowerDefense
 			assert(level_index >= 0);
 			assert(player);
 			MapManager::destroy_current_level();
-			MapWaveManager::destroy_current_level();
 			start_level(level_index);
 		}
 
@@ -112,7 +110,6 @@ namespace TowerDefense
 		void GameManager::return_menu()
 		{
 			MapManager::destroy_current_level();
-			MapWaveManager::destroy_current_level();
 			player.reset(nullptr);
 			UI::PauseScreen::close();
 			UI::MenuScreen::open();

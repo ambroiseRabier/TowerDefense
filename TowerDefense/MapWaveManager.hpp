@@ -18,9 +18,16 @@ namespace TowerDefense
 		class MapWaveManager
 		{
 		public:
-			static Game::Minion* temp_minion;
+
+			static std::list<GameEngine::BaseGameObject*> instanciated_elements;
 			static void init();
 			static void start_wave_spawn();
+			/**
+			 * \brief Call this if destroyed early, before map destroy.
+			 * It avoid that you are destroyed two time.
+			 */
+			static void destroy_me(GameEngine::BaseGameObject& to_delete);
+		private:
 			static void destroy_current_level();
 		};
 	}
