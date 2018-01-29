@@ -134,14 +134,19 @@ namespace TowerDefense
 		{
 			for (GameObject* children2 : childrens)
 			{
-				const bool should_test_collision = collision_is_tested(
+				// verify that he is ok for colliding before anything
+				if (!children2->get_collider()->gameobject_enabled)
+					continue;
+
+				// search for a valid pair of tag (see Config)
+				const bool valid_tag_pair = has_valid_tag_pair(
 					game_object.get_collider()->tag,
 					children2->get_collider()->tag
 				);
-				if (should_test_collision)
+				if (valid_tag_pair)
 				{
-					// this make lot of useless calls. Could be optimize
-					// and if someone destroy the object right when on_game_object_overlap then bug. no ?
+					// this make lot of useless calls. Could be optimize if collision on two side
+					// and if someone destroy the object right when on_game_object_overlap then bug. no ? Haven't tested that yet :/
 					if (CollisionTest::collide(*game_object.get_collider(), *children2->get_collider()))
 					{
 						game_object.on_game_object_overlap(*children2);
@@ -150,7 +155,7 @@ namespace TowerDefense
 			}
 		}
 
-		bool Physics::collision_is_tested(Collider::Tag tag1, Collider::Tag tag2) 
+		bool Physics::has_valid_tag_pair(Collider::Tag tag1, Collider::Tag tag2) 
 		{
 			bool result = false;
 			for (std::pair<Collider::Tag, Collider::Tag> pair : testedCollisions)
@@ -165,6 +170,11 @@ namespace TowerDefense
 				}
 			}
 			return result;
+		}
+		
+		bool Physics::has_valid_tag_pair(std::pair<Collider::Tag, Collider::Tag> pair)
+		{
+			return has_valid_tag_pair(pair.first, pair.second);
 		}
 		
 		bool Physics::collide_mouse(const GameObject& game_object)
@@ -199,11 +209,6 @@ namespace TowerDefense
 				+ Collider::Type_to_string(game_object.get_collider()->get_type())
 			);
 			return false;
-		}
-		
-		bool Physics::collision_is_tested(std::pair<Collider::Tag, Collider::Tag> pair)
-		{
-			return collision_is_tested(pair.first, pair.second);
 		}
 
 		void Physics::on_left_click()

@@ -29,7 +29,7 @@ namespace TowerDefense
 			 * \brief Will trigger mouse and collision events on gameobject.
 			 * You need to assign a collider on your gameobject to make it work.
 			 * There is no point
-			 * \param mono_behaviour 
+			 * \param gameobject
 			 */
 			static void addChild(GameObject& gameobject);
 			static void removeChild(GameObject& gameobject);
@@ -38,8 +38,8 @@ namespace TowerDefense
 			static void update_game_object_collision(GameObject& game_object1);
 			static void updateMouseCollisions(GameObject& game_object);
 			static void updateMouseCollisionFront();
-			static bool collision_is_tested(Collider::Tag tag1, Collider::Tag tag2);
-			static bool collision_is_tested(std::pair<Collider::Tag, Collider::Tag> tag_pair);
+			static bool has_valid_tag_pair(Collider::Tag tag1, Collider::Tag tag2);
+			static bool has_valid_tag_pair(std::pair<Collider::Tag, Collider::Tag> tag_pair);
 			static bool collide_mouse(const GameObject& game_object);
 			static bool left_clicked;
 			static bool right_clicked;

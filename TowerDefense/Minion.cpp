@@ -91,10 +91,9 @@ namespace TowerDefense
 
 		void Minion::destroy_self()
 		{
-			// time_out finished, put id to null.
+			// time_out finished, put id to null, so that deconstructor won't try to cancel it.
 			death_time_out_id = 0;
 			// inform MapWaveManager that you want to be destroyed.
-			Debug::log("I probably get problems from here !");
 			Managers::MapWaveManager::destroy_me(*this);
 		}
 
