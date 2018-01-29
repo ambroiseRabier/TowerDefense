@@ -42,7 +42,6 @@ namespace TowerDefense
 			~Minion();
 			Health& get_health() const;
 			void init() override;
-			void on_destroy_map();
 		protected:
 			sf::Sprite* sprite;
 			sf::Vector2u map_pos;
@@ -54,6 +53,10 @@ namespace TowerDefense
 			const MinionParams& params;
 			std::unique_ptr<Health> health;
 			unsigned int death_time_out_id;
+			/**
+			 * \brief Used to stop the minion from moving when he is dead.
+			 */
+			bool stateIsDead;
 			void on_death();
 			void destroy_self();
 

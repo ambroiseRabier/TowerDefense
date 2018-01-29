@@ -77,6 +77,7 @@ namespace TowerDefense
 
 		void Minion::on_death()
 		{
+			stateIsDead = true;
 			// use a juicy new texture as feedback
 			sprite->setTexture(*GlobalShared::minion_death_texture);
 			// make the collider inactive.
@@ -105,6 +106,9 @@ namespace TowerDefense
 
 		void Minion::update() // todo: split in parts.
 		{
+			if (stateIsDead)
+				return;
+
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
 			const float speed = params.speed * Constants::Assets::tile_size * Managers::GameManager::get_delta_time();
 			float dist = magnitude(target_pos - transformable->getPosition());
