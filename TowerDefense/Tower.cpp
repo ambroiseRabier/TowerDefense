@@ -7,6 +7,7 @@
 #include "GameDesign.hpp"
 #include "Projectile.hpp"
 #include "Assets.hpp"
+#include "Timer.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -45,6 +46,10 @@ namespace TowerDefense
 
 		Tower::~Tower()
 		{
+			if (shoot_time_out_id != 0)
+			{
+				Utils::Timer::cancel_set_time_out(shoot_time_out_id);
+			}
 		}
 
 		void Tower::init()
@@ -57,7 +62,17 @@ namespace TowerDefense
 		{
 			if (game_object.get_collider()->tag == Collider::Tag::Minion)
 			{
+				//todo take first or last?
 				target = &game_object;
+				if (shoot_time_out_id == 0)
+				{
+					// instant shoot then use a time_out to forbid shooting for a reload_delay duration.
+					shoot();
+					shoot_time_out_id = Utils::Timer::set_time_out(
+						Sharp::EventHandler::Bind(&Tower::reset_shoot_delay, this),
+						get_current_projectile_params().reload_delay
+					);
+				}
 			}
 		}
 
@@ -68,33 +83,38 @@ namespace TowerDefense
 			);
 		}
 
-
-		void Tower::shoot()
+		void Tower::shoot() const 
 		{
-			assert(target != nullptr);
+			// if target has become null in meantime don't shoot. 
+			// (destroyed by another tower or out of range, or died on castle)
+			if (target == nullptr) 
+				return;
+
 			Projectile* proj = new Projectile(
 				GlobalShared::stone_projectile_0_texture, 
-				params.projectile_params.at(level),
+				get_current_projectile_params(),
 				transformable->getPosition() + Constants::Assets::tile_size_half_vec, // could be position of canon
 				target->get_transformable().getPosition() + Constants::Assets::tile_size_half_vec
 			);
 			proj->auto_start();
 			// DONT WORRY: no memory leak, Timer class take care of it.
-			// might cause problem with pooling however
+			// might not be adapted to pooling however
 		}
 
-		unsigned int tempInt=0;
-		void Tower::update() {
-			tempInt++;
-			if (tempInt % 30 == 0 && target != nullptr)
-			{
-				shoot();
-			}
+		void Tower::reset_shoot_delay()
+		{
+			// reset the id of time_out to "null" value so we can shoot again.
+			shoot_time_out_id = 0;
 		}
 
 		TowerId Tower::get_tile_id() const
 		{
 			return id;
+		}
+
+		const ProjectileParams& Tower::get_current_projectile_params() const
+		{
+			return params.projectile_params.at(level);
 		}
 	}
 }

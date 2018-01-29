@@ -2,6 +2,7 @@
 #ifndef TOWER_HPP
 #define TOWER_HPP
 #include "GameEngine/BaseGameObject.hpp"
+#include "ProjectileParams.hpp"
 
 namespace TowerDefense
 {
@@ -35,15 +36,16 @@ namespace TowerDefense
 			void on_game_object_overlap(GameObject& game_object) override;
 			void update_position();
 			TowerId get_tile_id() const;
-			void temp();
 			const sf::Vector2u map_pos;
 		private:
-			void shoot();
-			void update() override;
+			void shoot() const;
+			const ProjectileParams& get_current_projectile_params() const;
+			void reset_shoot_delay();
 			TowerId id;
 			const TowerParams& params;
 			GameObject* target;
 			unsigned int level=0;
+			unsigned int shoot_time_out_id=0;
 		};
 	}
 }

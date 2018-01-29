@@ -108,9 +108,10 @@ namespace TowerDefense
 			 * todo: make unique ptr ?
 			 * \param pointer 
 			 * \param delay
-			 * \param fixed_time 
+			 * \param fixed_time
+			 * \return Id of the time_out, id start from 1. 
 			 */
-			static const unsigned destroy(GameEngine::GameObject* pointer, float delay, bool fixed_time = false);
+			static const unsigned int destroy(GameEngine::GameObject* pointer, float delay, bool fixed_time = false);
 
 			/**
 			 * \brief Designed to work with elements dependant of the map. 
@@ -118,7 +119,7 @@ namespace TowerDefense
 			 * \param callback 
 			 * \param delay
 			 * \param fixed_time 
-			 * \return 
+			 * \return Id of the time_out, id start from 1. 
 			 */
 			static const unsigned int set_time_out(Sharp::EventHandlerImpl<void>* callback, float delay, bool fixed_time = false);
 
@@ -133,7 +134,7 @@ namespace TowerDefense
 			 * \brief 
 			 * Cancel the destroy using the id provided by destroy function.
 			 * If id is not found it does nothing.
-			 * \param id 
+			 * \param id
 			 */
 			static void cancel_destroy(const unsigned int& id);
 

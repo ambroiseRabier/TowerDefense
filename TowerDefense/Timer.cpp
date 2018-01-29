@@ -3,6 +3,7 @@
 #include "GlobalShared.hpp"
 #include "MapManager.hpp"
 #include "Managers/GameManager.hpp"
+#include "GameEngine/Debug.hpp"
 
 namespace TowerDefense
 {
@@ -32,7 +33,15 @@ namespace TowerDefense
 				}
 				all_destroy.clear();
 			}
-			all_time_out.clear();
+			if (!all_time_out.empty())
+			{
+				for (auto time_out : all_time_out)
+				{
+					delete time_out.to_call;
+					time_out.to_call = nullptr;
+				}
+				all_time_out.clear();
+			}
 		}
 
 		// for now it's a copy of on_quite_game, might change later if timer are needed in UI.
@@ -45,7 +54,7 @@ namespace TowerDefense
 		{
 			unsigned int id;
 			const unsigned int max_unsigned_int_size = std::numeric_limits<unsigned int>::max();
-			for (int i = 0; i < max_unsigned_int_size; ++i)
+			for (int i = 1; i < max_unsigned_int_size; ++i)
 			{
 				const bool found = std::find(id_used_list.begin(), id_used_list.end(), i) != id_used_list.end();
 				if (!found)
@@ -94,6 +103,7 @@ namespace TowerDefense
 		
 		void Timer::cancel_destroy(const unsigned int& id)
 		{
+			GameEngine::Debug::assert_m(id != 0, "0 means no id, it is used as null value");
 			for (auto destroy : all_destroy)
 			{
 				if (destroy.id == id)
@@ -109,6 +119,7 @@ namespace TowerDefense
 
 		void Timer::cancel_set_time_out(const unsigned int& id)
 		{
+			GameEngine::Debug::assert_m(id != 0, "0 means no id, it is used as null value");
 			for (auto time_out : all_time_out)
 			{
 				if (time_out.id == id)
@@ -140,14 +151,14 @@ namespace TowerDefense
 			for (auto it = all_destroy.begin(); it != all_destroy.end();)
 			{
 				// your time has come to and end.
-				const bool out_of_date = (*it).fixed_time ?
-					(*it).end_time <= clock.getElapsedTime().asSeconds()
-				  : (*it).end_time <= Managers::GameManager::get_clock();
+				const bool out_of_date = it->fixed_time ?
+					it->end_time <= clock.getElapsedTime().asSeconds()
+				  : it->end_time <= Managers::GameManager::get_clock();
 
 				if (out_of_date)
 				{
-					delete (*it).to_destroy;
-					free_id((*it).id);
+					delete it->to_destroy;
+					free_id(it->id);
 					it = all_destroy.erase(it);
 				}
 				else
@@ -162,16 +173,16 @@ namespace TowerDefense
 			for (auto it = all_time_out.begin(); it != all_time_out.end();)
 			{
 				// your time has come to and end.
-				const bool out_of_date = (*it).fixed_time ?
-					(*it).end_time <= clock.getElapsedTime().asSeconds()
-				  : (*it).end_time <= Managers::GameManager::get_clock();
+				const bool out_of_date = it->fixed_time ?
+					it->end_time <= clock.getElapsedTime().asSeconds()
+				  : it->end_time <= Managers::GameManager::get_clock();
 
 				if (out_of_date)
 				{
-					call_that_for_me((*it).to_call);
-					delete (*it).to_call;
-					(*it).to_call = nullptr;
-					free_id((*it).id);
+					call_that_for_me(it->to_call);
+					delete it->to_call;
+					it->to_call = nullptr;
+					free_id(it->id);
 					it = all_time_out.erase(it);
 				}
 				else
