@@ -79,6 +79,8 @@ namespace TowerDefense
 				target->get_transformable().getPosition() + Constants::Assets::tile_size_half_vec
 			);
 			proj->auto_start();
+			// DONT WORRY: no memory leak, Timer class take care of it.
+			// might cause problem with pooling however
 		}
 
 		unsigned int tempInt=0;

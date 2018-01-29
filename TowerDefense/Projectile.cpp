@@ -6,6 +6,7 @@
 #include "Managers/GameManager.hpp"
 #include "Assets.hpp"
 #include "Timer.hpp"
+#include "Minion.hpp"
 
 namespace TowerDefense
 {
@@ -55,6 +56,8 @@ namespace TowerDefense
 			if (game_object.get_collider()->tag == Collider::Tag::Minion)
 			{
 				//damage minion
+				const Minion* cc = dynamic_cast<Minion*>(&game_object);
+				//cc->get_health todo
 			}
 		}
 		void Projectile::update()

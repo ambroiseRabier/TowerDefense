@@ -9,6 +9,12 @@ namespace TowerDefense
 {
 	namespace Game
 	{
+		class IHasHealth { // todo implements
+		   public:
+			// pure virtual function
+			virtual Health& get_health() = 0;
+		};
+
 		Health::Health(const float maxHealth) : maxHealth(maxHealth)
 		{
 			//SetJauge
