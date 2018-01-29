@@ -63,7 +63,7 @@ namespace TowerDefense
 		void Projectile::update()
 		{
 			transformable->setPosition(
-				transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_deltaTime() * Constants::Assets::tile_size) 
+				transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_delta_time() * Constants::Assets::tile_size) 
 			);
 		}
 

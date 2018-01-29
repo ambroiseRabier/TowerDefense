@@ -2,6 +2,7 @@
 #include "Timer.hpp"
 #include "GlobalShared.hpp"
 #include "MapManager.hpp"
+#include "Managers/GameManager.hpp"
 
 namespace TowerDefense
 {
@@ -25,9 +26,9 @@ namespace TowerDefense
 		{
 			if (!all_destroy.empty())
 			{
-				for (auto pair : all_destroy)
+				for (auto element : all_destroy)
 				{
-					delete pair.to_destroy;
+					delete element.to_destroy;
 				}
 				all_destroy.clear();
 			}
@@ -62,18 +63,33 @@ namespace TowerDefense
 			id_used_list.remove(id);
 		}
 
-		const unsigned int Timer::destroy(GameEngine::GameObject* pointer, float delay)
+		const unsigned int Timer::destroy(GameEngine::GameObject* pointer, float delay, bool fixed_time)
 		{
 			const unsigned int id = generate_id();
-			all_destroy.push_back(DestroyWithId(pointer, clock.getElapsedTime().asSeconds() + delay, id));
+			all_destroy.push_back(DestroyWithId(
+				pointer, 
+				get_current_time(fixed_time) + delay,
+				id, 
+				fixed_time
+			));
 			return id;
 		}
 
-		const unsigned int Timer::set_time_out(Sharp::EventHandlerImpl<void>* callback, float delay)
+		const unsigned int Timer::set_time_out(Sharp::EventHandlerImpl<void>* callback, float delay, bool fixed_time)
 		{
 			const unsigned int id = generate_id();
-			all_time_out.push_back(TimeOutWithId(callback, clock.getElapsedTime().asSeconds() + delay, id));
+			all_time_out.push_back(TimeOutWithId(
+				callback, 
+				get_current_time(fixed_time) + delay,
+				id, 
+				fixed_time
+			));
 			return id;
+		}
+
+		const float Timer::get_current_time(bool fixed_time)
+		{
+			return fixed_time ? clock.getElapsedTime().asSeconds() : Managers::GameManager::get_clock();
 		}
 		
 		void Timer::cancel_destroy(const unsigned int& id)
@@ -123,7 +139,12 @@ namespace TowerDefense
 		{
 			for (auto it = all_destroy.begin(); it != all_destroy.end();)
 			{
-				if ((*it).delay <= clock.getElapsedTime().asSeconds())
+				// your time has come to and end.
+				const bool out_of_date = (*it).fixed_time ?
+					(*it).end_time <= clock.getElapsedTime().asSeconds()
+				  : (*it).end_time <= Managers::GameManager::get_clock();
+
+				if (out_of_date)
 				{
 					delete (*it).to_destroy;
 					free_id((*it).id);
@@ -140,7 +161,12 @@ namespace TowerDefense
 		{
 			for (auto it = all_time_out.begin(); it != all_time_out.end();)
 			{
-				if ((*it).delay <= clock.getElapsedTime().asSeconds())
+				// your time has come to and end.
+				const bool out_of_date = (*it).fixed_time ?
+					(*it).end_time <= clock.getElapsedTime().asSeconds()
+				  : (*it).end_time <= Managers::GameManager::get_clock();
+
+				if (out_of_date)
 				{
 					call_that_for_me((*it).to_call);
 					delete (*it).to_call;

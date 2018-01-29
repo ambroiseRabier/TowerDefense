@@ -17,11 +17,13 @@ namespace TowerDefense
 	namespace Managers
 	{
 		GameState GameManager::state = GameState::Menu;
-		float GameManager::deltaTime = 0.0;
+		float GameManager::fixed_delta_time = 0.0f;
+		float GameManager::delta_time = 0.0f;
 		sf::Clock GameManager::clock;
+		double GameManager::scaled_clock = 0;
 		Sharp::Event<void> GameManager::on_update;
 		unsigned int GameManager::game_speed_index;
-		unsigned int GameManager::level_index;
+		unsigned int GameManager::level_index = 0;
 		std::unique_ptr<Game::Player> GameManager::player;
 		sf::RenderWindow* GameManager::window_ref;
 
@@ -56,10 +58,11 @@ namespace TowerDefense
 
 		void GameManager::update()
 		{
-			deltaTime = clock.restart().asSeconds();
-			// appeler delegate Update, metter pause ici.
+			fixed_delta_time = clock.restart().asSeconds();
+			delta_time = fixed_delta_time * get_game_speed();
 			if (state != GameState::Pause)
 			{
+				scaled_clock += delta_time;
 				on_update();
 			}
 		}
@@ -72,9 +75,10 @@ namespace TowerDefense
 			{
 				state = GameState::Playing;
 			}
-			!player.get() ? spawn_player() : player->on_next_level();
-			UI::Hud::open();
 			level_index = i;
+			game_speed_index = 0;
+			!player.get() ? spawn_player() : player->on_next_level();
+			UI::Hud::open(); // if next level then hud already here, this is useless, unless there is a winscreen.
 			MapManager::load_level(level_index);
 			player->create_tower(TowerId::StoneTower);
 			// add delay here ? to let the player prepare his stuff.
@@ -141,9 +145,24 @@ namespace TowerDefense
 
 		// region getter setter
 
-		float GameManager::get_deltaTime () 
+		const float& GameManager::get_fixed_delta_time() 
 		{
-			return deltaTime;
+			return fixed_delta_time;
+		}
+
+		const float& GameManager::get_delta_time()
+		{
+			return delta_time;
+		}
+
+		const double& GameManager::get_clock()
+		{
+			return scaled_clock;
+		}
+
+		const sf::Clock& GameManager::get_fixed_clock()
+		{
+			return clock;
 		}
 
 		Player& GameManager::get_player()
@@ -151,7 +170,7 @@ namespace TowerDefense
 			return *player;
 		}
 
-		const float GameManager::get_game_speed()
+		const float& GameManager::get_game_speed()
 		{
 			return Constants::GameDesign::game_speed_choices[game_speed_index];
 		}

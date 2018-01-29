@@ -15,7 +15,10 @@ namespace TowerDefense
 		namespace GameDesign
 		{ 
 			const int game_speed_default_index = 1;
-			const float game_speed_choices[4] = {0.5f, 1.0f, 2.0f, 3.0f};
+			/**
+			 * \brief First value is default.
+			 */
+			const float game_speed_choices[4] = {1.0f, 2.0f, 3.0f, 0.5f};
 			const std::unordered_map<MinionId, MinionParams> minions = {
 				// { speed, health, damage, money }
 				{Peon, {0.5f, 1.f, 2.f, 10.f}},

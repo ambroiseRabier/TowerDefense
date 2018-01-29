@@ -61,7 +61,7 @@ namespace TowerDefense
 		void Minion::update() // todo: split in parts.
 		{
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
-			const float speed = params.speed * Constants::Assets::tile_size * Managers::GameManager::get_deltaTime();
+			const float speed = params.speed * Constants::Assets::tile_size * Managers::GameManager::get_delta_time();
 			float dist = magnitude(target_pos - transformable->getPosition());
 			bool overpass_target = dist < speed;
 			// if gonna overpass target_pos,save current map_pos, then calculate new target, if new target == previous target, do nothing.
