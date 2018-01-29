@@ -52,7 +52,7 @@ namespace TowerDefense
 			sprite_jauge->setScale(lScale, 1);
 		}
 
-		const float& Health::get_health()
+		const float& Health::get_health() const
 		{
 			return actualHealth;
 		}

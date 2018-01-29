@@ -10,30 +10,30 @@ namespace TowerDefense
 {
 	namespace Managers
 	{
-		std::unique_ptr<Minion> MapWaveManager::temp_minion;
+		Minion* MapWaveManager::temp_minion;
 
 		void MapWaveManager::init()
 		{
-			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&GlobalShared::destroy);
-		}
-
-		void MapWaveManager::destroy()
-		{
-			if (temp_minion.get()) temp_minion.reset(nullptr);
+			MapManager::on_destroy_level += Sharp::EventHandler::Bind(&MapWaveManager::destroy_current_level);
 		}
 
 		void MapWaveManager::start_wave_spawn()
 		{
-			temp_minion = std::unique_ptr<Minion>(Minion::create_peon(MapManager::get_spawn().map_pos));
+			temp_minion = Minion::create_peon(MapManager::get_spawn().map_pos);
 			temp_minion->get_transformable().setPosition(
 				MapManager::get_spawn().get_transformable().getPosition()
 			);
 			temp_minion->auto_start();
+			// minoin manage it's memory itself, todo: move getTransformable and auto_start. or not ? because event iterator :/
 		}
 
 		void MapWaveManager::destroy_current_level()
 		{
-			temp_minion.reset(nullptr);
+			if (temp_minion != nullptr)
+			{
+				temp_minion->on_destroy_map();
+				temp_minion = nullptr;
+			}
 		}
 	}
 }

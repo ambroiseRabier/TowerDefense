@@ -61,10 +61,12 @@ namespace TowerDefense
 			if (castle)
 			{
 				castle = nullptr;
+				// will be deleted in because it is in all_tiles_p
 			}
 			if (spawn)
 			{
 				spawn = nullptr;
+				// will be deleted in because it is in all_tiles_p
 			}
 			if (!all_tiles_p.empty())
 			{

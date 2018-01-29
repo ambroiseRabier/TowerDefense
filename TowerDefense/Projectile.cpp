@@ -39,7 +39,7 @@ namespace TowerDefense
 			transformable->setPosition(spawn_pos);
 			transformable->setRotation(Utils::look_at_angle(spawn_pos, target_pos));
 			collider = std::make_shared<Collider>(
-				sf::Vector2f(0,0), // needto think to to the aera effect.
+				sf::Vector2f(0,0), // change collider and do a collision test for aera effect.
 				Collider::Tag::Projectile
 			);
 			collider->mouse_enabled = false;

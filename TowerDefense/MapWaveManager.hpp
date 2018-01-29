@@ -2,7 +2,6 @@
 #ifndef MAP_WAVE_MANAGER_HPP
 #define MAP_WAVE_MANAGER_HPP
 #include "Minion.hpp"
-#include "Health.hpp"
 
 // s'occupe du spawn des wave du minion
 // s'assure que get_level_loaded_flag == true
@@ -19,9 +18,8 @@ namespace TowerDefense
 		class MapWaveManager
 		{
 		public:
-			static std::unique_ptr<Game::Minion> temp_minion;
+			static Game::Minion* temp_minion;
 			static void init();
-			static void destroy();
 			static void start_wave_spawn();
 			static void destroy_current_level();
 		};

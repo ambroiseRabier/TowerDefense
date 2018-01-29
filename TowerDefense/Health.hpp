@@ -19,7 +19,7 @@ namespace TowerDefense
 			float money_on_death = 0;
 			void damage(float value);
 			void heal(float value);
-			const float& get_health();
+			const float& get_health() const;
 			/**
 			 * \brief When health is at 0 or beyond, send an event.
 			 */
