@@ -6,6 +6,7 @@
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
 #include "Assets.hpp"
+#include "Timer.hpp"
 
 namespace TowerDefense
 {
@@ -37,16 +38,12 @@ namespace TowerDefense
 			dir = Utils::look_at_dir(spawn_pos, target_pos);
 			transformable->setPosition(spawn_pos);
 			transformable->setRotation(Utils::look_at_angle(spawn_pos, target_pos));
-			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&Projectile::temp, this);
 			collider = std::make_shared<Collider>(
 				sf::Vector2f(0,0), // needto think to to the aera effect.
 				Collider::Tag::Projectile
 			);
 			collider->mouse_enabled = false;
-		}
-
-		Projectile::~Projectile()
-		{
+			Utils::Timer::destroy(static_cast<GameObject*>(this), params.life_time);
 		}
 
 		void Projectile::set_tower_p(const Tower& new_tower_ref)
@@ -68,13 +65,8 @@ namespace TowerDefense
 			);
 		}
 
-		void Projectile::temp()
-		{
-			delete this;
-		}
-
 		//void on_game_object_overlap
-
+		// remove from destory list too
 		// on collide use tower_p to give experience if needed.
 	}
 }

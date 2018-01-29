@@ -289,14 +289,14 @@ namespace Sharp    // short for SharpTools
 		template<typename T>
 		static EventHandlerImpl<T>* Bind(void(*nonMemberFunctionToCall)(T&))
 		{
-			return new EventHandlerImplForNonMemberFunction<T>(nonMemberFunctionToCall);
+			return DBG_NEW EventHandlerImplForNonMemberFunction<T>(nonMemberFunctionToCall);
 		}
 
 		/** @overload */
 		template<typename T, typename U>
 		static EventHandlerImpl<T>* Bind(void(U::*memberFunctionToCall)(T&), U* thisPtr)
 		{
-			return new EventHandlerImplForMemberFunction<T,U>(memberFunctionToCall, thisPtr);
+			return DBG_NEW EventHandlerImplForMemberFunction<T,U>(memberFunctionToCall, thisPtr);
 		}
 
 		//------------------------------------
@@ -306,14 +306,14 @@ namespace Sharp    // short for SharpTools
 		/** @overload */
 		static EventHandlerImpl<void>* Bind(void(*nonMemberFunctionToCall)())
 		{
-			return new EventHandlerImplForNonMemberFunction<void>(nonMemberFunctionToCall);
+			return DBG_NEW EventHandlerImplForNonMemberFunction<void>(nonMemberFunctionToCall);
 		}
 
 		/** @overload */
 		template<typename U>
 		static EventHandlerImpl<void>* Bind(void(U::*memberFunctionToCall)(), U* thisPtr)
 		{
-			return new EventHandlerImplForMemberFunction<void,U>(memberFunctionToCall, thisPtr);
+			return DBG_NEW EventHandlerImplForMemberFunction<void,U>(memberFunctionToCall, thisPtr);
 		}
 
 	private:

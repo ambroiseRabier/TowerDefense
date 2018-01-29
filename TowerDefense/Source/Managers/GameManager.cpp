@@ -39,9 +39,11 @@ namespace TowerDefense
 			if (state == GameState::Pause || state == GameState::Playing)
 			{
 				MapManager::destroy_current_level();
+				MapWaveManager::destroy_current_level();
 			}
-			//window_ref = nullptr; DONT DO THAT, or cna't close window.
+			//window_ref = nullptr; DONT DO THAT, or you can't close window.
 			if (player.get()) {
+				assert(state == GameState::Pause || state == GameState::Playing);
 				player.reset(nullptr);
 			}
 		}

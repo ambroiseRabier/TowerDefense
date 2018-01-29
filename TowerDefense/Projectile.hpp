@@ -22,12 +22,10 @@ namespace TowerDefense
 			 */
 			Projectile(const sf::Texture* texture, const ProjectileParams params, const sf::Vector2f spawn_pos,
 			           const sf::Vector2f& target_pos);
-			~Projectile();
 			void set_tower_p(const Tower& new_tower_ref);
 			void on_game_object_overlap(GameObject& game_object) override;
 		protected:
 			void update() override;
-			void temp();
 		private:
 			const ProjectileParams params;
 			sf::Vector2f dir;

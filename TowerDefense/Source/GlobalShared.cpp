@@ -58,7 +58,7 @@ namespace TowerDefense
 			delete level2_btn_texture; level2_btn_texture = nullptr;
 			delete level3_btn_texture; level3_btn_texture = nullptr;
 			delete pause_btn_texture; pause_btn_texture = nullptr;
-			//delete play_btn_texture; play_btn_texture = nullptr;
+			delete play_btn_texture; play_btn_texture = nullptr;
 			delete quit_btn_texture; quit_btn_texture = nullptr;
 			delete tower1_btn_texture; tower1_btn_texture = nullptr;
 			delete tower2_btn_texture; tower2_btn_texture = nullptr;

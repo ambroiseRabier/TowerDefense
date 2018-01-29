@@ -39,7 +39,7 @@ namespace Collision
 		}
 
 		sf::Uint8* CreateMask (const sf::Texture* tex, const sf::Image& img) {
-			sf::Uint8* mask = new sf::Uint8[tex->getSize().y*tex->getSize().x];
+			sf::Uint8* mask = DBG_NEW sf::Uint8[tex->getSize().y*tex->getSize().x];
 
 			for (unsigned int y = 0; y<tex->getSize().y; y++)
 			{

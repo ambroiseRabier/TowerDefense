@@ -17,7 +17,7 @@ class Singleton
 {
 public:
   static T* Instance() {
-      if(!m_pInstance) m_pInstance = new T;
+      if(!m_pInstance) m_pInstance = DBG_NEW T;
       assert(m_pInstance != nullptr);
       return m_pInstance;
   }

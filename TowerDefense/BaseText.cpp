@@ -21,7 +21,9 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::ui_start;
 			set_text(new_text);
 			text->setOutlineColor(sf::Color::White);
-			text->setOutlineThickness(1.f);
+			// setOutlineThickness has memory leaks (I've confirmed it)
+			// https://github.com/SFML/SFML/issues/1233
+			//text->setOutlineThickness(1.f);
 			text->setFont(*GlobalShared::default_font);
 			text->setCharacterSize(36);
 		}

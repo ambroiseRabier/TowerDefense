@@ -20,6 +20,7 @@ namespace TowerDefense
 			Managers::MapManager::on_destroy_level += Sharp::EventHandler::Bind(on_map_destroyed);
 		}
 
+		// will be called two times if quit game happen when map is here. It's ok.
 		void Timer::on_quit_game()
 		{
 			if (!all_destroy.empty())
