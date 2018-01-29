@@ -20,7 +20,6 @@ namespace TowerDefense
 		{
 		public:
 			static std::unique_ptr<Game::Minion> temp_minion;
-			static std::unique_ptr<Game::Health> temp_life_bar;
 			static void init();
 			static void destroy();
 			static void start_wave_spawn();

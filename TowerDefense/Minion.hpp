@@ -3,6 +3,7 @@
 #define MINION_HPP
 #include "GameEngine/BaseGameObject.hpp"
 #include "Utils/Event.h"
+#include "Health.hpp"
 
 namespace TowerDefense
 {
@@ -48,6 +49,8 @@ namespace TowerDefense
 			 */
 			sf::Vector2u previous_map_pos;
 			const MinionParams& params;
+			std::unique_ptr<Health> health;
+
 			// faire un speed, non clamp à la position, du coup si un gars va trop vite il se décalera sur le côté
 			// dans un tournant, l'effet peut être sympa et est tolérable.
 			void start() override;
@@ -86,6 +89,8 @@ namespace TowerDefense
 			 */
 			sf::Vector2u find_next_map_pos(const sf::Vector2u& current_map_pos) const;
 			bool validate_pos(const sf::Vector2u& new_pos) const;
+			void update_health_pos();
+
 		};
 	}
 }

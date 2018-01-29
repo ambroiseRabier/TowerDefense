@@ -42,11 +42,14 @@ namespace TowerDefense
 				Collider::Tag::Minion
 			);
 			z_index = Constants::ZIndex::minions_start;
+			health = std::make_unique<Health>(params.health);
+			update_health_pos();
+			health->auto_start();
 		}
-
 
 		Minion::~Minion()
 		{
+			health.reset(nullptr);
 		}
 
 		void Minion::start()
@@ -104,6 +107,7 @@ namespace TowerDefense
 					target_pos
 				);
 			}
+			update_health_pos();
 		}
 
 		sf::Vector2f Minion::calc_pos(const sf::Vector2f& target_pos, const float& speed) const
@@ -153,6 +157,14 @@ namespace TowerDefense
 			return previous_map_pos != new_pos
 				&& Managers::MapManager::map_pos_exist(new_pos) 
 				&& Managers::MapManager::map_pos_walkable(new_pos);
+		}
+
+		void Minion::update_health_pos()
+		{
+			const sf::Vector2f offset(0, -25.f); // from center of tile.
+			health->get_transformable().setPosition(
+				transformable->getPosition() + Constants::Assets::tile_size_half_vec + offset
+			);
 		}
 	}
 }

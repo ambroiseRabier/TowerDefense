@@ -16,7 +16,6 @@ namespace TowerDefense
 		{
 		public:
 			Health(const float maxHealth = 1);
-			~Health();
 			float money_on_death = 0;
 			void damage(float value);
 			void heal(float value);
@@ -29,7 +28,6 @@ namespace TowerDefense
 			void setGraphismScale();
 			float maxHealth;
 			float actualHealth;
-			sf::Sprite* sprite_background;
 			sf::Sprite* sprite_jauge;
 		};
 	}
