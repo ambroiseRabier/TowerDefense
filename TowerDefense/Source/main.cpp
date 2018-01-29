@@ -181,8 +181,9 @@ int main()
 
 	// wait a bit to see the loading/credit screen.
 	// (forget asynchrone setTimeout like js. Gonna be too hard)
-	const Time creditLoadingDuration = seconds(Config::min_loading_duration);
-	sleep(creditLoadingDuration);
+	//const Time creditLoadingDuration = seconds(Config::min_loading_duration);
+	//sleep(creditLoadingDuration);
+	// todo: make a screen instead.
 	
 	// delete loading/credit stuff because we don't need it anymore
 	// note: since this is smartpoint, they destroy themselves when out of stack.
