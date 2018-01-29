@@ -21,6 +21,7 @@ namespace TowerDefense
 		sf::Clock GameManager::clock;
 		Sharp::Event<void> GameManager::on_update;
 		unsigned int GameManager::game_speed_index;
+		unsigned int GameManager::level_index;
 		std::unique_ptr<Game::Player> GameManager::player;
 		sf::RenderWindow* GameManager::window_ref;
 
@@ -73,7 +74,8 @@ namespace TowerDefense
 				spawn_player();
 			}
 			UI::HUD::open();
-			MapManager::load_level(i);
+			level_index = i;
+			MapManager::load_level(level_index);
 			player->create_tower(TowerId::StoneTower);
 			// add delay here ? to let the player prepare his stuff.
 			MapWaveManager::start_wave_spawn();
@@ -85,7 +87,8 @@ namespace TowerDefense
 			MapManager::destroy_current_level();
 			MapWaveManager::destroy_current_level();
 			player.reset(nullptr);
-			MapManager::load_level(0); // todo
+			MapManager::load_level(level_index);
+			player->create_tower(TowerId::StoneTower);
 			MapWaveManager::start_wave_spawn();
 		}
 

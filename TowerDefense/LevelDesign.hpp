@@ -12,6 +12,8 @@ namespace TowerDefense
 		namespace LevelDesign
 		{
 			const MapParams level0 = {
+				// name displayed
+				"HelloWorld",
 				// start money
 				50.f,
 				// tiles

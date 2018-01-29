@@ -39,6 +39,7 @@ namespace TowerDefense
 			 * Speed the turret and minions.
 			 */
 			static unsigned int game_speed_index;
+			static unsigned int level_index;
 			static std::unique_ptr<Game::Player> player;
 			static float deltaTime;
 			static sf::Clock clock;

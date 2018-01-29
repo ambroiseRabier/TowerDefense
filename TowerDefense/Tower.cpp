@@ -35,7 +35,10 @@ namespace TowerDefense
 			));
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
-				Circle(params.projectile_params.at(level).range * Constants::Assets::tile_size),
+				Circle(
+					params.projectile_params.at(level).range * Constants::Assets::tile_size,
+					Constants::Assets::tile_size_half_vec // box in the center of tile.
+				),
 				Collider::Tag::Tower
 			); 
 		}

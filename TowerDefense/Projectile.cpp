@@ -4,7 +4,6 @@
 #include "ProjectileParams.hpp"
 #include "Mathf.hpp"
 #include "Managers/GameManager.hpp"
-#include "GlobalShared.hpp"
 #include "Assets.hpp"
 #include "Timer.hpp"
 

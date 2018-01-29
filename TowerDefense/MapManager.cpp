@@ -8,6 +8,7 @@
 #include "LevelDesign.hpp"
 #include "Assets.hpp"
 #include "GlobalShared.hpp"
+#include "HUD.hpp"
 
 namespace TowerDefense
 {
@@ -116,6 +117,7 @@ namespace TowerDefense
 			}
 			map_params = &Constants::LevelDesign::level0;
 			GameManager::get_player().set_money(map_params->start_money);
+			UI::HUD::set_level_text(map_params->name);
 			align_center(*map_params);
 			create_tiles(*map_params);
 		}
