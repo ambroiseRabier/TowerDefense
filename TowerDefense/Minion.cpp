@@ -10,6 +10,8 @@
 #include "GameEngine/Debug.hpp"
 #include "MinionParams.hpp"
 #include "GameDesign.hpp"
+#include "Timer.hpp"
+#include "AssetsConfig.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
@@ -50,6 +52,48 @@ namespace TowerDefense
 		Minion::~Minion()
 		{
 			health.reset(nullptr);
+		}
+
+		Health& Minion::get_health() const
+		{
+			return *health;
+		}
+
+		void Minion::init()
+		{
+			BaseGameObject::init();
+			assert(health);
+			health->on_death += Sharp::EventHandler::Bind(&Minion::on_death, this);
+		}
+
+		void Minion::on_destroy_map()
+		{
+			health->on_death -= Sharp::EventHandler::Bind(&Minion::on_death, this);
+			// cancel timer if map is destroyed while the timer is active.
+			// if there is no timer does nothing.
+			// don't put that in on_death or descontructor, 
+			// or you will remove a pointer reference in Timer and it will crash.
+			Timer::cancel_set_time_out(death_time_out_id);
+		}
+
+		void Minion::on_death()
+		{
+			// use a juicy new texture as feedback
+			sprite->setTexture(*GlobalShared::minion_death_texture);
+			// make the collider inactive.
+			collider->gameobject_enabled = false;
+			collider->mouse_enabled = false;
+			// set a timer before destroying this instance.
+			death_time_out_id = Timer::set_time_out(
+				Sharp::EventHandler::Bind(&Minion::destroy_self, this),
+				Constants::AssetsConfig::minion_death_delay
+			);
+		}
+
+		void Minion::destroy_self()
+		{
+			Debug::log("I probably get problems from here !");
+			delete this;
 		}
 
 		void Minion::start()

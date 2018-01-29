@@ -56,8 +56,11 @@ namespace TowerDefense
 			if (game_object.get_collider()->tag == Collider::Tag::Minion)
 			{
 				//damage minion
-				const Minion* cc = dynamic_cast<Minion*>(&game_object);
-				//cc->get_health todo
+				const Minion* minion = dynamic_cast<Minion*>(&game_object);
+				assert(minion);
+				minion->get_health().damage(params.damage);
+				//temp
+				collider->gameobject_enabled = false;
 			}
 		}
 		void Projectile::update()

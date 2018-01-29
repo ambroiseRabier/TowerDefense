@@ -21,9 +21,9 @@ namespace TowerDefense
 			void heal(float value);
 			const float& get_health();
 			/**
-			 * \brief When health is at 0 or beyond, send an event with money_on_death value.
+			 * \brief When health is at 0 or beyond, send an event.
 			 */
-			static Sharp::Event<float> on_death;
+			Sharp::Event<void> on_death;
 		protected:
 			void setGraphismScale();
 			float maxHealth;

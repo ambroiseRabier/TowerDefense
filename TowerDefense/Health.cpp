@@ -15,7 +15,7 @@ namespace TowerDefense
 			virtual Health& get_health() = 0;
 		};
 
-		Health::Health(const float maxHealth) : maxHealth(maxHealth)
+		Health::Health(const float maxHealth) : maxHealth(maxHealth), actualHealth(maxHealth)
 		{
 			std::unique_ptr<sf::Sprite> my_sprite_jauge = std::make_unique<sf::Sprite>(*GlobalShared::hpBar_jauge_texture);
 			my_sprite_jauge->setPosition(-25.f, 0); // centered, temp
@@ -25,15 +25,18 @@ namespace TowerDefense
 					my_sprite_jauge
 				))
 			);
-
 			z_index = Constants::ZIndex::hpBars_jauge_start;
-			actualHealth = maxHealth;
 		}
 
 		void Health::damage(float value)
 		{
+			Debug::assert_m(value > 0, "Health: damage value should be positiv and not egal to 0.");
 			actualHealth = std::max(0.f, actualHealth - value);
 			setGraphismScale();
+			if (actualHealth == 0.f)
+			{
+				on_death();
+			}
 		}
 
 		void Health::heal(float value)

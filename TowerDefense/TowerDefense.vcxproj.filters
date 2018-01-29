@@ -234,6 +234,9 @@
     <ClInclude Include="Timer.hpp">
       <Filter>Header Files\TowerDefense\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="AssetsConfig.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

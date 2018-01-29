@@ -37,6 +37,7 @@ namespace TowerDefense
 		extern sf::Texture* restart_btn_texture;
 
 		extern sf::Texture* stone_projectile_0_texture;
+		extern sf::Texture* minion_death_texture;
 
 		/**
 		 * \brief 

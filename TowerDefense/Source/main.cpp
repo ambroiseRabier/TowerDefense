@@ -115,15 +115,13 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::stone_projectile_0);
 	GlobalShared::stone_projectile_0_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::minion_death);
+	GlobalShared::minion_death_texture = texture;
 }
 
-struct Pod {
-    int x;
-};
-
 /**
- * @author: ambroise
- * todo: Use singleton instead of static to fasten loadtime of application?
+ * @author: Ambroise Rabier
  */
 int main()
 {

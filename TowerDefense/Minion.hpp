@@ -40,6 +40,9 @@ namespace TowerDefense
 			Minion();
 			Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id);
 			~Minion();
+			Health& get_health() const;
+			void init() override;
+			void on_destroy_map();
 		protected:
 			sf::Sprite* sprite;
 			sf::Vector2u map_pos;
@@ -50,6 +53,9 @@ namespace TowerDefense
 			sf::Vector2u previous_map_pos;
 			const MinionParams& params;
 			std::unique_ptr<Health> health;
+			unsigned int death_time_out_id;
+			void on_death();
+			void destroy_self();
 
 			// faire un speed, non clamp à la position, du coup si un gars va trop vite il se décalera sur le côté
 			// dans un tournant, l'effet peut être sympa et est tolérable.

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Align.hpp" />
+    <ClInclude Include="AssetsConfig.hpp" />
     <ClInclude Include="Assets.hpp" />
     <ClInclude Include="BaseText.hpp" />
     <ClInclude Include="Castle.hpp" />
