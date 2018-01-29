@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "HUD.hpp"
+#include "Hud.hpp"
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
@@ -8,13 +8,13 @@ namespace TowerDefense
 {
 	namespace UI
 	{
-		std::unique_ptr<BaseText> HUD::level_text;
-		std::unique_ptr<BaseText> HUD::money_text;
-		std::unique_ptr<BaseButton> HUD::pause_btn;
-		std::unique_ptr<BaseButton> HUD::restart_btn;
-		std::unique_ptr<BaseButton> HUD::up_speed_btn;
+		std::unique_ptr<BaseText> Hud::level_text;
+		std::unique_ptr<BaseText> Hud::money_text;
+		std::unique_ptr<BaseButton> Hud::pause_btn;
+		std::unique_ptr<BaseButton> Hud::restart_btn;
+		std::unique_ptr<BaseButton> Hud::up_speed_btn;
 
-		void HUD::init()
+		void Hud::init()
 		{
 			level_text = std::make_unique<BaseText>("*Level");
 			money_text = std::make_unique<BaseText>("*Money");
@@ -39,22 +39,22 @@ namespace TowerDefense
 				30 + up_speed_btn->get_sprite().getGlobalBounds().height
 			));
 			close();
-			pause_btn->on_click += Sharp::EventHandler::Bind(&HUD::on_click_pause);
-			restart_btn->on_click += Sharp::EventHandler::Bind(&HUD::on_click_restart);
-			up_speed_btn->on_click += Sharp::EventHandler::Bind(&HUD::on_click_up_speed);
+			pause_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_pause);
+			restart_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_restart);
+			up_speed_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_up_speed);
 			level_text->auto_start();
 			money_text->auto_start();
 			pause_btn->auto_start();
 			restart_btn->auto_start();
 			up_speed_btn->auto_start();
-			GlobalShared::on_window_close += Sharp::EventHandler::Bind(HUD::destroy);
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(Hud::destroy);
 		}
 
-		void HUD::destroy()
+		void Hud::destroy()
 		{
-			pause_btn->on_click -= Sharp::EventHandler::Bind(&HUD::on_click_pause);
-			restart_btn->on_click -= Sharp::EventHandler::Bind(&HUD::on_click_restart);
-			up_speed_btn->on_click -= Sharp::EventHandler::Bind(&HUD::on_click_up_speed);
+			pause_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_pause);
+			restart_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_restart);
+			up_speed_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_up_speed);
 			level_text.reset(nullptr);
 			money_text.reset(nullptr);
 			pause_btn.reset(nullptr);
@@ -62,7 +62,7 @@ namespace TowerDefense
 			up_speed_btn.reset(nullptr);
 		}
 
-		void HUD::open()
+		void Hud::open()
 		{
 			//todo: debug assert is inited.
 			level_text->isActive = true;
@@ -72,7 +72,7 @@ namespace TowerDefense
 			up_speed_btn->isActive = true;
 		}
 
-		void HUD::close()
+		void Hud::close()
 		{
 			level_text->isActive = false;
 			money_text->isActive = false;
@@ -81,27 +81,27 @@ namespace TowerDefense
 			up_speed_btn->isActive = false;
 		}
 
-		void HUD::set_level_text(const std::string& text)
+		void Hud::set_level_text(const std::string& text)
 		{
 			level_text->set_text(text);
 		}
 
-		void HUD::set_money_text(const std::string& text)
+		void Hud::set_money_text(const std::string& text)
 		{
 			money_text->set_text(text);
 		}
 
-		void HUD::on_click_up_speed()
+		void Hud::on_click_up_speed()
 		{
 			Managers::GameManager::up_game_speed();
 		}
 
-		void HUD::on_click_restart()
+		void Hud::on_click_restart()
 		{
 			Managers::GameManager::restart_level();
 		}
 
-		void HUD::on_click_pause()
+		void Hud::on_click_pause()
 		{
 			Managers::GameManager::pause();
 		}

@@ -4,7 +4,7 @@
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Debug.hpp"
 #include "GlobalShared.hpp"
-#include "HUD.hpp"
+#include "Hud.hpp"
 #include "Timer.hpp"
 
 namespace TowerDefense

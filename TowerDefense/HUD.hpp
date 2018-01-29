@@ -13,7 +13,7 @@ namespace TowerDefense
 		 * \brief 
 		 * Should handle loose and win screen.
 		 */
-		class HUD : Screen
+		class Hud : Screen
 		{
 		public:
 			static void init();

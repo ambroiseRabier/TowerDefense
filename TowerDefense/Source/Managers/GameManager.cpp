@@ -4,7 +4,7 @@
 #include "../../MenuScreen.hpp"
 #include "../../PauseScreen.hpp"
 #include "GameEngine/Debug.hpp"
-#include "../../HUD.hpp"
+#include "../../Hud.hpp"
 #include "../../GameDesign.hpp"
 #include "../../MapManager.hpp"
 #include "../../GlobalShared.hpp"
@@ -73,7 +73,7 @@ namespace TowerDefense
 				state = GameState::Playing;
 				spawn_player();
 			}
-			UI::HUD::open();
+			UI::Hud::open();
 			level_index = i;
 			MapManager::load_level(level_index);
 			player->create_tower(TowerId::StoneTower);
@@ -95,14 +95,14 @@ namespace TowerDefense
 		void GameManager::pause()
 		{
 			UI::PauseScreen::open();
-			UI::HUD::close();
+			UI::Hud::close();
 			state = GameState::Pause;
 		}
 
 		void GameManager::un_pause()
 		{
 			UI::PauseScreen::close();
-			UI::HUD::open();
+			UI::Hud::open();
 			state = GameState::Playing;
 		}
 

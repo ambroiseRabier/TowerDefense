@@ -5,7 +5,7 @@
 #include "GameEngine/Physics.hpp"
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
-#include "../HUD.hpp"
+#include "../Hud.hpp"
 #include "../PauseScreen.hpp"
 #include "../Assets.hpp"
 #include "../GlobalShared.hpp"
@@ -174,7 +174,7 @@ int main()
 	Physics::init(Config::tested_collisions);
 	MapManager::init();
 	UI::MenuScreen::init();
-	UI::HUD::init();
+	UI::Hud::init();
 	UI::PauseScreen::init();
 	GameManager::init(&window);
 	Debug::info("Managers inited.");
