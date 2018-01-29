@@ -28,8 +28,6 @@ namespace TowerDefense
 			BaseButton();
 			BaseButton(sf::Texture* pTexture);
 			~BaseButton();
-			void destroy() override;
-			void unListenToEvents() override;
 			void on_mouse_overlap() override;
 			void on_mouse_overlap_front() override;
 			void on_mouse_click(bool left) override;
@@ -48,8 +46,6 @@ namespace TowerDefense
 			void init() override;
 			void create_button(sf::Texture* pTexture);
 			void update() override;
-		private:
-			bool base_btn_destroyed = false;
 		};
 	}
 }

@@ -23,6 +23,10 @@ namespace TowerDefense
 			create_button(pTexture);
 		}
 
+		BaseButton::~BaseButton()
+		{
+		}
+
 		void BaseButton::create_button(sf::Texture* pTexture) {
 			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*pTexture);
 			// I prefer avoiding downcast of the drawable into sprite
@@ -52,12 +56,6 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::ui_start;
 		}
 
-		//keep this or only parent object will have destroy() called
-		BaseButton::~BaseButton()
-		{
-			destroy();
-		}
-
 		void BaseButton::init()
 		{
 			BaseGameObject::init();
@@ -67,23 +65,6 @@ namespace TowerDefense
 		{
 			//BaseGameObject::update(); there is nothing to call, so we can ignore base call here.
 			// your code here
-		}
-
-		void BaseButton::destroy()
-		{
-			// make sure it is called one time only if someone inherit from you.
-			if (!base_btn_destroyed)
-			{
-				base_btn_destroyed = true;
-				//your code here
-				BaseGameObject::destroy();
-			}
-		}
-
-		void BaseButton::unListenToEvents()
-		{
-			//your code here
-			BaseGameObject::unListenToEvents();
 		}
 
 		void BaseButton::on_mouse_overlap()

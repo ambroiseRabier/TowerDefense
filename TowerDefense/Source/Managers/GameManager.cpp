@@ -71,8 +71,8 @@ namespace TowerDefense
 			if (state != GameState::Playing)
 			{
 				state = GameState::Playing;
-				spawn_player();
 			}
+			!player.get() ? spawn_player() : player->on_next_level();
 			UI::Hud::open();
 			level_index = i;
 			MapManager::load_level(level_index);
@@ -84,12 +84,11 @@ namespace TowerDefense
 		void GameManager::restart_level()
 		{
 			assert(state == GameState::Playing);
+			assert(level_index >= 0);
+			assert(player);
 			MapManager::destroy_current_level();
 			MapWaveManager::destroy_current_level();
-			player.reset(nullptr);
-			MapManager::load_level(level_index);
-			player->create_tower(TowerId::StoneTower);
-			MapWaveManager::start_wave_spawn();
+			start_level(level_index);
 		}
 
 		void GameManager::pause()

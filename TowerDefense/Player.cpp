@@ -30,5 +30,10 @@ namespace TowerDefense
 			//tower = std::make_unique<Tower>(*temp);
 			tower->auto_start();
 		}
+
+		void Player::on_next_level()
+		{
+			if (tower.get()) tower.reset(nullptr);
+		}
 	}
 }

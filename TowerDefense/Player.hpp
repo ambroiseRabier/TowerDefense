@@ -22,6 +22,10 @@ namespace TowerDefense
 			~Player();
 			void set_money(const float& value);
 			void create_tower(const TowerId tower_id);
+			/**
+			 * \brief When the level change or restart. But the player is already instanciated.
+			 */
+			void on_next_level();
 		private:
 			std::unique_ptr<Tower> tower;
 		};

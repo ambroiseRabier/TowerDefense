@@ -21,7 +21,7 @@ namespace TowerDefense
 		{
 		public:
 			BaseGameObject();
-			~BaseGameObject();
+			virtual ~BaseGameObject();
 			/**
 			 * \brief Do `init(); Scene::addChild(*this); Physics::addChild(*this); start();` in this order.
 			 * addChild are being done only if you provided a drawable, collider.
@@ -40,9 +40,7 @@ namespace TowerDefense
 			 */
 			virtual void start();
 		protected:
-			virtual void listenToEvents(); 
-			virtual void unListenToEvents();
-
+			
 			/**
 			 * \brief 
 			 * Called every frame.
@@ -55,18 +53,6 @@ namespace TowerDefense
 			 */
 			virtual void recycle();
 
-			
-			/**
-			 * \brief
-			 * It is called in descontructor (no manual public call since alt-f4, pressing red creutz would not call it).
-			 * You cannot call virtual children methods in deconstructor.
-			 * That mean the override of unlistenEvents() IS NOT CALLED if you call destroy() in deconstructor of BaseGameObject.
-			 * (same for destroy() override)
-			 * BUT if you call destroy() in BaseButton (as exemple) that inherit from BaseGameObject then BaseGameObject destroy() will be called.
-			 * 
-			 * If you want your override of destroy and unlistenToEvents to work you need to call destroy() from your own deconstructor.
-			 */
-			virtual void destroy();
 		private:
 			bool flag_is_init;
 			/**
@@ -74,7 +60,7 @@ namespace TowerDefense
 			 * Avoid callind destroy two time when some children in inheritance call it too.
 			 * (Calling it two time do not make it crash)
 			 */
-			bool flag_is_destroyed;
+			bool flag_is_started;
 		};
 
 	}

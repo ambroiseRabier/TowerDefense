@@ -15,11 +15,12 @@ namespace TowerDefense
 
 		BaseGameObject::~BaseGameObject()
 		{
-			// if not already destroyed by teh call of a children of BaseGameObject then call it.
-			if (!flag_is_destroyed)
+			if (flag_is_started)
 			{
-				destroy();
+				Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
 			}
+			Physics::removeChild(*this);
+			Scene::removeChild(*this);
 		}
 
 		void BaseGameObject::auto_start()
@@ -46,19 +47,10 @@ namespace TowerDefense
 		void BaseGameObject::start()
 		{
 			Debug::assert_m(flag_is_init, "BaseGameObject: Call init() before calling start().");
-			listenToEvents();
+			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, static_cast<BaseGameObject*>(this));
 			// It is better if you addchild them yourselve
 			//Scene::addChild(*this);
-		}
-
-		void BaseGameObject::listenToEvents()
-		{
-			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, static_cast<BaseGameObject*>(this));
-		}
-
-		void BaseGameObject::unListenToEvents()
-		{
-			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
+			flag_is_started = true;
 		}
 
 		void BaseGameObject::update()
@@ -68,22 +60,13 @@ namespace TowerDefense
 
 		void BaseGameObject::recycle()
 		{
+			Debug::assert_m(flag_is_started, "Recycling an element that was not started do not make sense.");
+			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
 			// remove from scene in case removechildre has been forgotten
 			Physics::removeChild(*this);
 			Scene::removeChild(*this);
-			unListenToEvents();
 			flag_is_init = false;
-		}
-
-		void BaseGameObject::destroy()
-		{
-			if (!flag_is_destroyed)
-			{
-				flag_is_destroyed = true;
-				unListenToEvents();
-				Physics::removeChild(*this);
-				Scene::removeChild(*this);
-			}
+			flag_is_started = false;
 		}
 	}
 }
