@@ -49,7 +49,7 @@ namespace TowerDefense
 			//sprite.setColor(sf::Color(255, 255, 255, 200));
 			// take collision box of sprite
 			collider = std::make_shared<Collider>(
-				sprite->getGlobalBounds(),
+				sprite->getLocalBounds(),
 				Collider::Tag::UI
 			);
 			//collider->tag = Collider::Tag::UI;

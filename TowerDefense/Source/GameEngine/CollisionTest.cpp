@@ -25,7 +25,7 @@ namespace TowerDefense
 				return rect_dot(c1.get_rect(), c2.get_dot(), t1, t2);
 			if (c1.get_type() == Collider::Type::Dot 
 				&& c2.get_type() == Collider::Type::Rect)
-				return rect_dot(c2.get_rect(), c1.get_dot(), t1, t2);
+				return rect_dot(c2.get_rect(), c1.get_dot(), t2, t1);
 
 			// circle rect
 			if (c1.get_type() == Collider::Type::Circle 
@@ -33,7 +33,7 @@ namespace TowerDefense
 				return circle_rect(c1.get_circle(), c2.get_rect(), t1, t2);
 			if (c1.get_type() == Collider::Type::Rect 
 				&& c2.get_type() == Collider::Type::Circle)
-				return circle_rect(c2.get_circle(), c1.get_rect(), t1, t2);
+				return circle_rect(c2.get_circle(), c1.get_rect(), t2, t1);
 
 			// circle dot
 			if (c1.get_type() == Collider::Type::Circle 
@@ -41,7 +41,7 @@ namespace TowerDefense
 				return circle_dot(c1.get_circle(), c2.get_dot(), t1, t2);
 			if (c1.get_type() == Collider::Type::Dot 
 				&& c2.get_type() == Collider::Type::Circle)
-				return circle_dot(c2.get_circle(), c1.get_dot(), t1, t2);
+				return circle_dot(c2.get_circle(), c1.get_dot(), t2, t1);
 			
 			// would be nice to change the enum to string for debu message.
 			//Debug::warn(
@@ -64,7 +64,7 @@ namespace TowerDefense
 			rect_global.top -= transformable1.getPosition().y;
 
 			// take in account scale,rotation,position
-			const Vector2f dot_global(transformable2.getTransform().transformPoint(dot));
+			const Vector2f dot_global(transformable2.getInverseTransform().transformPoint(dot));
 
 			return rect_dot(rect_global, dot_global);
 		}
@@ -89,9 +89,9 @@ namespace TowerDefense
 			const Transformable& transformable1, const Transformable& transformable2)
 		{
 			// position, rotation, not scale
-			const Circle circle_global(circle.radius, transformable1.getTransform().transformPoint(circle.position));
+			const Circle circle_global(circle.radius, transformable1.getInverseTransform().transformPoint(circle.position));
 
-			// position, rotation
+			// position
 			FloatRect rect_global(rect);
 			rect_global.left -= transformable2.getPosition().x;
 			rect_global.top -= transformable2.getPosition().y;
@@ -105,10 +105,10 @@ namespace TowerDefense
 			const Transformable& transformable1, const Transformable& transformable2)
 		{
 			// position, rotation, not scale
-			const Circle circle_global(circle.radius, transformable1.getTransform().transformPoint(circle.position));
+			const Circle circle_global(circle.radius, transformable1.getInverseTransform().transformPoint(circle.position));
 
 			// position roptation, scale
-			const Vector2f dot_global(transformable2.getTransform().transformPoint(dot));
+			const Vector2f dot_global(transformable2.getInverseTransform().transformPoint(dot));
 
 			return circle_dot(circle_global, dot_global);
 		}
@@ -186,32 +186,14 @@ namespace TowerDefense
 
 		bool CollisionTest::circle_rect(const Circle& circle, const FloatRect& rect)
 		{
-			const Vector2f rectCenter(
+			const Vector2f rect_center(
 				rect.left + rect.width/2.f,
-				rect.top + rect.height/2.f // on the link they seem to do it that way... but I would use - rect.height/2.f
+				rect.top + rect.height/2.f
 			);
 
-			// Closest point in the rectangle to the center of circle rotated backwards(unrotated)
-			double closestX, closestY;
- 
-			// Find the unrotated closest x point from center of unrotated circle
-			if (circle.position.x  < rect.left)
-				closestX = rect.left;
-			else if (circle.position.x  > rect.left + rect.width)
-				closestX = rect.left + rect.width;
-			else
-				closestX = circle.position.x ;
- 
-			// Find the unrotated closest y point from center of unrotated circle
-			if (circle.position.y < rect.top)
-				closestY = rect.top;
-			else if (circle.position.y > rect.top + rect.height)
-				closestY = rect.top + rect.height;
-			else
-				closestY = circle.position.y;
- 
-			const double distance = Utils::findDistance(circle.position.x , circle.position.y, closestX, closestY);
-			return distance < circle.radius;
+			const Vector2f dir_to_rec = Utils::normalize(rect_center - circle.position);
+			const Vector2f closest_point = dir_to_rec * circle.radius + circle.position;
+			return rect_dot(rect, closest_point);
 		} 
 
 		// https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection#402010
