@@ -4,10 +4,10 @@
 #include "ProjectileParams.hpp"
 #include "Mathf.hpp"
 #include "Managers/GameManager.hpp"
-#include "Assets.hpp"
 #include "Timer.hpp"
 #include "Minion.hpp"
 #include "Destroyer.hpp"
+#include "AssetsConfig.hpp"
 
 namespace TowerDefense
 {
@@ -68,7 +68,7 @@ namespace TowerDefense
 		void Projectile::update()
 		{
 			transformable->setPosition(
-				transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_delta_time() * Constants::Assets::tile_size) 
+				transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_delta_time() * Constants::AssetsConfig::tile_size) 
 			);
 		}
 

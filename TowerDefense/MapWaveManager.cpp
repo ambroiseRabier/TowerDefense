@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "MapWaveManager.hpp"
-#include "Health.hpp"
 #include "Minion.hpp"
 #include "GlobalShared.hpp"
 #include "MapManager.hpp"

@@ -6,10 +6,10 @@
 #include "Managers/GameManager.hpp"
 #include "Align.hpp"
 #include "LevelDesign.hpp"
-#include "Assets.hpp"
 #include "GlobalShared.hpp"
 #include "Hud.hpp"
 #include "MapWaveManager.hpp"
+#include "AssetsConfig.hpp"
 
 namespace TowerDefense
 {
@@ -135,8 +135,8 @@ namespace TowerDefense
 			);
 			const sf::Vector2f map_size(
 				// converting to float will make it lose precision, but it's okay there never will be so many tiles.
-				static_cast<float>(l_map_params.map_background_tile_array.size()) * Constants::Assets::tile_size,
-				static_cast<float>(game_object_hightest_z.size()) * Constants::Assets::tile_size
+				static_cast<float>(l_map_params.map_background_tile_array.size()) * Constants::AssetsConfig::tile_size,
+				static_cast<float>(game_object_hightest_z.size()) * Constants::AssetsConfig::tile_size
 			);
 			UI::Align::center(
 				map_origin,

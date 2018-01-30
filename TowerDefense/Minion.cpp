@@ -6,7 +6,6 @@
 #include "Managers/GameManager.hpp"
 #include "Mathf.hpp"
 #include "MapManager.hpp"
-#include "Assets.hpp"
 #include "GameEngine/Debug.hpp"
 #include "MinionParams.hpp"
 #include "GameDesign.hpp"
@@ -108,7 +107,7 @@ namespace TowerDefense
 		void Minion::update() // todo: split in parts.
 		{
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
-			const float speed = params.speed * Constants::Assets::tile_size * Managers::GameManager::get_delta_time();
+			const float speed = params.speed * Constants::AssetsConfig::tile_size * Managers::GameManager::get_delta_time();
 			float dist = magnitude(target_pos - transformable->getPosition());
 			bool overpass_target = dist < speed;
 			// if gonna overpass target_pos,save current map_pos, then calculate new target, if new target == previous target, do nothing.
@@ -210,7 +209,7 @@ namespace TowerDefense
 		{
 			const sf::Vector2f offset(0, -25.f); // from center of tile.
 			health->get_transformable().setPosition(
-				transformable->getPosition() + Constants::Assets::tile_size_half_vec + offset
+				transformable->getPosition() + Constants::AssetsConfig::tile_size_half_vec + offset
 			);
 		}
 	}

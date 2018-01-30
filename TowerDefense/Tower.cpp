@@ -6,8 +6,8 @@
 #include "GlobalShared.hpp"
 #include "GameDesign.hpp"
 #include "Projectile.hpp"
-#include "Assets.hpp"
 #include "Timer.hpp"
+#include "AssetsConfig.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -37,8 +37,8 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
 				Circle(
-					params.projectile_params.at(level).range * Constants::Assets::tile_size,
-					Constants::Assets::tile_size_half_vec // box in the center of tile.
+					params.projectile_params.at(level).range * Constants::AssetsConfig::tile_size,
+					Constants::AssetsConfig::tile_size_half_vec // box in the center of tile.
 				),
 				Collider::Tag::Tower
 			);
@@ -93,8 +93,8 @@ namespace TowerDefense
 			Projectile* proj = new Projectile(
 				GlobalShared::stone_projectile_0_texture, 
 				get_current_projectile_params(),
-				transformable->getPosition() + Constants::Assets::tile_size_half_vec, // could be position of canon
-				target->get_transformable().getPosition() + Constants::Assets::tile_size_half_vec
+				transformable->getPosition() + Constants::AssetsConfig::tile_size_half_vec, // could be position of canon
+				target->get_transformable().getPosition() + Constants::AssetsConfig::tile_size_half_vec
 			);
 			proj->auto_start();
 			// DONT WORRY: no memory leak, Timer class take care of it.

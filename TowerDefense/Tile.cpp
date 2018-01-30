@@ -4,8 +4,8 @@
 #include "GameEngine/Debug.hpp"
 #include "Config.hpp"
 #include "GlobalShared.hpp"
-#include "Assets.hpp"
 #include "MapManager.hpp"
+#include "AssetsConfig.hpp"
 
 namespace TowerDefense
 {
@@ -20,7 +20,7 @@ namespace TowerDefense
 		{
 			// force the sprite to the good size. (not tested)
 			auto temp_sprite = std::make_unique<sf::Sprite>(*texture);
-			temp_sprite->setTextureRect(sf::IntRect(0,0,Constants::Assets::tile_size, Constants::Assets::tile_size));
+			temp_sprite->setTextureRect(sf::IntRect(0,0,Constants::AssetsConfig::tile_size, Constants::AssetsConfig::tile_size));
 			set_drawable(static_cast_ptr<sf::Drawable>(std::move(temp_sprite)));
 			z_index = Constants::ZIndex::tile_background;
 		}
@@ -54,7 +54,7 @@ namespace TowerDefense
 		sf::Vector2f Tile::map_pos_to_global_pos(const sf::Vector2u& map_pos)
 		{
 			return Managers::MapManager::get_map_origin().getPosition() +
-				static_cast<sf::Vector2f>(map_pos * Constants::Assets::tile_size);
+				static_cast<sf::Vector2f>(map_pos * Constants::AssetsConfig::tile_size);
 		}
 	}
 }
