@@ -7,6 +7,7 @@
 #include "Assets.hpp"
 #include "Timer.hpp"
 #include "Minion.hpp"
+#include "Destroyer.hpp"
 
 namespace TowerDefense
 {
@@ -43,7 +44,7 @@ namespace TowerDefense
 				Collider::Tag::Projectile
 			);
 			collider->mouse_enabled = false;
-			Utils::Timer::destroy(static_cast<GameObject*>(this), params.life_time);
+			destroy_timer_id = Utils::Timer::destroy(static_cast<GameObject*>(this), params.life_time);
 		}
 
 		void Projectile::set_tower_p(const Tower& new_tower_ref)
@@ -59,10 +60,12 @@ namespace TowerDefense
 				const Minion* minion = dynamic_cast<Minion*>(&game_object);
 				assert(minion);
 				minion->get_health().damage(params.damage);
-				//temp
-				collider->gameobject_enabled = false;
+				// disabling collider so we don't collide anything else.
+				collider->gameobject_enabled = false; 
+				destroy_self();
 			}
 		}
+
 		void Projectile::update()
 		{
 			transformable->setPosition(
@@ -70,8 +73,17 @@ namespace TowerDefense
 			);
 		}
 
-		//void on_game_object_overlap
-		// remove from destory list too
-		// on collide use tower_p to give experience if needed.
+		void Projectile::destroy_self()
+		{
+			// cancel auto-destroy timer
+			Utils::Timer::cancel_destroy(destroy_timer_id);
+			// disabled the object (will be destroyed before next update, but this is god pratice)
+			isActive = false;
+			// Add to destroy juste before rendering.
+			// you cannot destroy inside update or collision callback (iterator problem :/)
+			Destroyer::destroy_end_of_frame(*this);
+		}
+
+		// todo: on collide use tower_p to give experience if needed.
 	}
 }

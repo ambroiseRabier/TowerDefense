@@ -17,7 +17,7 @@ namespace TowerDefense
 		{
 			if (flag_is_started)
 			{
-				Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
+				Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update_internal, this);
 			}
 			Physics::removeChild(*this);
 			Scene::removeChild(*this);
@@ -47,10 +47,18 @@ namespace TowerDefense
 		void BaseGameObject::start()
 		{
 			Debug::assert_m(flag_is_init, "BaseGameObject: Call init() before calling start().");
-			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update, static_cast<BaseGameObject*>(this));
+			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update_internal, static_cast<BaseGameObject*>(this));
 			// It is better if you addchild them yourselve
 			//Scene::addChild(*this);
 			flag_is_started = true;
+		}
+
+		void BaseGameObject::update_internal()
+		{
+			if (isActive && update_active)
+			{
+				update();
+			}
 		}
 
 		void BaseGameObject::update()
@@ -61,7 +69,7 @@ namespace TowerDefense
 		void BaseGameObject::recycle()
 		{
 			Debug::assert_m(flag_is_started, "Recycling an element that was not started do not make sense.");
-			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update, this);
+			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update_internal, this);
 			// remove from scene in case removechildre has been forgotten
 			Physics::removeChild(*this);
 			Scene::removeChild(*this);

@@ -26,10 +26,12 @@ namespace TowerDefense
 			void on_game_object_overlap(GameObject& game_object) override;
 		protected:
 			void update() override;
+			void destroy_self();
 		private:
 			const ProjectileParams params;
 			sf::Vector2f dir;
 			const Tower* tower_p;
+			unsigned int destroy_timer_id;
 		};
 	}
 }

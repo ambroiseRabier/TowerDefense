@@ -12,6 +12,10 @@ namespace TowerDefense
 		 *  The name is a bit misleading, if you compare to unity, all the collision box are isTrigger=true.
 		 *  Handle collisions between gameobjects, and between mouse and gameobjects, using their collider.
 		 *  A gameobject callback is called when an event happen.
+		 *  -------
+		 *  YOU CANNOT destroy an object inside the collision or this will result in an exception.
+		 *  If Physics and Scene were having the autority on memory of the objects I would not have this problem.
+		 *  (That's why unity use Global function Destroy ?)
 		 */
 		class Physics
 		{

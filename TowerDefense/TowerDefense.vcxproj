@@ -27,6 +27,7 @@
     <ClInclude Include="CastUtils.hpp" />
     <ClInclude Include="Circle.hpp" />
     <ClInclude Include="Config.hpp" />
+    <ClInclude Include="Destroyer.hpp" />
     <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
     <ClInclude Include="GameDesign.hpp" />
@@ -77,6 +78,7 @@
     <ClCompile Include="BaseText.cpp" />
     <ClCompile Include="Castle.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Destroyer.cpp" />
     <ClCompile Include="ExplosivTower.cpp" />
     <ClCompile Include="FreezeTower.cpp" />
     <ClCompile Include="HealMinion.cpp" />

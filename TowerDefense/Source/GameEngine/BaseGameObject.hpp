@@ -40,6 +40,11 @@ namespace TowerDefense
 			 */
 			virtual void start();
 		protected:
+
+			/**
+			 * \brief If set to false update won't be called.
+			 */
+			bool update_active = true;
 			
 			/**
 			 * \brief 
@@ -54,7 +59,17 @@ namespace TowerDefense
 			virtual void recycle();
 
 		private:
+
+			/**
+			 * \brief Wrapper for update, to not call update when !isActive or !update_active.
+			 */
+			void update_internal();
+
+			/**
+			 * \brief Security to find if init is called two times.
+			 */
 			bool flag_is_init;
+
 			/**
 			 * \brief 
 			 * Avoid callind destroy two time when some children in inheritance call it too.

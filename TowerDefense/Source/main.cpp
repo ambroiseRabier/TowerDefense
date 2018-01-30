@@ -13,6 +13,7 @@
 #include "../MapManager.hpp"
 #include "../Timer.hpp"
 #include "../MapWaveManager.hpp"
+#include "../Destroyer.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -171,6 +172,7 @@ int main()
 	Utils::Timer::init();
 	Scene::init();
 	Physics::init(Config::tested_collisions);
+	Destroyer::init();
 	MapManager::init();
 	MapWaveManager::init();
 	UI::MenuScreen::init();
@@ -210,7 +212,7 @@ int main()
 	//delete menu_background;
 	//base_button = nullptr;
 	//base_button_unique.reset(nullptr);
-	
+
 	while (window.isOpen())
 	{
 		InputManager::update(window);
@@ -221,6 +223,7 @@ int main()
 		Physics::update();
 		// window.clear() was originnnaly before any game logic, but,
 		// if the game logic take time then the user might see the window blink.
+		Destroyer::update();
 		window.clear();
 		Scene::render(window);
 		// fps overlay

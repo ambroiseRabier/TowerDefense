@@ -237,6 +237,9 @@
     <ClInclude Include="AssetsConfig.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
     </ClInclude>
+    <ClInclude Include="Destroyer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -352,6 +355,9 @@
     </ClCompile>
     <ClCompile Include="Circle.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Destroyer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
