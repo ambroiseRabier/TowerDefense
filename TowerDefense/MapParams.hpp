@@ -32,6 +32,9 @@ namespace TowerDefense
 			{
 			}
 
+			/**
+			 * \brief This correpond to an additionnal delay after all minion wave has been played.
+			 */
 			const float delay_before_next;
 			const std::vector<MinionWaveParams> minion_params_vector{};
 		};

@@ -195,7 +195,9 @@ namespace TowerDefense
 		void Timer::call_that_for_me(Sharp::EventHandlerImpl<void>* pHandlerToAdd)
 		{
 			if (pHandlerToAdd)
+			{
 				pHandlerToAdd->OnEvent();
+			}
 		}
 	}
 }

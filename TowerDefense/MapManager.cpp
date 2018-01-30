@@ -9,6 +9,7 @@
 #include "Assets.hpp"
 #include "GlobalShared.hpp"
 #include "Hud.hpp"
+#include "MapWaveManager.hpp"
 
 namespace TowerDefense
 {
@@ -81,7 +82,7 @@ namespace TowerDefense
 				}
 				all_tiles_p.clear();
 			}
-
+			map_params = nullptr;
 			level_loaded_flag = false;
 		}
 
@@ -120,11 +121,12 @@ namespace TowerDefense
 			map_params = &Constants::LevelDesign::level0;
 			GameManager::get_player().set_money(map_params->start_money);
 			UI::Hud::set_level_text(map_params->name);
-			align_center(*map_params);
+			align_center_map(*map_params);
 			create_tiles(*map_params);
+			MapWaveManager::load_minions(map_params);
 		}
 
-		void MapManager::align_center(const MapParams l_map_params)
+		void MapManager::align_center_map(const MapParams l_map_params)
 		{
 			auto game_object_hightest_z = *std::max_element(
 			l_map_params.map_background_tile_array.begin(),

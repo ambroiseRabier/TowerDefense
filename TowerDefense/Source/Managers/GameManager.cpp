@@ -81,7 +81,7 @@ namespace TowerDefense
 			MapManager::load_level(level_index);
 			player->create_tower(TowerId::StoneTower);
 			// add delay here ? to let the player prepare his stuff.
-			MapWaveManager::start_wave_spawn();
+			MapWaveManager::start();
 		}
 
 		void GameManager::restart_level()
