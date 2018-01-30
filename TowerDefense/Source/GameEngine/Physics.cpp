@@ -147,7 +147,14 @@ namespace TowerDefense
 				{
 					// this make lot of useless calls. Could be optimize if collision on two side
 					// and if someone destroy the object right when on_game_object_overlap then bug. no ? Haven't tested that yet :/
-					if (CollisionTest::collide(*game_object.get_collider(), *children2->get_collider()))
+					const bool collide = CollisionTest::collide(
+						*game_object.get_collider(),
+						*children2->get_collider(),
+						game_object.get_transformable(),
+						children2->get_transformable()
+					);
+
+					if (collide)
 					{
 						game_object.on_game_object_overlap(*children2);
 					}

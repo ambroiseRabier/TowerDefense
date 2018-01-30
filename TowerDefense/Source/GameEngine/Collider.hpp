@@ -78,6 +78,7 @@ namespace TowerDefense
 			// I could use a pointer bellow, since the value can be nullptr actually.
 			// But if you do call when it is nullptr, then you have made an error in your code logic,
 			// And I do not wish to hide that.
+
 			/**
 			 * \brief Make sure your colldier is of type dot before calling this.
 			 * \return 
@@ -96,6 +97,10 @@ namespace TowerDefense
 			 */
 			const sf::Sprite& get_sprite() const;
 
+			/**
+			 * \brief Make sure your collider is of type circle before calling this.
+			 * \return 
+			 */
 			const Circle& get_circle() const;
 		private:
 			Type type;
