@@ -17,7 +17,12 @@ namespace TowerDefense
 		public:
 			Health(const float maxHealth = 1);
 			float money_on_death = 0;
-			void damage(float value);
+			/**
+			 * \brief 
+			 * \param value 
+			 * \return true if the minion has been killed.
+			 */
+			bool damage(float value);
 			void heal(float value);
 			const float& get_health() const;
 			/**

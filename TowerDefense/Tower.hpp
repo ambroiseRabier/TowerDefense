@@ -41,6 +41,7 @@ namespace TowerDefense
 			void shoot() const;
 			const ProjectileParams& get_current_projectile_params() const;
 			void reset_shoot_delay();
+			void on_projectile_kill();
 			TowerId id;
 			const TowerParams& params;
 			GameObject* target;

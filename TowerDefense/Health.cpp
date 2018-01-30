@@ -28,7 +28,7 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::hpBars_jauge_start;
 		}
 
-		void Health::damage(float value)
+		bool Health::damage(float value)
 		{
 			Debug::assert_m(value > 0, "Health: damage value should be positiv and not egal to 0.");
 			actualHealth = std::max(0.f, actualHealth - value);
@@ -36,7 +36,9 @@ namespace TowerDefense
 			if (actualHealth == 0.f)
 			{
 				on_death();
+				return true;
 			}
+			return false;
 		}
 
 		void Health::heal(float value)

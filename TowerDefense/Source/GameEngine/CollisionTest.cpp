@@ -58,13 +58,14 @@ namespace TowerDefense
 		{
 			// take in account only position of the transform
 			// (I do not use transformRect function from Transform class because do weird stuff with rotation...)
-			// maybe it's just rectangle shape that does weird ?
+			// maybe it's just rectangle shape that does weird ? 
+			// rotation collision for rect-rect and rect-dot and rect-circle should be not too hard to implement
 			FloatRect rect_global(rect);
-			rect_global.left -= transformable1.getPosition().x;
-			rect_global.top -= transformable1.getPosition().y;
+			rect_global.left += transformable1.getPosition().x;
+			rect_global.top += transformable1.getPosition().y;
 
 			// take in account scale,rotation,position
-			const Vector2f dot_global(transformable2.getInverseTransform().transformPoint(dot));
+			const Vector2f dot_global(transformable2.getTransform().transformPoint(dot));
 
 			return rect_dot(rect_global, dot_global);
 		}
@@ -74,13 +75,13 @@ namespace TowerDefense
 		{
 			// position
 			FloatRect rect_global_1(rect1);
-			rect_global_1.left -= transformable1.getPosition().x;
-			rect_global_1.top -= transformable1.getPosition().y;
+			rect_global_1.left += transformable1.getPosition().x;
+			rect_global_1.top += transformable1.getPosition().y;
 
 			// position
 			FloatRect rect_global_2(rect2);
-			rect_global_2.left -= transformable2.getPosition().x;
-			rect_global_2.top -= transformable2.getPosition().y;
+			rect_global_2.left += transformable2.getPosition().x;
+			rect_global_2.top += transformable2.getPosition().y;
 
 			return rect_rect(rect_global_1, rect_global_2);
 		}
@@ -89,12 +90,12 @@ namespace TowerDefense
 			const Transformable& transformable1, const Transformable& transformable2)
 		{
 			// position, rotation, not scale
-			const Circle circle_global(circle.radius, transformable1.getInverseTransform().transformPoint(circle.position));
+			const Circle circle_global(circle.radius, transformable1.getTransform().transformPoint(circle.position));
 
 			// position
 			FloatRect rect_global(rect);
-			rect_global.left -= transformable2.getPosition().x;
-			rect_global.top -= transformable2.getPosition().y;
+			rect_global.left += transformable2.getPosition().x;
+			rect_global.top += transformable2.getPosition().y;
 
 			// don't be fooled !
 			// rotation parameter is for rotation from center of rectangle, not from transform !
@@ -105,10 +106,10 @@ namespace TowerDefense
 			const Transformable& transformable1, const Transformable& transformable2)
 		{
 			// position, rotation, not scale
-			const Circle circle_global(circle.radius, transformable1.getInverseTransform().transformPoint(circle.position));
+			const Circle circle_global(circle.radius, transformable1.getTransform().transformPoint(circle.position));
 
 			// position roptation, scale
-			const Vector2f dot_global(transformable2.getInverseTransform().transformPoint(dot));
+			const Vector2f dot_global(transformable2.getTransform().transformPoint(dot));
 
 			return circle_dot(circle_global, dot_global);
 		}

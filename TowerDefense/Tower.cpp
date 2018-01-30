@@ -41,7 +41,7 @@ namespace TowerDefense
 					Constants::Assets::tile_size_half_vec // box in the center of tile.
 				),
 				Collider::Tag::Tower
-			); 
+			);
 		}
 
 		Tower::~Tower()
@@ -105,6 +105,14 @@ namespace TowerDefense
 		{
 			// reset the id of time_out to "null" value so we can shoot again.
 			shoot_time_out_id = 0;
+		}
+
+		void Tower::on_projectile_kill()
+		{
+			// todo call it.
+			// todo: but you have to think of two use case:
+			// tower is destroyed before the projectile
+			// projectile is destroyed before the tower.
 		}
 
 		TowerId Tower::get_tile_id() const
