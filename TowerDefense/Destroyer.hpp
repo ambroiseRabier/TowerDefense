@@ -14,7 +14,7 @@ namespace TowerDefense
 		class Destroyer
 		{
 		public:
-			static void destroy_end_of_frame(BaseGameObject& pointer);
+			static void destroy_end_of_frame(BaseGameObject* pointer);
 			static void init();
 			static void update();
 		private:

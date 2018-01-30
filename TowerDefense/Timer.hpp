@@ -151,8 +151,8 @@ namespace TowerDefense
 			 */
 			static void update();
 		private:
-			static std::vector<DestroyWithId> all_destroy;
-			static std::vector<TimeOutWithId> all_time_out;
+			static std::list<DestroyWithId> all_destroy;
+			static std::list<TimeOutWithId> all_time_out;
 			static sf::Clock clock;
 			static std::list<unsigned int> id_used_list;
 			static void on_quit_game();

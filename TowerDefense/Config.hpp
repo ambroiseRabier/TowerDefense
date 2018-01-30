@@ -31,6 +31,8 @@ namespace TowerDefense
 			const unsigned int window_height = 720;
 			const bool debug_draw_collider = true;
 			const sf::Color collider_debug_color = sf::Color(240,10,15,100);
+			const std::string final_wave_text = "Last wave !";
+			const std::string wave_number_text;
 		}
 		
 		/**

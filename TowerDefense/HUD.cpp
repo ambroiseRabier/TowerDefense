@@ -10,6 +10,7 @@ namespace TowerDefense
 	{
 		std::unique_ptr<BaseText> Hud::level_text;
 		std::unique_ptr<BaseText> Hud::money_text;
+		std::unique_ptr<BaseText> Hud::wave_text;
 		std::unique_ptr<BaseButton> Hud::pause_btn;
 		std::unique_ptr<BaseButton> Hud::restart_btn;
 		std::unique_ptr<BaseButton> Hud::up_speed_btn;
@@ -18,6 +19,7 @@ namespace TowerDefense
 		{
 			level_text = std::make_unique<BaseText>("*Level");
 			money_text = std::make_unique<BaseText>("*Money");
+			wave_text = std::make_unique<BaseText>("*Wave");
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::pause_btn_texture);
 			restart_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
 			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::speedUp_btn_texture);
@@ -28,6 +30,10 @@ namespace TowerDefense
 			Align::top_center(money_text->get_transformable(), sf::Vector2f(
 				200, 
 				30
+			));
+			Align::top_center(wave_text->get_transformable(), sf::Vector2f(
+				0, 
+				60
 			));
 			Align::top_right(pause_btn->get_transformable(), sf::Vector2f(
 				30 + pause_btn->get_sprite().getGlobalBounds().width, 
@@ -44,6 +50,7 @@ namespace TowerDefense
 			up_speed_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_up_speed);
 			level_text->auto_start();
 			money_text->auto_start();
+			wave_text->auto_start();
 			pause_btn->auto_start();
 			restart_btn->auto_start();
 			up_speed_btn->auto_start();
@@ -57,6 +64,7 @@ namespace TowerDefense
 			up_speed_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_up_speed);
 			level_text.reset(nullptr);
 			money_text.reset(nullptr);
+			wave_text.reset(nullptr);
 			pause_btn.reset(nullptr);
 			restart_btn.reset(nullptr);
 			up_speed_btn.reset(nullptr);
@@ -67,6 +75,7 @@ namespace TowerDefense
 			//todo: debug assert is inited.
 			level_text->isActive = true;
 			money_text->isActive = true;
+			wave_text->isActive = true;
 			pause_btn->isActive = true;
 			restart_btn->isActive = true;
 			up_speed_btn->isActive = true;
@@ -76,6 +85,7 @@ namespace TowerDefense
 		{
 			level_text->isActive = false;
 			money_text->isActive = false;
+			wave_text->isActive = false;
 			pause_btn->isActive = false;
 			restart_btn->isActive = false;
 			up_speed_btn->isActive = false;
@@ -89,6 +99,11 @@ namespace TowerDefense
 		void Hud::set_money_text(const std::string& text)
 		{
 			money_text->set_text(text);
+		}
+
+		void Hud::set_wave_text(const std::string& text)
+		{
+			wave_text->set_text(text);
 		}
 
 		void Hud::on_click_up_speed()

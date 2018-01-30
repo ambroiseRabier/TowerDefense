@@ -80,7 +80,7 @@ namespace TowerDefense
 			isActive = false;
 			// Add to destroy juste before rendering.
 			// you cannot destroy inside update or collision callback (iterator problem :/)
-			Destroyer::destroy_end_of_frame(*this);
+			Destroyer::destroy_end_of_frame(this);
 		}
 	}
 }

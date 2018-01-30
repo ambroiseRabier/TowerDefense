@@ -29,7 +29,7 @@ namespace TowerDefense
 
 			/**
 			 * \brief Use this to load all minions in pool. or just to save parameters.
-			 * \param map_params 
+			 * \param new_map_params 
 			 */
 			static void load_minions(const Game::MapParams* new_map_params);
 
@@ -45,6 +45,8 @@ namespace TowerDefense
 			static bool next_wave_valid();
 			static bool next_minion_wave_valid();
 			static bool is_end_of_wave();
+			static bool is_end_of_level();
+
 
 			/**
 			 * \brief Call this if destroyed early, before map destroy.

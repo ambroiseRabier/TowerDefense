@@ -6,6 +6,8 @@
 #include "MapManager.hpp"
 #include "Timer.hpp"
 #include "GameEngine/Debug.hpp"
+#include "Hud.hpp"
+#include "Config.hpp"
 
 using namespace TowerDefense::Game;
 namespace TowerDefense
@@ -36,19 +38,35 @@ namespace TowerDefense
 		{
 			wave_index = 0;
 			minion_wave_index = 0;
-			next_wave();
+			if(!is_end_of_level()) {
+				next_wave();
+			} 
+			else
+			{
+				Debug::warn("Your level has no waves (no minions).");
+			}
 		}
 
 		void MapWaveManager::next_wave()
 		{
 			minion_time_out_id = 0;
 			minion_wave_index = 0;
-			next_minon_wave();
+			UI::Hud::set_wave_text(Constants::Config::wave_number_text + " " + std::to_string(wave_index));
+			
+			if (!is_end_of_level())
+			{
+				next_minon_wave();
+			} else
+			{
+				UI::Hud::set_wave_text(Constants::Config::final_wave_text);
+			}
 		}
 
 		void MapWaveManager::next_minon_wave()
 		{
 			minion_wave_time_out_id = 0;
+			assert(!is_end_of_level());
+
 			if (is_end_of_wave())
 			{
 				if (next_minion_wave_valid())
@@ -61,7 +79,7 @@ namespace TowerDefense
 				} 
 				else
 				{
-					GameEngine::Debug::warn("MapWaveManager: empty wave detected, skipping");
+					Debug::warn("MapWaveManager: empty wave detected, skipping");
 					wave_index++;
 					next_wave();
 				}
@@ -85,7 +103,7 @@ namespace TowerDefense
 				} 
 				else
 				{
-					GameEngine::Debug::warn("MapWaveManager: empty minion wave detected, skipping");
+					Debug::warn("MapWaveManager: empty minion wave detected, skipping");
 					minion_wave_index++;
 					next_minon_wave();
 				}
@@ -107,7 +125,7 @@ namespace TowerDefense
 				minion = Minion::create_peon(MapManager::get_spawn().map_pos);
 				break;
 			default:
-				GameEngine::Debug::warn(
+				Debug::warn(
 					"MapWaveManager: You forgot to update MapWaveManbager after adding a new minion. As result the minion is not spawned."
 				);
 				return;
@@ -145,6 +163,11 @@ namespace TowerDefense
 		{
 			return minion_wave_index == map_params->wave_params_vector.at(wave_index)
 				.minion_params_vector.size();
+		}
+
+		bool MapWaveManager::is_end_of_level()
+		{
+			 return wave_index == map_params->wave_params_vector.size();
 		}
 
 		void MapWaveManager::destroy_me(GameEngine::BaseGameObject& to_delete)

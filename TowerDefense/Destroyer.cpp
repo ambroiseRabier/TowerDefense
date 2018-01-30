@@ -8,9 +8,9 @@ namespace TowerDefense
 	{
 		std::vector<BaseGameObject*> Destroyer::destroy_vector;
 
-		void Destroyer::destroy_end_of_frame(BaseGameObject& pointer)
+		void Destroyer::destroy_end_of_frame(BaseGameObject* pointer)
 		{
-			destroy_vector.push_back(&pointer);
+			destroy_vector.push_back(pointer);
 		}
 
 		void Destroyer::init()
@@ -22,6 +22,7 @@ namespace TowerDefense
 		{
 			if (destroy_vector.empty())
 				return;
+			// si deux destroyed ?
 
 			for (auto pointer : destroy_vector)
 			{

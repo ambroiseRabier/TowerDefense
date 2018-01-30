@@ -9,8 +9,8 @@ namespace TowerDefense
 {
 	namespace Utils
 	{
-		std::vector<DestroyWithId> Timer::all_destroy;
-		std::vector<TimeOutWithId> Timer::all_time_out;
+		std::list<DestroyWithId> Timer::all_destroy;
+		std::list<TimeOutWithId> Timer::all_time_out;
 		sf::Clock Timer::clock;
 		std::list<unsigned int> Timer::id_used_list;
 
@@ -179,9 +179,14 @@ namespace TowerDefense
 
 				if (out_of_date)
 				{
+					// problem if I had an timeout inside the callback.
+					
 					call_that_for_me(it->to_call);
-					delete it->to_call;
-					it->to_call = nullptr;
+					if (it->to_call)
+					{
+						delete it->to_call;
+						it->to_call = nullptr;
+					}
 					free_id(it->id);
 					it = all_time_out.erase(it);
 				}

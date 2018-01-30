@@ -22,11 +22,14 @@ namespace TowerDefense
 			static void close();
 			static void set_level_text(const std::string& text);
 			static void set_money_text(const std::string& text);
+			static void set_wave_text(const std::string& text);
 		private:
 			static std::unique_ptr<BaseText> level_text;
 			static std::unique_ptr<BaseText> money_text;
+			static std::unique_ptr<BaseText> wave_text;
 			static std::unique_ptr<BaseButton> pause_btn;
 			static std::unique_ptr<BaseButton> restart_btn;
+
 			/**
 			 * \brief 
 			 * Button to up speed of the game.
