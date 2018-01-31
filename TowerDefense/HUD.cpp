@@ -118,6 +118,7 @@ namespace TowerDefense
 
 		void Hud::on_click_pause()
 		{
+			close();
 			Managers::GameManager::pause();
 		}
 	}

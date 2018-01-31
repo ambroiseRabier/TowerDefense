@@ -99,13 +99,11 @@ namespace TowerDefense
 		void GameManager::pause()
 		{
 			UI::PauseScreen::open();
-			UI::Hud::close();
 			state = GameState::Pause;
 		}
 
 		void GameManager::un_pause()
 		{
-			UI::PauseScreen::close();
 			UI::Hud::open();
 			state = GameState::Playing;
 		}
@@ -113,7 +111,6 @@ namespace TowerDefense
 		void GameManager::return_menu()
 		{
 			MapManager::destroy_current_level();
-			UI::PauseScreen::close();
 			UI::MenuScreen::open();
 			state = GameState::Menu;
 		}
