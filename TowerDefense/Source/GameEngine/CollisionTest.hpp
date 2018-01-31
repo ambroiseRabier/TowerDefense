@@ -49,7 +49,7 @@ namespace TowerDefense
 			static bool collide_local(const Collider& collider1, const Collider& collider2);   // NOLINT
 			static bool rect_dot(const sf::FloatRect& rect, const sf::Vector2f& dot);
 			static bool rect_rect(const sf::FloatRect& rect1, const sf::FloatRect& rect2);
-			static bool circle_rect(const Circle& circle, const sf::FloatRect& rect);
+			static bool circle_border_rect(const Circle& circle, const sf::FloatRect& rect);
 			static bool circle_rect(const Circle& circle, const sf::FloatRect& rect, const float& angle_radian);
 			static bool circle_dot(const Circle& circle, const sf::Vector2f& dot);
 			static bool pixel_perfect_test(const sf::Sprite& sprite1, const sf::Sprite& sprite2, sf::Uint8 alpha_limit = 0);

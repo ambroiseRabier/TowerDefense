@@ -64,7 +64,7 @@ namespace TowerDefense
 					ExplosivTower,
 					{
 						{
-							{2.5f, 1.6f, 0.5f, 3.5f, 0.f, 1.f, 110.f}, // boom
+							{1.5f, 1.6f, 0.5f, 2.5f, 0.f, 1.f, 110.f}, // boom
 							{2.5f, 1.4f, 0.75f, 3.5f, 0.f, 2.f, 220.f}, // BOOm
 							{2.5f, 1.2f, 1.f, 5.5f, 0.f, 4.f, 330.f}, // BOOOOM
 						},

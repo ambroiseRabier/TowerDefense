@@ -46,6 +46,7 @@ namespace TowerDefense
 		extern sf::Texture* freeze_tower_broken_texture;
 		extern sf::Texture* explosiv_tower_broken_texture;
 		extern sf::Texture* freeze_projectile_0_texture;
+		extern sf::Texture* explosiv_projectile_0_texture;
 
 		/**
 		 * \brief 

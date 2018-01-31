@@ -49,7 +49,7 @@ namespace TowerDefense
 
 		void Player::start()
 		{
-			create_tower(TowerId::FreezeTower, Vector2u(2,2));
+			create_tower(TowerId::ExplosivTower, Vector2u(2,2));
 		}
 
 		void Player::set_castle(Castle* new_castle) // could have multiple castle

@@ -44,6 +44,7 @@ namespace TowerDefense
 		sf::Texture* freeze_tower_broken_texture;
 		sf::Texture* explosiv_tower_broken_texture;
 		sf::Texture* freeze_projectile_0_texture;
+		sf::Texture* explosiv_projectile_0_texture;
 
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
@@ -85,6 +86,7 @@ namespace TowerDefense
 			delete freeze_tower_broken_texture; freeze_tower_broken_texture = nullptr;
 			delete explosiv_tower_broken_texture; explosiv_tower_broken_texture = nullptr;
 			delete freeze_projectile_0_texture; freeze_projectile_0_texture = nullptr;
+			delete explosiv_projectile_0_texture; explosiv_projectile_0_texture = nullptr;
 		}
 	}
 }

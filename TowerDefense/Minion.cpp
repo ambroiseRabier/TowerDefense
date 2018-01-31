@@ -222,7 +222,7 @@ namespace TowerDefense
 				const Castle* castle = dynamic_cast<Castle*>(&game_object);
 				assert(castle);
 				const bool castle_is_dead = castle->get_health().damage(params.damage);
-				// disabling collider so we don't collide anything else.
+				// disabling collider so we don't collide anything else. (we die anyway end of frame)
 				collider->gameobject_enabled = false;
 				isActive = false;
 				Managers::MapWaveManager::remove_me(*this);

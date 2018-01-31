@@ -147,6 +147,9 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::freeze_projectile_0);
 	GlobalShared::freeze_projectile_0_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::explosiv_projectile_0);
+	GlobalShared::explosiv_projectile_0_texture = texture;
 }
 
 /**
@@ -184,7 +187,7 @@ int main()
 	Debug::info("Preloading done.");
 
 	//fps text (debug only)
-	Text fpsText("FPS", *GlobalShared::default_font);
+	Text fpsText("*FPS", *GlobalShared::default_font);
 	fpsText.setCharacterSize(30);
 	fpsText.setStyle(Text::Bold);
 	fpsText.setFillColor(Color::Red);

@@ -190,17 +190,18 @@ namespace TowerDefense
 			case FreezeTower: 
 				 return (std::vector<Texture*>{
 					GlobalShared::freeze_projectile_0_texture,
-					GlobalShared::stone_projectile_0_texture,
-					GlobalShared::stone_projectile_0_texture
+					GlobalShared::freeze_projectile_0_texture,
+					GlobalShared::freeze_projectile_0_texture
 				 }).at(level);
 			case ExplosivTower: 
 				 return (std::vector<Texture*>{
-					GlobalShared::stone_projectile_0_texture,
-					GlobalShared::stone_projectile_0_texture,
-					GlobalShared::stone_projectile_0_texture
+					GlobalShared::explosiv_projectile_0_texture,
+					GlobalShared::explosiv_projectile_0_texture,
+					GlobalShared::explosiv_projectile_0_texture
 				 }).at(level);
 			default: ;
 			}
+			Debug::warn("Tower: missing texture for Tower projectile.");
 			return GlobalShared::missing_texture_tile_texture;
 		}
 	}

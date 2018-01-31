@@ -99,7 +99,8 @@ namespace TowerDefense
 
 			// don't be fooled !
 			// rotation parameter is for rotation from center of rectangle, not from transform !
-			return circle_rect(circle_global, rect_global/*, transformable2.getRotation()*/);
+			// until you sovle that don't use another rotation then 0.f
+			return circle_rect(circle_global, rect_global, 0.f/*, transformable2.getRotation()*/);
 		}
 
 		bool CollisionTest::circle_dot(const Circle& circle, const Vector2f& dot,
@@ -137,10 +138,10 @@ namespace TowerDefense
 			// circle rect
 			if (c1.get_type() == Collider::Type::Circle 
 				&& c2.get_type() == Collider::Type::Rect)
-				return circle_rect(c1.get_circle(), c2.get_rect());
+				return circle_rect(c1.get_circle(), c2.get_rect(), 0.f);
 			if (c1.get_type() == Collider::Type::Rect 
 				&& c2.get_type() == Collider::Type::Circle)
-				return circle_rect(c2.get_circle(), c1.get_rect());
+				return circle_rect(c2.get_circle(), c1.get_rect(), 0.f);
 
 			// circle dot
 			if (c1.get_type() == Collider::Type::Circle 
@@ -184,8 +185,8 @@ namespace TowerDefense
 				&& bottom1 < rect2.top);*/
 		}
 
-
-		bool CollisionTest::circle_rect(const Circle& circle, const FloatRect& rect)
+		
+		bool CollisionTest::circle_border_rect(const Circle& circle, const FloatRect& rect)
 		{
 			const Vector2f rect_center(
 				rect.left + rect.width/2.f,
@@ -193,9 +194,10 @@ namespace TowerDefense
 			);
 
 			const Vector2f dir_to_rec = Utils::normalize(rect_center - circle.position);
+			// don't use fixed radius but distance between circle and rect clamped for circle_rect collision.
 			const Vector2f closest_point = dir_to_rec * circle.radius + circle.position;
 			return rect_dot(rect, closest_point);
-		} 
+		}
 
 		// https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection#402010
 		// with no XOR on float.... : http://www.migapro.com/circle-and-rotated-rectangle-collision-detection/

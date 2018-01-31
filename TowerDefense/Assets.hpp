@@ -50,6 +50,7 @@ namespace TowerDefense
 			const std::string freeze_tower_broken = "Assets/Tower/freeze_tower_broken.png";
 			const std::string explosiv_tower_broken = "Assets/Tower/explosiv_tower_broken.png";
 			const std::string freeze_projectile_0 = "Assets/Projectile/freeze_projectile_0.png";
+			const std::string explosiv_projectile_0 = "Assets/Projectile/explosiv_projectile_0.png";
 		}
 	}
 }
