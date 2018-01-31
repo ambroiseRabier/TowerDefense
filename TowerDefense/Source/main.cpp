@@ -176,6 +176,7 @@ int main()
 	Scene::init();
 	Physics::init(Config::tested_collisions);
 	Destroyer::init();
+	Player::init();
 	MapManager::init();
 	MapWaveManager::init();
 	UI::MenuScreen::init();

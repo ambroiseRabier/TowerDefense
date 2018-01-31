@@ -4,9 +4,10 @@
 #include "Tower.hpp"
 #include "Castle.hpp"
 
+using namespace TowerDefense::Game;
 namespace TowerDefense
 {
-	namespace Game
+	namespace Managers
 	{
 		/**
 		 * \brief 
@@ -19,20 +20,24 @@ namespace TowerDefense
 		class Player
 		{
 		public:
-			Player();
-			~Player();
-			void set_money(const float& value);
-			void create_tower(const TowerId tower_id);
+			static void init();
+			static void set_initial_money(const float& value);
+			static void set_castle(Castle* new_castle);
 			/**
-			 * \brief When the level change or restart. But the player is already instanciated.
+			 * \brief When the player can start adding towers.
 			 */
-			void on_next_level();
-			void assign_castle(Castle* new_castle);
+			static void start();
 		private:
-			Castle* castle;
-			std::unique_ptr<Tower> tower;
+			static void create_tower(const TowerId tower_id);
+			static Castle* castle;
+			static std::unique_ptr<Tower> tower;
 			// Might be hard to make it become part of the map gameplay (minions stealing money)
-			float money;
+			static float money;
+			static void on_destroy_level();
+			/**
+			 * \brief Assure that initial money is set only one time per map.
+			 */
+			static bool can_set_initial_money_flag;
 		};
 	}
 }

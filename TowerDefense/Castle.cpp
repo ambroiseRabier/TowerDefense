@@ -41,8 +41,10 @@ namespace TowerDefense
 			health->update_health_pos(*transformable);
 		}
 
+		// ReSharper disable once CppMemberFunctionMayBeConst
 		void Castle::on_death()
 		{
+			//we can keep collision enabled or disable it, any choice is ok.
 			sprite->setTexture(*GlobalShared::castle_death_texture);
 		}
 	}

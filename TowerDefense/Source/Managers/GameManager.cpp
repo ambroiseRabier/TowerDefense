@@ -24,7 +24,6 @@ namespace TowerDefense
 		Sharp::Event<void> GameManager::on_update;
 		unsigned int GameManager::game_speed_index;
 		unsigned int GameManager::level_index = 0;
-		std::unique_ptr<Game::Player> GameManager::player;
 		sf::RenderWindow* GameManager::window_ref;
 
 
@@ -43,10 +42,6 @@ namespace TowerDefense
 				MapManager::destroy_current_level();
 			}
 			//window_ref = nullptr; DONT DO THAT, or you can't close window.
-			if (player.get()) {
-				assert(state == GameState::Pause || state == GameState::Playing);
-				player.reset(nullptr);
-			}
 		}
 
 		void GameManager::start()
@@ -75,11 +70,9 @@ namespace TowerDefense
 			}
 			level_index = i;
 			game_speed_index = 0;
-			!player.get() ? spawn_player() : player->on_next_level();
 			UI::Hud::open(); // if next level then hud already here, this is useless, unless there is a winscreen.
 			MapManager::load_level(level_index);
-			MapManager::assign_castle_to_player(player);
-			player->create_tower(TowerId::StoneTower);
+			Player::start();
 			// add delay here ? to let the player prepare his stuff.
 			MapWaveManager::start();
 		}
@@ -88,7 +81,6 @@ namespace TowerDefense
 		{
 			assert(state == GameState::Playing);
 			assert(level_index >= 0);
-			assert(player);
 			MapManager::destroy_current_level();
 			start_level(level_index);
 		}
@@ -110,7 +102,6 @@ namespace TowerDefense
 		void GameManager::return_menu()
 		{
 			MapManager::destroy_current_level();
-			player.reset(nullptr);
 			UI::PauseScreen::close();
 			UI::MenuScreen::open();
 			state = GameState::Menu;
@@ -135,11 +126,6 @@ namespace TowerDefense
 			}
 		}
 
-		void GameManager::spawn_player()
-		{
-			player = std::make_unique<Player>();
-		}
-
 		// region getter setter
 
 		const float& GameManager::get_fixed_delta_time() 
@@ -160,11 +146,6 @@ namespace TowerDefense
 		const sf::Clock& GameManager::get_fixed_clock()
 		{
 			return clock;
-		}
-
-		Player& GameManager::get_player()
-		{
-			return *player;
 		}
 
 		const float& GameManager::get_game_speed()

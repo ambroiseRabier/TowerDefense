@@ -62,12 +62,12 @@ namespace TowerDefense
 			if (castle)
 			{
 				castle = nullptr;
-				// will be deleted in because it is in all_tiles_p
+				// will be deleted, it is in all_tiles_p
 			}
 			if (spawn)
 			{
 				spawn = nullptr;
-				// will be deleted in because it is in all_tiles_p
+				// will be deleted, it is in all_tiles_p
 			}
 			if (!all_tiles_p.empty())
 			{
@@ -100,11 +100,6 @@ namespace TowerDefense
 				|| destination == Castle_Other;
 		}
 
-		void MapManager::assign_castle_to_player(const std::unique_ptr<Player>& player)
-		{
-			player->assign_castle(castle); //todo weak_ptr
-		}
-
 		const bool MapManager::get_level_loaded_flag()
 		{
 			return level_loaded_flag;
@@ -124,11 +119,12 @@ namespace TowerDefense
 				return;
 			}
 			map_params = &Constants::LevelDesign::level0;
-			GameManager::get_player().set_money(map_params->start_money);
 			UI::Hud::set_level_text(map_params->name);
 			align_center_map(*map_params);
 			create_tiles(*map_params);
 			MapWaveManager::load_minions(map_params);
+			Player::set_initial_money(map_params->start_money);
+			Player::set_castle(castle);
 		}
 
 		void MapManager::align_center_map(const MapParams l_map_params)

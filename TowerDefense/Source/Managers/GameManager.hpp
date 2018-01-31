@@ -3,7 +3,6 @@
 #ifndef GAME_MANAGER_HPP
 #define GAME_MANAGER_HPP
 #include "Utils/Event.h"
-#include "../../Player.hpp"
 
 namespace TowerDefense
 {
@@ -41,7 +40,6 @@ namespace TowerDefense
 			 * \return fixed clock time since application start.
 			 */
 			static const sf::Clock& get_fixed_clock();
-			static Game::Player& get_player();
 		private:
 			static void destroy();
 			/**
@@ -50,7 +48,6 @@ namespace TowerDefense
 			 */
 			static unsigned int game_speed_index;
 			static unsigned int level_index;
-			static std::unique_ptr<Game::Player> player;
 			static float fixed_delta_time;
 			static float delta_time;
 			static sf::Clock clock;
@@ -58,7 +55,6 @@ namespace TowerDefense
 			 * \brief Not a Clock since I cannot set the clock time myself.
 			 */
 			static double scaled_clock;
-			static void spawn_player();
 			static sf::RenderWindow* window_ref;
 		};
 		//constexpr

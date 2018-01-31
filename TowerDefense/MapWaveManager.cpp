@@ -13,7 +13,7 @@ namespace TowerDefense
 {
 	namespace Managers
 	{
-		std::list<GameEngine::BaseGameObject*> MapWaveManager::instanciated_elements;
+		std::list<BaseGameObject*> MapWaveManager::instanciated_elements;
 		const MapParams* MapWaveManager::map_params;
 		unsigned int MapWaveManager::wave_index;
 		unsigned int MapWaveManager::minion_wave_index;
