@@ -8,6 +8,7 @@
 #include "Minion.hpp"
 #include "Destroyer.hpp"
 #include "AssetsConfig.hpp"
+#include "GameEngine/Debug.hpp"
 
 namespace TowerDefense
 {
