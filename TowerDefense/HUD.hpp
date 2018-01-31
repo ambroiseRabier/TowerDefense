@@ -28,7 +28,7 @@ namespace TowerDefense
 			static std::unique_ptr<BaseText> money_text;
 			static std::unique_ptr<BaseText> wave_text;
 			static std::unique_ptr<BaseButton> pause_btn;
-			static std::unique_ptr<BaseButton> restart_btn;
+			static std::unique_ptr<BaseButton> retry_btn;
 
 			/**
 			 * \brief 
@@ -37,7 +37,7 @@ namespace TowerDefense
 			 */
 			static std::unique_ptr<BaseButton> up_speed_btn;
 			static void on_click_up_speed();
-			static void on_click_restart();
+			static void on_click_retry();
 			static void on_click_pause();
 		};
 	}

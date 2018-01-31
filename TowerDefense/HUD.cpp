@@ -12,7 +12,7 @@ namespace TowerDefense
 		std::unique_ptr<BaseText> Hud::money_text;
 		std::unique_ptr<BaseText> Hud::wave_text;
 		std::unique_ptr<BaseButton> Hud::pause_btn;
-		std::unique_ptr<BaseButton> Hud::restart_btn;
+		std::unique_ptr<BaseButton> Hud::retry_btn;
 		std::unique_ptr<BaseButton> Hud::up_speed_btn;
 
 		void Hud::init()
@@ -21,7 +21,7 @@ namespace TowerDefense
 			money_text = std::make_unique<BaseText>("*Money");
 			wave_text = std::make_unique<BaseText>("*Wave");
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::pause_btn_texture);
-			restart_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
+			retry_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
 			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::speedUp_btn_texture);
 			Align::top_center(level_text->get_transformable(), sf::Vector2f(
 				-200, 
@@ -39,20 +39,20 @@ namespace TowerDefense
 				30 + pause_btn->get_sprite().getGlobalBounds().width, 
 				30
 			));
-			Align::top_left(restart_btn->get_transformable(), sf::Vector2f(30, 30));
+			Align::top_left(retry_btn->get_transformable(), sf::Vector2f(30, 30));
 			Align::bottom_right(up_speed_btn->get_transformable(), sf::Vector2f(
 				30 + up_speed_btn->get_sprite().getGlobalBounds().width, 
 				30 + up_speed_btn->get_sprite().getGlobalBounds().height
 			));
 			close();
 			pause_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_pause);
-			restart_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_restart);
+			retry_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_retry);
 			up_speed_btn->on_click += Sharp::EventHandler::Bind(&Hud::on_click_up_speed);
 			level_text->auto_start();
 			money_text->auto_start();
 			wave_text->auto_start();
 			pause_btn->auto_start();
-			restart_btn->auto_start();
+			retry_btn->auto_start();
 			up_speed_btn->auto_start();
 			GlobalShared::on_window_close += Sharp::EventHandler::Bind(Hud::destroy);
 		}
@@ -60,13 +60,13 @@ namespace TowerDefense
 		void Hud::destroy()
 		{
 			pause_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_pause);
-			restart_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_restart);
+			retry_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_retry);
 			up_speed_btn->on_click -= Sharp::EventHandler::Bind(&Hud::on_click_up_speed);
 			level_text.reset(nullptr);
 			money_text.reset(nullptr);
 			wave_text.reset(nullptr);
 			pause_btn.reset(nullptr);
-			restart_btn.reset(nullptr);
+			retry_btn.reset(nullptr);
 			up_speed_btn.reset(nullptr);
 		}
 
@@ -77,7 +77,7 @@ namespace TowerDefense
 			money_text->isActive = true;
 			wave_text->isActive = true;
 			pause_btn->isActive = true;
-			restart_btn->isActive = true;
+			retry_btn->isActive = true;
 			up_speed_btn->isActive = true;
 		}
 
@@ -87,7 +87,7 @@ namespace TowerDefense
 			money_text->isActive = false;
 			wave_text->isActive = false;
 			pause_btn->isActive = false;
-			restart_btn->isActive = false;
+			retry_btn->isActive = false;
 			up_speed_btn->isActive = false;
 		}
 
@@ -111,7 +111,7 @@ namespace TowerDefense
 			Managers::GameManager::up_game_speed();
 		}
 
-		void Hud::on_click_restart()
+		void Hud::on_click_retry()
 		{
 			Managers::GameManager::restart_level();
 		}
