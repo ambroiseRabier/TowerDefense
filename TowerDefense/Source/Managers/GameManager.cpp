@@ -126,6 +126,16 @@ namespace TowerDefense
 			}
 		}
 
+		void GameManager::game_over()
+		{
+			//tpoo
+		}
+
+		void GameManager::game_win()
+		{
+			//tdf
+		}
+
 		// region getter setter
 
 		const float& GameManager::get_fixed_delta_time() 

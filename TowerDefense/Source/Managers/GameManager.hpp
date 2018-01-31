@@ -26,6 +26,8 @@ namespace TowerDefense
 			static void return_menu();
 			static void exit_game();
 			static void up_game_speed();
+			static void game_over();
+			static void game_win();
 			static GameState state;
 			static const float& get_game_speed();
 			static const float& get_fixed_delta_time();

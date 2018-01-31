@@ -7,6 +7,7 @@
 #include "GameEngine/Debug.hpp"
 #include "Hud.hpp"
 #include "Config.hpp"
+#include "Managers/GameManager.hpp"
 
 using namespace TowerDefense::Game;
 namespace TowerDefense
@@ -19,6 +20,7 @@ namespace TowerDefense
 		unsigned int MapWaveManager::minion_wave_index;
 		unsigned int MapWaveManager::minion_time_out_id;
 		unsigned int MapWaveManager::minion_wave_time_out_id;
+		bool MapWaveManager::is_last_wave_fully_spawned;
 
 		void MapWaveManager::init()
 		{
@@ -35,6 +37,7 @@ namespace TowerDefense
 
 		void MapWaveManager::start()
 		{
+			is_last_wave_fully_spawned = false;
 			wave_index = 0;
 			minion_wave_index = 0;
 			if(!is_end_of_level()) {
@@ -55,8 +58,11 @@ namespace TowerDefense
 			if (!is_end_of_level())
 			{
 				next_minon_wave();
-			} else
+			}
+			else
 			{
+				// happen after the last wave has been fully spawned.
+				is_last_wave_fully_spawned = true;
 				UI::Hud::set_wave_text(Constants::Config::final_wave_text);
 			}
 		}
@@ -171,7 +177,7 @@ namespace TowerDefense
 
 		void MapWaveManager::destroy_me(BaseGameObject& to_delete)
 		{
-			// this obviously do not work, because the pointer is different.
+			// this line bellow obviously do not work, because the pointer is different.
 			// we have to search by value.
 			//instanciated_elements.remove(&base_game_object);
 			for (auto base_game_object : instanciated_elements)
@@ -183,6 +189,12 @@ namespace TowerDefense
 					base_game_object = nullptr;
 					break;
 				}
+			}
+			if (is_last_wave_fully_spawned && instanciated_elements.empty())
+			{
+				// since game win happen when all minions has been destroyed
+				// there is no risk to destroy the castle ad trigger a game_over
+				GameManager::game_win();
 			}
 		}
 
@@ -213,7 +225,7 @@ namespace TowerDefense
 
 			if (!instanciated_elements.empty())
 			{
-				for (std::list<GameEngine::BaseGameObject*>::value_type base_game_object : instanciated_elements)
+				for (std::list<BaseGameObject*>::value_type base_game_object : instanciated_elements)
 				{
 					delete base_game_object;
 					base_game_object = nullptr;

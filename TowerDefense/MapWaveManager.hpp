@@ -60,6 +60,7 @@ namespace TowerDefense
 			 */
 			static void remove_me(const GameEngine::BaseGameObject& to_remove);
 		private:
+			static bool is_last_wave_fully_spawned;
 			static void destroy_current_level();
 			static const Game::MapParams* map_params;
 		};

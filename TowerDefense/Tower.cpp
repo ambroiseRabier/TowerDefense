@@ -8,13 +8,14 @@
 #include "Projectile.hpp"
 #include "Timer.hpp"
 #include "AssetsConfig.hpp"
+#include "CastUtils.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
 {
 	namespace Game
 	{
-		Tower* Tower::create_stone_tower(const sf::Vector2u& map_pos)
+		Tower* Tower::create_stone_tower(const Vector2u& map_pos)
 		{
 			return new Tower(
 				GlobalShared::stone_tower_texture,
@@ -28,20 +29,23 @@ namespace TowerDefense
 			Debug::warn("Tower: default constructor should not be used.");
 		}
 
-		Tower::Tower(const sf::Texture* texture, TowerId id, const sf::Vector2u map_pos) 
+		Tower::Tower(const Texture* texture, TowerId id, const Vector2u map_pos) 
 					: map_pos(map_pos), id(id), params(Constants::GameDesign::towers.at(id))
 		{
-			set_drawable(static_cast<std::unique_ptr<sf::Drawable>>(
-				std::make_unique<sf::Sprite>(*texture)
+			auto temp_sprite = std::make_unique<Sprite>(*texture);
+			sprite = temp_sprite.get();
+			set_drawable(static_cast_ptr<Drawable>(
+				temp_sprite
 			));
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
 				Circle(
-					params.projectile_params.at(level).range * Constants::AssetsConfig::tile_size,
+					std::max(0.5f, params.projectile_params.at(level).range) * Constants::AssetsConfig::tile_size,
 					Constants::AssetsConfig::tile_size_half_vec // box in the center of tile.
 				),
 				Collider::Tag::Tower
 			);
+			// onclick for tower upgrade?
 		}
 
 		Tower::~Tower()
@@ -49,6 +53,7 @@ namespace TowerDefense
 			if (shoot_time_out_id != 0)
 			{
 				Utils::Timer::cancel_set_time_out(shoot_time_out_id);
+				shoot_time_out_id = 0;
 			}
 		}
 
@@ -118,6 +123,19 @@ namespace TowerDefense
 		TowerId Tower::get_tile_id() const
 		{
 			return id;
+		}
+
+		void Tower::on_game_over()
+		{
+			if (shoot_time_out_id != 0)
+			{
+				Utils::Timer::cancel_set_time_out(shoot_time_out_id);
+				shoot_time_out_id = 0;
+			}
+			update_active = false;
+			collider->gameobject_enabled = false;
+			collider->mouse_enabled = false;
+			sprite->setTexture(*GlobalShared::stone_tower_broken_texture);
 		}
 
 		const ProjectileParams& Tower::get_current_projectile_params() const

@@ -14,6 +14,7 @@
 #include "../Timer.hpp"
 #include "../MapWaveManager.hpp"
 #include "../Destroyer.hpp"
+#include "../Player.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -123,6 +124,9 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::castle_death);
 	GlobalShared::castle_death_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::stone_tower_broken);
+	GlobalShared::stone_tower_broken_texture = texture;
 }
 
 /**

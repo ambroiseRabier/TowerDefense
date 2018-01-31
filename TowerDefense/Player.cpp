@@ -32,24 +32,35 @@ namespace TowerDefense
 		void Player::create_tower(const TowerId tower_id)
 		{
 			// todo: add a switch of towerId
-			tower = std::unique_ptr<Tower>(Tower::create_stone_tower(sf::Vector2u(2,2)));
+			tower = std::unique_ptr<Tower>(Tower::create_stone_tower(Vector2u(2,0)));
 			tower->auto_start();
 		}
 
 		void Player::start()
 		{
-			//create_tower(TowerId::StoneTower);
+			create_tower(TowerId::StoneTower);
 		}
 
-		void Player::set_castle(Castle* new_castle)
+		void Player::set_castle(Castle* new_castle) // could have multiple castle
 		{
 			assert(new_castle != nullptr);
 			castle = new_castle;
+			castle->get_health().on_death += Sharp::EventHandler::Bind(&Player::on_castle_death);
+		}
+
+		void Player::on_castle_death()
+		{
+			if (tower)
+				tower->on_game_over();
+			GameManager::game_over();
 		}
 
 		void Player::on_destroy_level()
 		{
-			if (castle) castle = nullptr;
+			if (castle) {
+				castle->get_health().on_death -= Sharp::EventHandler::Bind(&Player::on_castle_death);
+				castle = nullptr;
+			}
 			if (tower.get()) tower.reset(nullptr);
 			can_set_initial_money_flag = true;
 		}

@@ -41,7 +41,7 @@ namespace TowerDefense
 			 */
 			const float damage;
 			/**
-			 * \brief tile
+			 * \brief tile (min is 0.5f)
 			 */
 			const float range;
 			/**

@@ -37,6 +37,7 @@ namespace TowerDefense
 		sf::Texture* stone_projectile_0_texture;
 		sf::Texture* minion_death_texture;
 		sf::Texture* castle_death_texture;
+		sf::Texture* stone_tower_broken_texture;
 
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
@@ -71,6 +72,7 @@ namespace TowerDefense
 			delete stone_projectile_0_texture; stone_projectile_0_texture = nullptr;
 			delete minion_death_texture; minion_death_texture = nullptr;
 			delete castle_death_texture; castle_death_texture = nullptr;
+			delete stone_tower_broken_texture; stone_tower_broken_texture = nullptr;
 		}
 	}
 }

@@ -14,6 +14,7 @@ namespace TowerDefense
 				sf::FloatRect(0,0, Constants::AssetsConfig::tile_size, Constants::AssetsConfig::tile_size),
 				GameEngine::Collider::Tag::Castle
 			);
+			collider->mouse_enabled = false;
 			health = std::make_unique<Health>(std::max(1.f, Constants::GameDesign::castle_life));
 			health->auto_start();
 		}
@@ -45,6 +46,8 @@ namespace TowerDefense
 		void Castle::on_death()
 		{
 			//we can keep collision enabled or disable it, any choice is ok.
+			// but might be more funny if disabled
+			collider->gameobject_enabled = false;
 			sprite->setTexture(*GlobalShared::castle_death_texture);
 		}
 	}

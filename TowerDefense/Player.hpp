@@ -33,6 +33,7 @@ namespace TowerDefense
 			static std::unique_ptr<Tower> tower;
 			// Might be hard to make it become part of the map gameplay (minions stealing money)
 			static float money;
+			static void on_castle_death();
 			static void on_destroy_level();
 			/**
 			 * \brief Assure that initial money is set only one time per map.

@@ -4,8 +4,7 @@
 #include "Castle.hpp"
 #include "MapParams.hpp"
 #include "Spawn.hpp"
-#include "Player.hpp"
-#include <memory>
+
 using namespace TowerDefense::Game;
 namespace TowerDefense
 {
