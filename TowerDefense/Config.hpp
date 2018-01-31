@@ -32,7 +32,10 @@ namespace TowerDefense
 			const bool debug_draw_collider = true;
 			const sf::Color collider_debug_color = sf::Color(240,10,15,100);
 			const std::string final_wave_text = "Last wave !";
-			const std::string wave_number_text;
+			const std::string wave_number_text = "Wave";
+			const std::string win_screen_text = "You saved the castle !";
+			const std::string game_over_screen_text = "The castle has been lost !";
+			const std::string pause_text = "Pause";
 		}
 		
 		/**

@@ -28,7 +28,7 @@ namespace TowerDefense
 			 * \brief 
 			 * Generate Level according to Config.
 			 * Destroy current level if not already done.
-			 * \param level_number 
+			 * \param new_map_params
 			 */
 			static void load_level(const MapParams& new_map_params);
 			/**

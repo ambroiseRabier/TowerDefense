@@ -3,6 +3,8 @@
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
+#include "BaseText.hpp"
+#include "Config.hpp"
 
 namespace TowerDefense
 {
@@ -10,22 +12,32 @@ namespace TowerDefense
 	{
 		std::unique_ptr<BaseButton> PauseScreen::resume_btn;
 		std::unique_ptr<BaseButton> PauseScreen::menu_return_btn;
+		std::unique_ptr<BaseText> PauseScreen::title_text;
 
 		void PauseScreen::init()
 		{
 			resume_btn = std::make_unique<BaseButton>(GlobalShared::play_btn_texture);
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::quit_btn_texture);
+			title_text = std::make_unique<BaseText>(Constants::Config::pause_text);
 			Align::top_right(resume_btn->get_transformable(), sf::Vector2f(
 				30 + resume_btn->get_sprite().getGlobalBounds().width, 
 				30
 			));
-			Align::center(menu_return_btn->get_transformable(), sf::Vector2f(0, 50));
+			Align::center(
+				menu_return_btn->get_transformable(),
+				sf::Vector2f(- menu_return_btn->get_sprite().getGlobalBounds().width/2.f, 70)
+			);
+			Align::center(
+				title_text->get_transformable(),
+				sf::Vector2f(- title_text->get_text().getGlobalBounds().width/2.f, -170)
+			);
 			close();
 			resume_btn->on_click += Sharp::EventHandler::Bind(&PauseScreen::on_click_resume);
 			menu_return_btn->on_click += Sharp::EventHandler::Bind(&PauseScreen::on_click_menu_return);
 			resume_btn->auto_start();
 			menu_return_btn->auto_start();
-			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
+			title_text->auto_start();
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&PauseScreen::destroy);
 		}
 
 		void PauseScreen::destroy()
@@ -34,6 +46,7 @@ namespace TowerDefense
 			menu_return_btn->on_click -= Sharp::EventHandler::Bind(&PauseScreen::on_click_menu_return);
 			resume_btn.reset(nullptr);
 			menu_return_btn.reset(nullptr);
+			title_text.reset(nullptr);
 		}
 
 		void PauseScreen::on_click_resume()
@@ -49,12 +62,14 @@ namespace TowerDefense
 		{
 			resume_btn->isActive = true;
 			menu_return_btn->isActive = true;
+			title_text->isActive = true;
 		}
 
 		void PauseScreen::close()
 		{
 			resume_btn->isActive = false;
 			menu_return_btn->isActive = false;
+			title_text->isActive = false;
 		}
 	}
 }

@@ -40,7 +40,7 @@ namespace TowerDefense
 		extern sf::Texture* minion_death_texture;
 		extern sf::Texture* castle_death_texture;
 		extern sf::Texture* stone_tower_broken_texture;
-
+		extern sf::Texture* next_level_btn_texture;
 
 		/**
 		 * \brief 

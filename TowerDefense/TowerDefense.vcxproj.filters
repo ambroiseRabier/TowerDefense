@@ -240,6 +240,12 @@
     <ClInclude Include="Destroyer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameOverScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWinScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -358,6 +364,12 @@
     </ClCompile>
     <ClCompile Include="Destroyer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWinScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

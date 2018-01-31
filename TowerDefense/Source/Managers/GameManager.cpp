@@ -11,6 +11,8 @@
 #include "../../MapWaveManager.hpp"
 #include "../../SetTimeout.hpp"
 #include "../../LevelDesign.hpp"
+#include "../../GameOverScreen.hpp"
+#include "../../GameWinScreen.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -137,12 +139,18 @@ namespace TowerDefense
 
 		void GameManager::game_over()
 		{
-			//GameOverScreen::open();
+			// might need to keep state to playing if we wnat minion to do something funny
+			state = GameState::Pause;
+			UI::Hud::close();
+			UI::GameOverScreen::open();
 		}
 
 		void GameManager::game_win()
 		{
-			//GameWinScreen::open();
+			// might need to keep state to playing if we wnat minion to do something funny
+			state = GameState::Pause;
+			UI::Hud::close();
+			UI::GameWinScreen::open();
 		}
 
 		// region getter setter

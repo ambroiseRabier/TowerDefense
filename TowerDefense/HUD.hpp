@@ -17,13 +17,13 @@ namespace TowerDefense
 		{
 		public:
 			static void init();
-			static void destroy();
 			static void open();
 			static void close();
 			static void set_level_text(const std::string& text);
 			static void set_money_text(const std::string& text);
 			static void set_wave_text(const std::string& text);
 		private:
+			static void destroy();
 			static std::unique_ptr<BaseText> level_text;
 			static std::unique_ptr<BaseText> money_text;
 			static std::unique_ptr<BaseText> wave_text;

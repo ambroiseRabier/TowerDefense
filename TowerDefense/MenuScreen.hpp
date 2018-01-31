@@ -11,14 +11,15 @@ namespace TowerDefense
 		{
 		public:
 			static void init();
-			static void destroy();
 			static void open();
 			static void close();
 			/**
-			 * \brief Should be called by main.
+			 * \brief Should be called by main. 
+			 * Destroy btn cannot be destroyed on it's own callback.
 			 */
 			static void destroy_quit_btn();
 		private:
+			static void destroy();
 			static std::unique_ptr<BaseButton> play_btn;
 			static std::unique_ptr<BaseButton> quit_btn;
 			static void on_click_play();

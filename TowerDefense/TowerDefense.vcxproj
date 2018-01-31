@@ -31,6 +31,8 @@
     <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
     <ClInclude Include="GameDesign.hpp" />
+    <ClInclude Include="GameOverScreen.hpp" />
+    <ClInclude Include="GameWinScreen.hpp" />
     <ClInclude Include="GlobalShared.hpp" />
     <ClInclude Include="HealMinion.hpp" />
     <ClInclude Include="Health.hpp" />
@@ -81,6 +83,8 @@
     <ClCompile Include="Destroyer.cpp" />
     <ClCompile Include="ExplosivTower.cpp" />
     <ClCompile Include="FreezeTower.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
+    <ClCompile Include="GameWinScreen.cpp" />
     <ClCompile Include="HealMinion.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HUD.cpp" />

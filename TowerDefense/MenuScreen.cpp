@@ -23,7 +23,7 @@ namespace TowerDefense
 			quit_btn->on_click += Sharp::EventHandler::Bind(&MenuScreen::on_click_quit);
 			play_btn->auto_start();
 			quit_btn->auto_start();
-			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
+			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&MenuScreen::destroy);
 		}
 
 		void MenuScreen::destroy()

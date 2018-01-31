@@ -15,6 +15,8 @@
 #include "../MapWaveManager.hpp"
 #include "../Destroyer.hpp"
 #include "../Player.hpp"
+#include "../GameOverScreen.hpp"
+#include "../GameWinScreen.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -127,6 +129,9 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::stone_tower_broken);
 	GlobalShared::stone_tower_broken_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::next_level_btn);
+	GlobalShared::next_level_btn_texture = texture;
 }
 
 /**
@@ -186,6 +191,8 @@ int main()
 	UI::MenuScreen::init();
 	UI::Hud::init();
 	UI::PauseScreen::init();
+	UI::GameWinScreen::init();
+	UI::GameOverScreen::init();
 	GameManager::init(&window);
 	Debug::info("Managers inited.");
 

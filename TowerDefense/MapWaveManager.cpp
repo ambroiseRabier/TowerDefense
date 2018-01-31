@@ -194,6 +194,7 @@ namespace TowerDefense
 			{
 				// since game win happen when all minions has been destroyed
 				// there is no risk to destroy the castle ad trigger a game_over
+				// good thing is that it will wait for the minion death anim.
 				GameManager::game_win();
 			}
 		}
