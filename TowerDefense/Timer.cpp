@@ -124,6 +124,8 @@ namespace TowerDefense
 			{
 				if (time_out.id == id)
 				{
+					delete time_out.to_call;
+					time_out.to_call = nullptr;
 					all_time_out.erase(
 						std::remove(all_time_out.begin(), all_time_out.end(), time_out), all_time_out.end()
 					);

@@ -29,7 +29,7 @@ namespace TowerDefense
 			}
 
 			/**
-			 * \brief Seconds.
+			 * \brief Seconds. (min is 0 for each frame, not recommended)
 			 */
 			const float reload_delay;
 			/**

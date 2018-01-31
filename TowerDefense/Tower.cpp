@@ -94,7 +94,7 @@ namespace TowerDefense
 					shoot();
 					shoot_time_out_id = Utils::Timer::set_time_out(
 						Sharp::EventHandler::Bind(&Tower::reset_shoot_delay, this),
-						get_current_projectile_params().reload_delay
+						std::max(0.f, get_current_projectile_params().reload_delay)
 					);
 				}
 			}
@@ -111,6 +111,7 @@ namespace TowerDefense
 		{
 			// if target has become null in meantime don't shoot. 
 			// (destroyed by another tower or out of range, or died on castle)
+			// use weak_ptr instead ? because I think it's gonna bug
 			if (target == nullptr) 
 				return;
 
