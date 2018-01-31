@@ -56,7 +56,7 @@ namespace TowerDefense
 
 			/**
 			 * \brief Remove form list if you want it to be destroyed elsewhere.
-			 * \param minion 
+			 * \param to_remove
 			 */
 			static void remove_me(const GameEngine::BaseGameObject& to_remove);
 		private:

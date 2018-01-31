@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef LEVEL_DESIGN_HPP
 #define LEVEL_DESIGN_HPP
 #include "MapParams.hpp"
@@ -11,6 +10,7 @@ namespace TowerDefense
 	{
 		namespace LevelDesign
 		{
+
 			const MapParams level0 = {
 				// name displayed
 				"HelloWorld",
@@ -47,6 +47,11 @@ namespace TowerDefense
 					},
 				}
 			};
+
+			const std::array<MapParams,1> map_array = {
+				level0
+			};
+
 		}
 	}
 }

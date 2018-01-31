@@ -30,7 +30,7 @@ namespace TowerDefense
 			 * Destroy current level if not already done.
 			 * \param level_number 
 			 */
-			static void load_level(const unsigned int& level_number);
+			static void load_level(const MapParams& new_map_params);
 			/**
 			 * \brief 
 			 * Destroy current level.
@@ -47,7 +47,7 @@ namespace TowerDefense
 			static Castle* castle;
 			static Spawn* spawn;
 			static bool level_loaded_flag;
-			static void load_level_internal(const unsigned int& level_number);
+			static void load_level_internal(const MapParams& new_map_params);
 			static void align_center_map(const MapParams l_map_params);
 			static void create_tiles(const MapParams l_map_params);
 			//static std::shared_ptr<Tile> spawn_tile(const TileId tile_id);

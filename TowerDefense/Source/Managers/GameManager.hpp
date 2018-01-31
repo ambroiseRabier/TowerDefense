@@ -19,6 +19,7 @@ namespace TowerDefense
 			static void init(sf::RenderWindow* new_window_ref);
 			static void start();
 			static void update();
+			static void start_next_level();
 			static void start_level(const unsigned int& i);
 			static void restart_level();
 			static void pause();

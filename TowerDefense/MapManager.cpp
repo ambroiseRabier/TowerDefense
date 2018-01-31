@@ -41,13 +41,13 @@ namespace TowerDefense
 			// nothing :/
 		}
 
-		void MapManager::load_level(const unsigned int& level_number)
+		void MapManager::load_level(const MapParams& new_map_params)
 		{
 			if (level_loaded_flag)
 			{
 				destroy_current_level();
 			}
-			load_level_internal(level_number);
+			load_level_internal(new_map_params);
 			level_loaded_flag = true;
 		}
 
@@ -110,15 +110,10 @@ namespace TowerDefense
 			return map_origin;
 		}
 
-		void MapManager::load_level_internal(const unsigned int& level_number)
+		void MapManager::load_level_internal(const MapParams& new_map_params)
 		{
 			Debug::assert_m(!level_loaded_flag, "A level is already loaded.");
-			if (level_number != 0)
-			{
-				Debug::warn("Only one level supported for now.");
-				return;
-			}
-			map_params = &Constants::LevelDesign::level0;
+			map_params = &new_map_params;
 			UI::Hud::set_level_text(map_params->name);
 			align_center_map(*map_params);
 			create_tiles(*map_params);

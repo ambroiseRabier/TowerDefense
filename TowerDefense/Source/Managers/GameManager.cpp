@@ -10,6 +10,7 @@
 #include "../../GlobalShared.hpp"
 #include "../../MapWaveManager.hpp"
 #include "../../SetTimeout.hpp"
+#include "../../LevelDesign.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -36,7 +37,7 @@ namespace TowerDefense
 
 		void GameManager::destroy()
 		{
-			//GlobalShared::on_window_close -= Sharp::gEventHandler::Bind(&destroy);
+			//GlobalShared::on_window_close -= Sharp::gEventHandler::Bind(&destroy); // event is destroyed anyway.
 			if (state == GameState::Pause || state == GameState::Playing)
 			{
 				MapManager::destroy_current_level();
@@ -59,9 +60,18 @@ namespace TowerDefense
 				on_update();
 			}
 		}
+
+		void GameManager::start_next_level()
+		{
+			start_level(++level_index);
+		}
 		
 		void GameManager::start_level(const unsigned int& i)
 		{
+			Debug::assert_m(
+				i >= 0 && i < Constants::LevelDesign::map_array.size(),
+				"GameManager: trying to start a level that do not exist ! index of level: " + std::to_string(i)
+			);
 			Debug::info("GameManager: start_level " + std::to_string(i));
 			// if was not already into a level.
 			if (state != GameState::Playing)
@@ -71,7 +81,7 @@ namespace TowerDefense
 			level_index = i;
 			game_speed_index = 0;
 			UI::Hud::open(); // if next level then hud already here, this is useless, unless there is a winscreen.
-			MapManager::load_level(level_index);
+			MapManager::load_level(Constants::LevelDesign::map_array.at(level_index));
 			Player::start();
 			// add delay here ? to let the player prepare his stuff.
 			MapWaveManager::start();
@@ -79,8 +89,7 @@ namespace TowerDefense
 
 		void GameManager::restart_level()
 		{
-			assert(state == GameState::Playing);
-			assert(level_index >= 0);
+			assert(state == GameState::Playing || state == GameState::Pause);
 			MapManager::destroy_current_level();
 			start_level(level_index);
 		}
@@ -128,12 +137,12 @@ namespace TowerDefense
 
 		void GameManager::game_over()
 		{
-			//tpoo
+			//GameOverScreen::open();
 		}
 
 		void GameManager::game_win()
 		{
-			//tdf
+			//GameWinScreen::open();
 		}
 
 		// region getter setter
