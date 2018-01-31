@@ -2,6 +2,8 @@
 #ifndef MENU_SCREEN_HPP
 #define MENU_SCREEN_HPP
 #include "GameObjects/BaseButton.hpp"
+#include "BaseText.hpp"
+#include <memory>
 
 namespace TowerDefense
 {
@@ -22,6 +24,7 @@ namespace TowerDefense
 			static void destroy();
 			static std::unique_ptr<BaseButton> play_btn;
 			static std::unique_ptr<BaseButton> quit_btn;
+			static std::unique_ptr<BaseText> title_text;
 			static void on_click_play();
 			static void on_click_quit();
 		};
