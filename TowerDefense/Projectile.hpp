@@ -3,9 +3,7 @@
 #define PROJECTILE_HPP
 #include "GameEngine/BaseGameObject.hpp"
 #include "ProjectileParams.hpp"
-#include "Tower.hpp"
 #include "Utils/Event.h"
-#include "Minion.hpp"
 
 namespace TowerDefense
 {

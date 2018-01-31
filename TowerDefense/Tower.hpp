@@ -4,7 +4,6 @@
 #include "GameEngine/BaseGameObject.hpp"
 #include "ProjectileParams.hpp"
 
-using namespace sf;
 namespace TowerDefense
 {
 	namespace Game
@@ -29,27 +28,28 @@ namespace TowerDefense
 		class Tower : public GameEngine::BaseGameObject
 		{
 		public:
-			static Tower* create_stone_tower(const Vector2u& map_pos);
-			static Tower* create_freeze_tower(const Vector2u& map_pos);
-			static Tower* create_explosiv_tower(const Vector2u& map_pos);
+			static Tower* create_stone_tower(const sf::Vector2u& map_pos);
+			static Tower* create_freeze_tower(const sf::Vector2u& map_pos);
+			static Tower* create_explosiv_tower(const sf::Vector2u& map_pos);
 			Tower();
-			Tower(const Texture* texture, TowerId id, const Vector2u map_pos);
+			Tower(const sf::Texture* texture, TowerId id, const sf::Vector2u map_pos);
 			~Tower();
 			void init() override;
 			void on_game_object_overlap(GameObject& game_object) override;
 			void update_position();
 			TowerId get_tile_id() const;
 			void on_game_over();
-			const Vector2u map_pos;
+			const sf::Vector2u map_pos;
 		private:
 			void shoot() const;
 			const ProjectileParams& get_current_projectile_params() const;
+			const sf::Texture* get_current_projectile_texture() const;
 			void reset_shoot_delay();
 			void on_projectile_kill();
 			/**
 			 * \brief Garanted to be valid until tower descontructor.
 			 */
-			Sprite* sprite;
+			sf::Sprite* sprite;
 			TowerId id;
 			const TowerParams& params;
 			GameObject* target;

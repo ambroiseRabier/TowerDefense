@@ -5,6 +5,7 @@
 #include "MapManager.hpp"
 #include "Managers/GameManager.hpp"
 
+using namespace sf;
 namespace TowerDefense
 {
 	namespace Managers

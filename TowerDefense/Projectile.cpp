@@ -27,7 +27,6 @@ namespace TowerDefense
 							   const sf::Vector2f spawn_pos, const sf::Vector2f& target_pos)
 							  : params(params)
 		{
-			assert(texture);
 			std::unique_ptr<sf::Sprite> sprite_p = std::make_unique<sf::Sprite>(*texture);
 			sprite_p->setPosition(
 				-sprite_p->getLocalBounds().width/2.f,

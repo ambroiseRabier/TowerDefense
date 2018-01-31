@@ -11,6 +11,7 @@
 #include "CastUtils.hpp"
 
 using namespace TowerDefense::GameEngine;
+using namespace sf;
 namespace TowerDefense
 {
 	namespace Game
@@ -114,7 +115,7 @@ namespace TowerDefense
 				return;
 
 			Projectile* proj = new Projectile(
-				GlobalShared::stone_projectile_0_texture, 
+				get_current_projectile_texture(), 
 				get_current_projectile_params(),
 				transformable->getPosition() + Constants::AssetsConfig::tile_size_half_vec, // could be position of canon
 				target->get_transformable().getPosition() + Constants::AssetsConfig::tile_size_half_vec
@@ -171,6 +172,35 @@ namespace TowerDefense
 		const ProjectileParams& Tower::get_current_projectile_params() const
 		{
 			return params.projectile_params.at(level);
+		}
+
+		const Texture* Tower::get_current_projectile_texture() const
+		{
+			//todo: maybe inheritance to detemine texture used... ?
+			assert(level >= 0 && level < params.projectile_params.size());
+			switch (id)
+			{
+			case StoneTower:
+				 return (std::vector<Texture*>{
+					GlobalShared::stone_projectile_0_texture,
+					GlobalShared::stone_projectile_0_texture,
+					GlobalShared::stone_projectile_0_texture
+				 }).at(level);
+			case FreezeTower: 
+				 return (std::vector<Texture*>{
+					GlobalShared::freeze_projectile_0_texture,
+					GlobalShared::stone_projectile_0_texture,
+					GlobalShared::stone_projectile_0_texture
+				 }).at(level);
+			case ExplosivTower: 
+				 return (std::vector<Texture*>{
+					GlobalShared::stone_projectile_0_texture,
+					GlobalShared::stone_projectile_0_texture,
+					GlobalShared::stone_projectile_0_texture
+				 }).at(level);
+			default: ;
+			}
+			return GlobalShared::missing_texture_tile_texture;
 		}
 	}
 }

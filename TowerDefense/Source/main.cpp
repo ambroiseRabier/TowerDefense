@@ -144,6 +144,9 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::explosiv_tower_broken);
 	GlobalShared::explosiv_tower_broken_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::freeze_projectile_0);
+	GlobalShared::freeze_projectile_0_texture = texture;
 }
 
 /**
