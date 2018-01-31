@@ -12,10 +12,12 @@ namespace TowerDefense
 		{
 		public:
 			Castle(const sf::Vector2u map_pos);
+			~Castle();
+			Health& get_health() const;
+		protected:
+			void update_position() override;
 		private:
-			Health life;
-			// I prefer having money here, so It can more easely become part of the gameplay (minions stealing money)
-			float money;
+			std::unique_ptr<Health> health;
 		};
 	}
 }

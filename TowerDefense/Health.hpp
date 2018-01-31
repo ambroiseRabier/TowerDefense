@@ -24,6 +24,7 @@ namespace TowerDefense
 			 */
 			bool damage(float value);
 			void heal(float value);
+			void update_health_pos(const sf::Transformable& relativ_to);
 			const float& get_health() const;
 			/**
 			 * \brief When health is at 0 or beyond, send an event.

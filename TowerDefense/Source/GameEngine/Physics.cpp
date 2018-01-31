@@ -135,7 +135,7 @@ namespace TowerDefense
 			for (GameObject* children2 : childrens)
 			{
 				// verify that he is ok for colliding before anything
-				if (!children2->get_collider()->gameobject_enabled)
+				if (!children2->isActive || !children2->get_collider()->gameobject_enabled)
 					continue;
 
 				// search for a valid pair of tag (see Config)

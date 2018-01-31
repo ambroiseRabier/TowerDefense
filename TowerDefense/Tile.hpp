@@ -76,7 +76,7 @@ namespace TowerDefense
 			const sf::Vector2u map_pos;
 		protected:
 			void init() override;
-			void update_position();
+			virtual void update_position();
 			/**
 			 * \brief 
 			 * Should be unique to the class.

@@ -169,7 +169,7 @@ namespace TowerDefense
 			 return wave_index == map_params->wave_params_vector.size();
 		}
 
-		void MapWaveManager::destroy_me(GameEngine::BaseGameObject& to_delete)
+		void MapWaveManager::destroy_me(BaseGameObject& to_delete)
 		{
 			// this obviously do not work, because the pointer is different.
 			// we have to search by value.
@@ -181,6 +181,18 @@ namespace TowerDefense
 					instanciated_elements.remove(base_game_object);
 					delete base_game_object;
 					base_game_object = nullptr;
+					break;
+				}
+			}
+		}
+
+		void MapWaveManager::remove_me(const BaseGameObject& to_remove)
+		{
+			for (auto base_game_object : instanciated_elements)
+			{
+				if (to_remove == *base_game_object)
+				{
+					instanciated_elements.remove(base_game_object);
 					break;
 				}
 			}

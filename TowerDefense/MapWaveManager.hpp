@@ -53,6 +53,12 @@ namespace TowerDefense
 			 * It avoid that you are destroyed two time.
 			 */
 			static void destroy_me(GameEngine::BaseGameObject& to_delete);
+
+			/**
+			 * \brief Remove form list if you want it to be destroyed elsewhere.
+			 * \param minion 
+			 */
+			static void remove_me(const GameEngine::BaseGameObject& to_remove);
 		private:
 			static void destroy_current_level();
 			static const Game::MapParams* map_params;

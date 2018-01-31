@@ -42,6 +42,8 @@ namespace TowerDefense
 			~Minion();
 			Health& get_health() const;
 			void init() override;
+			void on_game_object_overlap(GameObject& game_object) override;
+
 		protected:
 			sf::Sprite* sprite;
 			sf::Vector2u map_pos;
@@ -94,8 +96,6 @@ namespace TowerDefense
 			 */
 			sf::Vector2u find_next_map_pos(const sf::Vector2u& current_map_pos) const;
 			bool validate_pos(const sf::Vector2u& new_pos) const;
-			void update_health_pos();
-
 		};
 	}
 }

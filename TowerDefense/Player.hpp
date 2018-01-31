@@ -28,6 +28,8 @@ namespace TowerDefense
 			void on_next_level();
 		private:
 			std::unique_ptr<Tower> tower;
+			// Might be hard to make it become part of the map gameplay (minions stealing money)
+			float money;
 		};
 	}
 }

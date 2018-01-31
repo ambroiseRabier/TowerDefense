@@ -12,6 +12,7 @@
 #include "Timer.hpp"
 #include "AssetsConfig.hpp"
 #include "MapWaveManager.hpp"
+#include "Destroyer.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
@@ -45,7 +46,7 @@ namespace TowerDefense
 			);
 			z_index = Constants::ZIndex::minions_start;
 			health = std::make_unique<Health>(params.health);
-			update_health_pos();
+			health->update_health_pos(*transformable);
 			health->auto_start();
 		}
 
@@ -95,7 +96,7 @@ namespace TowerDefense
 			// time_out finished, put id to null, so that deconstructor won't try to cancel it.
 			death_time_out_id = 0;
 			// inform MapWaveManager that you want to be destroyed.
-			Managers::MapWaveManager::destroy_me(*this);
+			Managers::MapWaveManager::destroy_me(*this); // not sure about passing reference :s (feels error prone here)
 		}
 
 		void Minion::start()
@@ -153,7 +154,7 @@ namespace TowerDefense
 					target_pos
 				);
 			}
-			update_health_pos();
+			health->update_health_pos(*transformable);
 		}
 
 		sf::Vector2f Minion::calc_pos(const sf::Vector2f& target_pos, const float& speed) const
@@ -204,13 +205,21 @@ namespace TowerDefense
 				&& Managers::MapManager::map_pos_exist(new_pos) 
 				&& Managers::MapManager::map_pos_walkable(new_pos);
 		}
-
-		void Minion::update_health_pos()
+		
+		void Minion::on_game_object_overlap(GameObject& game_object)
 		{
-			const sf::Vector2f offset(0, -25.f); // from center of tile.
-			health->get_transformable().setPosition(
-				transformable->getPosition() + Constants::AssetsConfig::tile_size_half_vec + offset
-			);
+			if (game_object.get_collider()->tag == Collider::Tag::Castle)
+			{
+				//damage minion
+				const Castle* castle = dynamic_cast<Castle*>(&game_object);
+				assert(castle);
+				const bool castle_is_dead = castle->get_health().damage(params.damage);
+				// disabling collider so we don't collide anything else.
+				collider->gameobject_enabled = false;
+				isActive = false;
+				Managers::MapWaveManager::remove_me(*this);
+				Destroyer::destroy_end_of_frame(this);
+			}
 		}
 	}
 }

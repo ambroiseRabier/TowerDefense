@@ -22,7 +22,7 @@ namespace TowerDefense
 			const std::string road_walk = "Assets/Tile/road.png";
 			const std::string grass_build = "Assets/Tile/grass.png";
 			const std::string spawn_others = "Assets/Tile/spawn.png";
-			const std::string castle_others = "Assets/Tile/castle.png";
+			const std::string castle_others = "Assets/Tile/castle_negated.png";
 			const std::string missing_texture_tile = "Assets/Tile/missing_texture.png";
 			const std::string minion_red = "Assets/Minion/minion_red.png";
 			const std::string hpBar_background = "Assets/healthbar_background.png";

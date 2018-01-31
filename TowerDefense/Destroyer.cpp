@@ -10,6 +10,7 @@ namespace TowerDefense
 
 		void Destroyer::destroy_end_of_frame(BaseGameObject* pointer)
 		{
+			assert(pointer != nullptr); // param reference an make it a pointer in this scope ?
 			destroy_vector.push_back(pointer);
 		}
 

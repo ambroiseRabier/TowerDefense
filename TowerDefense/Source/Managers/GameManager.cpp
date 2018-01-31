@@ -32,7 +32,6 @@ namespace TowerDefense
 		{
 			Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
 			window_ref = new_window_ref;
-			game_speed_index = Constants::GameDesign::game_speed_default_index;
 			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
 		}
 

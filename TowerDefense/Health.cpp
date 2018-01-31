@@ -4,6 +4,7 @@
 #include "GameEngine/Debug.hpp"
 #include "GlobalShared.hpp"
 #include "Config.hpp"
+#include "AssetsConfig.hpp"
 
 namespace TowerDefense
 {
@@ -52,6 +53,14 @@ namespace TowerDefense
 			const float lScale = actualHealth / maxHealth;
 			Debug::assert_m(lScale >=0 && lScale <= 1, "actualHealth / maxHealth should give a value between 0 and 1 included.");
 			sprite_jauge->setScale(lScale, 1);
+		}
+
+		void Health::update_health_pos(const sf::Transformable& relativ_to)
+		{
+			const sf::Vector2f offset(0, -25.f); // from center of tile.
+			transformable->setPosition(
+				relativ_to.getPosition() + Constants::AssetsConfig::tile_size_half_vec + offset
+			);
 		}
 
 		const float& Health::get_health() const
