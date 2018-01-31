@@ -39,6 +39,10 @@ namespace TowerDefense
 		sf::Texture* castle_death_texture;
 		sf::Texture* stone_tower_broken_texture;
 		sf::Texture* next_level_btn_texture;
+		sf::Texture* freeze_tower_texture;
+		sf::Texture* explosiv_tower_texture;
+		sf::Texture* freeze_tower_broken_texture;
+		sf::Texture* explosiv_tower_broken_texture;
 
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
@@ -75,6 +79,10 @@ namespace TowerDefense
 			delete castle_death_texture; castle_death_texture = nullptr;
 			delete stone_tower_broken_texture; stone_tower_broken_texture = nullptr;
 			delete next_level_btn_texture; next_level_btn_texture = nullptr;
+			delete freeze_tower_texture; freeze_tower_texture = nullptr;
+			delete explosiv_tower_texture; explosiv_tower_texture = nullptr;
+			delete freeze_tower_broken_texture; freeze_tower_broken_texture = nullptr;
+			delete explosiv_tower_broken_texture; explosiv_tower_broken_texture = nullptr;
 		}
 	}
 }

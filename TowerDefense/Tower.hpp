@@ -30,6 +30,8 @@ namespace TowerDefense
 		{
 		public:
 			static Tower* create_stone_tower(const Vector2u& map_pos);
+			static Tower* create_freeze_tower(const Vector2u& map_pos);
+			static Tower* create_explosiv_tower(const Vector2u& map_pos);
 			Tower();
 			Tower(const Texture* texture, TowerId id, const Vector2u map_pos);
 			~Tower();

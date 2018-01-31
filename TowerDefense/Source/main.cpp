@@ -132,6 +132,18 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::next_level_btn);
 	GlobalShared::next_level_btn_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::freeze_tower);
+	GlobalShared::freeze_tower_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::explosiv_tower);
+	GlobalShared::explosiv_tower_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::freeze_tower_broken);
+	GlobalShared::freeze_tower_broken_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::explosiv_tower_broken);
+	GlobalShared::explosiv_tower_broken_texture = texture;
 }
 
 /**

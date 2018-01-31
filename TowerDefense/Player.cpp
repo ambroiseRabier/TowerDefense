@@ -29,16 +29,26 @@ namespace TowerDefense
 			UI::Hud::set_money_text(std::to_string(value));
 		}
 
-		void Player::create_tower(const TowerId tower_id)
+		void Player::create_tower(const TowerId tower_id, const Vector2u& map_pos)
 		{
-			// todo: add a switch of towerId
-			tower = std::unique_ptr<Tower>(Tower::create_stone_tower(Vector2u(2,0)));
+			switch (tower_id) { 
+			case StoneTower: 
+				tower = std::unique_ptr<Tower>(Tower::create_stone_tower(map_pos));
+				break;
+			case FreezeTower: 
+				tower = std::unique_ptr<Tower>(Tower::create_freeze_tower(map_pos));
+				break;
+			case ExplosivTower: 
+				tower = std::unique_ptr<Tower>(Tower::create_explosiv_tower(map_pos));
+				break;
+			default: ;
+			}
 			tower->auto_start();
 		}
 
 		void Player::start()
 		{
-			create_tower(TowerId::StoneTower);
+			create_tower(TowerId::FreezeTower, Vector2u(2,2));
 		}
 
 		void Player::set_castle(Castle* new_castle) // could have multiple castle

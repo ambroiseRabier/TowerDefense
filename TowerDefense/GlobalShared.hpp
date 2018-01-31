@@ -41,6 +41,10 @@ namespace TowerDefense
 		extern sf::Texture* castle_death_texture;
 		extern sf::Texture* stone_tower_broken_texture;
 		extern sf::Texture* next_level_btn_texture;
+		extern sf::Texture* freeze_tower_texture;
+		extern sf::Texture* explosiv_tower_texture;
+		extern sf::Texture* freeze_tower_broken_texture;
+		extern sf::Texture* explosiv_tower_broken_texture;
 
 		/**
 		 * \brief 

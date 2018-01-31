@@ -2,7 +2,6 @@
 
 #ifndef ASSETS_HPP
 #define ASSETS_HPP
-#include "GameEngine/BaseGameObject.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -45,7 +44,11 @@ namespace TowerDefense
 			const std::string minion_death = "Assets/Minion/minion_death.png";
 			const std::string castle_death = "Assets/Tile/castle_negated_destroyed.png";
 			const std::string stone_tower_broken = "Assets/Tower/stone_tower_broken.png";
-			const std::string  next_level_btn = "Assets/Ui/next_level_btn.png";
+			const std::string next_level_btn = "Assets/Ui/next_level_btn.png";
+			const std::string freeze_tower = "Assets/Tower/freeze_tower.png";
+			const std::string explosiv_tower = "Assets/Tower/freeze_tower.png";
+			const std::string freeze_tower_broken = "Assets/Tower/freeze_tower_broken.png";
+			const std::string explosiv_tower_broken = "Assets/Tower/explosiv_tower_broken.png";
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace TowerDefense
 			 */
 			static void start();
 		private:
-			static void create_tower(const TowerId tower_id);
+			static void create_tower(const TowerId tower_id, const Vector2u& map_pos);
 			static Castle* castle;
 			static std::unique_ptr<Tower> tower;
 			// Might be hard to make it become part of the map gameplay (minions stealing money)

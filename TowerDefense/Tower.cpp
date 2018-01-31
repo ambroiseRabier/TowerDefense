@@ -24,6 +24,24 @@ namespace TowerDefense
 			);
 		}
 
+		Tower* Tower::create_freeze_tower(const Vector2u& map_pos)
+		{
+			return new Tower(
+				GlobalShared::freeze_tower_texture,
+				FreezeTower,
+				map_pos
+			);
+		}
+
+		Tower* Tower::create_explosiv_tower(const Vector2u& map_pos)
+		{
+			return new Tower(
+				GlobalShared::explosiv_tower_texture,
+				ExplosivTower,
+				map_pos
+			);
+		}
+
 		Tower::Tower() : params(Constants::GameDesign::towers.at(StoneTower))
 		{
 			Debug::warn("Tower: default constructor should not be used.");
@@ -135,7 +153,19 @@ namespace TowerDefense
 			update_active = false;
 			collider->gameobject_enabled = false;
 			collider->mouse_enabled = false;
-			sprite->setTexture(*GlobalShared::stone_tower_broken_texture);
+			switch (id)
+			{
+			case StoneTower: 
+				sprite->setTexture(*GlobalShared::stone_tower_broken_texture);
+				break;
+			case FreezeTower: 
+				sprite->setTexture(*GlobalShared::freeze_tower_broken_texture);
+				break;
+			case ExplosivTower: 
+				sprite->setTexture(*GlobalShared::explosiv_tower_broken_texture);
+				break;
+			default: ;
+			}
 		}
 
 		const ProjectileParams& Tower::get_current_projectile_params() const
