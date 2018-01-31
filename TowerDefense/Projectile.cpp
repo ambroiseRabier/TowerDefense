@@ -52,12 +52,18 @@ namespace TowerDefense
 			if (game_object.get_collider()->tag == Collider::Tag::Minion)
 			{
 				//damage minion
-				const Minion* minion = dynamic_cast<Minion*>(&game_object);
+				Minion* minion = dynamic_cast<Minion*>(&game_object);
 				assert(minion);
 				const bool minion_is_dead = minion->get_health().damage(params.damage);
 				if (minion_is_dead)
 				{
 					on_kill();
+				} 
+				else
+				{
+					minion->freeze(
+						std::min(1.f, std::max(0.f, params.freeze_factor))
+					);
 				}
 				// disabling collider so we don't collide anything else.
 				collider->gameobject_enabled = false;

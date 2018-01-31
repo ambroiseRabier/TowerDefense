@@ -43,6 +43,7 @@ namespace TowerDefense
 			Health& get_health() const;
 			void init() override;
 			void on_game_object_overlap(GameObject& game_object) override;
+			void freeze(const float& new_freeze_factor);
 
 		protected:
 			sf::Sprite* sprite;
@@ -55,6 +56,7 @@ namespace TowerDefense
 			const MinionParams& params;
 			std::unique_ptr<Health> health;
 			unsigned int death_time_out_id;
+			float freeze_factor = 0.f;
 			void on_death();
 			void destroy_self();
 
@@ -63,7 +65,13 @@ namespace TowerDefense
 			void start() override;
 			void update() override;
 
-			
+			/**
+			 * \brief 
+			 * \return Minion speed at this frame.
+			 */
+			float calc_speed() const;
+
+
 			/**
 			 * \brief Same as calc_position, but no degree or radian here................
 			 * \param target_pos 

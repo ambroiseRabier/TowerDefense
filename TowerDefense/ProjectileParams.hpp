@@ -45,7 +45,7 @@ namespace TowerDefense
 			 */
 			const float range;
 			/**
-			 * \brief % (infinite duration, might change)
+			 * \brief % (infinite duration, might change) (0.f to 1.f)
 			 */
 			const float freeze_factor;
 			/**

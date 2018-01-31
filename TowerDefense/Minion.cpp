@@ -108,7 +108,7 @@ namespace TowerDefense
 		void Minion::update() // todo: split in parts.
 		{
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
-			const float speed = params.speed * Constants::AssetsConfig::tile_size * Managers::GameManager::get_delta_time();
+			const float speed = calc_speed();
 			float dist = magnitude(target_pos - transformable->getPosition());
 			bool overpass_target = dist < speed;
 			// if gonna overpass target_pos,save current map_pos, then calculate new target, if new target == previous target, do nothing.
@@ -155,6 +155,14 @@ namespace TowerDefense
 				);
 			}
 			health->update_health_pos(*transformable);
+		}
+
+		float Minion::calc_speed() const
+		{
+			return params.speed 
+				* Constants::AssetsConfig::tile_size 
+				* Managers::GameManager::get_delta_time()
+				* (1.f-freeze_factor);
 		}
 
 		sf::Vector2f Minion::calc_pos(const sf::Vector2f& target_pos, const float& speed) const
@@ -220,6 +228,11 @@ namespace TowerDefense
 				Managers::MapWaveManager::remove_me(*this);
 				Destroyer::destroy_end_of_frame(this);
 			}
+		}
+
+		void Minion::freeze(const float& new_freeze_factor)
+		{
+			freeze_factor = new_freeze_factor;
 		}
 	}
 }
