@@ -120,6 +120,9 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::minion_death);
 	GlobalShared::minion_death_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::castle_death);
+	GlobalShared::castle_death_texture = texture;
 }
 
 /**

@@ -11,7 +11,6 @@ namespace TowerDefense
 		{
 		}
 
-
 		Player::~Player()
 		{
 			if (tower.get()) tower.reset(nullptr);
@@ -31,7 +30,13 @@ namespace TowerDefense
 
 		void Player::on_next_level()
 		{
+			if (castle) castle = nullptr;
 			if (tower.get()) tower.reset(nullptr);
+		}
+
+		void Player::assign_castle(Castle* new_castle)
+		{
+			castle = new_castle;
 		}
 	}
 }

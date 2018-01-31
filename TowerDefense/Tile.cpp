@@ -21,6 +21,7 @@ namespace TowerDefense
 			// force the sprite to the good size. (not tested)
 			auto temp_sprite = std::make_unique<sf::Sprite>(*texture);
 			temp_sprite->setTextureRect(sf::IntRect(0,0,Constants::AssetsConfig::tile_size, Constants::AssetsConfig::tile_size));
+			sprite = temp_sprite.get();
 			set_drawable(static_cast_ptr<sf::Drawable>(std::move(temp_sprite)));
 			z_index = Constants::ZIndex::tile_background;
 		}

@@ -4,6 +4,8 @@
 #include "Castle.hpp"
 #include "MapParams.hpp"
 #include "Spawn.hpp"
+#include "Player.hpp"
+#include <memory>
 using namespace TowerDefense::Game;
 namespace TowerDefense
 {
@@ -37,6 +39,7 @@ namespace TowerDefense
 			static void destroy_current_level();
 			static bool map_pos_exist(const sf::Vector2u map_pos);
 			static bool map_pos_walkable(const sf::Vector2u& map_pos);
+			static void assign_castle_to_player(const std::unique_ptr<Player>& player);
 			static const MapParams* map_params;
 			static const bool get_level_loaded_flag();
 			static const sf::Transformable& get_map_origin();

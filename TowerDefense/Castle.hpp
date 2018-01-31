@@ -13,11 +13,13 @@ namespace TowerDefense
 		public:
 			Castle(const sf::Vector2u map_pos);
 			~Castle();
+			void init() override;
 			Health& get_health() const;
 		protected:
 			void update_position() override;
 		private:
 			std::unique_ptr<Health> health;
+			void on_death();
 		};
 	}
 }

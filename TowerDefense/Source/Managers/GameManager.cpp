@@ -78,6 +78,7 @@ namespace TowerDefense
 			!player.get() ? spawn_player() : player->on_next_level();
 			UI::Hud::open(); // if next level then hud already here, this is useless, unless there is a winscreen.
 			MapManager::load_level(level_index);
+			MapManager::assign_castle_to_player(player);
 			player->create_tower(TowerId::StoneTower);
 			// add delay here ? to let the player prepare his stuff.
 			MapWaveManager::start();

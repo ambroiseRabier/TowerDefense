@@ -100,6 +100,11 @@ namespace TowerDefense
 				|| destination == Castle_Other;
 		}
 
+		void MapManager::assign_castle_to_player(const std::unique_ptr<Player>& player)
+		{
+			player->assign_castle(castle); //todo weak_ptr
+		}
+
 		const bool MapManager::get_level_loaded_flag()
 		{
 			return level_loaded_flag;

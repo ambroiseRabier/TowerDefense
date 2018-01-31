@@ -75,6 +75,10 @@ namespace TowerDefense
 			static sf::Vector2f map_pos_to_global_pos(const sf::Vector2u& map_pos);
 			const sf::Vector2u map_pos;
 		protected:
+			/**
+			 * \brief Garanted to be valid until Tile descontructor.
+			 */
+			sf::Sprite* sprite;
 			void init() override;
 			virtual void update_position();
 			/**

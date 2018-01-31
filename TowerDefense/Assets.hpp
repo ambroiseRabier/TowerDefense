@@ -43,6 +43,7 @@ namespace TowerDefense
 			// faire vector des assets et boucle for pr load.
 			const std::string stone_projectile_0 = "Assets/Projectile/stone_projectile_0.png";
 			const std::string minion_death = "Assets/Minion/minion_death.png";
+			const std::string castle_death = "Assets/Tile/castle_negated_destroyed.png";
 		}
 	}
 }

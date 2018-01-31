@@ -23,6 +23,13 @@ namespace TowerDefense
 			health.reset(nullptr);
 		}
 
+		void Castle::init()
+		{
+			Tile::init();
+			// we won't need to remove listener to ondeath since health is destroyed first.
+			health->on_death += Sharp::EventHandler::Bind(&Castle::on_death, this);
+		}
+
 		Health& Castle::get_health() const
 		{
 			return *health;
@@ -32,6 +39,11 @@ namespace TowerDefense
 		{
 			Tile::update_position();
 			health->update_health_pos(*transformable);
+		}
+
+		void Castle::on_death()
+		{
+			sprite->setTexture(*GlobalShared::castle_death_texture);
 		}
 	}
 }
