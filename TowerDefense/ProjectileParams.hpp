@@ -22,7 +22,7 @@ namespace TowerDefense
 				  range(range),
 				  freeze_factor(freeze_factor),
 				  damage_radius(radius_effect),
-				  upgrade_cost(upgrade_cost),
+				  price(upgrade_cost),
 				  life_time(std::min(30.f, range / speed)) 
 
 			{
@@ -53,9 +53,9 @@ namespace TowerDefense
 			 */
 			const float damage_radius;
 			/**
-			 * \brief money
+			 * \brief money, cost to have this projectile. First is tower cost also.
 			 */
-			const float upgrade_cost;
+			const float price;
 			/**
 			 * \brief Duration of life of the projectile. 30.f is maximum.
 			 * Calculated from range and speed.

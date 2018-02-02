@@ -39,12 +39,12 @@ namespace TowerDefense
 
 		bool Player::can_buy_tower(TowerId tower_id)
 		{
-			return money - get_tower_cost(tower_id) >= 0.f;
+			return money - get_tower_price(tower_id) >= 0.f;
 		}
 
-		bool Player::can_upgrade_tower(TowerId tower_id, unsigned int level)
+		bool Player::can_upgrade_tower(TowerId tower_id, const unsigned int level)
 		{
-			return money - get_tower_cost(tower_id, level) >= 0.f;
+			return money - get_tower_price(tower_id, level) >= 0.f;
 		}
 
 		void Player::buy_tower(TowerId tower_id, const Vector2u& map_pos)
@@ -52,12 +52,18 @@ namespace TowerDefense
 			assert(can_buy_tower(tower_id));
 			create_tower(tower_id, map_pos);
 			// after creating tower, so tower will display upgrade_btn with updated data.
-			set_money(money - get_tower_cost(tower_id));
+			set_money(money - get_tower_price(tower_id));
 		}
 
-		float Player::get_tower_cost(TowerId tower_id, unsigned int level)
+		void Player::buy_tower_upgrade(TowerId tower_id, const unsigned int level)
 		{
-			return Constants::GameDesign::towers.at(tower_id).projectile_params.at(level).upgrade_cost;
+			assert(can_upgrade_tower(tower_id, level));
+			set_money(money - get_tower_price(tower_id, level));
+		}
+
+		float Player::get_tower_price(TowerId tower_id, const unsigned int level)
+		{
+			return Constants::GameDesign::towers.at(tower_id).projectile_params.at(level).price;
 		}
 
 		void Player::set_money(const float& new_value)

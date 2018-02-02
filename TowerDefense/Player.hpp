@@ -30,13 +30,15 @@ namespace TowerDefense
 			 * \return if the tower can has been purchased
 			 */
 			static bool can_buy_tower(TowerId tower_id);
-			static bool can_upgrade_tower(TowerId tower_id, unsigned int level);
+			static bool can_upgrade_tower(TowerId tower_id, const unsigned int level);
 			/**
 			 * \brief Buy a tower for you and place it where you need it.
 			 * \param tower_id 
 			 * \param map_pos 
 			 */
 			static void buy_tower(TowerId tower_id, const sf::Vector2u& map_pos);
+			static void buy_tower_upgrade(TowerId tower_id, const unsigned int level);
+			static float get_tower_price(TowerId tower_id, const unsigned int level=0);
 			static void set_castle(Castle* new_castle);
 			/**
 			 * \brief When the player can start adding towers.
@@ -50,7 +52,6 @@ namespace TowerDefense
 			static float money;
 			static void on_castle_death();
 			static void on_destroy_level();
-			static float get_tower_cost(TowerId tower_id, unsigned int level = 0);
 			/**
 			 * \brief Use this to change money value, it update HUD and send an event for upgrade btns.
 			 * \param new_value 

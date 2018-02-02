@@ -49,6 +49,10 @@ namespace TowerDefense
 			const sf::Texture* get_current_projectile_texture() const;
 			void reset_shoot_delay();
 			void on_projectile_kill();
+			float calc_collider_circle_radius() const;
+			void upgrade_tower();
+			bool is_max_level() const;
+
 			/**
 			 * \brief Garanted to be valid until tower descontructor.
 			 */

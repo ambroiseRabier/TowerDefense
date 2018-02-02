@@ -94,16 +94,20 @@ namespace TowerDefense
 			const sf::FloatRect& get_rect() const;
 
 			/**
-			 * \brief Make sure your colldier is of type SpriteRect or SpriteCircle or SpritePixelPerfect before calling this.
-			 * \return 
-			 */
-			const sf::Sprite& get_sprite() const;
-
-			/**
 			 * \brief Make sure your collider is of type circle before calling this.
 			 * \return 
 			 */
 			const Circle& get_circle() const;
+
+			/**
+			 * \brief Make sure your colldier is of type SpriteRect or SpriteCircle or SpritePixelPerfect before calling this.
+			 * \return 
+			 */
+			const sf::Sprite& get_sprite() const;
+			void set_dot(sf::Vector2f new_dot);
+			void set_rect(sf::FloatRect new_rect);
+			void set_circle(Circle new_circle);
+			void set_circle(const sf::Vector2f& position, const float& radius);
 		private:
 			Type type;
 			sf::FloatRect rect;

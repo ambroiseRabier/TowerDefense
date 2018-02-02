@@ -45,6 +45,26 @@ namespace TowerDefense
 							{0, Peon},
 						},
 					},
+					{
+						3.0f,
+						{
+							{1.f, Tank},
+							{1.f, Tank},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Heal},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Peon},
+							{1.f, Tank},
+							{1.f, Peon},
+							{0, Peon},
+						},
+					},
 				}
 			};
 

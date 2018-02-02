@@ -61,7 +61,7 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
 				Circle(
-					std::max(0.5f, params.projectile_params.at(level).range) * Constants::AssetsConfig::tile_size,
+					calc_collider_circle_radius(),
 					Constants::AssetsConfig::tile_size_half_vec // box in the center of tile.
 				),
 				Collider::Tag::Tower
@@ -73,6 +73,7 @@ namespace TowerDefense
 			on_player_money_change();
 			upgrade_btn->auto_start();
 			Managers::Player::on_money_change += Sharp::EventHandler::Bind(&Tower::on_player_money_change, this);
+			upgrade_btn->on_click += Sharp::EventHandler::Bind(&Tower::upgrade_tower, this);
 		}
 
 		Tower::~Tower()
@@ -125,7 +126,7 @@ namespace TowerDefense
 		void Tower::on_player_money_change()
 		{
 			// maybe later state disabled for btn
-			upgrade_btn->isVisible = Managers::Player::can_upgrade_tower(id, level); 
+			upgrade_btn->isActive = Managers::Player::can_upgrade_tower(id, level) && !is_max_level(); 
 		}
 
 		void Tower::shoot() const 
@@ -161,6 +162,36 @@ namespace TowerDefense
 			// todo: but you have to think of two use case:
 			// tower is destroyed before the projectile
 			// projectile is destroyed before the tower.
+		}
+
+		float Tower::calc_collider_circle_radius() const
+		{
+			return std::max(0.5f, params.projectile_params.at(level).range) * Constants::AssetsConfig::tile_size;
+		}
+
+		void Tower::upgrade_tower()
+		{
+			assert(!is_max_level());
+			if (Managers::Player::can_upgrade_tower(id, level+1))
+			{
+				level++;
+				assert(collider->get_type() == Collider::Type::Circle);
+				// update money after leveling up (for on_player_money_change)
+				Managers::Player::buy_tower_upgrade(id, level);
+				collider->set_circle(
+					Constants::AssetsConfig::tile_size_half_vec,
+					calc_collider_circle_radius()
+				);
+			}
+			//else
+			//{
+				// make a feedback here it button is not already disabled state
+			//}
+		}
+
+		bool Tower::is_max_level() const
+		{
+			return level >= Constants::GameDesign::towers.at(id).projectile_params.size()-1;
 		}
 
 		TowerId Tower::get_tile_id() const

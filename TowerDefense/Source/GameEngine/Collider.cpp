@@ -85,6 +85,43 @@ namespace TowerDefense
 			);
 			return *sprite;
 		}
+
+		void Collider::set_dot(sf::Vector2f new_dot)
+		{
+			Debug::assert_m(
+				type == Type::Dot, 
+				"Collider: collider is not of type Dot. But you are trying to access it."
+			);
+			dot = new_dot;
+		}
+
+		void Collider::set_rect(sf::FloatRect new_rect)
+		{
+			Debug::assert_m(
+				type == Type::Rect, 
+				"Collider: collider is not of type Rect. But you are trying to access it."
+			);
+			rect = new_rect;
+		}
+
+		void Collider::set_circle(Circle new_circle)
+		{
+			Debug::assert_m(
+				type == Type::Circle, 
+				"Collider: collider is not of type Circle. But you are trying to access it."
+			);
+			circle = new_circle;
+		}
+
+		void Collider::set_circle(const sf::Vector2f& position, const float& radius)
+		{
+			Debug::assert_m(
+				type == Type::Circle, 
+				"Collider: collider is not of type Circle. But you are trying to access it."
+			);
+			circle.position = position;
+			circle.radius = radius;
+		}
 	}
 
 }
