@@ -67,7 +67,7 @@ namespace TowerDefense
 				Collider::Tag::Tower
 			);
 			upgrade_btn = std::make_unique<UI::BaseButton>(
-				GlobalShared::tower_upgrade_btn_texture,
+				GlobalShared::tower_1_upgrade_btn_texture,
 				Constants::ZIndex::tower_upgrade_btn
 			);
 			on_player_money_change();
@@ -182,6 +182,8 @@ namespace TowerDefense
 					Constants::AssetsConfig::tile_size_half_vec,
 					calc_collider_circle_radius()
 				);
+				// hard coded here !:o
+				upgrade_btn->get_sprite().setTexture(*GlobalShared::tower_2_upgrade_btn_texture);
 			}
 			//else
 			//{

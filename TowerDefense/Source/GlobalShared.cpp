@@ -48,7 +48,8 @@ namespace TowerDefense
 
 		sf::Texture* tank_minion_texture;
 		sf::Texture* heal_minion_texture;
-		sf::Texture* tower_upgrade_btn_texture;
+		sf::Texture* tower_1_upgrade_btn_texture;
+		sf::Texture* tower_2_upgrade_btn_texture;
 
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
@@ -94,7 +95,8 @@ namespace TowerDefense
 
 			delete tank_minion_texture; tank_minion_texture = nullptr;
 			delete heal_minion_texture; heal_minion_texture = nullptr;
-			delete tower_upgrade_btn_texture; tower_upgrade_btn_texture = nullptr;
+			delete tower_1_upgrade_btn_texture; tower_1_upgrade_btn_texture = nullptr;
+			delete tower_2_upgrade_btn_texture; tower_2_upgrade_btn_texture = nullptr;
 		}
 	}
 }
