@@ -28,12 +28,9 @@ namespace TowerDefense
 		extern sf::Texture* tower2_btn_texture;
 		extern sf::Texture* tower3_btn_texture;
 
-		extern sf::Texture* stone_projectile_0_texture;
 		extern sf::Texture* minion_death_texture;
 		extern sf::Texture* castle_death_texture;
 		extern sf::Texture* next_level_btn_texture;
-		extern sf::Texture* freeze_projectile_0_texture;
-		extern sf::Texture* explosiv_projectile_0_texture;
 
 		extern sf::Texture* tank_minion_texture;
 		extern sf::Texture* heal_minion_texture;

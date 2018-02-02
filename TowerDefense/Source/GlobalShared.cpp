@@ -31,12 +31,9 @@ namespace TowerDefense
 		sf::Texture* tower2_btn_texture;
 		sf::Texture* tower3_btn_texture;
 
-		sf::Texture* stone_projectile_0_texture;
 		sf::Texture* minion_death_texture;
 		sf::Texture* castle_death_texture;
 		sf::Texture* next_level_btn_texture;
-		sf::Texture* freeze_projectile_0_texture;
-		sf::Texture* explosiv_projectile_0_texture;
 
 		sf::Texture* tank_minion_texture;
 		sf::Texture* heal_minion_texture;
@@ -90,12 +87,9 @@ namespace TowerDefense
 			delete tower2_btn_texture; tower2_btn_texture = nullptr;
 			delete tower3_btn_texture; tower3_btn_texture = nullptr;
 
-			delete stone_projectile_0_texture; stone_projectile_0_texture = nullptr;
 			delete minion_death_texture; minion_death_texture = nullptr;
 			delete castle_death_texture; castle_death_texture = nullptr;
 			delete next_level_btn_texture; next_level_btn_texture = nullptr;
-			delete freeze_projectile_0_texture; freeze_projectile_0_texture = nullptr;
-			delete explosiv_projectile_0_texture; explosiv_projectile_0_texture = nullptr;
 
 			delete tank_minion_texture; tank_minion_texture = nullptr;
 			delete heal_minion_texture; heal_minion_texture = nullptr;

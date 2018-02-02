@@ -49,6 +49,7 @@
     <ClInclude Include="PauseScreen.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Projectile.hpp" />
+    <ClInclude Include="ProjectileAssets.hpp" />
     <ClInclude Include="ProjectileParams.hpp" />
     <ClInclude Include="Screen.hpp" />
     <ClInclude Include="SetTimeout.hpp" />

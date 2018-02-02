@@ -96,9 +96,6 @@ void preloading() // todo factorize
 	texture->loadFromFile(Assets::tower3_btn);
 	GlobalShared::tower3_btn_texture = texture;
 	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::stone_projectile_0);
-	GlobalShared::stone_projectile_0_texture = texture;
-	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::minion_death);
 	GlobalShared::minion_death_texture = texture;
 	texture = DBG_NEW Texture();
@@ -107,12 +104,6 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::next_level_btn);
 	GlobalShared::next_level_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::freeze_projectile_0);
-	GlobalShared::freeze_projectile_0_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::explosiv_projectile_0);
-	GlobalShared::explosiv_projectile_0_texture = texture;
 
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::tank_minion);

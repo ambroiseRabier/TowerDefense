@@ -3,6 +3,7 @@
 #define ASSETS_HPP
 #include "UIAssets.hpp"
 #include "TowerAssets.hpp"
+#include "ProjectileAssets.hpp"
 
 namespace TowerDefense
 {
@@ -31,12 +32,9 @@ namespace TowerDefense
 			const std::string tower2_btn = "Assets/tower2_btn.png";
 			const std::string tower3_btn = "Assets/tower3_btn.png";
 			// faire vector des assets et boucle for pr load.
-			const std::string stone_projectile_0 = "Assets/Projectile/stone_projectile_0.png";
 			const std::string minion_death = "Assets/Minion/minion_death.png";
 			const std::string castle_death = "Assets/Tile/castle_negated_destroyed.png";
 			const std::string next_level_btn = "Assets/Ui/next_level_btn.png";
-			const std::string freeze_projectile_0 = "Assets/Projectile/freeze_projectile_0.png";
-			const std::string explosiv_projectile_0 = "Assets/Projectile/explosiv_projectile_0.png";
 
 			const std::string tank_minion = "Assets/Minion/tank_minion.png";
 			const std::string heal_minion = "Assets/Minion/heal_minion.png";
@@ -59,6 +57,9 @@ namespace TowerDefense
 				TowerAssets::freeze_tower_broken,
 				TowerAssets::explosiv_tower,
 				TowerAssets::explosiv_tower_broken,
+				ProjectileAssets::stone_projectile_0,
+				ProjectileAssets::freeze_projectile_0,
+				ProjectileAssets::explosiv_projectile_0,
 			};
 		}
 	}

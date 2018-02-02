@@ -13,6 +13,7 @@
 #include "Player.hpp"
 #include "UIAssets.hpp"
 #include "TowerAssets.hpp"
+#include "ProjectileAssets.hpp"
 
 using namespace TowerDefense::GameEngine;
 using namespace sf;
@@ -219,32 +220,8 @@ namespace TowerDefense
 
 		const Texture* Tower::get_current_projectile_texture() const
 		{
-			//todo: maybe inheritance to detemine texture used... ?
 			assert(level >= 0 && level < params.projectile_params.size());
-			switch (id)
-			{
-			case StoneTower:
-				 return (std::vector<Texture*>{
-					GlobalShared::stone_projectile_0_texture,
-					GlobalShared::stone_projectile_0_texture,
-					GlobalShared::stone_projectile_0_texture
-				 }).at(level);
-			case FreezeTower: 
-				 return (std::vector<Texture*>{
-					GlobalShared::freeze_projectile_0_texture,
-					GlobalShared::freeze_projectile_0_texture,
-					GlobalShared::freeze_projectile_0_texture
-				 }).at(level);
-			case ExplosivTower: 
-				 return (std::vector<Texture*>{
-					GlobalShared::explosiv_projectile_0_texture,
-					GlobalShared::explosiv_projectile_0_texture,
-					GlobalShared::explosiv_projectile_0_texture
-				 }).at(level);
-			default: ;
-			}
-			Debug::warn("Tower: missing texture for Tower projectile.");
-			return GlobalShared::missing_texture_tile_texture;
+			return Constants::ProjectileAssets::get_projectile_texture(id, level);
 		}
 	}
 }
