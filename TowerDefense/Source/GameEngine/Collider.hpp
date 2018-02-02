@@ -59,6 +59,7 @@ namespace TowerDefense
 			Collider(sf::Vector2f newDot, Tag newTag = Tag::None);
 			Collider(sf::FloatRect newRect, Tag newTag = Tag::None);
 			Collider(Circle newCircle, Tag newTag);
+			Collider(sf::Vector2f circle_center, float circle_radius, Tag newTag);
 
 			/**
 			 * \brief 

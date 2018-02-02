@@ -8,7 +8,6 @@
 #include "Minion.hpp"
 #include "Destroyer.hpp"
 #include "AssetsConfig.hpp"
-#include "GameEngine/Debug.hpp"
 
 namespace TowerDefense
 {
@@ -40,7 +39,7 @@ namespace TowerDefense
 			transformable->setPosition(spawn_pos);
 			transformable->setRotation(Utils::look_at_angle(spawn_pos, target_pos));
 			collider = std::make_shared<Collider>(
-				sf::Vector2f(0,0), // change collider and do a collision test for aera effect.
+				sf::Vector2f(0,0),
 				Collider::Tag::Projectile
 			);
 			collider->mouse_enabled = false;
@@ -54,36 +53,86 @@ namespace TowerDefense
 				//damage minion
 				Minion* minion = dynamic_cast<Minion*>(&game_object);
 				assert(minion);
-				const bool minion_is_dead = minion->get_health().damage(params.damage);
-				if (minion_is_dead)
+				const bool has_damage_radius = params.damage_radius >= 0;
+				if (damage_radius_flag)
 				{
-					on_kill();
-				} 
+					// damage any minion that collide.
+					damage_minion(minion);
+				}
+				else if (has_damage_radius)
+				{
+					// change collider and do a collision test for aera effect next frame.
+					collider.reset();
+					collider = std::make_shared<Collider>(
+						sf::Vector2f(0,0), 
+						params.damage_radius,
+						Collider::Tag::Projectile
+					);
+					enable_collision_flag = true;
+					damage_radius_flag = true;
+					// disabling collider, if we were to keep it, it would only colldier part of minions
+					// it's better to wait next frame  and do full collisions. Minions will have moved but it's ok.
+					collider->gameobject_enabled = false;
+					// bug: auto-destroy timer could tick right there and it would cancel
+					// the aera effect, but if I cancel the timer here and the user quit
+					// then no one has the pointer and memory leak :/ (bad design somewhere ^^)
+				}
 				else
+				{
+					damage_minion(minion);
+					destroy_self();
+					// disabling collider so we don't collide anything else.
+					collider->gameobject_enabled = false;
+				}
+			}
+		}
+
+		void Projectile::damage_minion(Minion* minion)
+		{
+			const bool minion_is_dead = minion->get_health().damage(params.damage);
+			if (minion_is_dead)
+			{
+				on_kill();
+			}
+			else
+			{
+				if (params.freeze_factor > 0)
 				{
 					minion->freeze(
 						std::min(1.f, std::max(0.f, params.freeze_factor))
 					);
 				}
-				// disabling collider so we don't collide anything else.
-				collider->gameobject_enabled = false;
-				destroy_self();
 			}
 		}
 
 		void Projectile::update()
 		{
-			transformable->setPosition(
-				transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_delta_time() * Constants::AssetsConfig::tile_size) 
-			);
+			// only move if we are not on damage radius special frame.
+			if (!damage_radius_flag)
+			{
+				transformable->setPosition(
+					transformable->getPosition() + dir * params.speed * (Managers::GameManager::get_delta_time() * Constants::
+						AssetsConfig::tile_size)
+				);
+			} 
+			else
+			{
+				// we will do collision after update and the projectile die at the end of frame.
+				destroy_self();
+			}
+			if (enable_collision_flag)
+			{
+				collider->gameobject_enabled = true;
+				enable_collision_flag = false;
+			}
 		}
 
 		void Projectile::destroy_self()
 		{
 			// cancel auto-destroy timer
 			Utils::Timer::cancel_destroy(destroy_timer_id);
-			// disabled the object (will be destroyed before next update, but this is god pratice)
-			isActive = false;
+			// todo: add another destroy timer and do some animation of projectile hit.
+
 			// Add to destroy juste before rendering.
 			// you cannot destroy inside update or collision callback (iterator problem :/)
 			Destroyer::destroy_end_of_frame(this);

@@ -33,6 +33,11 @@ namespace TowerDefense
 		{
 		}
 
+		Collider::Collider(sf::Vector2f circle_center, float circle_radius, Tag newTag)
+						: tag(newTag), type(Type::Circle), circle(Circle(circle_radius, circle_center))
+		{
+		}
+
 		Collider::~Collider()
 		{
 			if (sprite) sprite = nullptr; // useless ? (don't delete it, you don't have authority)

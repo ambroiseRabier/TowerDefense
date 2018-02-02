@@ -21,7 +21,7 @@ namespace TowerDefense
 				  damage(damage),
 				  range(range),
 				  freeze_factor(freeze_factor),
-				  radius_effect(radius_effect),
+				  damage_radius(radius_effect),
 				  upgrade_cost(upgrade_cost),
 				  life_time(std::min(30.f, range / speed)) 
 
@@ -51,7 +51,7 @@ namespace TowerDefense
 			/**
 			 * \brief m
 			 */
-			const float radius_effect;
+			const float damage_radius;
 			/**
 			 * \brief money
 			 */

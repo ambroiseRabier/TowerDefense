@@ -4,6 +4,7 @@
 #include "GameEngine/BaseGameObject.hpp"
 #include "ProjectileParams.hpp"
 #include "Utils/Event.h"
+#include "Minion.hpp"
 
 namespace TowerDefense
 {
@@ -29,9 +30,16 @@ namespace TowerDefense
 			 */
 			Sharp::Event<void> on_kill;
 		protected:
+			/**
+			 * \brief Damage the minion with using projectile params.
+			 * \param minion 
+			 */
+			void damage_minion(Minion* minion);
 			void update() override;
 			void destroy_self();
 		private:
+			bool enable_collision_flag;
+			bool damage_radius_flag;
 			const ProjectileParams params;
 			sf::Vector2f dir;
 			unsigned int destroy_timer_id;

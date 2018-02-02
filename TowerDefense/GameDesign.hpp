@@ -43,7 +43,7 @@ namespace TowerDefense
 						// first projectile params is also cost of tower itself.
 						{
 							//projectile params
-							// reload_delay, speed, damage, range, freeze_factor, radius_effect, upgrade_cost
+							// reload_delay, speed, damage, range, freeze_factor, damage_radius, upgrade_cost
 							{1.f, 1.f, 1.f, 1.5f, 0.f, 0.f, 50.f},
 							{0.75f, 1.5f, 1.f, 2.5f, 0.f, 0.f, 75.f}, // quick and lightweight and quick reload
 							{1.5f, 1.f, 2.f, 3.5f, 0.f, 0.f, 100.f}, // slow and heavy and slow reload
@@ -64,9 +64,9 @@ namespace TowerDefense
 					ExplosivTower,
 					{
 						{
-							{1.5f, 1.6f, 0.5f, 2.5f, 0.f, 1.f, 110.f}, // boom
-							{2.5f, 1.4f, 0.75f, 3.5f, 0.f, 2.f, 220.f}, // BOOm
-							{2.5f, 1.2f, 1.f, 5.5f, 0.f, 4.f, 330.f}, // BOOOOM
+							{1.5f, 1.6f, 0.5f, 2.5f, 0.f, 10.f, 110.f}, // boom
+							{2.5f, 1.4f, 0.75f, 3.5f, 0.f, 20.f, 220.f}, // BOOm
+							{2.5f, 1.2f, 1.f, 5.5f, 0.f, 30.f, 330.f}, // BOOOOM
 						},
 					},
 				},
