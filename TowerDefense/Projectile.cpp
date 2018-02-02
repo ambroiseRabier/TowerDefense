@@ -50,7 +50,7 @@ namespace TowerDefense
 				//damage minion
 				Minion* minion = dynamic_cast<Minion*>(&game_object);
 				assert(minion);
-				const bool has_damage_radius = params.damage_radius >= 0;
+				const bool has_damage_radius = params.damage_radius > 0;
 
 				// damage any minion that collide this frame.
 				if (damage_radius_flag)
