@@ -86,17 +86,16 @@ namespace TowerDefense
 		{
 			if (game_object.get_collider()->tag == Collider::Tag::Minion)
 			{
-				//todo take first or last?
+				// take the oldest spawned minion.
 				target = &game_object;
-				if (shoot_time_out_id == 0)
-				{
-					// instant shoot then use a time_out to forbid shooting for a reload_delay duration.
-					shoot();
-					shoot_time_out_id = Utils::Timer::set_time_out(
-						Sharp::EventHandler::Bind(&Tower::reset_shoot_delay, this),
-						std::max(0.f, get_current_projectile_params().reload_delay)
-					);
-				}
+				// instant shoot then use a time_out to forbid shooting for a reload_delay duration.
+				shoot();
+				shoot_time_out_id = Utils::Timer::set_time_out(
+					Sharp::EventHandler::Bind(&Tower::reset_shoot_delay, this),
+					std::max(0.f, get_current_projectile_params().reload_delay)
+				);
+				// no need to seek for target in mean time (optimizaiton)
+				collider->gameobject_enabled = false;
 			}
 		}
 
@@ -130,6 +129,8 @@ namespace TowerDefense
 		{
 			// reset the id of time_out to "null" value so we can shoot again.
 			shoot_time_out_id = 0;
+			// re-enabled target seeking.
+			collider->gameobject_enabled = true;
 		}
 
 		void Tower::on_projectile_kill()
