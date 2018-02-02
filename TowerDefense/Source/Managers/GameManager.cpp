@@ -13,6 +13,7 @@
 #include "../../LevelDesign.hpp"
 #include "../../GameOverScreen.hpp"
 #include "../../GameWinScreen.hpp"
+#include "../../GameClearedScreen.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -156,7 +157,15 @@ namespace TowerDefense
 			// might need to keep state to playing if we wnat minion to do something funny
 			state = GameState::Pause;
 			UI::Hud::close();
-			UI::GameWinScreen::open();
+			const bool was_last_level = level_index >= Constants::LevelDesign::map_array.size()-1;
+			if (was_last_level)
+			{
+				UI::GameClearedScreen::open();
+			} 
+			else
+			{
+				UI::GameWinScreen::open();
+			}
 		}
 
 		// region getter setter

@@ -246,6 +246,9 @@
     <ClInclude Include="GameWinScreen.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
+    <ClInclude Include="GameClearedScreen.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -370,6 +373,9 @@
     </ClCompile>
     <ClCompile Include="GameWinScreen.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearedScreen.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

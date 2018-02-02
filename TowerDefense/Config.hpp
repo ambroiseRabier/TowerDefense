@@ -43,6 +43,7 @@ namespace TowerDefense
 			const std::string win_screen_text = "You saved the castle !";
 			const std::string game_over_screen_text = "The castle has been lost !";
 			const std::string pause_text = "Pause";
+			const std::string game_cleared_text = "Game Cleared !";
 		}
 		
 		/**

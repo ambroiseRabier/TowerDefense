@@ -17,6 +17,7 @@
 #include "../Player.hpp"
 #include "../GameOverScreen.hpp"
 #include "../GameWinScreen.hpp"
+#include "../GameClearedScreen.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -218,6 +219,7 @@ int main()
 	UI::PauseScreen::init();
 	UI::GameWinScreen::init();
 	UI::GameOverScreen::init();
+	UI::GameClearedScreen::init();
 	GameManager::init(&window);
 	Debug::info("Managers inited.");
 

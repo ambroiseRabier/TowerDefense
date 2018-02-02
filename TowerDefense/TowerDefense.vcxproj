@@ -30,6 +30,7 @@
     <ClInclude Include="Destroyer.hpp" />
     <ClInclude Include="ExplosivTower.hpp" />
     <ClInclude Include="FreezeTower.hpp" />
+    <ClInclude Include="GameClearedScreen.hpp" />
     <ClInclude Include="GameDesign.hpp" />
     <ClInclude Include="GameOverScreen.hpp" />
     <ClInclude Include="GameWinScreen.hpp" />
@@ -83,6 +84,7 @@
     <ClCompile Include="Destroyer.cpp" />
     <ClCompile Include="ExplosivTower.cpp" />
     <ClCompile Include="FreezeTower.cpp" />
+    <ClCompile Include="GameClearedScreen.cpp" />
     <ClCompile Include="GameOverScreen.cpp" />
     <ClCompile Include="GameWinScreen.cpp" />
     <ClCompile Include="HealMinion.cpp" />
