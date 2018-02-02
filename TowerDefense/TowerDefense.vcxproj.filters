@@ -258,6 +258,9 @@
     <ClInclude Include="ProjectileAssets.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
     </ClInclude>
+    <ClInclude Include="MinionAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

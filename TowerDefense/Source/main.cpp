@@ -64,10 +64,6 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::castle_others);
 	GlobalShared::castle_others_texture = texture;
-	//Minions
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::peon_minion);
-	GlobalShared::peon_minion_texture = texture;
 	//HpBar
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::hpBar_jauge);
@@ -96,21 +92,11 @@ void preloading() // todo factorize
 	texture->loadFromFile(Assets::tower3_btn);
 	GlobalShared::tower3_btn_texture = texture;
 	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::minion_death);
-	GlobalShared::minion_death_texture = texture;
-	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::castle_death);
 	GlobalShared::castle_death_texture = texture;
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::next_level_btn);
 	GlobalShared::next_level_btn_texture = texture;
-
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::tank_minion);
-	GlobalShared::tank_minion_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::heal_minion);
-	GlobalShared::heal_minion_texture = texture;
 }
 
 /**

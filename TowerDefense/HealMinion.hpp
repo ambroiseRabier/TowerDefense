@@ -12,7 +12,7 @@ namespace TowerDefense
 		public:
 			HealMinion();
 			// I keep the minion_id parameter in cas we have many healminion. (like peonHealMinion, bossHealMinion maybe)
-			HealMinion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id);
+			HealMinion(sf::Vector2u map_pos, const MinionId minion_id);
 			~HealMinion();
 			void on_game_object_overlap(GameObject& game_object) override;
 		protected:

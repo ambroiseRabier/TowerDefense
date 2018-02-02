@@ -20,7 +20,6 @@ namespace TowerDefense
 		sf::Texture* spawn_others_texture;
 		sf::Texture* castle_others_texture;
 		sf::Texture* missing_texture_tile_texture;
-		sf::Texture* peon_minion_texture;
 		sf::Texture* hpBar_background_texture;
 		sf::Texture* hpBar_jauge_texture;
 
@@ -31,12 +30,8 @@ namespace TowerDefense
 		sf::Texture* tower2_btn_texture;
 		sf::Texture* tower3_btn_texture;
 
-		sf::Texture* minion_death_texture;
 		sf::Texture* castle_death_texture;
 		sf::Texture* next_level_btn_texture;
-
-		sf::Texture* tank_minion_texture;
-		sf::Texture* heal_minion_texture;
 
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
@@ -76,7 +71,6 @@ namespace TowerDefense
 			delete spawn_others_texture; spawn_others_texture = nullptr;
 			delete castle_others_texture; castle_others_texture = nullptr;
 			delete missing_texture_tile_texture; missing_texture_tile_texture = nullptr;
-			delete peon_minion_texture; peon_minion_texture = nullptr;
 			delete hpBar_background_texture; hpBar_background_texture = nullptr;
 			delete hpBar_jauge_texture; hpBar_jauge_texture = nullptr;
 
@@ -87,12 +81,9 @@ namespace TowerDefense
 			delete tower2_btn_texture; tower2_btn_texture = nullptr;
 			delete tower3_btn_texture; tower3_btn_texture = nullptr;
 
-			delete minion_death_texture; minion_death_texture = nullptr;
 			delete castle_death_texture; castle_death_texture = nullptr;
 			delete next_level_btn_texture; next_level_btn_texture = nullptr;
 
-			delete tank_minion_texture; tank_minion_texture = nullptr;
-			delete heal_minion_texture; heal_minion_texture = nullptr;
 
 			if (!stringToTexture.empty())
 			{

@@ -15,6 +15,7 @@
 #include "Destroyer.hpp"
 #include "HealMinion.hpp"
 #include "Player.hpp"
+#include "MinionAssets.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
@@ -23,28 +24,30 @@ namespace TowerDefense
 	{
 		Minion* Minion::create_peon(const sf::Vector2u& map_pos)
 		{
-			return new Minion(map_pos, GlobalShared::peon_minion_texture, MinionId::Peon);
+			return new Minion(map_pos, MinionId::Peon);
 		}
 
 		Minion* Minion::create_tank(const sf::Vector2u& map_pos)
 		{
-			return new Minion(map_pos, GlobalShared::tank_minion_texture, MinionId::Tank);
+			return new Minion(map_pos, MinionId::Tank);
 		}
 
 		Minion* Minion::create_heal(const sf::Vector2u& map_pos)
 		{
-			return static_cast<Minion*>(new HealMinion(map_pos, GlobalShared::heal_minion_texture, MinionId::Heal));
+			return static_cast<Minion*>(new HealMinion(map_pos, MinionId::Heal));
 		}
 		
-		Minion::Minion() : params(MinionParams())  // NOLINT
+		Minion::Minion() : params(MinionParams()), id(MinionId::Peon)  // NOLINT
 		{
 			Debug::warn("Minon: default contructor not supposed to be called.");
 		}
 
-		Minion::Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id) 
-					  : map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
+		Minion::Minion(sf::Vector2u map_pos, const MinionId minion_id) 
+					  : map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id)), id(minion_id)
 		{
-			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*texture);
+			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(
+				*Constants::MinionAssets::get_minion_texture(minion_id)
+			);
 
 			sprite = my_sprite.get();
 			set_drawable(
@@ -92,7 +95,7 @@ namespace TowerDefense
 			// stop moving.
 			update_active = false;
 			// use a juicy new texture as feedback
-			sprite->setTexture(*GlobalShared::minion_death_texture);
+			sprite->setTexture(*Constants::MinionAssets::get_death_texture(id));
 			z_index = Constants::ZIndex::minions_dead;
 			// make the collider inactive.
 			collider->gameobject_enabled = false;

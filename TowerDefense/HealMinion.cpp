@@ -13,8 +13,8 @@ namespace TowerDefense
 			GameEngine::Debug::warn("HealMinion: defautl constructor should not be used.");
 		}
 
-		HealMinion::HealMinion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id) 
-							  : Minion(map_pos, texture, minion_id)
+		HealMinion::HealMinion(sf::Vector2u map_pos, const MinionId minion_id) 
+							  : Minion(map_pos, minion_id)
 		{
 			collider->tag = GameEngine::Collider::Tag::HealMinion;
 		}

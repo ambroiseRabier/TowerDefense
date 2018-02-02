@@ -45,6 +45,7 @@
     <ClInclude Include="Mathf.hpp" />
     <ClInclude Include="MenuScreen.hpp" />
     <ClInclude Include="Minion.hpp" />
+    <ClInclude Include="MinionAssets.hpp" />
     <ClInclude Include="MinionParams.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
     <ClInclude Include="Player.hpp" />

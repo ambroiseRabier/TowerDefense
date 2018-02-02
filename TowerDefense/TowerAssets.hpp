@@ -20,8 +20,8 @@ namespace TowerDefense
 
 			const std::unordered_map<Game::TowerId, std::vector<std::string>> tower_id_level_map {
 				{Game::TowerId::StoneTower, {stone_tower, stone_tower, stone_tower}},
-				{Game::TowerId::FreezeTower, {stone_tower, stone_tower, stone_tower}},
-				{Game::TowerId::ExplosivTower, {stone_tower, stone_tower, stone_tower}},
+				{Game::TowerId::FreezeTower, {freeze_tower, freeze_tower, freeze_tower}},
+				{Game::TowerId::ExplosivTower, {explosiv_tower, explosiv_tower, explosiv_tower}},
 			};
 
 			const std::unordered_map<Game::TowerId, std::string> tower_id_broken_map {

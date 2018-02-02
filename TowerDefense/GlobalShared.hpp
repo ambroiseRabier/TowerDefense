@@ -17,7 +17,6 @@ namespace TowerDefense
 		extern sf::Texture* road_walk_texture;
 		extern sf::Texture* spawn_others_texture;
 		extern sf::Texture* castle_others_texture;
-		extern sf::Texture* peon_minion_texture;
 		extern sf::Texture* hpBar_background_texture;
 		extern sf::Texture* hpBar_jauge_texture;
 
@@ -28,12 +27,9 @@ namespace TowerDefense
 		extern sf::Texture* tower2_btn_texture;
 		extern sf::Texture* tower3_btn_texture;
 
-		extern sf::Texture* minion_death_texture;
 		extern sf::Texture* castle_death_texture;
 		extern sf::Texture* next_level_btn_texture;
 
-		extern sf::Texture* tank_minion_texture;
-		extern sf::Texture* heal_minion_texture;
 
 		/**
 		 * \brief 

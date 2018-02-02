@@ -40,7 +40,7 @@ namespace TowerDefense
 			static Minion* create_tank(const sf::Vector2u& map_pos);
 			static Minion* create_heal(const sf::Vector2u& map_pos);
 			Minion();
-			Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id);
+			Minion(sf::Vector2u map_pos, const MinionId minion_id);
 			virtual ~Minion();
 			Health& get_health() const;
 			void init() override;
@@ -48,6 +48,7 @@ namespace TowerDefense
 			void freeze(const float& new_freeze_factor);
 
 		protected:
+			const MinionId id;
 			sf::Sprite* sprite;
 			sf::Vector2u map_pos;
 			sf::Vector2u next_map_pos;
