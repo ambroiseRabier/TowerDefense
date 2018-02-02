@@ -5,7 +5,7 @@
 #include "../../GlobalShared.hpp"
 #include "../../Config.hpp"
 #include "../../Timer.hpp"
-#include "Managers/GameManager.hpp"
+#include "../../UIAssets.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -15,7 +15,7 @@ namespace TowerDefense
 	{
 		BaseButton::BaseButton()
 		{
-			create_button(GlobalShared::default_ui_btn);
+			create_button(GlobalShared::get_texture(Constants::UIAssets::default_ui_btn));
 		}
 
 		BaseButton::BaseButton(sf::Texture* pTexture, const unsigned int& new_z_index)

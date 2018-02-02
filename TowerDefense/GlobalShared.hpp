@@ -13,8 +13,6 @@ namespace TowerDefense
 	namespace GlobalShared
 	{
 		extern sf::Font* default_font;
-		extern sf::Texture* menu_background;
-		extern sf::Texture* default_ui_btn;
 		extern sf::Texture* grass_build_texture;
 		extern sf::Texture* road_walk_texture;
 		extern sf::Texture* spawn_others_texture;
@@ -22,36 +20,23 @@ namespace TowerDefense
 		extern sf::Texture* peon_minion_texture;
 		extern sf::Texture* hpBar_background_texture;
 		extern sf::Texture* hpBar_jauge_texture;
-		extern sf::Texture* stone_tower_texture;
 
 		extern sf::Texture* level1_btn_texture;
 		extern sf::Texture* level2_btn_texture;
 		extern sf::Texture* level3_btn_texture;
-		extern sf::Texture* pause_btn_texture;
-		extern sf::Texture* play_btn_texture;
-		extern sf::Texture* quit_btn_texture;
 		extern sf::Texture* tower1_btn_texture;
 		extern sf::Texture* tower2_btn_texture;
 		extern sf::Texture* tower3_btn_texture;
-		extern sf::Texture* speedUp_btn_texture;
-		extern sf::Texture* restart_btn_texture;
 
 		extern sf::Texture* stone_projectile_0_texture;
 		extern sf::Texture* minion_death_texture;
 		extern sf::Texture* castle_death_texture;
-		extern sf::Texture* stone_tower_broken_texture;
 		extern sf::Texture* next_level_btn_texture;
-		extern sf::Texture* freeze_tower_texture;
-		extern sf::Texture* explosiv_tower_texture;
-		extern sf::Texture* freeze_tower_broken_texture;
-		extern sf::Texture* explosiv_tower_broken_texture;
 		extern sf::Texture* freeze_projectile_0_texture;
 		extern sf::Texture* explosiv_projectile_0_texture;
 
 		extern sf::Texture* tank_minion_texture;
 		extern sf::Texture* heal_minion_texture;
-		extern sf::Texture* tower_1_upgrade_btn_texture;
-		extern sf::Texture* tower_2_upgrade_btn_texture;
 
 		/**
 		 * \brief 
@@ -74,6 +59,9 @@ namespace TowerDefense
 		 * Only use this when exiting the game.
 		 */
 		void destroy();
+
+		void load_all_textures();
+		sf::Texture* get_texture(const std::string& asset_path);
 	}
 }
 #endif

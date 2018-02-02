@@ -33,7 +33,7 @@ namespace TowerDefense
 			static Tower* create_freeze_tower(const sf::Vector2u& map_pos);
 			static Tower* create_explosiv_tower(const sf::Vector2u& map_pos);
 			Tower();
-			Tower(const sf::Texture* texture, TowerId id, const sf::Vector2u map_pos);
+			Tower(TowerId id, const sf::Vector2u map_pos);
 			~Tower();
 			void init() override;
 			void on_game_object_overlap(GameObject& game_object) override;

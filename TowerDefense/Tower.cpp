@@ -11,6 +11,8 @@
 #include "CastUtils.hpp"
 #include "GameObjects/BaseButton.hpp"
 #include "Player.hpp"
+#include "UIAssets.hpp"
+#include "TowerAssets.hpp"
 
 using namespace TowerDefense::GameEngine;
 using namespace sf;
@@ -18,10 +20,10 @@ namespace TowerDefense
 {
 	namespace Game
 	{
+		//todo remove these static functions
 		Tower* Tower::create_stone_tower(const Vector2u& map_pos)
 		{
 			return new Tower(
-				GlobalShared::stone_tower_texture,
 				StoneTower,
 				map_pos
 			);
@@ -30,7 +32,6 @@ namespace TowerDefense
 		Tower* Tower::create_freeze_tower(const Vector2u& map_pos)
 		{
 			return new Tower(
-				GlobalShared::freeze_tower_texture,
 				FreezeTower,
 				map_pos
 			);
@@ -39,7 +40,6 @@ namespace TowerDefense
 		Tower* Tower::create_explosiv_tower(const Vector2u& map_pos)
 		{
 			return new Tower(
-				GlobalShared::explosiv_tower_texture,
 				ExplosivTower,
 				map_pos
 			);
@@ -50,10 +50,12 @@ namespace TowerDefense
 			Debug::warn("Tower: default constructor should not be used.");
 		}
 
-		Tower::Tower(const Texture* texture, TowerId id, const Vector2u map_pos) 
+		Tower::Tower(TowerId id, const Vector2u map_pos) 
 					: map_pos(map_pos), id(id), params(Constants::GameDesign::towers.at(id))
 		{
-			auto temp_sprite = std::make_unique<Sprite>(*texture);
+			auto temp_sprite = std::make_unique<Sprite>(
+				*Constants::TowerAssets::get_tower_texture(id)	
+			);
 			sprite = temp_sprite.get();
 			set_drawable(static_cast_ptr<Drawable>(
 				temp_sprite
@@ -67,7 +69,7 @@ namespace TowerDefense
 				Collider::Tag::Tower
 			);
 			upgrade_btn = std::make_unique<UI::BaseButton>(
-				GlobalShared::tower_1_upgrade_btn_texture,
+				GlobalShared::get_texture(Constants::UIAssets::tower_1_upgrade_btn),
 				Constants::ZIndex::tower_upgrade_btn
 			);
 			on_player_money_change();
@@ -179,7 +181,7 @@ namespace TowerDefense
 					calc_collider_circle_radius()
 				);
 				// hard coded here !:o
-				upgrade_btn->get_sprite().setTexture(*GlobalShared::tower_2_upgrade_btn_texture);
+				upgrade_btn->get_sprite().setTexture(*GlobalShared::get_texture(Constants::UIAssets::tower_2_upgrade_btn));
 			}
 			//else
 			//{
@@ -207,19 +209,7 @@ namespace TowerDefense
 			update_active = false;
 			collider->gameobject_enabled = false;
 			collider->mouse_enabled = false;
-			switch (id)
-			{
-			case StoneTower: 
-				sprite->setTexture(*GlobalShared::stone_tower_broken_texture);
-				break;
-			case FreezeTower: 
-				sprite->setTexture(*GlobalShared::freeze_tower_broken_texture);
-				break;
-			case ExplosivTower: 
-				sprite->setTexture(*GlobalShared::explosiv_tower_broken_texture);
-				break;
-			default: ;
-			}
+			sprite->setTexture(*Constants::TowerAssets::get_broken_tower_texture(id));
 		}
 
 		const ProjectileParams& Tower::get_current_projectile_params() const

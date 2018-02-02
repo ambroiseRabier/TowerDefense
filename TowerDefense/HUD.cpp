@@ -3,6 +3,7 @@
 #include "Align.hpp"
 #include "Managers/GameManager.hpp"
 #include "GlobalShared.hpp"
+#include "UIAssets.hpp"
 
 namespace TowerDefense
 {
@@ -30,9 +31,9 @@ namespace TowerDefense
 			level_text = std::make_unique<BaseText>("*Level");
 			money_text = std::make_unique<BaseText>("*Money");
 			wave_text = std::make_unique<BaseText>("*Wave");
-			pause_btn = std::make_unique<BaseButton>(GlobalShared::pause_btn_texture);
-			retry_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
-			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::speedUp_btn_texture);
+			pause_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::pause_btn));
+			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
+			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::speedUp_btn));
 			Align::top_center(level_text->get_transformable(), sf::Vector2f(
 				-200, 
 				30

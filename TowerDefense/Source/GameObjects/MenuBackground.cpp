@@ -3,6 +3,7 @@
 #include "GameEngine/Debug.hpp"
 #include "../../GlobalShared.hpp"
 #include "../../Config.hpp"
+#include "../../UIAssets.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -14,7 +15,7 @@ namespace TowerDefense
 			BaseGameObject::init();
 			set_drawable(
 				static_cast<std::shared_ptr<sf::Drawable>>(
-					std::make_shared<sf::Sprite>(*GlobalShared::menu_background)
+					std::make_shared<sf::Sprite>(*GlobalShared::get_texture(Constants::UIAssets::menu_background))
 				)
 			);
 			// since I used std::move, do not call my_sprite anymore !

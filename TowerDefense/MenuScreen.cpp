@@ -5,6 +5,7 @@
 #include "GlobalShared.hpp"
 #include "Hud.hpp"
 #include "Config.hpp"
+#include "UIAssets.hpp"
 
 namespace TowerDefense
 {
@@ -16,8 +17,8 @@ namespace TowerDefense
 
 		void MenuScreen::init()
 		{
-			play_btn = std::make_unique<BaseButton>(GlobalShared::play_btn_texture);
-			quit_btn = std::make_unique<BaseButton>(GlobalShared::quit_btn_texture);
+			play_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::play_btn));
+			quit_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_name);
 			Align::center(
 				play_btn->get_transformable(), 

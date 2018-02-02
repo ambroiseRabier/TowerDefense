@@ -73,7 +73,9 @@
     <ClInclude Include="Tile.hpp" />
     <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Tower.hpp" />
+    <ClInclude Include="TowerAssets.hpp" />
     <ClInclude Include="TowerParams.hpp" />
+    <ClInclude Include="UIAssets.hpp" />
     <ClInclude Include="UpgradeBtn.hpp" />
   </ItemGroup>
   <ItemGroup>

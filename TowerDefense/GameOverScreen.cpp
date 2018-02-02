@@ -5,6 +5,7 @@
 #include "Managers/GameManager.hpp"
 #include "BaseText.hpp"
 #include "Config.hpp"
+#include "UIAssets.hpp"
 
 namespace TowerDefense
 {
@@ -16,8 +17,8 @@ namespace TowerDefense
 
 		void GameOverScreen::init()
 		{
-			retry_btn = std::make_unique<BaseButton>(GlobalShared::restart_btn_texture);
-			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::quit_btn_texture);
+			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
+			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_over_screen_text);
 			Align::center(
 				retry_btn->get_transformable(),

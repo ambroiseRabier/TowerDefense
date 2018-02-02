@@ -8,6 +8,7 @@
 #include "../Hud.hpp"
 #include "../PauseScreen.hpp"
 #include "../Assets.hpp"
+#include "../UIAssets.hpp"
 #include "../GlobalShared.hpp"
 #include "../Config.hpp"
 #include "../MapManager.hpp"
@@ -33,7 +34,7 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
 {
 	// Declare and load a texture
 	// todo: add credits too !
-	texture.loadFromFile(Assets::loading_background);
+	texture.loadFromFile(UIAssets::loading_background);
 	// Create a sprite
 	loading_sprite.setTexture(texture);
 	//loading_sprite.setTextureRect(IntRect(30, 40, 374, 126));
@@ -50,14 +51,8 @@ void preloading() // todo factorize
 	Font* font = DBG_NEW Font();
 	font->loadFromFile(Assets::default_font);
 	GlobalShared::default_font = font;
-	Texture* texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::default_ui_btn);
-	GlobalShared::default_ui_btn = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::menu_background);
-	GlobalShared::menu_background = texture;
 	// tiles
-	texture = DBG_NEW Texture();
+	Texture * texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::road_walk);
 	GlobalShared::road_walk_texture = texture;
 	texture = DBG_NEW Texture();
@@ -92,12 +87,6 @@ void preloading() // todo factorize
 	texture->loadFromFile(Assets::level3_btn);
 	GlobalShared::level3_btn_texture = texture;
 	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::pause_btn);
-	GlobalShared::pause_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::play_btn);
-	GlobalShared::play_btn_texture = texture;
-	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::tower1_btn);
 	GlobalShared::tower1_btn_texture = texture;
 	texture = DBG_NEW Texture();
@@ -106,18 +95,6 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::tower3_btn);
 	GlobalShared::tower3_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::quit_btn);
-	GlobalShared::quit_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::restart_btn);
-	GlobalShared::restart_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::speedUp_btn);
-	GlobalShared::speedUp_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::stone_tower);
-	GlobalShared::stone_tower_texture = texture;
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::stone_projectile_0);
 	GlobalShared::stone_projectile_0_texture = texture;
@@ -128,23 +105,8 @@ void preloading() // todo factorize
 	texture->loadFromFile(Assets::castle_death);
 	GlobalShared::castle_death_texture = texture;
 	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::stone_tower_broken);
-	GlobalShared::stone_tower_broken_texture = texture;
-	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::next_level_btn);
 	GlobalShared::next_level_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::freeze_tower);
-	GlobalShared::freeze_tower_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::explosiv_tower);
-	GlobalShared::explosiv_tower_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::freeze_tower_broken);
-	GlobalShared::freeze_tower_broken_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::explosiv_tower_broken);
-	GlobalShared::explosiv_tower_broken_texture = texture;
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::freeze_projectile_0);
 	GlobalShared::freeze_projectile_0_texture = texture;
@@ -158,12 +120,6 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::heal_minion);
 	GlobalShared::heal_minion_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::tower_1_upgrade_btn);
-	GlobalShared::tower_1_upgrade_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::tower_2_upgrade_btn);
-	GlobalShared::tower_2_upgrade_btn_texture = texture;
 }
 
 /**
@@ -197,6 +153,7 @@ int main()
 	window.display();
 
 	// preloading
+	GlobalShared::load_all_textures();
 	preloading();
 	Debug::info("Preloading done.");
 

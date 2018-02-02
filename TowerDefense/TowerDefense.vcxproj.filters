@@ -249,6 +249,12 @@
     <ClInclude Include="GameClearedScreen.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

@@ -4,6 +4,7 @@
 #include "Config.hpp"
 #include "GlobalShared.hpp"
 #include "Managers/GameManager.hpp"
+#include "UIAssets.hpp"
 
 namespace TowerDefense
 {
@@ -14,7 +15,7 @@ namespace TowerDefense
 
 		void GameClearedScreen::init()
 		{
-			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::quit_btn_texture);
+			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_cleared_text);
 			Align::center(
 				menu_return_btn->get_transformable(),
