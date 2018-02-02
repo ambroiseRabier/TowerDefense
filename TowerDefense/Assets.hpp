@@ -54,6 +54,7 @@ namespace TowerDefense
 
 			const std::string tank_minion = "Assets/Minion/tank_minion.png";
 			const std::string heal_minion = "Assets/Minion/heal_minion.png";
+			const std::string tower_upgrade_btn = "Assets/Ui/tower_upgrade_btn.png";
 		}
 	}
 }

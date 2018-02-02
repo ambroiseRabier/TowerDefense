@@ -3,6 +3,7 @@
 #define TOWER_HPP
 #include "GameEngine/BaseGameObject.hpp"
 #include "ProjectileParams.hpp"
+#include "GameObjects/BaseButton.hpp"
 
 namespace TowerDefense
 {
@@ -40,6 +41,8 @@ namespace TowerDefense
 			TowerId get_tile_id() const;
 			void on_game_over();
 			const sf::Vector2u map_pos;
+			std::unique_ptr<UI::BaseButton> upgrade_btn;
+			void on_player_money_change();
 		private:
 			void shoot() const;
 			const ProjectileParams& get_current_projectile_params() const;

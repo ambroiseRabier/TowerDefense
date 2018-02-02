@@ -55,6 +55,7 @@ namespace TowerDefense
 			const unsigned int background_start = 0;
 			const unsigned int tile_background = 20;
 			const unsigned int towers = 50;
+			const unsigned int tower_upgrade_btn = 51;
 			const unsigned int game_objects_start = 100;
 			const unsigned int minions_dead = 199;
 			const unsigned int minions_start = 200;

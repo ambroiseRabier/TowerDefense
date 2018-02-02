@@ -3,6 +3,7 @@
 #define BASE_BUTTON_HPP
 #include "GameEngine/BaseGameObject.hpp"
 #include "Utils/Event.h"
+#include "../../Config.hpp"
 
 
 namespace TowerDefense
@@ -26,7 +27,7 @@ namespace TowerDefense
 		{
 		public:
 			BaseButton();
-			BaseButton(sf::Texture* pTexture);
+			BaseButton(sf::Texture* pTexture, const unsigned int& new_z_index = Constants::ZIndex::ui_start);
 			~BaseButton();
 			void on_mouse_overlap() override;
 			void on_mouse_overlap_front() override;

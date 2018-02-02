@@ -158,6 +158,9 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::heal_minion);
 	GlobalShared::heal_minion_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::tower_upgrade_btn);
+	GlobalShared::tower_upgrade_btn_texture = texture;
 }
 
 /**

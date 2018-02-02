@@ -15,6 +15,7 @@ namespace TowerDefense
 		std::unique_ptr<Tower> Player::tower;
 		float Player::money;
 		bool Player::can_set_initial_money_flag;
+		Sharp::Event<void> Player::on_money_change;
 
 		void Player::init()
 		{
@@ -27,33 +28,43 @@ namespace TowerDefense
 		{ 
 			assert(can_set_initial_money_flag);
 			can_set_initial_money_flag = false;
-			money = std::max(0.f,value);
-			UI::Hud::set_money_text(std::to_string(money));
+			set_money(money + value);
 		}
 
 		void Player::add_money(const float& value)
 		{ 
 			assert(value >= 0.f);
-			money += value; // bug: huum, risk that it goes over the size of an float.
-			UI::Hud::set_money_text(std::to_string(money));
+			set_money(money + value); // bug: huum, risk that it goes over the size of an float.
 		}
 
-		bool Player::can_buy(TowerId tower_id)
+		bool Player::can_buy_tower(TowerId tower_id)
 		{
 			return money - get_tower_cost(tower_id) >= 0.f;
 		}
 
-		void Player::buy(TowerId tower_id, const Vector2u& map_pos)
+		bool Player::can_upgrade_tower(TowerId tower_id, unsigned int level)
 		{
-			assert(can_buy(tower_id));
-			money -= get_tower_cost(tower_id);
-			UI::Hud::set_money_text(std::to_string(money));
-			create_tower(tower_id, map_pos);
+			return money - get_tower_cost(tower_id, level) >= 0.f;
 		}
 
-		float Player::get_tower_cost(TowerId tower_id)
+		void Player::buy_tower(TowerId tower_id, const Vector2u& map_pos)
 		{
-			return Constants::GameDesign::towers.at(tower_id).projectile_params.at(0).upgrade_cost;
+			assert(can_buy_tower(tower_id));
+			create_tower(tower_id, map_pos);
+			// after creating tower, so tower will display upgrade_btn with updated data.
+			set_money(money - get_tower_cost(tower_id));
+		}
+
+		float Player::get_tower_cost(TowerId tower_id, unsigned int level)
+		{
+			return Constants::GameDesign::towers.at(tower_id).projectile_params.at(level).upgrade_cost;
+		}
+
+		void Player::set_money(const float& new_value)
+		{
+			money = std::max(0.f, new_value); // could depass float max value ?
+			UI::Hud::set_money_text(std::to_string(money));
+			on_money_change();
 		}
 
 		void Player::create_tower(const TowerId tower_id, const Vector2u& map_pos)
@@ -74,7 +85,7 @@ namespace TowerDefense
 
 		void Player::start()
 		{
-			buy(TowerId::StoneTower, Vector2u(2,2));
+			buy_tower(TowerId::StoneTower, Vector2u(2,2));
 		}
 
 		void Player::set_castle(Castle* new_castle) // could have multiple castle

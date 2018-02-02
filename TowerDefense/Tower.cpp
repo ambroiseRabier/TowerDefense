@@ -9,6 +9,8 @@
 #include "Timer.hpp"
 #include "AssetsConfig.hpp"
 #include "CastUtils.hpp"
+#include "GameObjects/BaseButton.hpp"
+#include "Player.hpp"
 
 using namespace TowerDefense::GameEngine;
 using namespace sf;
@@ -64,11 +66,18 @@ namespace TowerDefense
 				),
 				Collider::Tag::Tower
 			);
-			// onclick for tower upgrade?
+			upgrade_btn = std::make_unique<UI::BaseButton>(
+				GlobalShared::tower_upgrade_btn_texture,
+				Constants::ZIndex::tower_upgrade_btn
+			);
+			on_player_money_change();
+			upgrade_btn->auto_start();
+			Managers::Player::on_money_change += Sharp::EventHandler::Bind(&Tower::on_player_money_change, this);
 		}
 
 		Tower::~Tower()
 		{
+			Managers::Player::on_money_change -= Sharp::EventHandler::Bind(&Tower::on_player_money_change, this);
 			if (shoot_time_out_id != 0)
 			{
 				Utils::Timer::cancel_set_time_out(shoot_time_out_id);
@@ -100,11 +109,23 @@ namespace TowerDefense
 			}
 		}
 
+		// ReSharper disable once CppMemberFunctionMayBeConst
 		void Tower::update_position()
 		{
 			get_transformable().setPosition(
 				Tile::map_pos_to_global_pos(map_pos)
 			);
+			upgrade_btn->get_transformable().setPosition(
+				transformable->getPosition().x + Constants::AssetsConfig::tile_size - upgrade_btn->get_sprite().getLocalBounds().width,
+				transformable->getPosition().y
+			);
+		}
+
+		// ReSharper disable once CppMemberFunctionMayBeConst
+		void Tower::on_player_money_change()
+		{
+			// maybe later state disabled for btn
+			upgrade_btn->isVisible = Managers::Player::can_upgrade_tower(id, level); 
 		}
 
 		void Tower::shoot() const 

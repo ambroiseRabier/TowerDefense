@@ -50,6 +50,7 @@ namespace TowerDefense
 
 		extern sf::Texture* tank_minion_texture;
 		extern sf::Texture* heal_minion_texture;
+		extern sf::Texture* tower_upgrade_btn_texture;
 
 		/**
 		 * \brief 

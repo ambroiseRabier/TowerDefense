@@ -18,9 +18,10 @@ namespace TowerDefense
 			create_button(GlobalShared::default_ui_btn);
 		}
 
-		BaseButton::BaseButton(sf::Texture* pTexture)
+		BaseButton::BaseButton(sf::Texture* pTexture, const unsigned int& new_z_index)
 		{
 			create_button(pTexture);
+			z_index = new_z_index;
 		}
 
 		BaseButton::~BaseButton()
