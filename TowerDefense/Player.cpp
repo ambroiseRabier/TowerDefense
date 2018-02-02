@@ -4,6 +4,7 @@
 #include "Tower.hpp"
 #include "MapManager.hpp"
 #include "Managers/GameManager.hpp"
+#include "GameDesign.hpp"
 
 using namespace sf;
 namespace TowerDefense
@@ -27,7 +28,32 @@ namespace TowerDefense
 			assert(can_set_initial_money_flag);
 			can_set_initial_money_flag = false;
 			money = std::max(0.f,value);
-			UI::Hud::set_money_text(std::to_string(value));
+			UI::Hud::set_money_text(std::to_string(money));
+		}
+
+		void Player::add_money(const float& value)
+		{ 
+			assert(value >= 0.f);
+			money += value; // bug: huum, risk that it goes over the size of an float.
+			UI::Hud::set_money_text(std::to_string(money));
+		}
+
+		bool Player::can_buy(TowerId tower_id)
+		{
+			return money - get_tower_cost(tower_id) >= 0.f;
+		}
+
+		void Player::buy(TowerId tower_id, const Vector2u& map_pos)
+		{
+			assert(can_buy(tower_id));
+			money -= get_tower_cost(tower_id);
+			UI::Hud::set_money_text(std::to_string(money));
+			create_tower(tower_id, map_pos);
+		}
+
+		float Player::get_tower_cost(TowerId tower_id)
+		{
+			return Constants::GameDesign::towers.at(tower_id).projectile_params.at(0).upgrade_cost;
 		}
 
 		void Player::create_tower(const TowerId tower_id, const Vector2u& map_pos)
@@ -42,14 +68,13 @@ namespace TowerDefense
 			case ExplosivTower: 
 				tower = std::unique_ptr<Tower>(Tower::create_explosiv_tower(map_pos));
 				break;
-			default: ;
 			}
 			tower->auto_start();
 		}
 
 		void Player::start()
 		{
-			create_tower(TowerId::ExplosivTower, Vector2u(2,2));
+			buy(TowerId::StoneTower, Vector2u(2,2));
 		}
 
 		void Player::set_castle(Castle* new_castle) // could have multiple castle

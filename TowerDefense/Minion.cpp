@@ -14,6 +14,7 @@
 #include "MapWaveManager.hpp"
 #include "Destroyer.hpp"
 #include "HealMinion.hpp"
+#include "Player.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
@@ -101,6 +102,7 @@ namespace TowerDefense
 				Sharp::EventHandler::Bind(&Minion::destroy_self, this),
 				Constants::AssetsConfig::minion_death_delay
 			);
+			Managers::Player::add_money(params.money);
 		}
 
 		void Minion::destroy_self()

@@ -15,6 +15,16 @@ namespace TowerDefense
 		std::unique_ptr<BaseButton> Hud::retry_btn;
 		std::unique_ptr<BaseButton> Hud::up_speed_btn;
 
+		std::string truncate(std::string str, size_t width, bool show_ellipsis=false)
+		{
+			if (str.length() > width)
+				if (show_ellipsis)
+					return str.substr(0, width) + "...";
+				else
+					return str.substr(0, width);
+			return str;
+		}
+
 		void Hud::init()
 		{
 			level_text = std::make_unique<BaseText>("*Level");
@@ -98,7 +108,7 @@ namespace TowerDefense
 
 		void Hud::set_money_text(const std::string& text)
 		{
-			money_text->set_text(text);
+			money_text->set_text(truncate(text, text.find_first_of(".")+3));
 		}
 
 		void Hud::set_wave_text(const std::string& text)

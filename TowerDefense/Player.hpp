@@ -22,6 +22,19 @@ namespace TowerDefense
 		public:
 			static void init();
 			static void set_initial_money(const float& value);
+			static void add_money(const float& value);
+			/**
+			 * \brief 
+			 * \param tower_id 
+			 * \return if the tower can has been purchased
+			 */
+			static bool can_buy(TowerId tower_id);
+			/**
+			 * \brief Buy a tower for you and place it where you need it.
+			 * \param tower_id 
+			 * \param map_pos 
+			 */
+			static void buy(TowerId tower_id, const sf::Vector2u& map_pos);
 			static void set_castle(Castle* new_castle);
 			/**
 			 * \brief When the player can start adding towers.
@@ -35,6 +48,7 @@ namespace TowerDefense
 			static float money;
 			static void on_castle_death();
 			static void on_destroy_level();
+			static float get_tower_cost(TowerId tower_id);
 			/**
 			 * \brief Assure that initial money is set only one time per map.
 			 */

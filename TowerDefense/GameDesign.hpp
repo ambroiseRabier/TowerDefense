@@ -18,7 +18,6 @@ namespace TowerDefense
 			 * \brief First value is default.
 			 */
 			const float game_speed_choices[4] = {1.0f, 2.0f, 3.0f, 0.5f};
-
 			/**
 			 * \brief Life of the castle, minimum is 1.f
 			 */
