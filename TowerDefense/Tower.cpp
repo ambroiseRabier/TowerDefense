@@ -132,12 +132,7 @@ namespace TowerDefense
 
 		void Tower::shoot() const 
 		{
-			// if target has become null in meantime don't shoot. 
-			// (destroyed by another tower or out of range, or died on castle)
-			// use weak_ptr instead ? because I think it's gonna bug
-			if (target == nullptr) 
-				return;
-
+			// note target will never be null since it's is done right after colliding with it.
 			Projectile* proj = new Projectile(
 				get_current_projectile_texture(), 
 				get_current_projectile_params(),
