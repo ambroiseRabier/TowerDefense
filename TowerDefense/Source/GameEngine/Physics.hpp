@@ -41,6 +41,7 @@ namespace TowerDefense
 		private:
 			static void update_game_object_collision(GameObject& game_object1);
 			static void updateMouseCollisions(GameObject& game_object);
+			static bool validMouseCollider(const GameObject& game_object);
 			static void updateMouseCollisionFront();
 			static bool has_valid_tag_pair(Collider::Tag tag1, Collider::Tag tag2);
 			static bool has_valid_tag_pair(std::pair<Collider::Tag, Collider::Tag> tag_pair);

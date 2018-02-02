@@ -91,16 +91,25 @@ namespace TowerDefense
 			if (collide_mouse(game_object))
 			{
 				game_object.on_mouse_overlap();
-				if (left_clicked)
+				if (left_clicked && validMouseCollider(game_object))
 				{
 					game_object.on_mouse_click(false);
 				}
-				if (right_clicked)
+				if (right_clicked && validMouseCollider(game_object))
 				{
 					game_object.on_mouse_click(true);
 				}
-				mouseCollisionBuffer.push_back(&game_object); // huum bon pointeur?
+				if (validMouseCollider(game_object))
+				{
+					mouseCollisionBuffer.push_back(&game_object);
+				}
 			}
+		}
+
+		bool Physics::validMouseCollider(const GameObject& game_object)
+		{
+			// any callback could invalidate the collider, so we need to check after each callback.
+			return game_object.isActive && game_object.get_collider() && game_object.get_collider()->mouse_enabled;
 		}
 
 		/**
@@ -115,14 +124,15 @@ namespace TowerDefense
 					mouseCollisionBuffer.end(),
 					GameObject::compare_z_index_p
 				);
-				if (game_object_hightest_z->get_collider()->mouse_enabled)
+				assert(game_object_hightest_z);
+				if (validMouseCollider(*game_object_hightest_z))
 				{
 					game_object_hightest_z->on_mouse_overlap_front();
-					if (left_clicked)
+					if (left_clicked && validMouseCollider(*game_object_hightest_z))
 					{
 						game_object_hightest_z->on_mouse_click_front(false);
 					}
-					if (right_clicked)
+					if (right_clicked && validMouseCollider(*game_object_hightest_z))
 					{
 						game_object_hightest_z->on_mouse_click_front(true);
 					}

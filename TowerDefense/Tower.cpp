@@ -126,7 +126,8 @@ namespace TowerDefense
 		void Tower::on_player_money_change()
 		{
 			// maybe later state disabled for btn
-			upgrade_btn->isActive = Managers::Player::can_upgrade_tower(id, level) && !is_max_level(); 
+			// keep the order of the condition !
+			upgrade_btn->isActive = !is_max_level() && Managers::Player::can_upgrade_tower(id, level+1); 
 		}
 
 		void Tower::shoot() const 

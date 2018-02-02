@@ -12,7 +12,7 @@ namespace TowerDefense
 	namespace Managers
 	{
 		Castle* Player::castle;
-		std::unique_ptr<Tower> Player::tower;
+		std::vector<std::unique_ptr<Tower>> Player::tower_vector;
 		float Player::money;
 		bool Player::can_set_initial_money_flag;
 		Sharp::Event<void> Player::on_money_change;
@@ -75,6 +75,7 @@ namespace TowerDefense
 
 		void Player::create_tower(const TowerId tower_id, const Vector2u& map_pos)
 		{
+			std::unique_ptr<Tower> tower;
 			switch (tower_id) { 
 			case StoneTower: 
 				tower = std::unique_ptr<Tower>(Tower::create_stone_tower(map_pos));
@@ -87,11 +88,14 @@ namespace TowerDefense
 				break;
 			}
 			tower->auto_start();
+			tower_vector.push_back(std::move(tower));
 		}
 
 		void Player::start()
 		{
 			buy_tower(TowerId::StoneTower, Vector2u(2,2));
+			create_tower(TowerId::ExplosivTower, Vector2u(2,4));
+			create_tower(TowerId::FreezeTower, Vector2u(1,4));
 		}
 
 		void Player::set_castle(Castle* new_castle) // could have multiple castle
@@ -103,8 +107,13 @@ namespace TowerDefense
 
 		void Player::on_castle_death()
 		{
-			if (tower)
-				tower->on_game_over();
+			if (!tower_vector.empty())
+			{
+				for (auto&& tower : tower_vector)
+				{
+					tower->on_game_over();
+				}
+			}
 			GameManager::game_over();
 		}
 
@@ -114,7 +123,14 @@ namespace TowerDefense
 				castle->get_health().on_death -= Sharp::EventHandler::Bind(&Player::on_castle_death);
 				castle = nullptr;
 			}
-			if (tower.get()) tower.reset(nullptr);
+			if (!tower_vector.empty())
+			{
+				for (auto&& tower : tower_vector)
+				{
+					tower.reset(nullptr);
+				}
+				tower_vector.clear(); // clear is maybe enough to delete the unique_ptr ?
+			}
 			can_set_initial_money_flag = true;
 		}
 	}
