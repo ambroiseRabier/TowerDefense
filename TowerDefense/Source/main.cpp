@@ -51,21 +51,8 @@ void preloading() // todo factorize
 	Font* font = DBG_NEW Font();
 	font->loadFromFile(Assets::default_font);
 	GlobalShared::default_font = font;
-	// tiles
-	Texture * texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::road_walk);
-	GlobalShared::road_walk_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::grass_build);
-	GlobalShared::grass_build_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::spawn_others);
-	GlobalShared::spawn_others_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::castle_others);
-	GlobalShared::castle_others_texture = texture;
 	//HpBar
-	texture = DBG_NEW Texture();
+	Texture * texture = texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::hpBar_jauge);
 	GlobalShared::hpBar_jauge_texture = texture;
 	texture = DBG_NEW Texture();

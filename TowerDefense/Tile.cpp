@@ -6,6 +6,7 @@
 #include "GlobalShared.hpp"
 #include "MapManager.hpp"
 #include "AssetsConfig.hpp"
+#include "TileAssets.hpp"
 
 namespace TowerDefense
 {
@@ -16,10 +17,12 @@ namespace TowerDefense
 			Debug::warn("Tile: This default constructor is not supposed to be used.");
 		}
 
-		Tile::Tile(const sf::Texture* texture, TileId id, const sf::Vector2u map_pos): map_pos(map_pos), id(id)
+		Tile::Tile(TileId id, const sf::Vector2u map_pos): map_pos(map_pos), id(id)
 		{
 			// force the sprite to the good size. (not tested)
-			auto temp_sprite = std::make_unique<sf::Sprite>(*texture);
+			auto temp_sprite = std::make_unique<sf::Sprite>(
+				*Constants::TileAssets::get_tile_texture(id)
+			);
 			temp_sprite->setTextureRect(sf::IntRect(0,0,Constants::AssetsConfig::tile_size, Constants::AssetsConfig::tile_size));
 			sprite = temp_sprite.get();
 			set_drawable(static_cast_ptr<sf::Drawable>(std::move(temp_sprite)));

@@ -73,6 +73,7 @@
     <ClInclude Include="Source\GameEngine\Scene.hpp" />
     <ClInclude Include="Spawn.hpp" />
     <ClInclude Include="Tile.hpp" />
+    <ClInclude Include="TileAssets.hpp" />
     <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Tower.hpp" />
     <ClInclude Include="TowerAssets.hpp" />

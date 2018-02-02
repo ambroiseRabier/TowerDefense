@@ -43,10 +43,6 @@ namespace TowerDefense
 			 * \brief Decoration grass;
 			 */
 			Grass_Deco,
-			/**
-			 * \brief Missing texture, default.
-			 */
-			Missing_texture,
 		};
 
 		/**
@@ -70,7 +66,7 @@ namespace TowerDefense
 		{
 		public:
 			Tile();
-			Tile(const sf::Texture* texture, TileId id, const sf::Vector2u map_pos);
+			Tile(TileId id, const sf::Vector2u map_pos);
 			TileId get_tile_id() const;
 			static sf::Vector2f map_pos_to_global_pos(const sf::Vector2u& map_pos);
 			const sf::Vector2u map_pos;
