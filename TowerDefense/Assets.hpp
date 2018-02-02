@@ -23,7 +23,7 @@ namespace TowerDefense
 			const std::string spawn_others = "Assets/Tile/spawn.png";
 			const std::string castle_others = "Assets/Tile/castle_negated.png";
 			const std::string missing_texture_tile = "Assets/Tile/missing_texture.png";
-			const std::string minion_red = "Assets/Minion/minion_red.png";
+			const std::string peon_minion = "Assets/Minion/peon_minion.png";
 			const std::string hpBar_background = "Assets/healthbar_background.png";
 			const std::string hpBar_jauge = "Assets/healthbar_jauge.png";
 			const std::string stone_tower = "Assets/Tower/stone_tower.png";
@@ -51,6 +51,9 @@ namespace TowerDefense
 			const std::string explosiv_tower_broken = "Assets/Tower/explosiv_tower_broken.png";
 			const std::string freeze_projectile_0 = "Assets/Projectile/freeze_projectile_0.png";
 			const std::string explosiv_projectile_0 = "Assets/Projectile/explosiv_projectile_0.png";
+
+			const std::string tank_minion = "Assets/Minion/tank_minion.png";
+			const std::string heal_minion = "Assets/Minion/heal_minion.png";
 		}
 	}
 }

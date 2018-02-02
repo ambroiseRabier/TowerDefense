@@ -36,6 +36,7 @@ namespace TowerDefense
 			 */
 			void damage_minion(Minion* minion);
 			void update() override;
+			void activate_damage_radius();
 			void destroy_self();
 		private:
 			bool enable_collision_flag;

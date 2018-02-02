@@ -22,17 +22,17 @@ namespace TowerDefense
 	{
 		Minion* Minion::create_peon(const sf::Vector2u& map_pos)
 		{
-			return new Minion(map_pos, GlobalShared::minion_red_texture, MinionId::Peon);
+			return new Minion(map_pos, GlobalShared::peon_minion_texture, MinionId::Peon);
 		}
 
 		Minion* Minion::create_tank(const sf::Vector2u& map_pos)
 		{
-			return new Minion(map_pos, GlobalShared::minion_red_texture, MinionId::Tank);
+			return new Minion(map_pos, GlobalShared::tank_minion_texture, MinionId::Tank);
 		}
 
 		Minion* Minion::create_heal(const sf::Vector2u& map_pos)
 		{
-			return static_cast<Minion*>(new HealMinion(map_pos, GlobalShared::minion_red_texture, MinionId::Heal));
+			return static_cast<Minion*>(new HealMinion(map_pos, GlobalShared::heal_minion_texture, MinionId::Heal));
 		}
 		
 		Minion::Minion() : params(MinionParams())  // NOLINT
@@ -43,7 +43,7 @@ namespace TowerDefense
 		Minion::Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id) 
 					  : map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
 		{
-			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*GlobalShared::minion_red_texture);
+			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*texture);
 
 			sprite = my_sprite.get();
 			set_drawable(
@@ -92,6 +92,7 @@ namespace TowerDefense
 			update_active = false;
 			// use a juicy new texture as feedback
 			sprite->setTexture(*GlobalShared::minion_death_texture);
+			z_index = Constants::ZIndex::minions_dead;
 			// make the collider inactive.
 			collider->gameobject_enabled = false;
 			collider->mouse_enabled = false;

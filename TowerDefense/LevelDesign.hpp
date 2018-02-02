@@ -28,12 +28,12 @@ namespace TowerDefense
 				{
 					// waveParam
 					{
-						3.0f, // time before next wave
+						6.0f, // additionnal time before next wave
 						{
 							{1.f, Peon}, // time before next minon and current minion spawned.
-							{0.5f, Peon},
-							{0.5f, Peon},
-							{0, Heal},
+							{1.f, Tank},
+							{1.f, Heal},
+							{0, Tank},
 						},
 					},					
 					{

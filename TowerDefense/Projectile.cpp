@@ -51,29 +51,18 @@ namespace TowerDefense
 				Minion* minion = dynamic_cast<Minion*>(&game_object);
 				assert(minion);
 				const bool has_damage_radius = params.damage_radius >= 0;
+
+				// damage any minion that collide this frame.
 				if (damage_radius_flag)
 				{
-					// damage any minion that collide.
 					damage_minion(minion);
 				}
+				// won't do any damage this frame but next frame.
 				else if (has_damage_radius)
 				{
-					// change collider and do a collision test for aera effect next frame.
-					collider.reset();
-					collider = std::make_shared<Collider>(
-						sf::Vector2f(0,0), 
-						params.damage_radius,
-						Collider::Tag::Projectile
-					);
-					enable_collision_flag = true;
-					damage_radius_flag = true;
-					// disabling collider, if we were to keep it, it would only colldier part of minions
-					// it's better to wait next frame  and do full collisions. Minions will have moved but it's ok.
-					collider->gameobject_enabled = false;
-					// bug: auto-destroy timer could tick right there and it would cancel
-					// the aera effect, but if I cancel the timer here and the user quit
-					// then no one has the pointer and memory leak :/ (bad design somewhere ^^)
+					activate_damage_radius();
 				}
+				// damage one minion only.
 				else
 				{
 					damage_minion(minion);
@@ -82,6 +71,25 @@ namespace TowerDefense
 					collider->gameobject_enabled = false;
 				}
 			}
+		}
+
+		void Projectile::activate_damage_radius()
+		{
+			// change collider and do a collision test for aera effect next frame.
+			collider.reset();
+			collider = std::make_shared<Collider>(
+				sf::Vector2f(0,0), 
+				params.damage_radius,
+				Collider::Tag::Projectile
+			);
+			enable_collision_flag = true;
+			damage_radius_flag = true;
+			// disabling collider, if we were to keep it, it would only colldier part of minions
+			// it's better to wait next frame  and do full collisions. Minions will have moved but it's ok.
+			collider->gameobject_enabled = false;
+			// bug: auto-destroy timer could tick right there and it would cancel
+			// the aera effect, but if I cancel the timer here and the user quit
+			// then no one has the pointer and memory leak :/ (bad design somewhere ^^)
 		}
 
 		void Projectile::damage_minion(Minion* minion)

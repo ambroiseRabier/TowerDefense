@@ -70,8 +70,8 @@ void preloading() // todo factorize
 	GlobalShared::castle_others_texture = texture;
 	//Minions
 	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::minion_red);
-	GlobalShared::minion_red_texture = texture;
+	texture->loadFromFile(Assets::peon_minion);
+	GlobalShared::peon_minion_texture = texture;
 	//HpBar
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::hpBar_jauge);
@@ -150,6 +150,13 @@ void preloading() // todo factorize
 	texture = DBG_NEW Texture();
 	texture->loadFromFile(Assets::explosiv_projectile_0);
 	GlobalShared::explosiv_projectile_0_texture = texture;
+
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::tank_minion);
+	GlobalShared::tank_minion_texture = texture;
+	texture = DBG_NEW Texture();
+	texture->loadFromFile(Assets::heal_minion);
+	GlobalShared::heal_minion_texture = texture;
 }
 
 /**

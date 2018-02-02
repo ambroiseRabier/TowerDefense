@@ -17,7 +17,7 @@ namespace TowerDefense
 		sf::Texture* spawn_others_texture;
 		sf::Texture* castle_others_texture;
 		sf::Texture* missing_texture_tile_texture;
-		sf::Texture* minion_red_texture;
+		sf::Texture* peon_minion_texture;
 		sf::Texture* hpBar_background_texture;
 		sf::Texture* hpBar_jauge_texture;
 		sf::Texture* stone_tower_texture;
@@ -46,6 +46,9 @@ namespace TowerDefense
 		sf::Texture* freeze_projectile_0_texture;
 		sf::Texture* explosiv_projectile_0_texture;
 
+		sf::Texture* tank_minion_texture;
+		sf::Texture* heal_minion_texture;
+
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
 ;
@@ -59,7 +62,7 @@ namespace TowerDefense
 			delete spawn_others_texture; spawn_others_texture = nullptr;
 			delete castle_others_texture; castle_others_texture = nullptr;
 			delete missing_texture_tile_texture; missing_texture_tile_texture = nullptr;
-			delete minion_red_texture; minion_red_texture = nullptr;
+			delete peon_minion_texture; peon_minion_texture = nullptr;
 			delete hpBar_background_texture; hpBar_background_texture = nullptr;
 			delete hpBar_jauge_texture; hpBar_jauge_texture = nullptr;
 			delete stone_tower_texture; stone_tower_texture = nullptr;
@@ -87,6 +90,9 @@ namespace TowerDefense
 			delete explosiv_tower_broken_texture; explosiv_tower_broken_texture = nullptr;
 			delete freeze_projectile_0_texture; freeze_projectile_0_texture = nullptr;
 			delete explosiv_projectile_0_texture; explosiv_projectile_0_texture = nullptr;
+
+			delete tank_minion_texture; tank_minion_texture = nullptr;
+			delete heal_minion_texture; heal_minion_texture = nullptr;
 		}
 	}
 }
