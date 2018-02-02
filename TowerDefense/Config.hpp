@@ -21,11 +21,17 @@ namespace TowerDefense
 			 * \brief 
 			 * Assigned at start to Physics::testedCollisions.
 			 * Collision are one way (pair.first get the event of the collision)
+			 * It read 'first' collid with 'second', 'first' get the collision event.
 			 */
 			const std::vector<std::pair<Collider::Tag, Collider::Tag>> tested_collisions = {
 				std::make_pair(Collider::Tag::Minion, Collider::Tag::Castle),
+				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::Castle),
 				std::make_pair(Collider::Tag::Projectile, Collider::Tag::Minion),
+				std::make_pair(Collider::Tag::Projectile, Collider::Tag::HealMinion),
 				std::make_pair(Collider::Tag::Tower, Collider::Tag::Minion),
+				std::make_pair(Collider::Tag::Tower, Collider::Tag::HealMinion),
+				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::HealMinion),
+				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::Minion),
 			};
 			const unsigned int window_width = 1280;
 			const unsigned int window_height = 720;

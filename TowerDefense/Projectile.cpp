@@ -13,10 +13,6 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		/*Projectile* Projectile::create_stone_0_projectile(const sf::Vector2f spawn_pos, const sf::Vector2f& target_pos)
-		{
-			return new Projectile(GlobalShared::stone_projectile, );
-		}*/
 
 		Projectile::Projectile()
 		{
@@ -48,7 +44,8 @@ namespace TowerDefense
 
 		void Projectile::on_game_object_overlap(GameObject& game_object)
 		{
-			if (game_object.get_collider()->tag == Collider::Tag::Minion)
+			if (game_object.get_collider()->tag == Collider::Tag::Minion
+			 || game_object.get_collider()->tag == Collider::Tag::HealMinion)
 			{
 				//damage minion
 				Minion* minion = dynamic_cast<Minion*>(&game_object);
@@ -122,8 +119,8 @@ namespace TowerDefense
 			}
 			if (enable_collision_flag)
 			{
-				collider->gameobject_enabled = true;
 				enable_collision_flag = false;
+				collider->gameobject_enabled = true;
 			}
 		}
 

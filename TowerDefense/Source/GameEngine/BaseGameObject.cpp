@@ -18,6 +18,10 @@ namespace TowerDefense
 			if (flag_is_started)
 			{
 				Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update_internal, this);
+				Managers::GameManager::on_update_after_collision -= Sharp::EventHandler::Bind(
+					&BaseGameObject::update_after_collision_internal,
+					this
+				);
 			}
 			Physics::removeChild(*this);
 			Scene::removeChild(*this);
@@ -47,7 +51,14 @@ namespace TowerDefense
 		void BaseGameObject::start()
 		{
 			Debug::assert_m(flag_is_init, "BaseGameObject: Call init() before calling start().");
-			Managers::GameManager::on_update += Sharp::EventHandler::Bind(&BaseGameObject::update_internal, static_cast<BaseGameObject*>(this));
+			Managers::GameManager::on_update += Sharp::EventHandler::Bind(
+				&BaseGameObject::update_internal, 
+				static_cast<BaseGameObject*>(this)
+			);
+			Managers::GameManager::on_update_after_collision += Sharp::EventHandler::Bind(
+				&BaseGameObject::update_after_collision_internal, 
+				static_cast<BaseGameObject*>(this)
+			);
 			// It is better if you addchild them yourselve
 			//Scene::addChild(*this);
 			flag_is_started = true;
@@ -61,15 +72,35 @@ namespace TowerDefense
 			}
 		}
 
+		void BaseGameObject::update_after_collision_internal()
+		{
+			if (isActive && update_active)
+			{
+				update_after_collision();
+			}
+		}
+
 		void BaseGameObject::update()
 		{
 
 		}
 
+		void BaseGameObject::update_after_collision()
+		{
+		}
+
 		void BaseGameObject::recycle()
 		{
+			//note: do not mix it with deconstructor, since this is a virutal function and desconstructor do not handle virtual function very well.
 			Debug::assert_m(flag_is_started, "Recycling an element that was not started do not make sense.");
-			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(&BaseGameObject::update_internal, this);
+			Managers::GameManager::on_update -= Sharp::EventHandler::Bind(
+				&BaseGameObject::update_internal,
+				this
+			);
+			Managers::GameManager::on_update_after_collision -= Sharp::EventHandler::Bind(
+				&BaseGameObject::update_after_collision_internal,
+				this
+			);
 			// remove from scene in case removechildre has been forgotten
 			Physics::removeChild(*this);
 			Scene::removeChild(*this);

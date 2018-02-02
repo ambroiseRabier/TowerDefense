@@ -98,7 +98,7 @@ namespace TowerDefense
 
 		const float Timer::get_current_time(bool fixed_time)
 		{
-			return fixed_time ? clock.getElapsedTime().asSeconds() : Managers::GameManager::get_clock();
+			return fixed_time ? clock.getElapsedTime().asSeconds() : static_cast<float>(Managers::GameManager::get_clock());
 		}
 		
 		void Timer::cancel_destroy(const unsigned int& id)

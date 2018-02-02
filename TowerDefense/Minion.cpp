@@ -13,6 +13,7 @@
 #include "AssetsConfig.hpp"
 #include "MapWaveManager.hpp"
 #include "Destroyer.hpp"
+#include "HealMinion.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
@@ -23,6 +24,16 @@ namespace TowerDefense
 		{
 			return new Minion(map_pos, GlobalShared::minion_red_texture, MinionId::Peon);
 		}
+
+		Minion* Minion::create_tank(const sf::Vector2u& map_pos)
+		{
+			return new Minion(map_pos, GlobalShared::minion_red_texture, MinionId::Tank);
+		}
+
+		Minion* Minion::create_heal(const sf::Vector2u& map_pos)
+		{
+			return static_cast<Minion*>(new HealMinion(map_pos, GlobalShared::minion_red_texture, MinionId::Heal));
+		}
 		
 		Minion::Minion() : params(MinionParams())  // NOLINT
 		{
@@ -30,7 +41,7 @@ namespace TowerDefense
 		}
 
 		Minion::Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id) 
-					  : map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id)), previous_map_pos(map_pos)
+					  : map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
 		{
 			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*GlobalShared::minion_red_texture);
 
@@ -101,11 +112,16 @@ namespace TowerDefense
 
 		void Minion::start()
 		{
-			next_map_pos = find_next_map_pos(map_pos);
 			BaseGameObject::start();
+			next_map_pos = find_next_map_pos(map_pos);
 		}
 
-		void Minion::update() // todo: split in parts.
+		void Minion::update() 
+		{
+			update_move();
+		}
+
+		void Minion::update_move() // todo: split in parts.
 		{
 			sf::Vector2f target_pos = Tile::map_pos_to_global_pos(next_map_pos);
 			const float speed = calc_speed();

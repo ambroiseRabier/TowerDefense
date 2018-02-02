@@ -25,6 +25,7 @@ namespace TowerDefense
 		sf::Clock GameManager::clock;
 		double GameManager::scaled_clock = 0;
 		Sharp::Event<void> GameManager::on_update;
+		Sharp::Event<void> GameManager::on_update_after_collision;
 		unsigned int GameManager::game_speed_index;
 		unsigned int GameManager::level_index = 0;
 		sf::RenderWindow* GameManager::window_ref;
@@ -60,6 +61,14 @@ namespace TowerDefense
 			{
 				scaled_clock += delta_time;
 				on_update();
+			}
+		}
+
+		void GameManager::update_after_collision()
+		{
+			if (state != GameState::Pause)
+			{
+				on_update_after_collision();
 			}
 		}
 

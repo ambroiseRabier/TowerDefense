@@ -124,10 +124,10 @@ namespace TowerDefense
 				minion = Minion::create_peon(MapManager::get_spawn().map_pos);
 				break;
 			case Tank:
-				minion = Minion::create_peon(MapManager::get_spawn().map_pos);
+				minion = Minion::create_tank(MapManager::get_spawn().map_pos);
 				break;
 			case Heal: 
-				minion = Minion::create_peon(MapManager::get_spawn().map_pos);
+				minion = Minion::create_heal(MapManager::get_spawn().map_pos);
 				break;
 			default:
 				Debug::warn(

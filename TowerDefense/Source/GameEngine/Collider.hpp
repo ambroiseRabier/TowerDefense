@@ -24,7 +24,8 @@ namespace TowerDefense
 				Minion=2, 
 				Castle=3, 
 				Projectile=4,
-				Tower=5
+				Tower=5,
+				HealMinion=6
 			};
 			enum class Type
 			{

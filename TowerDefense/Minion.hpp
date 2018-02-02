@@ -37,9 +37,11 @@ namespace TowerDefense
 		{
 		public:
 			static Minion* create_peon(const sf::Vector2u& map_pos);
+			static Minion* create_tank(const sf::Vector2u& map_pos);
+			static Minion* create_heal(const sf::Vector2u& map_pos);
 			Minion();
 			Minion(sf::Vector2u map_pos, sf::Texture* texture, const MinionId minion_id);
-			~Minion();
+			virtual ~Minion();
 			Health& get_health() const;
 			void init() override;
 			void on_game_object_overlap(GameObject& game_object) override;
@@ -64,6 +66,7 @@ namespace TowerDefense
 			// dans un tournant, l'effet peut être sympa et est tolérable.
 			void start() override;
 			void update() override;
+			void update_move();
 
 			/**
 			 * \brief 

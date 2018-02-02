@@ -84,7 +84,8 @@ namespace TowerDefense
 
 		void Tower::on_game_object_overlap(GameObject& game_object)
 		{
-			if (game_object.get_collider()->tag == Collider::Tag::Minion)
+			if (game_object.get_collider()->tag == Collider::Tag::Minion
+			 || game_object.get_collider()->tag == Collider::Tag::HealMinion)
 			{
 				// take the oldest spawned minion.
 				target = &game_object;

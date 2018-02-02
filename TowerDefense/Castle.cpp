@@ -11,7 +11,12 @@ namespace TowerDefense
 		Castle::Castle(const sf::Vector2u map_pos) : Tile(GlobalShared::castle_others_texture, Castle_Other, map_pos)
 		{
 			collider = std::make_shared<GameEngine::Collider>(
-				sf::FloatRect(0,0, Constants::AssetsConfig::tile_size, Constants::AssetsConfig::tile_size),
+				sf::FloatRect(
+					0.f,
+					0.f,
+					static_cast<float>(Constants::AssetsConfig::tile_size),
+					static_cast<float>(Constants::AssetsConfig::tile_size)
+				),
 				GameEngine::Collider::Tag::Castle
 			);
 			collider->mouse_enabled = false;

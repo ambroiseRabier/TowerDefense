@@ -254,6 +254,7 @@ int main()
 		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
 		Physics::update();
+		GameManager::update_after_collision();
 		// window.clear() was originnnaly before any game logic, but,
 		// if the game logic take time then the user might see the window blink.
 		Destroyer::update();

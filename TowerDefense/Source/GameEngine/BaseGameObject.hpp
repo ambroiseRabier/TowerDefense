@@ -42,16 +42,17 @@ namespace TowerDefense
 		protected:
 
 			/**
-			 * \brief If set to false update won't be called.
+			 * \brief If set to false update and on_update_after_collision won't be called.
 			 */
 			bool update_active = true;
-			
+
 			/**
 			 * \brief 
 			 * Called every frame.
 			 */
 			virtual void update();
-			
+			virtual void update_after_collision();
+
 			/**
 			 * \brief 
 			 * Reset state. (for pooling)
@@ -64,6 +65,7 @@ namespace TowerDefense
 			 * \brief Wrapper for update, to not call update when !isActive or !update_active.
 			 */
 			void update_internal();
+			void update_after_collision_internal();
 
 			/**
 			 * \brief Security to find if init is called two times.

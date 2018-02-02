@@ -33,7 +33,7 @@ namespace TowerDefense
 							{1.f, Peon}, // time before next minon and current minion spawned.
 							{0.5f, Peon},
 							{0.5f, Peon},
-							{0, Peon},
+							{0, Heal},
 						},
 					},					
 					{
