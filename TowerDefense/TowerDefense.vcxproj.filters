@@ -264,6 +264,9 @@
     <ClInclude Include="Source\GameEngine\CollisionManager.hpp">
       <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -391,6 +394,9 @@
     </ClCompile>
     <ClCompile Include="Source\GameEngine\CollisionManager.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

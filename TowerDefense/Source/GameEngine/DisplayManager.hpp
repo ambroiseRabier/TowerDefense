@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SCENE_HPP
-#define SCENE_HPP
+#ifndef DISPLAY_MANAGER_HPP
+#define DISPLAY_MANAGER_HPP
 #include "GameObject.hpp"
 
 namespace TowerDefense

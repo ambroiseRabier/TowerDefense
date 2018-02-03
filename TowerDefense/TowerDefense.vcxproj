@@ -52,6 +52,7 @@
     <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="ProjectileAssets.hpp" />
     <ClInclude Include="ProjectileParams.hpp" />
+    <ClInclude Include="Scene.hpp" />
     <ClInclude Include="Screen.hpp" />
     <ClInclude Include="SetTimeout.hpp" />
     <ClInclude Include="Source\Managers\GameManager.hpp" />
@@ -103,6 +104,7 @@
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Managers\GameManager.cpp" />
