@@ -30,12 +30,26 @@ namespace TowerDefense
 
 		void HealMinion::on_game_object_overlap(GameObject& game_object)
 		{
-			if (game_object.get_collider()->tag == GameEngine::Collider::Tag::Minion
-			 || game_object.get_collider()->tag == GameEngine::Collider::Tag::HealMinion)
+			if ((game_object.get_collider()->tag == GameEngine::Collider::Tag::Minion
+			  || game_object.get_collider()->tag == GameEngine::Collider::Tag::HealMinion)
+			  && heal_flag)
 			{
 				Minion* minion = dynamic_cast<Minion*>(&game_object);
 				assert(minion);
-				minion_vector.push_back(minion);
+				bool found = false;
+				for (auto value : minion_vector)
+				{
+					if (*value == game_object)
+					{
+						found = true;
+					}
+				}
+				// case where pause is enabled, and collision still
+				// working, a bit hacky yeah.( pause is onclick btn that happen on_game_overlap)
+				if (!found)
+				{
+					minion_vector.push_back(minion);
+				}
 			}
 			// at the end, in case it collide castle and destroy itself.
 			Minion::on_game_object_overlap(game_object);
@@ -47,18 +61,28 @@ namespace TowerDefense
 			start_heal_time_out();
 		}
 
-		void HealMinion::heal_minions()
+		void HealMinion::update_after_collision()
 		{
-			heal_time_out_id = 0;
-			/*if (!minion_vector.empty())
+			// reset heal_flag after collision. (reset will not happen every frame)
+			if (heal_flag)
+			{
+				heal_flag = false;
+			}
+
+			if (!minion_vector.empty())
 			{
 				for (auto minion : minion_vector)
 				{
 					minion->get_health().heal(params.heal_others_value);
 				}
 				minion_vector.clear();
-			}*///todo0
-			GameEngine::Debug::warn("wtd)");
+			}
+		}
+
+		void HealMinion::heal_minions()
+		{
+			heal_time_out_id = 0;
+			heal_flag = true;
 			start_heal_time_out();
 		}
 

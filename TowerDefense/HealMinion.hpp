@@ -17,7 +17,9 @@ namespace TowerDefense
 			void on_game_object_overlap(GameObject& game_object) override;
 		protected:
 			std::vector<Minion*> minion_vector;
+			bool heal_flag;
 			void start() override;
+			void update_after_collision() override;
 			unsigned int heal_time_out_id = 0;
 			void heal_minions();
 			void start_heal_time_out();
