@@ -70,7 +70,7 @@
     <ClInclude Include="Source\Managers\InputManager.hpp" />
     <ClInclude Include="Source\GameObjects\MenuBackground.hpp" />
     <ClInclude Include="Source\GameEngine\Physics.hpp" />
-    <ClInclude Include="Source\GameEngine\Scene.hpp" />
+    <ClInclude Include="Source\GameEngine\DisplayManager.hpp" />
     <ClInclude Include="Spawn.hpp" />
     <ClInclude Include="Tile.hpp" />
     <ClInclude Include="TileAssets.hpp" />
@@ -118,7 +118,7 @@
     <ClCompile Include="Source\Managers\InputManager.cpp" />
     <ClCompile Include="Source\GameObjects\MenuBackground.cpp" />
     <ClCompile Include="Source\GameEngine\Physics.cpp" />
-    <ClCompile Include="Source\GameEngine\Scene.cpp" />
+    <ClCompile Include="Source\GameEngine\DisplayManager.cpp" />
     <ClCompile Include="Spawn.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Timer.cpp" />

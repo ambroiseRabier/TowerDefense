@@ -180,9 +180,6 @@
     <ClInclude Include="ProjectileParams.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GameEngine\Scene.hpp">
-      <Filter>Header Files\TowerDefense\GameEngine</Filter>
-    </ClInclude>
     <ClInclude Include="Screen.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
@@ -263,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="TileAssets.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\DisplayManager.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -350,9 +350,6 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files\TowerDefense\Game\Towers</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameEngine\Scene.cpp">
-      <Filter>Source Files\TowerDefense\GameEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Screen.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
     </ClCompile>
@@ -391,6 +388,9 @@
     </ClCompile>
     <ClCompile Include="GameClearedScreen.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\DisplayManager.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

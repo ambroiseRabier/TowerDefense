@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Scene.hpp"
+#include "DisplayManager.hpp"
 #include "Debug.hpp"
 #include "Physics.hpp"
 #include "../../Config.hpp"
@@ -9,28 +9,28 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		std::list<const GameObject*> Scene::childrens;
+		std::list<const GameObject*> DisplayManager::childrens;
 
-		void Scene::init()
+		void DisplayManager::init()
 		{
 
 		}
 
-		void Scene::addChild(const GameObject& gameobject)
+		void DisplayManager::addChild(const GameObject& gameobject)
 		{
 			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &gameobject) != childrens.end();
 			if (!allready_exit)
 			{
-				Debug::assert_m((&gameobject)->get_drawable(), "Scene: A gameobject you add to the scene should have a drawable setted.");
+				Debug::assert_m((&gameobject)->get_drawable(), "DisplayManager: A gameobject you add to the scene should have a drawable setted.");
 				childrens.push_back(&gameobject);
 			}
 			else
 			{
-				Debug::warn("Scene: The element you are trying to push on scene is already on the scene.");
+				Debug::warn("DisplayManager: The element you are trying to push on scene is already on the scene.");
 			}
 		}
 
-		void Scene::removeChild(const GameObject& gameobject)
+		void DisplayManager::removeChild(const GameObject& gameobject)
 		{
 			// can be empty when exiting application.
 			if (!childrens.empty())
@@ -39,7 +39,7 @@ namespace TowerDefense
 			}
 		}
 
-		void Scene::render(sf::RenderTarget& window)
+		void DisplayManager::render(sf::RenderTarget& window)
 		{
 			childrens.sort(GameObject::compare_z_index_p);
 			for (const GameObject* children : childrens)
@@ -62,7 +62,7 @@ namespace TowerDefense
 			}
 		}
 
-		void Scene::draw_debug_collider(sf::RenderTarget& window, const GameObject* game_object)
+		void DisplayManager::draw_debug_collider(sf::RenderTarget& window, const GameObject* game_object)
 		{
 			if (game_object->get_collider()->get_type() == Collider::Type::Rect)
 			{
@@ -130,7 +130,7 @@ namespace TowerDefense
 			else
 			{
 				Debug::warn(
-					"Scene: Collider type not supported by scene debug draw. Add support for: " 
+					"DisplayManager: Collider type not supported by scene debug draw. Add support for: " 
 					+ Collider::Type_to_string(game_object->get_collider()->get_type())
 				);
 			}

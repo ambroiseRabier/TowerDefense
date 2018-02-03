@@ -9,19 +9,19 @@ namespace TowerDefense
 	{
 		/**
 		 * \brief 
-		 * Display all gameobjects that you add on the Scene with z-sorting.
+		 * Display all gameobjects that you add on the DisplayManager with z-sorting.
 		 */
-		class Scene
+		class DisplayManager
 		{
 		public:
-			//Scene();
-			//~Scene();
+			//DisplayManager();
+			//~DisplayManager();
 			static void init();
 			static void update();
 			/**
 			 * \brief Add and draw the MonoBehaviour from scene. 
 			 * (I use reference instead of pointer because the pointer you use to create the MonoBehaviour might become null.
-			 * And the MonoBehaviour should be able to remove from Scene::childrens at any time.)
+			 * And the MonoBehaviour should be able to remove from DisplayManager::childrens at any time.)
 			 * \param mono_behaviour 
 			 */
 			static void addChild(const GameObject& mono_behaviour);

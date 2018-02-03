@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Debug.hpp"
-#include "GameEngine/Scene.hpp"
+#include "GameEngine/DisplayManager.hpp"
 #include "GameEngine/Physics.hpp"
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
@@ -97,7 +97,7 @@ int main()
 	
 	// Init all managers
 	Utils::Timer::init();
-	Scene::init();
+	DisplayManager::init();
 	Physics::init(Config::tested_collisions);
 	Destroyer::init();
 	Player::init();
@@ -151,7 +151,7 @@ int main()
 		// if the game logic take time then the user might see the window blink.
 		Destroyer::update();
 		window.clear();
-		Scene::render(window);
+		DisplayManager::render(window);
 		// fps overlay
 		if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
 		{

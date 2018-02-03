@@ -23,7 +23,7 @@ namespace TowerDefense
 			BaseGameObject();
 			virtual ~BaseGameObject();
 			/**
-			 * \brief Do `init(); Scene::addChild(*this); Physics::addChild(*this); start();` in this order.
+			 * \brief Do `init(); DisplayManager::addChild(*this); Physics::addChild(*this); start();` in this order.
 			 * addChild are being done only if you provided a drawable, collider.
 			 * For lazy peoples.
 			 */

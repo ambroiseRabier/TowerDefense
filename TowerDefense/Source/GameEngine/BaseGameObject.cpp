@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BaseGameObject.hpp"
-#include "Scene.hpp"
+#include "DisplayManager.hpp"
 #include "Debug.hpp"
 #include "Managers/GameManager.hpp"
 #include "Physics.hpp"
@@ -24,7 +24,7 @@ namespace TowerDefense
 				);
 			}
 			Physics::removeChild(*this);
-			Scene::removeChild(*this);
+			DisplayManager::removeChild(*this);
 		}
 
 		void BaseGameObject::auto_start()
@@ -33,7 +33,7 @@ namespace TowerDefense
 			if (get_drawable())
 			{
 				isVisible = true; // default is true, but just in case of.
-				Scene::addChild(*this);
+				DisplayManager::addChild(*this);
 			}
 			if (get_collider().get())
 			{
@@ -60,7 +60,7 @@ namespace TowerDefense
 				static_cast<BaseGameObject*>(this)
 			);
 			// It is better if you addchild them yourselve
-			//Scene::addChild(*this);
+			//DisplayManager::addChild(*this);
 			flag_is_started = true;
 		}
 
@@ -103,7 +103,7 @@ namespace TowerDefense
 			);
 			// remove from scene in case removechildre has been forgotten
 			Physics::removeChild(*this);
-			Scene::removeChild(*this);
+			DisplayManager::removeChild(*this);
 			flag_is_init = false;
 			flag_is_started = false;
 		}

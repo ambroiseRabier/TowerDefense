@@ -11,15 +11,14 @@ namespace TowerDefense
 		{
 		public:
 			HealMinion();
-			// I keep the minion_id parameter in cas we have many healminion. (like peonHealMinion, bossHealMinion maybe)
+			// I keep the minion_id parameter in case we have many healminion. (like peonHealMinion, bossHealMinion maybe)
 			HealMinion(sf::Vector2u map_pos, const MinionId minion_id);
 			~HealMinion();
 			void on_game_object_overlap(GameObject& game_object) override;
 		protected:
+			std::vector<Minion*> minion_vector;
 			void start() override;
-			void update_after_collision() override;
 			unsigned int heal_time_out_id = 0;
-			bool heal_flag;
 			void heal_minions();
 			void start_heal_time_out();
 		};

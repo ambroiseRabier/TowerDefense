@@ -14,7 +14,7 @@ namespace TowerDefense
 		 *  A gameobject callback is called when an event happen.
 		 *  -------
 		 *  YOU CANNOT destroy an object inside the collision or this will result in an exception.
-		 *  If Physics and Scene were having the autority on memory of the objects I would not have this problem.
+		 *  If Physics and DisplayManager were having the autority on memory of the objects I would not have this problem.
 		 *  (That's why unity use Global function Destroy ?)
 		 */
 		class Physics

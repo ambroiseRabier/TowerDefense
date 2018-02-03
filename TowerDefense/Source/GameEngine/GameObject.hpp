@@ -15,7 +15,7 @@ namespace TowerDefense
 		 * shape->setFillColor(Color::Red);
 		 * // upcast to Drawable
 		 * MonoBehaviour* mono = new MonoBehaviour(static_cast<std::unique_ptr<Drawable>>(std::move(shape)), 1);
-		 * Scene::addChild(*mono);
+		 * DisplayManager::addChild(*mono);
 		 * 
 		 * Usage (shared_ptr):
 		 * // todo
@@ -24,7 +24,7 @@ namespace TowerDefense
 		 * CircleShape shape2(55.f);
 		 * shape2.setFillColor(Color::Green);
 		 * MonoBehaviour* mono2 = new MonoBehaviour(&shape2, 2);
-		 * Scene::addChild(*mono2);
+		 * DisplayManager::addChild(*mono2);
 		 * 
 		 */
 		class GameObject
@@ -133,7 +133,7 @@ namespace TowerDefense
 			unsigned int get_zIndex() const { return z_index; }
 
 			/**
-			 * \brief Scene draw loop will skip this gameobject if set to false;
+			 * \brief DisplayManager draw loop will skip this gameobject if set to false;
 			 */
 			bool isVisible = true;
 
