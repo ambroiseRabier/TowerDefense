@@ -20,7 +20,7 @@ namespace TowerDefense
 			);
 			// since I used std::move, do not call my_sprite anymore !
 
-			z_index = Constants::ZIndex::ui_start-1;
+			z_index = Constants::ZIndex::ui_background;
 			collider = std::make_shared<Collider>( // todo: unique would be better no ?
 				sf::FloatRect(0,0,200,200),
 				Collider::Tag::UI

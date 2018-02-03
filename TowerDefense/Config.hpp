@@ -52,17 +52,16 @@ namespace TowerDefense
 		 */
 		namespace ZIndex // use a contexpr with math.max and math.min to check if in range ? use enum ?
 		{
-			const unsigned int background_start = 0;
+			const unsigned int min = 0;
 			const unsigned int tile_background = 20;
-			const unsigned int game_objects_start = 100;
 			const unsigned int minions_dead = 199;
-			const unsigned int minions_start = 200;
+			const unsigned int minions = 200;
 			const unsigned int projectile = 250;
 			const unsigned int towers = 275;
-			const unsigned int hpBars_background_start = 300;
-			const unsigned int hpBars_jauge_start = 301;
+			const unsigned int hpBars_jauge = 301;
 			const unsigned int tower_upgrade_btn = 350;
-			const unsigned int ui_start = 900;
+			const unsigned int ui_background = 899;
+			const unsigned int ui = 900;
 			const unsigned int max = 999;
 		}
 	}

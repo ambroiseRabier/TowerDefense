@@ -18,7 +18,7 @@ namespace TowerDefense
 					my_text
 				))
 			);
-			z_index = Constants::ZIndex::ui_start;
+			z_index = Constants::ZIndex::ui;
 			set_text(new_text);
 			text->setOutlineColor(sf::Color::White);
 			// setOutlineThickness has memory leaks (I've confirmed it)

@@ -54,7 +54,7 @@ namespace TowerDefense
 				Collider::Tag::UI
 			);
 			//collider->tag = Collider::Tag::UI;
-			z_index = Constants::ZIndex::ui_start;
+			z_index = Constants::ZIndex::ui;
 		}
 
 		void BaseButton::init()

@@ -27,7 +27,7 @@ namespace TowerDefense
 					my_sprite_jauge
 				))
 			);
-			z_index = Constants::ZIndex::hpBars_jauge_start;
+			z_index = Constants::ZIndex::hpBars_jauge;
 		}
 
 		bool Health::damage(float value)
