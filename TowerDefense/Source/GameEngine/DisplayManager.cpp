@@ -16,13 +16,13 @@ namespace TowerDefense
 
 		}
 
-		void DisplayManager::addChild(const GameObject& gameobject)
+		void DisplayManager::addChild(const GameObject& game_object)
 		{
-			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &gameobject) != childrens.end();
+			const bool allready_exit = std::find(childrens.begin(), childrens.end(), &game_object) != childrens.end();
 			if (!allready_exit)
 			{
-				Debug::assert_m((&gameobject)->get_drawable(), "DisplayManager: A gameobject you add to the scene should have a drawable setted.");
-				childrens.push_back(&gameobject);
+				Debug::assert_m((&game_object)->get_drawable(), "DisplayManager: A gameobject you add to the scene should have a drawable setted.");
+				childrens.push_back(&game_object);
 			}
 			else
 			{
@@ -30,12 +30,12 @@ namespace TowerDefense
 			}
 		}
 
-		void DisplayManager::removeChild(const GameObject& gameobject)
+		void DisplayManager::remove_child(const GameObject& game_object)
 		{
 			// can be empty when exiting application.
 			if (!childrens.empty())
 			{
-				childrens.remove(&gameobject);
+				childrens.remove(&game_object);
 			}
 		}
 
