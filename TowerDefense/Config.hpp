@@ -18,7 +18,7 @@ namespace TowerDefense
 			const unsigned int fps_limit = 30;
 			/**
 			 * \brief 
-			 * Assigned at start to Physics::testedCollisions.
+			 * Assigned at start to CollisionManager::testedCollisions.
 			 * Collision are one way (pair.first get the event of the collision)
 			 * It read 'first' collid with 'second', 'first' get the collision event.
 			 */

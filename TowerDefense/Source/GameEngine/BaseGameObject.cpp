@@ -3,7 +3,7 @@
 #include "DisplayManager.hpp"
 #include "Debug.hpp"
 #include "Managers/GameManager.hpp"
-#include "Physics.hpp"
+#include "CollisionManager.hpp"
 
 namespace TowerDefense
 {
@@ -23,8 +23,8 @@ namespace TowerDefense
 					this
 				);
 			}
-			Physics::removeChild(*this);
-			DisplayManager::removeChild(*this);
+			CollisionManager::removeChild(*this);
+			DisplayManager::remove_child(*this);
 		}
 
 		void BaseGameObject::auto_start()
@@ -37,7 +37,7 @@ namespace TowerDefense
 			}
 			if (get_collider().get())
 			{
-				Physics::addChild(*this);
+				CollisionManager::addChild(*this);
 			}
 			start();
 		}
@@ -102,8 +102,8 @@ namespace TowerDefense
 				this
 			);
 			// remove from scene in case removechildre has been forgotten
-			Physics::removeChild(*this);
-			DisplayManager::removeChild(*this);
+			CollisionManager::removeChild(*this);
+			DisplayManager::remove_child(*this);
 			flag_is_init = false;
 			flag_is_started = false;
 		}

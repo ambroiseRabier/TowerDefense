@@ -168,9 +168,6 @@
     <ClInclude Include="PauseScreen.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GameEngine\Physics.hpp">
-      <Filter>Header Files\TowerDefense\GameEngine</Filter>
-    </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>Header Files\TowerDefense\Game</Filter>
     </ClInclude>
@@ -264,6 +261,9 @@
     <ClInclude Include="Source\GameEngine\DisplayManager.hpp">
       <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GameEngine\CollisionManager.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -341,9 +341,6 @@
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameEngine\Physics.cpp">
-      <Filter>Source Files\TowerDefense\GameEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\TowerDefense\Game</Filter>
     </ClCompile>
@@ -390,6 +387,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\DisplayManager.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\CollisionManager.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>

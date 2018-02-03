@@ -58,6 +58,7 @@ namespace TowerDefense
 				}
 				minion_vector.clear();
 			}*///todo0
+			GameEngine::Debug::warn("wtd)");
 			start_heal_time_out();
 		}
 

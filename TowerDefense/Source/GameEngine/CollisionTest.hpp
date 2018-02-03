@@ -11,7 +11,7 @@ namespace TowerDefense
 
 		/**
 		 * \brief 
-		 * Contain collisions methods used by Physics.
+		 * Contain collisions methods used by CollisionManager.
 		 * DO NOT TAKE TRANSFORM SCALE AND ROTATION IN ACCOUNT 
 		 * Altough it might implement it partially in collision test, you should not rely on it and make sure there is no scale or rotation
 		 * on your GameObject. Exception for dot that can take in account scale and rotation.

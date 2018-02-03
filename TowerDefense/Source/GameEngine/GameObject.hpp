@@ -102,13 +102,13 @@ namespace TowerDefense
 			// region physics
 
 			/**
-			 * \brief ONLY called if you have a collider added in Physics.
+			 * \brief ONLY called if you have a collider added in CollisionManager.
 			 * Called every frame.
 			 */
 			virtual void on_mouse_overlap();
 
 			/**
-			 * \brief ONLY called if you have a collider added in Physics.
+			 * \brief ONLY called if you have a collider added in CollisionManager.
 			 * Called every frame.
 			 * Only if it is the front object that overlap the mouse.
 			 * Called after on_mouse_overlap.

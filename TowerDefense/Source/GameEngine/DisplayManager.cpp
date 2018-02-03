@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "DisplayManager.hpp"
 #include "Debug.hpp"
-#include "Physics.hpp"
+#include "CollisionManager.hpp"
 #include "../../Config.hpp"
 
 using namespace std;

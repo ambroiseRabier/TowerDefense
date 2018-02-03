@@ -45,7 +45,7 @@ namespace TowerDefense
 			
 			// would be nice to change the enum to string for debu message.
 			//Debug::warn(
-				//"Physics: Collider for mouse type not supported. Add support for: " 
+				//"CollisionManager: Collider for mouse type not supported. Add support for: " 
 				//+ Collider::Type_to_string(collider1->get_type()) + " and "
 				//+ Collider::Type_to_string(collider2->get_type())
 			//);

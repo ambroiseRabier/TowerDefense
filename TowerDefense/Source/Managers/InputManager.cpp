@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "InputManager.hpp"
 #include "Managers/GameManager.hpp"
-#include "GameEngine/Physics.hpp"
+#include "GameEngine/CollisionManager.hpp"
 #include "../../GlobalShared.hpp"
 
 using namespace sf;
@@ -19,11 +19,11 @@ namespace TowerDefense
 		{
         	if (Mouse::isButtonPressed(Mouse::Right))
 			{
-				Physics::on_right_click();
+				CollisionManager::on_right_click();
 			}
 			if (Mouse::isButtonPressed(Mouse::Left))
 			{
-				Physics::on_left_click();
+				CollisionManager::on_left_click();
 			}
 		}
 
@@ -51,9 +51,9 @@ namespace TowerDefense
 				}
 				if (event.type == Event::MouseMoved)
 				{
-					// get relativ mouse position, always put before any Physics click
+					// get relativ mouse position, always put before any CollisionManager click
 					// Mouse::getPosition() - window.getPosition(); give local position with offset of 30 on y because ou window top bar.
-					Physics::mouse_position = Mouse::getPosition(window);
+					CollisionManager::mouse_position = Mouse::getPosition(window);
 				}
 				if (event.type == Event::MouseButtonPressed)
 				{

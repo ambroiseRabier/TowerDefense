@@ -2,7 +2,7 @@
 #include "Managers/GameManager.hpp"
 #include "GameEngine/Debug.hpp"
 #include "GameEngine/DisplayManager.hpp"
-#include "GameEngine/Physics.hpp"
+#include "GameEngine/CollisionManager.hpp"
 #include "Managers/InputManager.hpp"
 #include "../MenuScreen.hpp"
 #include "../Hud.hpp"
@@ -98,7 +98,7 @@ int main()
 	// Init all managers
 	Utils::Timer::init();
 	DisplayManager::init();
-	Physics::init(Config::tested_collisions);
+	CollisionManager::init(Config::tested_collisions);
 	Destroyer::init();
 	Player::init();
 	MapManager::init();
@@ -145,7 +145,7 @@ int main()
 		GameManager::update();
 		// !! updating mouse click after update game logic will be one frame wrong
 		// relatively to what the user experience, but let's deal with it.
-		Physics::update();
+		CollisionManager::update();
 		GameManager::update_after_collision();
 		// window.clear() was originnnaly before any game logic, but,
 		// if the game logic take time then the user might see the window blink.
