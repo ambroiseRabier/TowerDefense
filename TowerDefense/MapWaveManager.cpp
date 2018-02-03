@@ -8,6 +8,7 @@
 #include "Hud.hpp"
 #include "Config.hpp"
 #include "Managers/GameManager.hpp"
+#include "HealMinion.hpp"
 
 using namespace TowerDefense::Game;
 namespace TowerDefense
@@ -118,22 +119,13 @@ namespace TowerDefense
 		void MapWaveManager::spawn(const Game::MinionId& minion_id)
 		{
 			Minion* minion;
-			switch (minion_id)
+			if (minion_id == Heal)
 			{
-			case Peon: 
-				minion = Minion::create_peon(MapManager::get_spawn().map_pos);
-				break;
-			case Tank:
-				minion = Minion::create_tank(MapManager::get_spawn().map_pos);
-				break;
-			case Heal: 
-				minion = Minion::create_heal(MapManager::get_spawn().map_pos);
-				break;
-			default:
-				Debug::warn(
-					"MapWaveManager: You forgot to update MapWaveManbager after adding a new minion. As result the minion is not spawned."
-				);
-				return;
+				minion = static_cast<Minion*>(new HealMinion(MapManager::get_spawn().map_pos, MinionId::Heal));
+			} 
+			else
+			{
+				minion = new Minion(MapManager::get_spawn().map_pos, minion_id);
 			}
 			minion->get_transformable().setPosition(
 				MapManager::get_spawn().get_transformable().getPosition()

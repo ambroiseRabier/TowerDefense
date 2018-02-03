@@ -29,9 +29,6 @@ namespace TowerDefense
 		class Tower : public GameEngine::BaseGameObject
 		{
 		public:
-			static Tower* create_stone_tower(const sf::Vector2u& map_pos);
-			static Tower* create_freeze_tower(const sf::Vector2u& map_pos);
-			static Tower* create_explosiv_tower(const sf::Vector2u& map_pos);
 			Tower();
 			Tower(TowerId id, const sf::Vector2u map_pos);
 			~Tower();

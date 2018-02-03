@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 #include "Minion.hpp"
@@ -17,7 +16,6 @@ namespace TowerDefense
 		{
 			const std::string game_name = "TowerDefense"; // if you change this, you probably need to change namespaces ;)
 			const unsigned int fps_limit = 30;
-			const float min_loading_duration = 2.0f;
 			/**
 			 * \brief 
 			 * Assigned at start to Physics::testedCollisions.

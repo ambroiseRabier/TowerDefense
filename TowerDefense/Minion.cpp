@@ -13,7 +13,6 @@
 #include "AssetsConfig.hpp"
 #include "MapWaveManager.hpp"
 #include "Destroyer.hpp"
-#include "HealMinion.hpp"
 #include "Player.hpp"
 #include "MinionAssets.hpp"
 
@@ -22,20 +21,6 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		Minion* Minion::create_peon(const sf::Vector2u& map_pos)
-		{
-			return new Minion(map_pos, MinionId::Peon);
-		}
-
-		Minion* Minion::create_tank(const sf::Vector2u& map_pos)
-		{
-			return new Minion(map_pos, MinionId::Tank);
-		}
-
-		Minion* Minion::create_heal(const sf::Vector2u& map_pos)
-		{
-			return static_cast<Minion*>(new HealMinion(map_pos, MinionId::Heal));
-		}
 		
 		Minion::Minion() : params(MinionParams()), id(MinionId::Peon)  // NOLINT
 		{
@@ -59,7 +44,7 @@ namespace TowerDefense
 				sprite->getLocalBounds(),
 				Collider::Tag::Minion
 			);
-			z_index = Constants::ZIndex::minions_start;
+			z_index = Constants::ZIndex::minions;
 			health = std::make_unique<Health>(params.health);
 			health->update_health_pos(*transformable);
 			health->auto_start();

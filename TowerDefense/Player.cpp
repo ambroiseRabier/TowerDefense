@@ -75,18 +75,7 @@ namespace TowerDefense
 
 		void Player::create_tower(const TowerId tower_id, const Vector2u& map_pos)
 		{
-			std::unique_ptr<Tower> tower;
-			switch (tower_id) { 
-			case StoneTower: 
-				tower = std::unique_ptr<Tower>(Tower::create_stone_tower(map_pos));
-				break;
-			case FreezeTower: 
-				tower = std::unique_ptr<Tower>(Tower::create_freeze_tower(map_pos));
-				break;
-			case ExplosivTower: 
-				tower = std::unique_ptr<Tower>(Tower::create_explosiv_tower(map_pos));
-				break;
-			}
+			std::unique_ptr<Tower> tower = std::make_unique<Tower>(tower_id, map_pos);
 			tower->auto_start();
 			tower_vector.push_back(std::move(tower));
 		}

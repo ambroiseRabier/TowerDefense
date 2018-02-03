@@ -21,31 +21,6 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		//todo remove these static functions
-		Tower* Tower::create_stone_tower(const Vector2u& map_pos)
-		{
-			return new Tower(
-				StoneTower,
-				map_pos
-			);
-		}
-
-		Tower* Tower::create_freeze_tower(const Vector2u& map_pos)
-		{
-			return new Tower(
-				FreezeTower,
-				map_pos
-			);
-		}
-
-		Tower* Tower::create_explosiv_tower(const Vector2u& map_pos)
-		{
-			return new Tower(
-				ExplosivTower,
-				map_pos
-			);
-		}
-
 		Tower::Tower() : params(Constants::GameDesign::towers.at(StoneTower))
 		{
 			Debug::warn("Tower: default constructor should not be used.");

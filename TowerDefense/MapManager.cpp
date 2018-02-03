@@ -162,10 +162,12 @@ namespace TowerDefense
 			if (tile_id == TileId::Castle_Other)
 			{
 				castle = new Castle(map_pos);
+				return castle;
 			} 
 			else if (tile_id == TileId::Spawn_Other)
 			{
 				spawn = new Spawn(map_pos);
+				return spawn;
 			}
 			else 
 			{

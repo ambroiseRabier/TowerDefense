@@ -36,9 +36,6 @@ namespace TowerDefense
 		class Minion : public  GameEngine::BaseGameObject
 		{
 		public:
-			static Minion* create_peon(const sf::Vector2u& map_pos);
-			static Minion* create_tank(const sf::Vector2u& map_pos);
-			static Minion* create_heal(const sf::Vector2u& map_pos);
 			Minion();
 			Minion(sf::Vector2u map_pos, const MinionId minion_id);
 			virtual ~Minion();
