@@ -44,48 +44,6 @@ void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& wind
 	window.draw(loading_sprite);
 }
 
-void preloading() // todo factorize
-{
-	// allocate on heap since this will stay longer then the stack of this function
-	// then copy pointer on GlobalShared
-	Font* font = DBG_NEW Font();
-	font->loadFromFile(Assets::default_font);
-	GlobalShared::default_font = font;
-	//HpBar
-	Texture * texture = texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::hpBar_jauge);
-	GlobalShared::hpBar_jauge_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::hpBar_background);
-	GlobalShared::hpBar_background_texture = texture;
-
-	//Buttons
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::level1_btn);
-	GlobalShared::level1_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::level2_btn);
-	GlobalShared::level2_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::level3_btn);
-	GlobalShared::level3_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::tower1_btn);
-	GlobalShared::tower1_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::tower2_btn);
-	GlobalShared::tower2_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::tower3_btn);
-	GlobalShared::tower3_btn_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::castle_death);
-	GlobalShared::castle_death_texture = texture;
-	texture = DBG_NEW Texture();
-	texture->loadFromFile(Assets::next_level_btn);
-	GlobalShared::next_level_btn_texture = texture;
-}
-
 /**
  * @author: Ambroise Rabier
  */
@@ -118,7 +76,11 @@ int main()
 
 	// preloading
 	GlobalShared::load_all_textures();
-	preloading();
+	// allocate on heap since this will stay longer then the stack of this function
+	// then copy pointer on GlobalShared
+	Font* font = DBG_NEW Font();
+	font->loadFromFile(Assets::default_font);
+	GlobalShared::default_font = font;
 	Debug::info("Preloading done.");
 
 	//fps text (debug only)
@@ -150,14 +112,8 @@ int main()
 	GameManager::init(&window);
 	Debug::info("Managers inited.");
 
-	// wait a bit to see the loading/credit screen.
-	// (forget asynchrone setTimeout like js. Gonna be too hard)
-	//const Time creditLoadingDuration = seconds(Config::min_loading_duration);
-	//sleep(creditLoadingDuration);
-	// todo: make a screen instead.
-	
 	// delete loading/credit stuff because we don't need it anymore
-	// note: since this is smartpoint, they destroy themselves when out of stack.
+	// note: since this is smartpointers, they destroy themselves when out of stack.
 	loading_sprite.reset(nullptr);
 	loading_texture.reset(nullptr);
 

@@ -5,7 +5,6 @@
 #include "Player.hpp"
 #include "Managers/GameManager.hpp"
 #include "Align.hpp"
-#include "GlobalShared.hpp"
 #include "Hud.hpp"
 #include "MapWaveManager.hpp"
 #include "AssetsConfig.hpp"

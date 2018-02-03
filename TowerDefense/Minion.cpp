@@ -43,7 +43,7 @@ namespace TowerDefense
 		}
 
 		Minion::Minion(sf::Vector2u map_pos, const MinionId minion_id) 
-					  : map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id)), id(minion_id)
+					  : id(minion_id), map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
 		{
 			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(
 				*Constants::MinionAssets::get_minion_texture(minion_id)

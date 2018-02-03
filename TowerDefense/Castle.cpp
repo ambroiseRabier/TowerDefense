@@ -3,6 +3,7 @@
 #include "GlobalShared.hpp"
 #include "GameDesign.hpp"
 #include "AssetsConfig.hpp"
+#include "TileAssets.hpp"
 
 namespace TowerDefense
 {
@@ -53,7 +54,7 @@ namespace TowerDefense
 			//we can keep collision enabled or disable it, any choice is ok.
 			// but might be more funny if disabled
 			collider->gameobject_enabled = false;
-			sprite->setTexture(*GlobalShared::castle_death_texture);
+			sprite->setTexture(*GlobalShared::get_texture(Constants::TileAssets::castle_death));
 		}
 	}
 }

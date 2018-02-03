@@ -18,6 +18,10 @@ namespace TowerDefense
 			const std::string speedUp_btn = "Assets/speedUp_btn.png";
 			const std::string tower_1_upgrade_btn = "Assets/Ui/tower_1_upgrade_btn.png"; // start from 1 since 0 is base tower
 			const std::string tower_2_upgrade_btn = "Assets/Ui/tower_2_upgrade_btn.png";
+			const std::string stone_tower_btn = "Assets/stone_tower_btn.png";
+			const std::string freeze_tower_btn = "Assets/freeze_tower_btn.png";
+			const std::string explosiv_tower_btn = "Assets/explosiv_tower_btn.png";
+			const std::string next_level_btn = "Assets/Ui/next_level_btn.png";
 		}
 	}
 }

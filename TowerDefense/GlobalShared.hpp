@@ -13,19 +13,6 @@ namespace TowerDefense
 	namespace GlobalShared
 	{
 		extern sf::Font* default_font;
-		extern sf::Texture* hpBar_background_texture;
-		extern sf::Texture* hpBar_jauge_texture;
-
-		extern sf::Texture* level1_btn_texture;
-		extern sf::Texture* level2_btn_texture;
-		extern sf::Texture* level3_btn_texture;
-		extern sf::Texture* tower1_btn_texture;
-		extern sf::Texture* tower2_btn_texture;
-		extern sf::Texture* tower3_btn_texture;
-
-		extern sf::Texture* castle_death_texture;
-		extern sf::Texture* next_level_btn_texture;
-
 
 		/**
 		 * \brief 
@@ -40,7 +27,6 @@ namespace TowerDefense
 		 * (Anything outside of the scope of the game tower defense itself.
 		 */
 		extern Sharp::Event<void> on_window_close_game_engine_pass;
-		extern sf::Texture* missing_texture_tile_texture;
 
 		/**
 		 * \brief 
