@@ -39,13 +39,17 @@ namespace TowerDefense
 					my_sprite
 				)
 			);
+			sprite->setPosition(
+				Constants::AssetsConfig::tile_size_f/2 - sprite->getGlobalBounds().width/2,
+				Constants::AssetsConfig::tile_size_f/2 - sprite->getGlobalBounds().height/2
+			);
 			collider = std::make_shared<Collider>(
 				sprite->getLocalBounds(),
 				Collider::Tag::Minion
 			);
 			z_index = Constants::ZIndex::minions;
 			health = std::make_unique<Health>(params.health);
-			health->update_health_pos(*transformable);
+			health->update_health_pos(*transformable, *sprite);
 			health->auto_start();
 		}
 
@@ -160,7 +164,7 @@ namespace TowerDefense
 					target_pos
 				);
 			}
-			health->update_health_pos(*transformable);
+			health->update_health_pos(*transformable, *sprite);
 		}
 
 		float Minion::calc_speed() const

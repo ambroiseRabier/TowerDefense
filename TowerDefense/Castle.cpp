@@ -45,7 +45,7 @@ namespace TowerDefense
 		void Castle::update_position()
 		{
 			Tile::update_position();
-			health->update_health_pos(*transformable);
+			health->update_health_pos(*transformable, *sprite);
 		}
 
 		// ReSharper disable once CppMemberFunctionMayBeConst

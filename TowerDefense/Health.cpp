@@ -25,6 +25,11 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::hpBars_jauge;
 		}
 
+		void Health::update()
+		{
+			isVisible = actualHealth != maxHealth;
+		}
+
 		bool Health::damage(float value)
 		{
 			Debug::assert_m(value > 0, "Health: damage value should be positiv and not egal to 0.");
@@ -51,11 +56,16 @@ namespace TowerDefense
 			sprite_jauge->setScale(lScale, 1);
 		}
 
-		void Health::update_health_pos(const sf::Transformable& relativ_to)
+		void Health::update_health_pos(const sf::Transformable& relativ_to, const sf::Sprite& relativ_to_sprite)
 		{
-			const sf::Vector2f offset(0, -25.f); // from center of tile.
+			// top of sprite, might 'cause problem with animation...
+			const sf::Vector2f offset(
+				Constants::AssetsConfig::tile_size_f - sprite_jauge->getGlobalBounds().width/2,
+				- sprite_jauge->getGlobalBounds().height
+			);
 			transformable->setPosition(
-				relativ_to.getPosition() + Constants::AssetsConfig::tile_size_half_vec + offset
+				relativ_to.getPosition() + relativ_to_sprite.getPosition()
+				+ offset
 			);
 		}
 

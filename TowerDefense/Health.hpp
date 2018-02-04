@@ -17,6 +17,7 @@ namespace TowerDefense
 		public:
 			Health(const float maxHealth = 1);
 			float money_on_death = 0;
+			void update() override;
 			/**
 			 * \brief 
 			 * \param value 
@@ -24,7 +25,7 @@ namespace TowerDefense
 			 */
 			bool damage(float value);
 			void heal(float value);
-			void update_health_pos(const sf::Transformable& relativ_to);
+			void update_health_pos(const sf::Transformable& relativ_to, const sf::Sprite& relativ_to_sprite);
 			const float& get_health() const;
 			/**
 			 * \brief When health is at 0 or beyond, send an event.
