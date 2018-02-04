@@ -17,12 +17,14 @@ namespace TowerDefense
 		public: 
 			static Sharp::Event<void> on_update;
 			static Sharp::Event<void> on_update_after_collision;
+			static unsigned int start_wave_time_out_id;
 			static void init(sf::RenderWindow* new_window_ref);
 			static void start();
 			static void update();
 			static void update_after_collision();
 			static void start_next_level();
 			static void start_level(const unsigned int& i);
+			static void start_wave();
 			static void restart_level();
 			static void pause();
 			static void un_pause();
@@ -46,7 +48,6 @@ namespace TowerDefense
 			 */
 			static const sf::Clock& get_fixed_clock();
 		private:
-			static void destroy();
 			/**
 			 * \brief 
 			 * Speed the turret and minions.

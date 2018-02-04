@@ -14,6 +14,8 @@ namespace TowerDefense
 			const MapParams level0 = {
 				// name displayed
 				"Last Level !",
+				// preparation time
+				3,
 				// start money
 				50.f,
 				// tiles

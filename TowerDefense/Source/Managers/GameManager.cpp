@@ -14,6 +14,7 @@
 #include "../../GameOverScreen.hpp"
 #include "../../GameWinScreen.hpp"
 #include "../../GameClearedScreen.hpp"
+#include "../../Timer.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -30,23 +31,13 @@ namespace TowerDefense
 		unsigned int GameManager::game_speed_index;
 		unsigned int GameManager::level_index = 0;
 		sf::RenderWindow* GameManager::window_ref;
+		unsigned int GameManager::start_wave_time_out_id = 0;
 
 
 		void GameManager::init(sf::RenderWindow* new_window_ref)
 		{
 			Debug::assert_m(!window_ref, "GameManager: window_ref has already been assigned ! (Please stop breaking the game intentionnaly)");
 			window_ref = new_window_ref;
-			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&destroy);
-		}
-
-		void GameManager::destroy()
-		{
-			//GlobalShared::on_window_close -= Sharp::gEventHandler::Bind(&destroy); // event is destroyed anyway.
-			if (state == GameState::Pause || state == GameState::Playing)
-			{
-				MapManager::destroy_current_level();
-			}
-			//window_ref = nullptr; DONT DO THAT, or you can't close window.
 		}
 
 		void GameManager::start()
@@ -95,13 +86,27 @@ namespace TowerDefense
 			UI::Hud::open(); // if next level then hud already here, this is useless, unless there is a winscreen.
 			MapManager::load_level(Constants::LevelDesign::map_array.at(level_index));
 			Player::start();
-			// add delay here ? to let the player prepare his stuff.
+			const auto start_wave_delay = Constants::LevelDesign::map_array.at(level_index).preparation_time;
+			UI::Hud::start_count_down(start_wave_delay);
+			start_wave_time_out_id = Utils::Timer::set_time_out(
+				Sharp::EventHandler::Bind(&GameManager::start_wave),
+				start_wave_delay
+			);
+		}
+
+		void GameManager::start_wave()
+		{
+			start_wave_time_out_id = 0;
 			MapWaveManager::start();
 		}
 
 		void GameManager::restart_level()
 		{
 			assert(state == GameState::Playing || state == GameState::Pause);
+			if (start_wave_time_out_id != 0)
+			{
+				Utils::Timer::cancel_set_time_out(start_wave_time_out_id);
+			}
 			MapManager::destroy_current_level();
 			start_level(level_index);
 		}
@@ -120,6 +125,10 @@ namespace TowerDefense
 
 		void GameManager::return_menu()
 		{
+			if (start_wave_time_out_id != 0)
+			{
+				Utils::Timer::cancel_set_time_out(start_wave_time_out_id);
+			}
 			MapManager::destroy_current_level();
 			UI::MenuScreen::open();
 			state = GameState::Menu;
@@ -127,6 +136,14 @@ namespace TowerDefense
 
 		void GameManager::exit_game()
 		{
+			if (start_wave_time_out_id != 0)
+			{
+				Utils::Timer::cancel_set_time_out(start_wave_time_out_id);
+			}
+			if (state == GameState::Pause || state == GameState::Playing)
+			{
+				MapManager::destroy_current_level();
+			}
 			GlobalShared::on_window_close();
  			GlobalShared::on_window_close_game_engine_pass();
 			Debug::assert_m(window_ref, "GameManager: window_ref should never be null");

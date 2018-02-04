@@ -47,10 +47,12 @@ namespace TowerDefense
 		struct MapParams
 		{
 			MapParams(const std::string name,
+					  const unsigned int preparation_time,
 					  const float start_money,
 			          const std::vector<std::vector<TileId>>& map_background_tile_array,
 			          const std::vector<WaveParams>& wave_params_vector)
 				: name(name),
+				  preparation_time(preparation_time),
 				  start_money(start_money),
 				  map_background_tile_array(map_background_tile_array),
 				  wave_params_vector(wave_params_vector)
@@ -59,6 +61,7 @@ namespace TowerDefense
 			}
 
 			const std::string name;
+			const unsigned int preparation_time;
 			const float start_money;
 			/**
 			 * \brief 
