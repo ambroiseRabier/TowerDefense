@@ -39,7 +39,6 @@ namespace TowerDefense
 				// weird
 				std::move(my_sprite)
 			);
-
 			// since I used std::move, do not call my_sprite anymore ! 
 			// But I can still use drawable field. or sprite field.
 			//sprite->setPosition(0,0);
