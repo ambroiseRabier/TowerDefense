@@ -207,9 +207,6 @@ namespace TowerDefense
 
 			if (game_object.get_collider()->get_type() == Collider::Type::Rect)
 			{
-				// local to collider
-				mouse_position_local.x -= game_object.get_collider()->get_rect().left;
-				mouse_position_local.y -= game_object.get_collider()->get_rect().top;
 				return CollisionTest::rect_dot(
 					game_object.get_collider()->get_rect(),
 					mouse_position_local
@@ -217,8 +214,6 @@ namespace TowerDefense
 			}
 			else if (game_object.get_collider()->get_type() == Collider::Type::Circle)
 			{
-				// local to collider
-				mouse_position_local -= game_object.get_collider()->get_circle().position;
 				return CollisionTest::circle_dot(
 					game_object.get_collider()->get_circle(),
 					mouse_position_local
