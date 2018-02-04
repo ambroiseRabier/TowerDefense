@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "BaseText.hpp"
-#include "CastUtils.hpp"
 #include "Config.hpp"
 #include "GlobalShared.hpp"
 #include "GameEngine/Debug.hpp"
@@ -23,13 +22,9 @@ namespace TowerDefense
 
 		void BaseText::constructor_internal(const std::string& new_text, const unsigned int size)
 		{
-			std::unique_ptr<sf::Text> my_text = std::make_unique<sf::Text>();
+			std::shared_ptr<sf::Text> my_text = std::make_shared<sf::Text>();
 			text = my_text.get();
-			set_drawable(
-				std::move(static_cast_ptr<sf::Drawable>(
-					my_text
-				))
-			);
+			set_drawable(std::move(my_text));
 			z_index = Constants::ZIndex::ui;
 			set_text(new_text);
 			text->setOutlineColor(sf::Color::White);

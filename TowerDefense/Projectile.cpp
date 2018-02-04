@@ -22,14 +22,12 @@ namespace TowerDefense
 							   const sf::Vector2f spawn_pos, const sf::Vector2f& target_pos)
 							  : params(params)
 		{
-			std::unique_ptr<sf::Sprite> sprite_p = std::make_unique<sf::Sprite>(*texture);
+			std::shared_ptr<sf::Sprite> sprite_p = std::make_shared<sf::Sprite>(*texture);
 			sprite_p->setPosition(
 				-sprite_p->getLocalBounds().width/2.f,
 				-sprite_p->getLocalBounds().height/2.f
 			);
-			set_drawable(static_cast<std::unique_ptr<sf::Drawable>>(
-				std::move(sprite_p)
-			));
+			set_drawable(std::move(sprite_p));
 			z_index = Constants::ZIndex::projectile;
 			dir = Utils::look_at_dir(spawn_pos, target_pos);
 			transformable->setPosition(spawn_pos);

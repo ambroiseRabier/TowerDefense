@@ -29,13 +29,11 @@ namespace TowerDefense
 		Tower::Tower(TowerId id, const Vector2u map_pos) 
 					: map_pos(map_pos), id(id), params(Constants::GameDesign::towers.at(id))
 		{
-			auto temp_sprite = std::make_unique<Sprite>(
+			auto temp_sprite = std::make_shared<Sprite>(
 				*Constants::TowerAssets::get_tower_texture(id)	
 			);
 			sprite = temp_sprite.get();
-			set_drawable(static_cast_ptr<Drawable>(
-				temp_sprite
-			));
+			set_drawable(std::move(temp_sprite));
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
 				Circle(

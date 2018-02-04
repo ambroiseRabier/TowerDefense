@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "BaseButton.hpp"
-#include "../../CastUtils.hpp"
 #include "GameEngine/Debug.hpp"
 #include "../../GlobalShared.hpp"
 #include "../../Config.hpp"
@@ -29,7 +28,7 @@ namespace TowerDefense
 		}
 
 		void BaseButton::create_button(sf::Texture* pTexture) {
-			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(*pTexture);
+			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(*pTexture);
 			// I prefer avoiding downcast of the drawable into sprite
 			// sprite get a pointer, that will be null after destroy() method being called.
 			// It do not own the sprite memory.
@@ -38,9 +37,7 @@ namespace TowerDefense
 				// std::move(static_cast<std::unique_ptr<sf::Drawable>>( not ok
 				// std::move(static_cast<std::shared_ptr<sf::Drawable>>( ok
 				// weird
-				std::move(static_cast_ptr<sf::Drawable>(
-					my_sprite
-				))
+				std::move(my_sprite)
 			);
 
 			// since I used std::move, do not call my_sprite anymore ! 

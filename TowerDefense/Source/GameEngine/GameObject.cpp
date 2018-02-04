@@ -20,17 +20,7 @@ namespace TowerDefense
 		}
 		//end static
 
-		GameObject::GameObject(std::unique_ptr<Drawable> newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableUnique(std::move(newDrawable))
-		{
-			constructor_internal_init(newZIndex);
-		}
-
-		GameObject::GameObject(const std::shared_ptr<Drawable>& newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawableShared(std::move(newDrawable))
-		{
-			constructor_internal_init(newZIndex);
-		}
-
-		GameObject::GameObject(Drawable* newDrawable, unsigned int newZIndex) : drawableRaw(newDrawable), z_index(newZIndex)
+		GameObject::GameObject(const std::shared_ptr<Drawable>& newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawable_shared(std::move(newDrawable))
 		{
 			constructor_internal_init(newZIndex);
 		}
@@ -43,15 +33,10 @@ namespace TowerDefense
 		GameObject::~GameObject()
 		{
 			transformable.reset(nullptr);
-			// smartpointer should be explicitely cast to bool, even if Resharper is not ok.
-			if (drawableUnique.get()) drawableUnique.reset(nullptr);
-			if (drawableShared.get()) drawableShared.reset();
-			if (drawableRaw)
-			{
-				delete drawableRaw;
-				drawableRaw = nullptr;
-			}
-			if (collider) collider.reset();
+			if (drawable_shared) 
+				drawable_shared.reset();
+			if (collider) 
+				collider.reset();
 		}
 
 		void GameObject::constructor_internal_init(unsigned int newZIndex)
@@ -73,18 +58,15 @@ namespace TowerDefense
 
 		Drawable* GameObject::get_drawable() const
 		{
-			if (drawableRaw) return drawableRaw;
-			else if (drawableUnique) return drawableUnique.get(); // using get() since it is allowed to be null.
-			else if (drawableShared) return drawableShared.get();
-			else return nullptr;
+			return drawable_shared.get();
 		}
 
 		Transformable* GameObject::get_drawable_transformable() const
 		{
-			if (drawableRaw) return dynamic_cast<Transformable*>(drawableRaw);
-			else if (drawableUnique) return dynamic_cast<Transformable*>(drawableUnique.get());
-			else if (drawableShared) return dynamic_cast<Transformable*>(drawableShared.get());
-			else return nullptr;
+			const auto temp = dynamic_cast<Transformable*>(drawable_shared.get());
+			// if you use this function then you are sure the drawable has a transform.
+			assert(temp);
+			return dynamic_cast<Transformable*>(drawable_shared.get());
 		}
 
 		std::shared_ptr<Collider> GameObject::get_collider() const
@@ -120,19 +102,29 @@ namespace TowerDefense
 			);
 		}
 
-		void GameObject::set_drawable(std::unique_ptr<Drawable> newDrawableUnique)
-		{
-			drawableUnique = std::move(newDrawableUnique);
-		}
-
 		void GameObject::set_drawable(const std::shared_ptr<Drawable>& newDrawableShared)
 		{
-			drawableShared = newDrawableShared;
+			drawable_shared = newDrawableShared;
 		}
 
-		void GameObject::set_drawable(Drawable* newDrawableRaw)
+		void GameObject::set_drawable(const std::shared_ptr<Sprite>& drawable)
 		{
-			drawableRaw = newDrawableRaw;
+			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+		}
+
+		void GameObject::set_drawable(const std::shared_ptr<RectangleShape>& drawable)
+		{
+			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+		}
+
+		void GameObject::set_drawable(const std::shared_ptr<CircleShape>& drawable)
+		{
+			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+		}
+
+		void GameObject::set_drawable(const std::shared_ptr<Text>& drawable)
+		{
+			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
 		}
 	}
 }

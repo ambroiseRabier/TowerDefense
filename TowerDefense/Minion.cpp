@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Minion.hpp"
-#include "../../CastUtils.hpp"
 #include "Config.hpp"
 #include "GlobalShared.hpp"
 #include "Managers/GameManager.hpp"
@@ -30,15 +29,15 @@ namespace TowerDefense
 		Minion::Minion(sf::Vector2u map_pos, const MinionId minion_id) 
 					  : id(minion_id), map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
 		{
-			std::unique_ptr<sf::Sprite> my_sprite = std::make_unique<sf::Sprite>(
+			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(
 				*Constants::MinionAssets::get_minion_texture(minion_id)
 			);
 
 			sprite = my_sprite.get();
 			set_drawable(
-				std::move(static_cast_ptr<sf::Drawable>(
+				std::move(
 					my_sprite
-				))
+				)
 			);
 			collider = std::make_shared<Collider>(
 				sprite->getLocalBounds(),

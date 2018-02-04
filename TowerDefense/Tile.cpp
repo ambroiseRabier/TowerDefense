@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Tile.hpp"
-#include "CastUtils.hpp"
 #include "GameEngine/Debug.hpp"
 #include "Config.hpp"
 #include "MapManager.hpp"
@@ -19,12 +18,12 @@ namespace TowerDefense
 		Tile::Tile(TileId id, const sf::Vector2u map_pos): map_pos(map_pos), id(id)
 		{
 			// force the sprite to the good size. (not tested)
-			auto temp_sprite = std::make_unique<sf::Sprite>(
+			auto temp_sprite = std::make_shared<sf::Sprite>(
 				*Constants::TileAssets::get_tile_texture(id)
 			);
 			temp_sprite->setTextureRect(sf::IntRect(0,0,Constants::AssetsConfig::tile_size, Constants::AssetsConfig::tile_size));
 			sprite = temp_sprite.get();
-			set_drawable(static_cast_ptr<sf::Drawable>(std::move(temp_sprite)));
+			set_drawable(std::move(temp_sprite));
 			z_index = Constants::ZIndex::tile_background;
 		}
 

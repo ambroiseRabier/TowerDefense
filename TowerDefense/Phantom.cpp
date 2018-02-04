@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Phantom.hpp"
-#include "CastUtils.hpp"
 #include "TowerAssets.hpp"
 #include "MapManager.hpp"
 #include "GameEngine/CollisionManager.hpp"
@@ -14,13 +13,11 @@ namespace TowerDefense
 	{
 		Phantom::Phantom()
 		{
-			auto temp_sprite = std::make_unique<sf::Sprite>(
+			auto temp_sprite = std::make_shared<sf::Sprite>(
 				*GlobalShared::get_texture(Constants::Assets::missing_texture_tile)
 			);
 			sprite = temp_sprite.get();
-			set_drawable(static_cast_ptr<sf::Drawable>(
-				std::move(temp_sprite)
-			));
+			set_drawable(std::move(temp_sprite));
 			z_index = Constants::ZIndex::phantom_tower;
 			collider = std::make_shared<Collider>(
 				sf::FloatRect(

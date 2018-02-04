@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Health.hpp"
-#include "../../CastUtils.hpp"
 #include "GameEngine/Debug.hpp"
 #include "GlobalShared.hpp"
 #include "Config.hpp"
@@ -19,14 +18,10 @@ namespace TowerDefense
 
 		Health::Health(const float maxHealth) : maxHealth(maxHealth), actualHealth(maxHealth)
 		{
-			std::unique_ptr<sf::Sprite> my_sprite_jauge = std::make_unique<sf::Sprite>(*GlobalShared::get_texture(Constants::Assets::hpBar_jauge));
+			std::shared_ptr<sf::Sprite> my_sprite_jauge = std::make_shared<sf::Sprite>(*GlobalShared::get_texture(Constants::Assets::hpBar_jauge));
 			my_sprite_jauge->setPosition(-25.f, 0); // centered, temp
 			sprite_jauge = my_sprite_jauge.get();
-			set_drawable(
-				std::move(static_cast_ptr<sf::Drawable>(
-					my_sprite_jauge
-				))
-			);
+			set_drawable(my_sprite_jauge);
 			z_index = Constants::ZIndex::hpBars_jauge;
 		}
 
