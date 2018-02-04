@@ -138,14 +138,27 @@ namespace TowerDefense
 			void set_drawable(const std::shared_ptr<sf::CircleShape>& drawable);
 			void set_drawable(const std::shared_ptr<sf::Text>& drawable);
 
+			void add_drawable(const std::shared_ptr<sf::Drawable>& newDrawableShared);
+			void add_drawable(const std::shared_ptr<sf::Sprite>& drawable);
+			void add_drawable(const std::shared_ptr<sf::RectangleShape>& drawable);
+			void add_drawable(const std::shared_ptr<sf::CircleShape>& drawable);
+			void add_drawable(const std::shared_ptr<sf::Text>& drawable);
+
 			std::shared_ptr<Collider> collider;
 			// mettre sur objet hitbox ?
 			//Rect ou circle, bref struct ? MAth truc ? geometry, etc ?
 			//bool hitBoxActive;
 			//bool triggerMouse;
+			
+			/**
+			 * \brief First value is drawable_shared
+			 */
+			std::list<std::shared_ptr<sf::Drawable>> drawable_shared_list;
 		private:
 			void constructor_internal_init(unsigned int newZIndex);
-			std::shared_ptr<sf::Drawable> drawable_shared;
+			void set_drawable_internal(const std::shared_ptr<sf::Drawable>& newDrawableShared);
+			void add_drawable_internal(const std::shared_ptr<sf::Drawable>& newDrawableShared);
+
 		};
 	}
 }

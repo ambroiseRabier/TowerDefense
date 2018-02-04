@@ -9,7 +9,6 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
-		// static
 		bool GameObject::compare_z_index (const GameObject& first, const GameObject& second)
 		{
 			return first.get_zIndex() < second.get_zIndex();
@@ -18,10 +17,10 @@ namespace TowerDefense
 		{
 			return first->get_zIndex() < second->get_zIndex();
 		}
-		//end static
 
-		GameObject::GameObject(const std::shared_ptr<Drawable>& newDrawable, unsigned int newZIndex) : z_index(newZIndex), drawable_shared(std::move(newDrawable))
+		GameObject::GameObject(const std::shared_ptr<Drawable>& newDrawable, unsigned int newZIndex) : z_index(newZIndex)
 		{
+			set_drawable_internal(newDrawable);
 			constructor_internal_init(newZIndex);
 		}
 
@@ -33,8 +32,14 @@ namespace TowerDefense
 		GameObject::~GameObject()
 		{
 			transformable.reset(nullptr);
-			if (drawable_shared) 
-				drawable_shared.reset();
+			if (!drawable_shared_list.empty())
+			{
+				for (auto && shared : drawable_shared_list)
+				{
+					shared.reset();
+				} 
+				drawable_shared_list.clear();
+			}
 			if (collider) 
 				collider.reset();
 		}
@@ -49,7 +54,6 @@ namespace TowerDefense
 			transformable = std::make_unique<Transformable>();
 		}
 
-		// region getter setter
 
 		Transformable& GameObject::get_transformable() const
 		{
@@ -58,15 +62,22 @@ namespace TowerDefense
 
 		Drawable* GameObject::get_drawable() const
 		{
-			return drawable_shared.get();
+			return drawable_shared_list.front().get();
 		}
+
+		/*std::shared_ptr<const Drawable>&& GameObject::get_drawable_shared() const
+		{
+			Debug::warn("GameObject::get_drawable_shared() function never tested");
+			return drawable_shared_list.front();
+		}*/
 
 		Transformable* GameObject::get_drawable_transformable() const
 		{
-			const auto temp = dynamic_cast<Transformable*>(drawable_shared.get());
+			assert(get_drawable());
+			const auto temp = dynamic_cast<Transformable*>(get_drawable());
 			// if you use this function then you are sure the drawable has a transform.
 			assert(temp);
-			return dynamic_cast<Transformable*>(drawable_shared.get());
+			return dynamic_cast<Transformable*>(get_drawable());
 		}
 
 		std::shared_ptr<Collider> GameObject::get_collider() const
@@ -102,29 +113,80 @@ namespace TowerDefense
 			);
 		}
 
+
 		void GameObject::set_drawable(const std::shared_ptr<Drawable>& newDrawableShared)
 		{
-			drawable_shared = newDrawableShared;
+			set_drawable_internal(newDrawableShared);
 		}
 
 		void GameObject::set_drawable(const std::shared_ptr<Sprite>& drawable)
 		{
-			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+			set_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
 		}
 
 		void GameObject::set_drawable(const std::shared_ptr<RectangleShape>& drawable)
 		{
-			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+			set_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
 		}
 
 		void GameObject::set_drawable(const std::shared_ptr<CircleShape>& drawable)
 		{
-			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+			set_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
 		}
 
 		void GameObject::set_drawable(const std::shared_ptr<Text>& drawable)
 		{
-			drawable_shared = static_cast<std::shared_ptr<Drawable>>(drawable);
+			set_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
+		}
+
+
+		void GameObject::add_drawable(const std::shared_ptr<Drawable>& newDrawableShared)
+		{
+			add_drawable_internal(newDrawableShared);
+		}
+
+		void GameObject::add_drawable(const std::shared_ptr<Sprite>& drawable)
+		{
+			add_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
+		}
+
+		void GameObject::add_drawable(const std::shared_ptr<RectangleShape>& drawable)
+		{
+			add_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
+		}
+
+		void GameObject::add_drawable(const std::shared_ptr<CircleShape>& drawable)
+		{
+			add_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
+		}
+
+		void GameObject::add_drawable(const std::shared_ptr<Text>& drawable)
+		{
+			add_drawable_internal(static_cast<std::shared_ptr<Drawable>>(drawable));
+		}
+
+
+		void GameObject::set_drawable_internal(const std::shared_ptr<Drawable>& newDrawableShared)
+		{
+			const bool was_empty = drawable_shared_list.empty();
+			if (was_empty)
+			{
+				drawable_shared_list.push_back(newDrawableShared);
+			} 
+			else
+			{
+				// destroy drawable (if that's the last shared_ptr)
+				drawable_shared_list.front().reset();
+				// remove from list
+				drawable_shared_list.pop_front();
+				// emplace seems a bit more efficient/modern from what I've read.
+				drawable_shared_list.emplace_front(newDrawableShared);
+			}
+		}
+
+		void GameObject::add_drawable_internal(const std::shared_ptr<Drawable>& newDrawableShared)
+		{
+			drawable_shared_list.push_back(newDrawableShared);
 		}
 	}
 }

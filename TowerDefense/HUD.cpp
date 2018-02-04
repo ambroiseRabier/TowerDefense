@@ -285,7 +285,7 @@ namespace TowerDefense
 		{
 			count_down_text->set_text(std::to_string(preparation_time_remaining));
 			const float factor_alpha = static_cast<float>(std::min(4u, preparation_time_remaining))/4.f;
-			count_down_text->set_text_color(sf::Color(255,255,255, 255 * factor_alpha));
+			count_down_text->set_text_color(sf::Color(255,255,255, static_cast<sf::Uint8>(255 * factor_alpha)));
 		}
 	}
 }

@@ -90,7 +90,7 @@ namespace TowerDefense
 			UI::Hud::start_count_down(start_wave_delay);
 			start_wave_time_out_id = Utils::Timer::set_time_out(
 				Sharp::EventHandler::Bind(&GameManager::start_wave),
-				start_wave_delay
+				static_cast<float>(start_wave_delay)
 			);
 		}
 
