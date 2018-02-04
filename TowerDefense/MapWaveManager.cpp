@@ -201,6 +201,10 @@ namespace TowerDefense
 					break;
 				}
 			}
+			if (is_last_wave_fully_spawned && instanciated_elements.empty())
+			{
+				GameManager::game_win();
+			}
 		}
 
 		void MapWaveManager::destroy_current_level()
