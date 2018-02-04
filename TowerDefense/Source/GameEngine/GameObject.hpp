@@ -60,6 +60,7 @@ namespace TowerDefense
 			 * \return 
 			 */
 			sf::Drawable* get_drawable() const;
+			const std::list<std::shared_ptr<sf::Drawable>>& get_drawable_list() const;
 
 			/**
 			 * \brief 

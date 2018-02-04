@@ -45,13 +45,17 @@ namespace TowerDefense
 			for (const GameObject* children : childrens)
 			{
 				// well, you could remove the drawable without error, but that is not encouraged.
+				// get_drawable also check that the drawable list is not empty.
 				if (children->isVisible && children->isActive && children->get_drawable())
 				{
 					// combine GameObject "transform" to the GameObject "graphic"
-					window.draw(
-						*children->get_drawable(),
-						children->get_transformable().getTransform()
-					);
+					for (auto&& drawable : children->get_drawable_list())
+					{
+						window.draw(
+							*drawable.get(),
+							children->get_transformable().getTransform()
+						);
+					}
 
 					// ReSharper disable once CppRedundantBooleanExpressionArgument
 					if (Constants::Config::debug_draw_collider && children->get_collider())

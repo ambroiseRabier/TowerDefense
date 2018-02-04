@@ -62,7 +62,14 @@ namespace TowerDefense
 
 		Drawable* GameObject::get_drawable() const
 		{
+			if (drawable_shared_list.empty())
+				return nullptr;
 			return drawable_shared_list.front().get();
+		}
+
+		const std::list<std::shared_ptr<sf::Drawable>>& GameObject::get_drawable_list() const
+		{
+			return drawable_shared_list;
 		}
 
 		/*std::shared_ptr<const Drawable>&& GameObject::get_drawable_shared() const
