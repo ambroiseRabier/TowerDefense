@@ -30,13 +30,13 @@ namespace TowerDefense
 		{ 
 			assert(can_set_initial_money_flag);
 			can_set_initial_money_flag = false;
-			set_money(money + value);
+			set_money(value);
 		}
 
 		void Player::add_money(const float& value)
 		{ 
 			assert(value >= 0.f);
-			set_money(money + value); // bug: huum, risk that it goes over the size of an float.
+			set_money(money + value); // bug: risk that it could go over the size of an float.
 		}
 
 		bool Player::can_buy_tower(TowerId tower_id)
@@ -89,10 +89,6 @@ namespace TowerDefense
 			phantom->on_click_valid += Sharp::EventHandler::Bind(&Player::on_click_phantom);
 			phantom->on_click_cancel += Sharp::EventHandler::Bind(&Player::on_click_cancel_phantom);
 			phantom->auto_start();
-
-			buy_tower(TowerId::StoneTower, Vector2u(2,2));
-			create_tower(TowerId::ExplosivTower, Vector2u(2,4));
-			create_tower(TowerId::FreezeTower, Vector2u(1,4));
 		}
 
 		void Player::set_castle(Castle* new_castle) // could have multiple castle
@@ -146,6 +142,16 @@ namespace TowerDefense
 			// could push it further and desactivate update on phantom when not needed. (opti)
 			phantom->set_tower_id(tower_id);
 			phantom->isActive = true;
+		}
+
+		void Player::on_game_over()
+		{
+			on_click_cancel_phantom();
+		}
+
+		void Player::on_game_win()
+		{
+			on_click_cancel_phantom();
 		}
 
 		void Player::on_click_phantom()

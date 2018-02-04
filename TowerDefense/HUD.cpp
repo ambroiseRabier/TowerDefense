@@ -212,6 +212,7 @@ namespace TowerDefense
 		{
 			pause_btn->isActive = true;
 			retry_btn->isActive = true;
+			up_speed_btn->isActive = true;
 			stone_tower_btn->isActive = true;
 			freeze_tower_btn->isActive = true;
 			explosiv_tower_btn->isActive = true;
@@ -222,6 +223,7 @@ namespace TowerDefense
 		{
 			pause_btn->isActive = false;
 			retry_btn->isActive = false;
+			up_speed_btn->isActive = false;
 			stone_tower_btn->isActive = false;
 			freeze_tower_btn->isActive = false;
 			explosiv_tower_btn->isActive = false;

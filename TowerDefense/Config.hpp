@@ -1,8 +1,6 @@
 #pragma once
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
-#include "Minion.hpp"
-#include "Phantom.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -56,8 +54,8 @@ namespace TowerDefense
 			const unsigned int tile_background = 20;
 			const unsigned int minions_dead = 199;
 			const unsigned int minions = 200;
-			const unsigned int projectile = 250;
-			const unsigned int towers = 275;
+			const unsigned int towers = 250;
+			const unsigned int projectile = 275;
 			const unsigned int hpBars_jauge = 301;
 			const unsigned int tower_upgrade_btn = 350;
 			const unsigned int phantom_tower = 400;

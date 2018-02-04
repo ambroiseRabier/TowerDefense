@@ -148,6 +148,7 @@ namespace TowerDefense
 		{
 			// might need to keep state to playing if we wnat minion to do something funny
 			state = GameState::Pause;
+			Player::on_game_over();
 			UI::Hud::close();
 			UI::GameOverScreen::open();
 		}
@@ -156,6 +157,7 @@ namespace TowerDefense
 		{
 			// might need to keep state to playing if we wnat minion to do something funny
 			state = GameState::Pause;
+			Player::on_game_win();
 			UI::Hud::close();
 			const bool was_last_level = level_index >= Constants::LevelDesign::map_array.size()-1;
 			if (was_last_level)

@@ -140,7 +140,8 @@ namespace TowerDefense
 
 		float Tower::calc_collider_circle_radius() const
 		{
-			return std::max(0.5f, params.projectile_params.at(level).range) * Constants::AssetsConfig::tile_size;
+			// remove one pixel at the end to avoid colliding with border of a tile.
+			return std::max(0.5f, params.projectile_params.at(level).range) * Constants::AssetsConfig::tile_size - 1;
 		}
 
 		void Tower::upgrade_tower()

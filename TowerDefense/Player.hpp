@@ -46,6 +46,8 @@ namespace TowerDefense
 			 */
 			static void start();
 			static void create_phantom_tower(TowerId tower_id);
+			static void on_game_over();
+			static void on_game_win();
 		private:
 			static std::unique_ptr<Phantom> phantom;
 			static void create_tower(const TowerId tower_id, const sf::Vector2u& map_pos);
