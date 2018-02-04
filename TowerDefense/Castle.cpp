@@ -15,8 +15,8 @@ namespace TowerDefense
 				sf::FloatRect(
 					0.f,
 					0.f,
-					static_cast<float>(Constants::AssetsConfig::tile_size),
-					static_cast<float>(Constants::AssetsConfig::tile_size)
+					Constants::AssetsConfig::tile_size_f,
+					Constants::AssetsConfig::tile_size_f
 				),
 				GameEngine::Collider::Tag::Castle
 			);

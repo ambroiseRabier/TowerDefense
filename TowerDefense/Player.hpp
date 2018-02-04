@@ -3,6 +3,7 @@
 #define PLAYER_HPP
 #include "Tower.hpp"
 #include "Castle.hpp"
+#include "Phantom.hpp"
 
 using namespace TowerDefense::Game;
 namespace TowerDefense
@@ -44,7 +45,9 @@ namespace TowerDefense
 			 * \brief When the player can start adding towers.
 			 */
 			static void start();
+			static void create_phantom_tower(TowerId tower_id);
 		private:
+			static std::unique_ptr<Phantom> phantom;
 			static void create_tower(const TowerId tower_id, const sf::Vector2u& map_pos);
 			static Castle* castle;
 			static std::vector<std::unique_ptr<Tower>> tower_vector;
@@ -52,6 +55,8 @@ namespace TowerDefense
 			static float money;
 			static void on_castle_death();
 			static void on_destroy_level();
+			static void on_click_phantom();
+			static void on_click_cancel_phantom();
 			/**
 			 * \brief Use this to change money value, it update HUD and send an event for upgrade btns.
 			 * \param new_value 

@@ -25,6 +25,7 @@ namespace TowerDefense
 			static void on_right_click();
 			// is not const GameObject* because I need to call some function inside.
 			static std::list<GameObject*> childrens;
+			// todo: move in input manager, make no sense here !
 			static sf::Vector2i mouse_position;
 			static std::vector<std::pair<Collider::Tag, Collider::Tag>> testedCollisions;
 			static std::vector<GameObject*> mouseCollisionBuffer;

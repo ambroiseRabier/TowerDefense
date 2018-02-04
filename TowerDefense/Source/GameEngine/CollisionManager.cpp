@@ -93,11 +93,11 @@ namespace TowerDefense
 				game_object.on_mouse_overlap();
 				if (left_clicked && validMouseCollider(game_object))
 				{
-					game_object.on_mouse_click(false);
+					game_object.on_mouse_click(true);
 				}
 				if (right_clicked && validMouseCollider(game_object))
 				{
-					game_object.on_mouse_click(true);
+					game_object.on_mouse_click(false);
 				}
 				if (validMouseCollider(game_object))
 				{
@@ -130,11 +130,11 @@ namespace TowerDefense
 					game_object_hightest_z->on_mouse_overlap_front();
 					if (left_clicked && validMouseCollider(*game_object_hightest_z))
 					{
-						game_object_hightest_z->on_mouse_click_front(false);
+						game_object_hightest_z->on_mouse_click_front(true);
 					}
 					if (right_clicked && validMouseCollider(*game_object_hightest_z))
 					{
-						game_object_hightest_z->on_mouse_click_front(true);
+						game_object_hightest_z->on_mouse_click_front(false);
 					}
 				}
 			}

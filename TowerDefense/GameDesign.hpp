@@ -18,6 +18,17 @@ namespace TowerDefense
 			 * \brief First value is default.
 			 */
 			const float game_speed_choices[4] = {1.0f, 2.0f, 3.0f, 0.5f};
+
+
+			const std::vector<TileId> walkable_tile {
+				TileId::Road_Walk,
+				TileId::Castle_Other,
+			};
+
+			const std::vector<TileId> buildable_tile {
+				TileId::Grass_Build
+			};
+
 			/**
 			 * \brief Life of the castle, minimum is 1.f
 			 */
@@ -35,7 +46,7 @@ namespace TowerDefense
 			};
 			const std::unordered_map<TowerId, TowerParams> towers = { // need a quick tower, and high range tower, huum.
 				{
-					StoneTower, 
+					TowerId::StoneTower, 
 					// towerParams
 					{
 						// projectile params vector
@@ -50,7 +61,7 @@ namespace TowerDefense
 					},
 				},
 				{
-					FreezeTower,
+					TowerId::FreezeTower,
 					{
 						{
 							{2.f, 0.5f, 0.5f, 1.f, 0.33f, 0.f, 60.f},
@@ -60,7 +71,7 @@ namespace TowerDefense
 					},
 				},
 				{
-					ExplosivTower,
+					TowerId::ExplosivTower,
 					{
 						{
 							{1.5f, 1.6f, 0.5f, 2.5f, 0.f, 10.f, 110.f}, // boom

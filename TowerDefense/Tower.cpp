@@ -21,7 +21,7 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		Tower::Tower() : params(Constants::GameDesign::towers.at(StoneTower))
+		Tower::Tower() : params(Constants::GameDesign::towers.at(TowerId::StoneTower))
 		{
 			Debug::warn("Tower: default constructor should not be used.");
 		}

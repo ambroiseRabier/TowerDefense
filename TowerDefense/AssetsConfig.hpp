@@ -17,6 +17,8 @@ namespace TowerDefense
 			 * \brief All tiles should do 50x50 in size.
 			 */
 			const unsigned int tile_size = 50;
+			const int tile_size_i = static_cast<int>(tile_size);
+			const float tile_size_f = static_cast<float>(tile_size);
 			const sf::Vector2f tile_size_half_vec(tile_size/2.f, tile_size/2.f);
 			/**
 			 * \brief Only visual.

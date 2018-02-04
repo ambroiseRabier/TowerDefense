@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -48,6 +48,7 @@
     <ClInclude Include="MinionAssets.hpp" />
     <ClInclude Include="MinionParams.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
+    <ClInclude Include="Phantom.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="ProjectileAssets.hpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="Phantom.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene.cpp" />

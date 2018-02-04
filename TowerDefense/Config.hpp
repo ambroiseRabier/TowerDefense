@@ -2,6 +2,7 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 #include "Minion.hpp"
+#include "Phantom.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense
@@ -42,6 +43,7 @@ namespace TowerDefense
 			const std::string game_over_screen_text = "The castle has been lost !";
 			const std::string pause_text = "Pause";
 			const std::string game_cleared_text = "Game Cleared !";
+			const std::string help_tower_build_text = "Left->build   Right->cancel";
 		}
 		
 		/**
@@ -58,6 +60,7 @@ namespace TowerDefense
 			const unsigned int towers = 275;
 			const unsigned int hpBars_jauge = 301;
 			const unsigned int tower_upgrade_btn = 350;
+			const unsigned int phantom_tower = 400;
 			const unsigned int ui_background = 899;
 			const unsigned int ui = 900;
 			const unsigned int max = 999;

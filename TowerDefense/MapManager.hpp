@@ -37,7 +37,12 @@ namespace TowerDefense
 			 */
 			static void destroy_current_level();
 			static bool map_pos_exist(const sf::Vector2u map_pos);
+			static bool map_pos_exist(const sf::Vector2i map_pos);
 			static bool map_pos_walkable(const sf::Vector2u& map_pos);
+			static bool map_pos_walkable(const sf::Vector2i& map_pos);
+			static bool map_pos_buildable(const sf::Vector2u& map_pos);
+			static bool map_pos_buildable(const sf::Vector2i& map_pos);
+			static sf::Vector2i point_to_map_pos(const sf::Vector2i& mouse_position);
 			static const MapParams* map_params;
 			static const bool get_level_loaded_flag();
 			static const sf::Transformable& get_map_origin();

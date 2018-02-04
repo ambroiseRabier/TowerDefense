@@ -24,6 +24,12 @@ namespace TowerDefense
 				{Game::TowerId::ExplosivTower, {explosiv_tower, explosiv_tower, explosiv_tower}},
 			};
 
+			const std::unordered_map<Game::TowerId, std::string> tower_id_build_map {
+				{Game::TowerId::StoneTower, stone_tower},
+				{Game::TowerId::FreezeTower, freeze_tower},
+				{Game::TowerId::ExplosivTower, explosiv_tower},
+			};
+
 			const std::unordered_map<Game::TowerId, std::string> tower_id_broken_map {
 				{Game::TowerId::StoneTower, stone_tower_broken},
 				{Game::TowerId::FreezeTower, freeze_tower_broken},
@@ -38,6 +44,11 @@ namespace TowerDefense
 			inline sf::Texture* get_broken_tower_texture(Game::TowerId tower_id)
 			{
 				return GlobalShared::get_texture(tower_id_broken_map.at(tower_id));
+			}
+
+			inline sf::Texture* get_tower_build_texture(Game::TowerId tower_id)
+			{
+				return GlobalShared::get_texture(tower_id_build_map.at(tower_id));
 			}
 		}
 	}

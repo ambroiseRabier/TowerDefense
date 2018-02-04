@@ -9,6 +9,7 @@
 #include "MapWaveManager.hpp"
 #include "AssetsConfig.hpp"
 #include "TileAssets.hpp"
+#include "GameDesign.hpp"
 
 namespace TowerDefense
 {
@@ -91,12 +92,61 @@ namespace TowerDefense
 				&& static_cast<bool>(all_tiles_p[map_pos.x].count(map_pos.y));
 		}
 
+		bool MapManager::map_pos_exist(const sf::Vector2i map_pos)
+		{
+			if (map_pos.x < 0 || map_pos.y < 0) return false;
+			else return map_pos_exist(static_cast<sf::Vector2u>(map_pos));
+		}
+
 		bool MapManager::map_pos_walkable(const sf::Vector2u& map_pos)
 		{
 			// should use exist function on an constant array of walkable tileId, not kiss right now...
 			const TileId destination = all_tiles_p[map_pos.x][map_pos.y]->get_tile_id();
-			return destination == Road_Walk
-				|| destination == Castle_Other;
+			const bool found = std::find(
+				Constants::GameDesign::walkable_tile.begin(), 
+				Constants::GameDesign::walkable_tile.end(), 
+				destination
+			) != Constants::GameDesign::walkable_tile.end();
+
+			return found;
+		}
+
+		bool MapManager::map_pos_walkable(const sf::Vector2i& map_pos)
+		{
+			if (map_pos.x < 0 || map_pos.y < 0) return false;
+			else return map_pos_walkable(static_cast<sf::Vector2u>(map_pos));
+		}
+
+		bool MapManager::map_pos_buildable(const sf::Vector2u& map_pos)
+		{
+			const TileId destination = all_tiles_p[map_pos.x][map_pos.y]->get_tile_id();
+			const bool found = std::find(
+				Constants::GameDesign::buildable_tile.begin(), 
+				Constants::GameDesign::buildable_tile.end(), 
+				destination
+			) != Constants::GameDesign::buildable_tile.end();
+
+			return found;
+		}
+
+		bool MapManager::map_pos_buildable(const sf::Vector2i& map_pos)
+		{
+			if (map_pos.x < 0 || map_pos.y < 0) return false;
+			else return map_pos_buildable(static_cast<sf::Vector2u>(map_pos));
+		}
+
+		sf::Vector2i MapManager::point_to_map_pos(const sf::Vector2i& mouse_position)
+		{
+			const sf::Vector2i local_pos = mouse_position - static_cast<sf::Vector2i>(map_origin.getPosition());
+			const sf::Vector2i map_pos(
+				/*std::max(0u, */(local_pos.x - (local_pos.x % Constants::AssetsConfig::tile_size_i)) / Constants::AssetsConfig::tile_size_i/*)*/,
+				/*std::max(0u, */(local_pos.y - (local_pos.y % Constants::AssetsConfig::tile_size_i)) / Constants::AssetsConfig::tile_size_i/*)*/
+			);
+			const sf::Vector2i offset(
+				local_pos.x < 0 ? -1 : 0,
+				local_pos.y < 0 ? -1 : 0
+			);
+			return map_pos + offset;
 		}
 
 		const bool MapManager::get_level_loaded_flag()
@@ -159,6 +209,7 @@ namespace TowerDefense
 		
 		Tile* MapManager::spawn_tile(const TileId tile_id, const sf::Vector2u& map_pos)
 		{
+			// todo: use switch
 			if (tile_id == TileId::Castle_Other)
 			{
 				castle = new Castle(map_pos);

@@ -15,7 +15,7 @@ namespace TowerDefense
 		* \brief 
 		* Enum representing the tower type, should be unique to class.
 		*/
-		enum TowerId
+		enum class TowerId
 		{
 			StoneTower,
 			FreezeTower,
