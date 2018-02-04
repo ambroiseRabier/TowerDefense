@@ -20,9 +20,12 @@ namespace TowerDefense
 			Sharp::Event<void> on_click_cancel;
 			sf::Vector2u valid_map_pos; // todo: read only
 			sf::Sprite* sprite;
+			sf::CircleShape* range_feedback;
 			void update() override;
 			void on_mouse_click_front(bool left) override;
 			void update_position();
+			void update_range_feeback();
+			float calc_collider_circle_radius() const;
 			TowerId tower_id;
 		};
 	}

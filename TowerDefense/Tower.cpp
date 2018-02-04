@@ -8,7 +8,6 @@
 #include "Projectile.hpp"
 #include "Timer.hpp"
 #include "AssetsConfig.hpp"
-#include "CastUtils.hpp"
 #include "GameObjects/BaseButton.hpp"
 #include "Player.hpp"
 #include "UIAssets.hpp"
@@ -32,8 +31,11 @@ namespace TowerDefense
 			auto temp_sprite = std::make_shared<Sprite>(
 				*Constants::TowerAssets::get_tower_texture(id)	
 			);
+			auto temp_range_feedback = std::make_shared<CircleShape>();
 			sprite = temp_sprite.get();
+			range_feedback = temp_range_feedback.get();
 			set_drawable(std::move(temp_sprite));
+			add_drawable(std::move(temp_range_feedback));
 			z_index = Constants::ZIndex::towers;
 			collider = std::make_shared<Collider>(
 				Circle(
@@ -42,6 +44,8 @@ namespace TowerDefense
 				),
 				Collider::Tag::Tower
 			);
+			range_feedback->setFillColor(sf::Color::Transparent);
+			update_range_feeback();
 			upgrade_btn = std::make_unique<UI::BaseButton>(
 				GlobalShared::get_texture(Constants::UIAssets::tower_1_upgrade_btn),
 				Constants::ZIndex::tower_upgrade_btn
@@ -68,6 +72,12 @@ namespace TowerDefense
 			update_position();
 		}
 
+		void Tower::update()
+		{
+			// using scale as hack to hide/show it.
+			range_feedback->setScale(0,0);
+		}
+
 		void Tower::on_game_object_overlap(GameObject& game_object)
 		{
 			if (game_object.get_collider()->tag == Collider::Tag::Minion
@@ -84,6 +94,12 @@ namespace TowerDefense
 				// no need to seek for target in mean time (optimizaiton)
 				collider->gameobject_enabled = false;
 			}
+		}
+
+		void Tower::on_mouse_overlap()
+		{
+			// using scale as hack to hide/show it.
+			range_feedback->setScale(1,1);
 		}
 
 		// ReSharper disable once CppMemberFunctionMayBeConst
@@ -151,6 +167,7 @@ namespace TowerDefense
 				assert(collider->get_type() == Collider::Type::Circle);
 				// update money after leveling up (for on_player_money_change)
 				Managers::Player::buy_tower_upgrade(id, level);
+				update_range_feeback();
 				collider->set_circle(
 					Constants::AssetsConfig::tile_size_half_vec,
 					calc_collider_circle_radius()
@@ -196,6 +213,18 @@ namespace TowerDefense
 		{
 			assert(level >= 0 && level < params.projectile_params.size());
 			return Constants::ProjectileAssets::get_projectile_texture(id, level);
+		}
+
+		void Tower::update_range_feeback()
+		{
+			range_feedback->setPointCount(range_feedback->getPointCount()*2);
+			range_feedback->setRadius(calc_collider_circle_radius());
+			range_feedback->setPosition(
+				-range_feedback->getRadius()/2 - Constants::AssetsConfig::tile_size/4,
+				-range_feedback->getRadius()/2 - Constants::AssetsConfig::tile_size/4
+			);
+			range_feedback->setOutlineColor(Constants::TowerAssets::get_tower_range_feedback(id).first);
+			range_feedback->setOutlineThickness(Constants::TowerAssets::get_tower_range_feedback(id).second);
 		}
 	}
 }

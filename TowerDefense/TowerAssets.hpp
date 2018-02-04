@@ -36,6 +36,12 @@ namespace TowerDefense
 				{Game::TowerId::ExplosivTower, explosiv_tower_broken},
 			};
 
+			const std::unordered_map<Game::TowerId, std::pair<sf::Color, float>> tower_id_range_map {
+				{Game::TowerId::StoneTower, {sf::Color::Blue, 1.f}},
+				{Game::TowerId::FreezeTower, {sf::Color::Blue, 1.f}},
+				{Game::TowerId::ExplosivTower, {sf::Color::Blue, 1.f}},
+			};
+
 			inline sf::Texture* get_tower_texture(Game::TowerId tower_id, const unsigned int& level=0)
 			{
 				return GlobalShared::get_texture(tower_id_level_map.at(tower_id).at(level));
@@ -50,6 +56,13 @@ namespace TowerDefense
 			{
 				return GlobalShared::get_texture(tower_id_build_map.at(tower_id));
 			}
+
+			inline std::pair<sf::Color, float> get_tower_range_feedback(Game::TowerId tower_id)
+			{
+				return tower_id_range_map.at(tower_id);
+			}
+
+
 		}
 	}
 }

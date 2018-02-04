@@ -33,12 +33,15 @@ namespace TowerDefense
 			Tower(TowerId id, const sf::Vector2u map_pos);
 			~Tower();
 			void init() override;
+			void update() override;
 			void on_game_object_overlap(GameObject& game_object) override;
+			void on_mouse_overlap() override;
 			void update_position();
 			TowerId get_tile_id() const;
 			void on_game_over();
 			const sf::Vector2u map_pos;
 			std::unique_ptr<UI::BaseButton> upgrade_btn;
+			sf::CircleShape* range_feedback;
 			void on_player_money_change();
 		private:
 			void shoot() const;
@@ -49,6 +52,7 @@ namespace TowerDefense
 			float calc_collider_circle_radius() const;
 			void upgrade_tower();
 			bool is_max_level() const;
+			void update_range_feeback();
 
 			/**
 			 * \brief Garanted to be valid until tower descontructor.

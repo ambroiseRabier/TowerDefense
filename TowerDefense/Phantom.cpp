@@ -5,6 +5,7 @@
 #include "GameEngine/CollisionManager.hpp"
 #include "AssetsConfig.hpp"
 #include "Assets.hpp"
+#include "GameDesign.hpp"
 
 using namespace TowerDefense::Managers;
 namespace TowerDefense
@@ -16,8 +17,11 @@ namespace TowerDefense
 			auto temp_sprite = std::make_shared<sf::Sprite>(
 				*GlobalShared::get_texture(Constants::Assets::missing_texture_tile)
 			);
+			auto temp_range_feedback = std::make_shared<sf::CircleShape>();
+			range_feedback = temp_range_feedback.get();
 			sprite = temp_sprite.get();
 			set_drawable(std::move(temp_sprite));
+			add_drawable(std::move(temp_range_feedback));
 			z_index = Constants::ZIndex::phantom_tower;
 			collider = std::make_shared<Collider>(
 				sf::FloatRect(
@@ -29,6 +33,8 @@ namespace TowerDefense
 				Collider::Tag::UI
 			);
 			collider->gameobject_enabled = false;
+			range_feedback->setFillColor(sf::Color::Transparent);
+			update_range_feeback();
 		}
 
 		void Phantom::set_tower_id(TowerId new_tower_id)
@@ -70,6 +76,26 @@ namespace TowerDefense
 				* Constants::AssetsConfig::tile_size_f
 				+ MapManager::get_map_origin().getPosition() // to global
 			);
+		}
+
+		// copy pasted from Tower.cpp
+		void Phantom::update_range_feeback()
+		{
+			range_feedback->setPointCount(range_feedback->getPointCount()*2);
+			range_feedback->setRadius(calc_collider_circle_radius());
+			range_feedback->setPosition(
+				-range_feedback->getRadius()/2 - Constants::AssetsConfig::tile_size/4,
+				-range_feedback->getRadius()/2 - Constants::AssetsConfig::tile_size/4
+			);
+			range_feedback->setOutlineColor(Constants::TowerAssets::get_tower_range_feedback(tower_id).first);
+			range_feedback->setOutlineThickness(Constants::TowerAssets::get_tower_range_feedback(tower_id).second);
+		}
+
+		// copy pasted from Tower.cpp
+		float Phantom::calc_collider_circle_radius() const
+		{
+			// remove one pixel at the end to avoid colliding with border of a tile.
+			return std::max(0.5f, Constants::GameDesign::towers.at(tower_id).projectile_params.at(0).range) * Constants::AssetsConfig::tile_size - 1;
 		}
 	}
 }
