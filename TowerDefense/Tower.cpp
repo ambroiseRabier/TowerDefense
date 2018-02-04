@@ -220,8 +220,8 @@ namespace TowerDefense
 			range_feedback->setPointCount(range_feedback->getPointCount()*2);
 			range_feedback->setRadius(calc_collider_circle_radius());
 			range_feedback->setPosition(
-				-range_feedback->getRadius()/2 - Constants::AssetsConfig::tile_size/4,
-				-range_feedback->getRadius()/2 - Constants::AssetsConfig::tile_size/4
+				-range_feedback->getRadius() + Constants::AssetsConfig::tile_size/2,
+				-range_feedback->getRadius() + Constants::AssetsConfig::tile_size/2
 			);
 			range_feedback->setOutlineColor(Constants::TowerAssets::get_tower_range_feedback(id).first);
 			range_feedback->setOutlineThickness(Constants::TowerAssets::get_tower_range_feedback(id).second);
