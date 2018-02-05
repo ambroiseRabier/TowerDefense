@@ -3,6 +3,7 @@
 #define TOWER_ASSETS_HPP
 #include "Tower.hpp"
 #include "GlobalShared.hpp"
+#include "AssetsConfig.hpp"
 
 namespace TowerDefense
 {
@@ -17,6 +18,11 @@ namespace TowerDefense
 			const std::string freeze_tower_broken = "Assets/Tower/freeze_tower_broken.png";
 			const std::string explosiv_tower = "Assets/Tower/freeze_tower.png";
 			const std::string explosiv_tower_broken = "Assets/Tower/explosiv_tower_broken.png";
+			const std::string stone_tower_build = "Assets/Tower/stone_tower_build.png";
+			const std::string freeze_tower_build = "Assets/Tower/freeze_tower_build.png";
+			const std::string explosiv_tower_build = "Assets/Tower/explosiv_tower_build.png";
+			const sf::IntRect tower_build_frame_valid(0,0, AssetsConfig::tile_size, AssetsConfig::tile_size);
+			const sf::IntRect tower_build_frame_invalid(AssetsConfig::tile_size, 0, AssetsConfig::tile_size, AssetsConfig::tile_size);
 
 			const std::unordered_map<Game::TowerId, std::vector<std::string>> tower_id_level_map {
 				{Game::TowerId::StoneTower, {stone_tower, stone_tower, stone_tower}},
@@ -25,9 +31,9 @@ namespace TowerDefense
 			};
 
 			const std::unordered_map<Game::TowerId, std::string> tower_id_build_map {
-				{Game::TowerId::StoneTower, stone_tower},
-				{Game::TowerId::FreezeTower, freeze_tower},
-				{Game::TowerId::ExplosivTower, explosiv_tower},
+				{Game::TowerId::StoneTower, stone_tower_build},
+				{Game::TowerId::FreezeTower, freeze_tower_build},
+				{Game::TowerId::ExplosivTower, explosiv_tower_build},
 			};
 
 			const std::unordered_map<Game::TowerId, std::string> tower_id_broken_map {

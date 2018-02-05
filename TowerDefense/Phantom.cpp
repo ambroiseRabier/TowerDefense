@@ -53,12 +53,10 @@ namespace TowerDefense
 		{
 			if (left)
 			{
-				const auto map_pos = MapManager::point_to_map_pos(CollisionManager::mouse_position);
-				const bool valid_pos = MapManager::map_pos_exist(map_pos) && MapManager::map_pos_buildable(map_pos);
 				if (valid_pos)
 				{
 					// since map_pos is valid it has to be unsigned integer.
-					valid_map_pos = static_cast<sf::Vector2u>(map_pos);
+					valid_map_pos = static_cast<sf::Vector2u>(map_pos_raw);
 					on_click_valid();
 				}
 			} 
@@ -70,11 +68,16 @@ namespace TowerDefense
 
 		void Phantom::update_position()
 		{
-			const sf::Vector2i map_pos_raw(MapManager::point_to_map_pos(CollisionManager::mouse_position));
+			map_pos_raw = MapManager::point_to_map_pos(CollisionManager::mouse_position);
+			valid_pos = MapManager::map_pos_exist(map_pos_raw) && MapManager::map_pos_buildable(map_pos_raw);
 			get_transformable().setPosition(
 				static_cast<sf::Vector2f>(map_pos_raw)
 				* Constants::AssetsConfig::tile_size_f
 				+ MapManager::get_map_origin().getPosition() // to global
+			);
+			sprite->setTextureRect(
+				valid_pos ? Constants::TowerAssets::tower_build_frame_valid
+						  : Constants::TowerAssets::tower_build_frame_invalid
 			);
 		}
 

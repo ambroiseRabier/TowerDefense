@@ -27,6 +27,8 @@ namespace TowerDefense
 			void update_range_feeback();
 			float calc_collider_circle_radius() const;
 			TowerId tower_id;
+			bool valid_pos;
+			sf::Vector2i map_pos_raw;
 		};
 	}
 }
