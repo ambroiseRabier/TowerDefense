@@ -15,7 +15,7 @@ namespace TowerDefense
 		std::unique_ptr<BaseButton> GameWinScreen::retry_btn;
 		std::unique_ptr<BaseButton> GameWinScreen::menu_return_btn;
 		std::unique_ptr<BaseText> GameWinScreen::title_text;
-
+		std::unique_ptr<BaseText> GameWinScreen::score_text;
 
 		void GameWinScreen::init()
 		{
@@ -23,6 +23,8 @@ namespace TowerDefense
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::win_screen_text);
+			score_text = std::make_unique<BaseText>(Constants::Config::score_test_text);
+
 			Align::center(
 				next_level_btn->get_transformable(),
 				sf::Vector2f(-next_level_btn->get_sprite().getGlobalBounds().width/2.f, -70)
@@ -39,6 +41,10 @@ namespace TowerDefense
 				title_text->get_transformable(),
 				sf::Vector2f(-title_text->get_text().getGlobalBounds().width/2.f, -170)
 			);
+			Align::center(
+				score_text->get_transformable(),
+				sf::Vector2f(-score_text->get_text().getGlobalBounds().width / 2.f, -220)
+			);
 			close();
 			next_level_btn->on_click += Sharp::EventHandler::Bind(&GameWinScreen::on_click_next_level);
 			retry_btn->on_click += Sharp::EventHandler::Bind(&GameWinScreen::on_click_retry);
@@ -47,6 +53,7 @@ namespace TowerDefense
 			retry_btn->auto_start();
 			menu_return_btn->auto_start();
 			title_text->auto_start();
+			score_text->auto_start();
 			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&GameWinScreen::destroy);
 		}
 
@@ -56,6 +63,7 @@ namespace TowerDefense
 			retry_btn->isActive = true;
 			menu_return_btn->isActive = true;
 			title_text->isActive = true;
+			score_text->isActive = true;
 		}
 
 		void GameWinScreen::close()
@@ -64,6 +72,7 @@ namespace TowerDefense
 			retry_btn->isActive = false;
 			menu_return_btn->isActive = false;
 			title_text->isActive = false;
+			score_text->isActive = false;
 		}
 
 		void GameWinScreen::destroy()
@@ -75,6 +84,7 @@ namespace TowerDefense
 			retry_btn.reset(nullptr);
 			menu_return_btn.reset(nullptr);
 			title_text.reset(nullptr);
+			score_text.reset(nullptr);
 		}
 
 		void GameWinScreen::on_click_next_level()

@@ -16,6 +16,7 @@ namespace TowerDefense
 		std::unique_ptr<BaseText> Hud::wave_text;
 		std::unique_ptr<BaseText> Hud::help_tower_text;
 		std::unique_ptr<BaseText> Hud::count_down_text;
+		std::unique_ptr<BaseText> Hud::score_text;
 		std::unique_ptr<BaseButton> Hud::pause_btn;
 		std::unique_ptr<BaseButton> Hud::retry_btn;
 		std::unique_ptr<BaseButton> Hud::up_speed_btn;
@@ -41,6 +42,7 @@ namespace TowerDefense
 			level_text = std::make_unique<BaseText>("*Level");
 			money_text = std::make_unique<BaseText>("*Money");
 			wave_text = std::make_unique<BaseText>("*Wave");
+			score_text = std::make_unique<BaseText>("*Score");
 			help_tower_text = std::make_unique<BaseText>(Constants::Config::help_tower_build_text);
 			count_down_text = std::make_unique<BaseText>("3", 108);
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::pause_btn));
@@ -69,11 +71,13 @@ namespace TowerDefense
 				- count_down_text->get_text().getGlobalBounds().width/2, 
 				- count_down_text->get_text().getGlobalBounds().height
 			));
+			Align::top_left(score_text->get_transformable(), sf::Vector2f(100, 30));
 			Align::top_right(pause_btn->get_transformable(), sf::Vector2f(
 				30 + pause_btn->get_sprite().getGlobalBounds().width, 
 				30
 			));
 			Align::top_left(retry_btn->get_transformable(), sf::Vector2f(30, 30));
+
 			Align::bottom_right(up_speed_btn->get_transformable(), sf::Vector2f(
 				30 + up_speed_btn->get_sprite().getGlobalBounds().width, 
 				30 + up_speed_btn->get_sprite().getGlobalBounds().height
@@ -100,6 +104,7 @@ namespace TowerDefense
 			level_text->auto_start();
 			money_text->auto_start();
 			wave_text->auto_start();
+			score_text->auto_start();
 			help_tower_text->auto_start();
 			count_down_text->auto_start();
 			pause_btn->auto_start();
@@ -127,6 +132,7 @@ namespace TowerDefense
 			level_text.reset(nullptr);
 			money_text.reset(nullptr);
 			wave_text.reset(nullptr);
+			score_text.reset(nullptr);
 			help_tower_text.reset(nullptr);
 			count_down_text.reset(nullptr);
 			pause_btn.reset(nullptr);
@@ -143,6 +149,7 @@ namespace TowerDefense
 			level_text->isActive = true;
 			money_text->isActive = true;
 			wave_text->isActive = true;
+			score_text->isActive = true;
 			help_tower_text->isActive = false; // note: false here
 			count_down_text->isActive = count_down_active;
 			pause_btn->isActive = true;
@@ -158,6 +165,7 @@ namespace TowerDefense
 			level_text->isActive = false;
 			money_text->isActive = false;
 			wave_text->isActive = false;
+			score_text->isActive = false;
 			help_tower_text->isActive = false;
 			count_down_text->isActive = false;
 			pause_btn->isActive = false;
@@ -181,6 +189,11 @@ namespace TowerDefense
 		void Hud::set_wave_text(const std::string& text)
 		{
 			wave_text->set_text(text);
+		}
+
+		void Hud::set_score_text(const std::string& text)
+		{
+			score_text->set_text(text);
 		}
 
 		void Hud::on_click_up_speed()

@@ -15,6 +15,7 @@ namespace TowerDefense
 		Castle* Player::castle;
 		std::vector<std::unique_ptr<Tower>> Player::tower_vector;
 		float Player::money;
+		int Player::score;
 		bool Player::can_set_initial_money_flag;
 		Sharp::Event<void> Player::on_money_change;
 		std::unique_ptr<Phantom> Player::phantom;
@@ -73,6 +74,21 @@ namespace TowerDefense
 			money = std::max(0.f, new_value); // could depass float max value ?
 			UI::Hud::set_money_text(std::to_string(money));
 			on_money_change();
+		}
+
+		void Player::add_score(const int& new_score) 
+		{
+			assert(new_score >= 0.f);
+			set_score(score + new_score);
+		}
+
+		int Player::get_score() {
+			return score;
+		}
+
+		void Player::set_score(const int& new_score) {
+			score += new_score;
+			UI::Hud::set_score_text(std::to_string(score));
 		}
 
 		void Player::create_tower(const TowerId tower_id, const Vector2u& map_pos)

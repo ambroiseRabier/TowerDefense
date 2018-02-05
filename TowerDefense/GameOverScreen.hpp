@@ -19,6 +19,7 @@ namespace TowerDefense
 			static std::unique_ptr<BaseButton> retry_btn;
 			static std::unique_ptr<BaseButton> menu_return_btn;
 			static std::unique_ptr<BaseText> title_text;
+			static std::unique_ptr<BaseText> score_text;
 			static void on_click_retry();
 			static void on_click_menu_return();
 		};

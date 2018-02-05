@@ -94,6 +94,7 @@ namespace TowerDefense
 				Constants::AssetsConfig::minion_death_delay
 			);
 			Managers::Player::add_money(params.money);
+			Managers::Player::add_score(minionIdEnumToScorePoints[id]);
 		}
 
 		void Minion::destroy_self()

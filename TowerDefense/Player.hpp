@@ -25,6 +25,7 @@ namespace TowerDefense
 			static void init();
 			static void set_initial_money(const float& value);
 			static void add_money(const float& value);
+			static void add_score(const int & new_score);
 			/**
 			 * \brief 
 			 * \param tower_id
@@ -48,11 +49,18 @@ namespace TowerDefense
 			static void create_phantom_tower(TowerId tower_id);
 			static void on_game_over();
 			static void on_game_win();
+
+			/**
+			* \brief When the Screens wants to display the score
+			*/
+			static int get_score();
+
 		private:
 			static std::unique_ptr<Phantom> phantom;
 			static void create_tower(const TowerId tower_id, const sf::Vector2u& map_pos);
 			static Castle* castle;
 			static std::vector<std::unique_ptr<Tower>> tower_vector;
+			static int score;
 			// Might be hard to make it become part of the map gameplay (minions stealing money)
 			static float money;
 			static void on_castle_death();
@@ -68,6 +76,10 @@ namespace TowerDefense
 			 * \brief Assure that initial money is set only one time per map.
 			 */
 			static bool can_set_initial_money_flag;
+			/**
+			* \brief Use this to implement the score
+			*/
+			static void set_score(const int& new_score);
 		};
 	}
 }

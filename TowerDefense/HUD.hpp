@@ -22,6 +22,7 @@ namespace TowerDefense
 			static void set_level_text(const std::string& text);
 			static void set_money_text(const std::string& text);
 			static void set_wave_text(const std::string& text);
+			static void set_score_text(const std::string& text);
 			static void on_start_placing_tower();
 			/**
 			 * \brief Re-activate retry and pause btn after new tower has been placed.
@@ -35,6 +36,7 @@ namespace TowerDefense
 			static std::unique_ptr<BaseText> wave_text;
 			static std::unique_ptr<BaseText> help_tower_text;
 			static std::unique_ptr<BaseText> count_down_text;
+			static std::unique_ptr<BaseText> score_text;
 			static std::unique_ptr<BaseButton> pause_btn;
 			static std::unique_ptr<BaseButton> retry_btn;
 
