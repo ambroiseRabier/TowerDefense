@@ -231,17 +231,11 @@
     <ClInclude Include="AssetsConfig.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
     </ClInclude>
-    <ClInclude Include="Destroyer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameOverScreen.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameWinScreen.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearedScreen.hpp">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UIAssets.hpp">
       <Filter>Header Files\TowerDefense\Constants</Filter>
@@ -266,6 +260,21 @@
     </ClInclude>
     <ClInclude Include="Scene.hpp">
       <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundsAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearedScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Destroyer.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Phantom.hpp">
+      <Filter>Header Files\TowerDefense\Game\Towers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -377,17 +386,11 @@
     <ClCompile Include="Circle.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Destroyer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameOverScreen.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
     </ClCompile>
     <ClCompile Include="GameWinScreen.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClearedScreen.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameEngine\DisplayManager.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
@@ -395,8 +398,20 @@
     <ClCompile Include="Source\GameEngine\CollisionManager.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Phantom.cpp">
+      <Filter>Source Files\TowerDefense\Game\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearedScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Destroyer.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

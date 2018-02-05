@@ -16,6 +16,7 @@ namespace TowerDefense
 		{ 
 			/**
 			 * \brief First value is default.
+			 * Update game_speed_pitch_choices in SoundsAssets accordingly.
 			 */
 			const float game_speed_choices[4] = {1.0f, 2.0f, 3.0f, 0.5f};
 

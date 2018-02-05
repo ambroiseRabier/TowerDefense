@@ -5,6 +5,8 @@
 #include "../../Config.hpp"
 #include "../../Timer.hpp"
 #include "../../UIAssets.hpp"
+#include "../../SoundManager.hpp"
+#include "../../SoundsAssets.hpp"
 
 using namespace TowerDefense::GameEngine;
 
@@ -81,6 +83,7 @@ namespace TowerDefense
 
 		void BaseButton::on_mouse_click_front(bool left)
 		{
+			SoundManager::play_one_shoot(Constants::SoundsAssets::btn_click);
 			on_click();
 		}
 

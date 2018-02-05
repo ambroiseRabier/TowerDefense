@@ -19,6 +19,7 @@
 #include "../GameOverScreen.hpp"
 #include "../GameWinScreen.hpp"
 #include "../GameClearedScreen.hpp"
+#include "../SoundManager.hpp"
 
 using namespace TowerDefense::Managers;
 using namespace TowerDefense::GameEngine;
@@ -76,6 +77,7 @@ int main()
 
 	// preloading
 	GlobalShared::load_all_textures();
+	GlobalShared::load_all_sounds();
 	// allocate on heap since this will stay longer then the stack of this function
 	// then copy pointer on GlobalShared
 	Font* font = DBG_NEW Font();
@@ -100,6 +102,7 @@ int main()
 	DisplayManager::init();
 	CollisionManager::init(Config::tested_collisions);
 	Destroyer::init();
+	SoundManager::init();
 	Player::init();
 	MapManager::init();
 	MapWaveManager::init();

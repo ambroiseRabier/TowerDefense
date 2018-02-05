@@ -321,4 +321,7 @@ ASALocalRun/
 # MSBuild Binary and Structured Log
 *.binlog
 
-
+# Duplicate of assets
+TowerDefense/Assets/
+TowerDefense/Assets/Music
+TowerDefense/Assets/SFX

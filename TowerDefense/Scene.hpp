@@ -7,6 +7,10 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+		// WIP CLASS: supposed to manage memory more clearly, 
+		// maybe manage update call
+		// and also replace Destroyer class.
+		// to have a centralised memory management for gameobjects.
 		//todo: test, will active a centralised memory for gameobjects and enable weak_ptr
 		class Scene
 		{

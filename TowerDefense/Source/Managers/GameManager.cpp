@@ -15,6 +15,8 @@
 #include "../../GameWinScreen.hpp"
 #include "../../GameClearedScreen.hpp"
 #include "../../Timer.hpp"
+#include "../../SoundManager.hpp"
+#include "../../SoundsAssets.hpp"
 
 using namespace TowerDefense::GameEngine;
 namespace TowerDefense 
@@ -80,6 +82,8 @@ namespace TowerDefense
 			if (state != GameState::Playing)
 			{
 				state = GameState::Playing;
+				// that mean the music won't restart when you press restart in outside pause.
+				SoundManager::start_music(Constants::SoundsAssets::game_loop);
 			}
 			level_index = i;
 			game_speed_index = 0;
@@ -115,12 +119,15 @@ namespace TowerDefense
 		{
 			UI::PauseScreen::open();
 			state = GameState::Pause;
+			// reducing music volume sounds better then pausing music I think.
+			SoundManager::set_current_music_volume(Constants::SoundsAssets::pause_music_volume);
 		}
 
 		void GameManager::un_pause()
 		{
 			UI::Hud::open();
 			state = GameState::Playing;
+			SoundManager::set_default_music_volume();
 		}
 
 		void GameManager::return_menu()
@@ -132,6 +139,7 @@ namespace TowerDefense
 			MapManager::destroy_current_level();
 			UI::MenuScreen::open();
 			state = GameState::Menu;
+			SoundManager::stop_music();
 		}
 
 		void GameManager::exit_game()
@@ -159,12 +167,22 @@ namespace TowerDefense
 			{
 				game_speed_index = 0;
 			}
+			const auto array_size_pitch = sizeof(Constants::GameDesign::game_speed_choices)/sizeof(*Constants::GameDesign::game_speed_choices);
+
+			Debug::assert_m(
+				array_size == array_size_pitch, 
+				"Constants::SoundsAssets::game_speed_pitch_choices and Constants::GameDesign::game_speed_choices need to have the same size !"
+			);
+			SoundManager::set_current_music_pitch(
+				Constants::SoundsAssets::game_speed_pitch_choices[game_speed_index]
+			);
 		}
 
 		void GameManager::game_over()
 		{
 			// might need to keep state to playing if we wnat minion to do something funny
 			state = GameState::Pause;
+			SoundManager::stop_music();
 			Player::on_game_over();
 			UI::Hud::close();
 			UI::GameOverScreen::open();
@@ -174,6 +192,7 @@ namespace TowerDefense
 		{
 			// might need to keep state to playing if we wnat minion to do something funny
 			state = GameState::Pause;
+			SoundManager::stop_music();
 			Player::on_game_win();
 			UI::Hud::close();
 			const bool was_last_level = level_index >= Constants::LevelDesign::map_array.size()-1;
