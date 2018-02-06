@@ -6,6 +6,7 @@
 #include "BaseText.hpp"
 #include "Config.hpp"
 #include "UIAssets.hpp"
+#include "Player.hpp"
 
 namespace TowerDefense
 {
@@ -21,7 +22,7 @@ namespace TowerDefense
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_over_screen_text);
-			score_text = std::make_unique<BaseText>(Constants::Config::score_test_text);
+			score_text = std::make_unique<BaseText>(Constants::Config::score_text);
 			Align::center(
 				retry_btn->get_transformable(),
 				sf::Vector2f(-retry_btn->get_sprite().getGlobalBounds().width/2.f,  0)
@@ -62,6 +63,7 @@ namespace TowerDefense
 			menu_return_btn->isActive = false;
 			title_text->isActive = false;
 			score_text->isActive = false;
+			Managers::Player::lose_score();
 		}
 
 		void GameOverScreen::destroy()

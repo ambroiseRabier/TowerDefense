@@ -140,6 +140,7 @@ namespace TowerDefense
 			UI::MenuScreen::open();
 			state = GameState::Menu;
 			SoundManager::stop_music();
+			Player::lose_score();
 		}
 
 		void GameManager::exit_game()

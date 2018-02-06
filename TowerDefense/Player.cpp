@@ -76,18 +76,23 @@ namespace TowerDefense
 			on_money_change();
 		}
 
-		void Player::add_score(const int& new_score) 
+		void Player::add_score(const unsigned int& add_value) 
 		{
-			assert(new_score >= 0.f);
-			set_score(score + new_score);
+			set_score(score + add_value);
 		}
 
-		int Player::get_score() {
+		void Player::lose_score()
+		{
+			set_score(0);
+		}
+
+		const int& Player::get_score() 
+		{
 			return score;
 		}
 
-		void Player::set_score(const int& new_score) {
-			score += new_score;
+		void Player::set_score(const unsigned int& new_score) {
+			score = new_score;
 			UI::Hud::set_score_text(std::to_string(score));
 		}
 
@@ -146,6 +151,8 @@ namespace TowerDefense
 				}
 				tower_vector.clear(); // clear is maybe enough to delete the unique_ptr ?
 			}
+			money = 0;
+			// keep score intact !
 			can_set_initial_money_flag = true;
 		}
 

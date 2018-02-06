@@ -33,13 +33,6 @@ namespace TowerDefense
 			{"Heal", Heal}, {"H", Heal},
 		};
 
-		//Score Map
-		static std::map<MinionId, int> minionIdEnumToScorePoints = {
-			{ Peon, 100 },
-			{ Tank, 500 },
-			{ Heal, 300 },
-		};
-
 		class Minion : public  GameEngine::BaseGameObject
 		{
 		public:

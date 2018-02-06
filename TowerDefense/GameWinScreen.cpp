@@ -23,7 +23,7 @@ namespace TowerDefense
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::win_screen_text);
-			score_text = std::make_unique<BaseText>(Constants::Config::score_test_text);
+			score_text = std::make_unique<BaseText>(Constants::Config::score_text);
 
 			Align::center(
 				next_level_btn->get_transformable(),

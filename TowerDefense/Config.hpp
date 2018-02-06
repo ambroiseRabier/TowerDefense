@@ -42,6 +42,7 @@ namespace TowerDefense
 			const std::string pause_text = "Pause";
 			const std::string game_cleared_text = "Game Cleared !";
 			const std::string help_tower_build_text = "Left->build   Right->cancel";
+			const std::string score_text = "Your score is";
 		}
 		
 		/**

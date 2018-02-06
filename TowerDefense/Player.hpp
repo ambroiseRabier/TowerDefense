@@ -25,7 +25,6 @@ namespace TowerDefense
 			static void init();
 			static void set_initial_money(const float& value);
 			static void add_money(const float& value);
-			static void add_score(const int & new_score);
 			/**
 			 * \brief 
 			 * \param tower_id
@@ -51,9 +50,19 @@ namespace TowerDefense
 			static void on_game_win();
 
 			/**
-			* \brief When the Screens wants to display the score
+			* \brief For Screens to display the score.
 			*/
-			static int get_score();
+			static const int& get_score();
+			static void add_score(const unsigned int& add_value);
+			/**
+			 * \brief Case when player lose his score, for KISS reason we do it this way.
+			 * Player lose score in two cases:
+			 * - Leave game_over state.
+			 * - return to menu.
+			 * A win do not reset the score, this is to promote playing the game from A to Z level.
+			 * (make sense with a level selection)
+			 */
+			static void lose_score();
 
 		private:
 			static std::unique_ptr<Phantom> phantom;
@@ -76,10 +85,7 @@ namespace TowerDefense
 			 * \brief Assure that initial money is set only one time per map.
 			 */
 			static bool can_set_initial_money_flag;
-			/**
-			* \brief Use this to implement the score
-			*/
-			static void set_score(const int& new_score);
+			static void set_score(const unsigned int& new_score);
 		};
 	}
 }
