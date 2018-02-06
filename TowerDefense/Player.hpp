@@ -57,8 +57,9 @@ namespace TowerDefense
 			/**
 			 * \brief Case when player lose his score, for KISS reason we do it this way.
 			 * Player lose score in two cases:
-			 * - Leave game_over state.
+			 * - Leave game_over state. (screen)
 			 * - return to menu.
+			 * - leave game_cleared state. (screen)
 			 * A win do not reset the score, this is to promote playing the game from A to Z level.
 			 * (make sense with a level selection)
 			 */

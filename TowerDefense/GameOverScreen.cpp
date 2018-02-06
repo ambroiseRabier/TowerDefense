@@ -51,6 +51,7 @@ namespace TowerDefense
 
 		void GameOverScreen::open()
 		{
+			set_score_text(Managers::Player::get_score());
 			retry_btn->isActive = true;
 			menu_return_btn->isActive = true;
 			title_text->isActive = true;
@@ -86,6 +87,11 @@ namespace TowerDefense
 		{
 			close();
 			Managers::GameManager::return_menu();
+		}
+		
+		void GameOverScreen::set_score_text(const unsigned int& value)
+		{
+			score_text->set_text(Constants::Config::score_text + " " + std::to_string(value));
 		}
 	}
 }

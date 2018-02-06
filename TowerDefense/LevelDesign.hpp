@@ -33,13 +33,11 @@ namespace TowerDefense
 						0.0f, // additionnal time before next wave
 						{
 							{1.f, Heal}, // time before next minon and current minion spawned.
-							{1.f, Heal},
-							{1.f, Heal},
 							{0, Peon},
 						},
 					},					
 					{
-						6.0f,
+						2.0f,
 						{
 							{1.f, Peon},
 							{1.f, Peon},
@@ -51,20 +49,7 @@ namespace TowerDefense
 						3.0f,
 						{
 							{1.f, Tank},
-							{1.f, Tank},
 							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Heal},
-							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Peon},
-							{1.f, Tank},
-							{1.f, Peon},
-							{0, Peon},
 						},
 					},
 				}

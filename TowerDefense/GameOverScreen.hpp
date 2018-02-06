@@ -22,6 +22,7 @@ namespace TowerDefense
 			static std::unique_ptr<BaseText> score_text;
 			static void on_click_retry();
 			static void on_click_menu_return();
+			static void set_score_text(const unsigned& value);
 		};
 	}
 }

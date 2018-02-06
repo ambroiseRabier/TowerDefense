@@ -188,7 +188,7 @@ namespace TowerDefense
 
 		void Hud::set_wave_text(const std::string& text)
 		{
-			wave_text->set_text(text);
+			wave_text->set_text(Constants::Config::wave_number_text + " " + text);
 		}
 
 		void Hud::set_score_text(const std::string& text)

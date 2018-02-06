@@ -45,9 +45,9 @@ namespace TowerDefense
 			 * \brief Score map.
 			 */
 			const std::unordered_map<MinionId,unsigned int> minion_to_score = {
-				{ Peon, 100 },
-				{ Tank, 500 },
-				{ Heal, 300 },
+				{ Peon, 10  },
+				{ Tank, 30 },
+				{ Heal, 50 },
 			};
 
 			const TowerParams cdj ={ // the fuck, compiler say no problem when I add this for towers bellow. Remove this and see...

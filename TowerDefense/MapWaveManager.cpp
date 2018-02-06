@@ -54,7 +54,7 @@ namespace TowerDefense
 		{
 			minion_time_out_id = 0;
 			minion_wave_index = 0;
-			UI::Hud::set_wave_text(Constants::Config::wave_number_text + " " + std::to_string(wave_index));
+			UI::Hud::set_wave_text(std::to_string(wave_index));
 			
 			if (!is_end_of_level())
 			{

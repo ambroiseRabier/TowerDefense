@@ -6,6 +6,7 @@
 #include "BaseText.hpp"
 #include "Config.hpp"
 #include "UIAssets.hpp"
+#include "Player.hpp"
 
 namespace TowerDefense
 {
@@ -59,6 +60,7 @@ namespace TowerDefense
 
 		void GameWinScreen::open()
 		{
+			set_score_text(Managers::Player::get_score());
 			next_level_btn->isActive = true;
 			retry_btn->isActive = true;
 			menu_return_btn->isActive = true;
@@ -103,6 +105,11 @@ namespace TowerDefense
 		{
 			close();
 			Managers::GameManager::return_menu();
+		}
+
+		void GameWinScreen::set_score_text(const unsigned int& value)
+		{
+			score_text->set_text(Constants::Config::score_text + " " + std::to_string(value));
 		}
 	}
 }
