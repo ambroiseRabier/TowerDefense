@@ -67,7 +67,36 @@ namespace TowerDefense
 			{
 				return tower_id_range_map.at(tower_id);
 			}
+			
+			// names too similar to graphics assets...
+			const std::string shoot_stone_tower = "Assets/SFX/Towers/shoot_stone_tower.wav";
+			const std::string shoot_freeze_tower = "Assets/SFX/Towers/shoot_freeze_tower.wav";
+			const std::string shoot_explosiv_tower = "Assets/SFX/Towers/shoot_explosiv_tower.wav";
+			const std::string build_stone_tower = "Assets/SFX/Towers/build_stone_tower.wav";
+			const std::string build_freeze_tower = "Assets/SFX/Towers/build_freeze_tower.wav";
+			const std::string build_explosiv_tower = "Assets/SFX/Towers/build_explosiv_tower.wav";
+			
+			const std::unordered_map<Game::TowerId, std::string> build_sounds_map {
+				{Game::TowerId::StoneTower, build_stone_tower},
+				{Game::TowerId::FreezeTower, build_freeze_tower},
+				{Game::TowerId::ExplosivTower, build_explosiv_tower},
+			};
 
+			const std::unordered_map<Game::TowerId, std::string> shoot_sounds_map {
+				{Game::TowerId::StoneTower, shoot_stone_tower},
+				{Game::TowerId::FreezeTower, shoot_freeze_tower},
+				{Game::TowerId::ExplosivTower, shoot_explosiv_tower},
+			};
+
+			inline std::string get_tower_build_sound(Game::TowerId tower_id)
+			{
+				return build_sounds_map.at(tower_id);
+			}
+
+			inline std::string get_tower_shoot_sound(Game::TowerId tower_id)
+			{
+				return shoot_sounds_map.at(tower_id);
+			}
 
 		}
 	}

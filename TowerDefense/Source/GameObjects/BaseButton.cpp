@@ -83,7 +83,7 @@ namespace TowerDefense
 
 		void BaseButton::on_mouse_click_front(bool left)
 		{
-			SoundManager::play_one_shoot(Constants::SoundsAssets::btn_click);
+			SoundManager::play_one_shoot(Constants::SoundsAssets::btn_click_ui);
 			on_click();
 		}
 

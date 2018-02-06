@@ -13,6 +13,7 @@
 #include "UIAssets.hpp"
 #include "TowerAssets.hpp"
 #include "ProjectileAssets.hpp"
+#include "SoundManager.hpp"
 
 using namespace TowerDefense::GameEngine;
 using namespace sf;
@@ -70,6 +71,7 @@ namespace TowerDefense
 		{
 			BaseGameObject::init();
 			update_position();
+			SoundManager::play_one_shoot(Constants::TowerAssets::get_tower_build_sound(id));
 		}
 
 		void Tower::update()
@@ -132,6 +134,7 @@ namespace TowerDefense
 				target->get_transformable().getPosition() + Constants::AssetsConfig::tile_size_half_vec
 			);
 			proj->auto_start();
+			SoundManager::play_one_shoot(Constants::TowerAssets::get_tower_shoot_sound(id));
 			// DONT WORRY: no memory leak, Timer class take care of it.
 			// might not be adapted to pooling however
 		}
@@ -174,6 +177,7 @@ namespace TowerDefense
 				);
 				// hard coded here !:o
 				upgrade_btn->get_sprite().setTexture(*GlobalShared::get_texture(Constants::UIAssets::tower_2_upgrade_btn));
+				SoundManager::play_one_shoot(Constants::TowerAssets::get_tower_build_sound(id));
 			}
 			//else
 			//{
