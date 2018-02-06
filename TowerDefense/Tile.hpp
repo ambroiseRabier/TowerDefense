@@ -42,7 +42,7 @@ namespace TowerDefense
 			/**
 			 * \brief Decoration grass;
 			 */
-			Grass_Deco,
+			Moutain_Deco,
 		};
 
 		/**
@@ -58,7 +58,7 @@ namespace TowerDefense
 			{"_", Road_Walk},
 			{"o", Grass_Build},
 			{"#", Wall_Deco},
-			{"i", Grass_Deco},
+			{"i", Moutain_Deco},
 		};
 
 

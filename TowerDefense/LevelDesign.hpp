@@ -20,11 +20,13 @@ namespace TowerDefense
 				50.f,
 				// tiles
 				{
-					{{Grass_Build}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Grass_Build}, {Grass_Build},},
-					{{Grass_Build}, {Road_Walk}, {Grass_Build}, {Road_Walk}, {Grass_Build}, {Grass_Build},},
-					{{Spawn_Other}, {Grass_Build}, {Grass_Build}, {Road_Walk}, {Road_Walk}, {Castle_Other},},
-					{{Road_Walk}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Grass_Build}, {Grass_Build},},
-					{{Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Grass_Build},},
+					{{Moutain_Deco}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Moutain_Deco},},
+					{{Moutain_Deco}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Grass_Build},},
+					{{Moutain_Deco}, {Road_Walk}, {Grass_Build}, {Grass_Build}, {Road_Walk}, {Grass_Build},},
+					{{Spawn_Other}, {Road_Walk}, {Grass_Build}, {Grass_Build}, {Road_Walk}, {Road_Walk}, {Castle_Other},},
+					{{Moutain_Deco}, {Road_Walk}, {Grass_Build}, {Grass_Build}, {Road_Walk}, {Grass_Build},},
+					{{Moutain_Deco}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Road_Walk}, {Grass_Build},},
+					{{Moutain_Deco}, {Grass_Build}, {Grass_Build}, {Grass_Build}, {Moutain_Deco},},
 				},
 				// waveParams vector
 				{

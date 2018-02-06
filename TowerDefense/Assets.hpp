@@ -57,6 +57,7 @@ namespace TowerDefense
 				TileAssets::spawn_others,
 				TileAssets::road_walk,
 				TileAssets::grass_build,
+				TileAssets::moutain_deco,
 				TileAssets::castle_death,
 			};
 		}
