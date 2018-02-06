@@ -14,6 +14,7 @@
 #include "Destroyer.hpp"
 #include "Player.hpp"
 #include "MinionAssets.hpp"
+#include "SoundManager.hpp"
 
 using namespace TowerDefense::Utils;
 namespace TowerDefense
@@ -95,6 +96,7 @@ namespace TowerDefense
 			);
 			Managers::Player::add_money(params.money);
 			Managers::Player::add_score(Constants::GameDesign::minion_to_score.at(id));
+			SoundManager::play_one_shoot(Constants::MinionAssets::get_death_death_sound(id));
 		}
 
 		void Minion::destroy_self()

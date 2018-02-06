@@ -68,7 +68,7 @@ namespace TowerDefense
 				return tower_id_range_map.at(tower_id);
 			}
 			
-			// names too similar to graphics assets...
+			// todo: names too similar to graphics assets...
 			const std::string shoot_stone_tower = "Assets/SFX/Towers/shoot_stone_tower.wav";
 			const std::string shoot_freeze_tower = "Assets/SFX/Towers/shoot_freeze_tower.wav";
 			const std::string shoot_explosiv_tower = "Assets/SFX/Towers/shoot_explosiv_tower.wav";
