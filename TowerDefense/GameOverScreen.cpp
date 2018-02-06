@@ -7,6 +7,8 @@
 #include "Config.hpp"
 #include "UIAssets.hpp"
 #include "Player.hpp"
+#include "SoundsAssets.hpp"
+#include "SoundManager.hpp"
 
 namespace TowerDefense
 {
@@ -51,6 +53,7 @@ namespace TowerDefense
 
 		void GameOverScreen::open()
 		{
+			SoundManager::play_one_shoot(Constants::SoundsAssets::on_game_over);
 			set_score_text(Managers::Player::get_score());
 			retry_btn->isActive = true;
 			menu_return_btn->isActive = true;

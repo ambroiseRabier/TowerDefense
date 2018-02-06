@@ -30,6 +30,7 @@ namespace TowerDefense
 			/**
 			 * \brief When health is at 0 or beyond, send an event.
 			 */
+			Sharp::Event<void> on_damage;
 			Sharp::Event<void> on_death;
 		protected:
 			void setGraphismScale();

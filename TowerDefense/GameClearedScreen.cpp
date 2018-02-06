@@ -6,6 +6,8 @@
 #include "Managers/GameManager.hpp"
 #include "UIAssets.hpp"
 #include "Player.hpp"
+#include "SoundManager.hpp"
+#include "SoundsAssets.hpp"
 
 namespace TowerDefense
 {
@@ -42,6 +44,7 @@ namespace TowerDefense
 
 		void GameClearedScreen::open()
 		{
+			SoundManager::play_one_shoot(Constants::SoundsAssets::on_game_cleared);
 			set_score_text(Managers::Player::get_score());
 			menu_return_btn->isActive = true;
 			title_text->isActive = true;

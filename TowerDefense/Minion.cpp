@@ -51,11 +51,14 @@ namespace TowerDefense
 			z_index = Constants::ZIndex::minions;
 			health = std::make_unique<Health>(params.health);
 			health->update_health_pos(*transformable, *sprite);
+			health->on_damage += Sharp::EventHandler::Bind(&Minion::play_hit_sound, this);
 			health->auto_start();
 		}
 
 		Minion::~Minion()
 		{
+			assert(health);
+			health->on_damage -= Sharp::EventHandler::Bind(&Minion::play_hit_sound, this);
 			health.reset(nullptr);
 			// cancel timer if map is destroyed while the timer is active. 
 			// (happen when minion is dead and map is destroyed)
@@ -77,6 +80,12 @@ namespace TowerDefense
 			// we won't need to remove listener to ondeath since health is destroyed first.
 			health->on_death += Sharp::EventHandler::Bind(&Minion::on_death, this);
 			death_time_out_id = 0;
+		}
+
+		void Minion::play_hit_sound()
+		{
+			if (id != MinionId::Heal) // no hit sound of woman found :/
+				SoundManager::play_one_shoot(Constants::MinionAssets::get_minion_hit_sound(id));
 		}
 
 		void Minion::on_death()

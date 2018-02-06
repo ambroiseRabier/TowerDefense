@@ -19,6 +19,7 @@ namespace TowerDefense
 			void update_position() override;
 		private:
 			std::unique_ptr<Health> health;
+			void play_hit_sound();
 			void on_death();
 		};
 	}

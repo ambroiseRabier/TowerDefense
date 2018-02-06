@@ -16,7 +16,7 @@ namespace TowerDefense
 			const std::string stone_tower_broken = "Assets/Tower/stone_tower_broken.png";
 			const std::string freeze_tower = "Assets/Tower/freeze_tower.png";
 			const std::string freeze_tower_broken = "Assets/Tower/freeze_tower_broken.png";
-			const std::string explosiv_tower = "Assets/Tower/freeze_tower.png";
+			const std::string explosiv_tower = "Assets/Tower/explosiv_tower.png";
 			const std::string explosiv_tower_broken = "Assets/Tower/explosiv_tower_broken.png";
 			const std::string stone_tower_build = "Assets/Tower/stone_tower_build.png";
 			const std::string freeze_tower_build = "Assets/Tower/freeze_tower_build.png";

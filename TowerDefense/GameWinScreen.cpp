@@ -7,6 +7,8 @@
 #include "Config.hpp"
 #include "UIAssets.hpp"
 #include "Player.hpp"
+#include "SoundManager.hpp"
+#include "SoundsAssets.hpp"
 
 namespace TowerDefense
 {
@@ -60,6 +62,7 @@ namespace TowerDefense
 
 		void GameWinScreen::open()
 		{
+			SoundManager::play_one_shoot(Constants::SoundsAssets::on_game_win);
 			set_score_text(Managers::Player::get_score());
 			next_level_btn->isActive = true;
 			retry_btn->isActive = true;

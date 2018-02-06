@@ -57,6 +57,7 @@ namespace TowerDefense
 			std::unique_ptr<Health> health;
 			unsigned int death_time_out_id;
 			float freeze_factor = 0.f;
+			void play_hit_sound();
 			void on_death();
 			void destroy_self();
 

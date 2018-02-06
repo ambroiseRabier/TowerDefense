@@ -59,14 +59,14 @@ namespace TowerDefense
 		void SoundManager::stop_music()
 		{
 			// not doing assert here because when losing then going back to menu
-			// music is alreayd stopped.
-			if(current_music_asset_path != ""
-				&& !(GlobalShared::get_music(current_music_asset_path)->getStatus() 
-				== GlobalShared::get_music(current_music_asset_path)->Playing ||
-				GlobalShared::get_music(current_music_asset_path)->getStatus() 
-				== GlobalShared::get_music(current_music_asset_path)->Paused))
+			// music is alreayd stopped. (that is not the case when pause then go back menu)
+			const bool music_not_null = current_music_asset_path != "";
+
+			if(music_not_null && GlobalShared::get_music(current_music_asset_path)->getStatus() != sf::SoundSource::Stopped)
 			{
-				GlobalShared::get_sound(current_music_asset_path)->stop();
+			GlobalShared::get_music(current_music_asset_path)->setPlayingOffset(sf::Time::Zero);
+
+				GlobalShared::get_music(current_music_asset_path)->stop();
 				current_music_asset_path = "";
 			}
 		}

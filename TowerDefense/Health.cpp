@@ -35,6 +35,7 @@ namespace TowerDefense
 			Debug::assert_m(value > 0, "Health: damage value should be positiv and not egal to 0.");
 			actualHealth = std::max(0.f, actualHealth - value);
 			setGraphismScale();
+			on_damage();
 			if (actualHealth == 0.f)  // NOLINT
 			{
 				on_death();

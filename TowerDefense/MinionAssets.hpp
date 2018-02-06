@@ -31,18 +31,22 @@ namespace TowerDefense
 			}
 			
 			const std::string minion_peon_hit = "Assets/SFX/Minions/minion_peon_hit.wav";
+			//const std::string minion_heal_hit = "Assets/SFX/Minions/minion_heal_hit.wav";
+			const std::string minion_tank_hit = "Assets/SFX/Minions/minion_tank_hit.wav";
+			const std::string minion_peon_death = "Assets/SFX/Minions/minion_peon_death.wav";
 			const std::string minion_heal_death = "Assets/SFX/Minions/minion_heal_death.wav";
+			const std::string minion_tank_death = "Assets/SFX/Minions/minion_tank_death.wav";
 
 			const std::unordered_map<Game::MinionId, std::string> minion_hit_sound_map {
 				{Game::MinionId::Peon, minion_peon_hit},
-				{Game::MinionId::Heal, minion_peon_hit},
-				{Game::MinionId::Tank, minion_peon_hit},
+				//{Game::MinionId::Heal, minion_heal_hit},
+				{Game::MinionId::Tank, minion_tank_hit},
 			};
 
 			const std::unordered_map<Game::MinionId, std::string> minion_death_sound_map {
-				{Game::MinionId::Peon, minion_heal_death},
+				{Game::MinionId::Peon, minion_peon_death},
 				{Game::MinionId::Heal, minion_heal_death},
-				{Game::MinionId::Tank, minion_heal_death},
+				{Game::MinionId::Tank, minion_tank_death},
 			};
 			
 			inline std::string get_minion_hit_sound(Game::MinionId minion_id)

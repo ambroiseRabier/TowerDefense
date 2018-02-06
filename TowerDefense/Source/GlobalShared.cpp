@@ -48,13 +48,18 @@ namespace TowerDefense
 				{
 					std::unique_ptr<sf::Music> music = std::make_unique<sf::Music>();
 					music->openFromFile(pair.first);
+					music->setVolume(pair.second.volume);
 					stringToMusic[pair.first] = std::move(music);
 				}
 				else
 				{
 					std::unique_ptr<sf::SoundBuffer> sound_buffer = std::make_unique<sf::SoundBuffer>();
 					std::unique_ptr<sf::Sound > sound = std::make_unique<sf::Sound>();
-					sound_buffer->loadFromFile(pair.first);
+					const bool file_found = sound_buffer->loadFromFile(pair.first);
+					if (!file_found) {
+						Debug::warn("File not found: " + pair.first);
+						continue;
+					}
 					// set sound after loading sound_buffer.
 					sound->setBuffer(*sound_buffer);
 					sound->setVolume(pair.second.volume); // we could add more initial params if needed.
@@ -106,7 +111,7 @@ namespace TowerDefense
 			if (!stringToMusic[asset_path])
 			{
 				GameEngine::Debug::warn(
-					"GlobalShared: Sounds has no been loaded for asset : " + asset_path
+					"GlobalShared: Music has no been loaded for asset : " + asset_path
 				);
 				return nullptr;
 			}

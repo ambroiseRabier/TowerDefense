@@ -4,6 +4,8 @@
 #include "GameDesign.hpp"
 #include "AssetsConfig.hpp"
 #include "TileAssets.hpp"
+#include "SoundManager.hpp"
+#include "SoundsAssets.hpp"
 
 namespace TowerDefense
 {
@@ -27,6 +29,8 @@ namespace TowerDefense
 
 		Castle::~Castle()
 		{
+			health->on_damage -= Sharp::EventHandler::Bind(&Castle::play_hit_sound, this);
+			health->on_death -= Sharp::EventHandler::Bind(&Castle::on_death, this);
 			health.reset(nullptr);
 		}
 
@@ -34,6 +38,7 @@ namespace TowerDefense
 		{
 			Tile::init();
 			// we won't need to remove listener to ondeath since health is destroyed first.
+			health->on_damage += Sharp::EventHandler::Bind(&Castle::play_hit_sound, this);
 			health->on_death += Sharp::EventHandler::Bind(&Castle::on_death, this);
 		}
 
@@ -48,6 +53,11 @@ namespace TowerDefense
 			health->update_health_pos(*transformable, *sprite);
 		}
 
+		void Castle::play_hit_sound()
+		{
+			SoundManager::play_one_shoot(Constants::SoundsAssets::castle_hit);
+		}
+
 		// ReSharper disable once CppMemberFunctionMayBeConst
 		void Castle::on_death()
 		{
@@ -55,6 +65,7 @@ namespace TowerDefense
 			// but might be more funny if disabled
 			collider->gameobject_enabled = false;
 			sprite->setTexture(*GlobalShared::get_texture(Constants::TileAssets::castle_death));
+			SoundManager::play_one_shoot(Constants::SoundsAssets::castle_death);
 		}
 	}
 }

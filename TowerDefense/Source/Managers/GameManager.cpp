@@ -102,6 +102,7 @@ namespace TowerDefense
 		{
 			start_wave_time_out_id = 0;
 			MapWaveManager::start();
+			SoundManager::play_one_shoot(Constants::SoundsAssets::start_spawn_minion);
 		}
 
 		void GameManager::restart_level()
@@ -119,7 +120,8 @@ namespace TowerDefense
 		{
 			UI::PauseScreen::open();
 			state = GameState::Pause;
-			// reducing music volume sounds better then pausing music I think.
+			// reducing music volume sounds better then pausing music I think. 
+			// Bug: if sound volume is inferior to pause_music volume
 			SoundManager::set_current_music_volume(Constants::SoundsAssets::pause_music_volume);
 		}
 
@@ -182,10 +184,10 @@ namespace TowerDefense
 		void GameManager::game_over()
 		{
 			// might need to keep state to playing if we wnat minion to do something funny
-			state = GameState::Pause;
-			SoundManager::stop_music();
 			Player::on_game_over();
 			UI::Hud::close();
+			state = GameState::Pause;
+			SoundManager::stop_music();
 			UI::GameOverScreen::open();
 		}
 
