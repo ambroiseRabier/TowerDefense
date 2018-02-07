@@ -20,7 +20,7 @@ namespace TowerDefense
 			const std::string missing_texture_tile = "Assets/Tile/missing_texture.png";
 			const std::string hpBar_jauge = "Assets/healthbar_jauge.png";
 			const std::string level_background = "Assets/level_background.png";
-			const std::string menu_background = "Assets/menu_background.png";
+			const std::string menu_background = "Assets/menu_background_smaller.png";
 
 
 			const std::vector<std::string> all_assets_textures {
