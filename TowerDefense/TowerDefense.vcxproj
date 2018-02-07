@@ -28,8 +28,6 @@
     <ClInclude Include="Circle.hpp" />
     <ClInclude Include="Config.hpp" />
     <ClInclude Include="Destroyer.hpp" />
-    <ClInclude Include="ExplosivTower.hpp" />
-    <ClInclude Include="FreezeTower.hpp" />
     <ClInclude Include="GameClearedScreen.hpp" />
     <ClInclude Include="GameDesign.hpp" />
     <ClInclude Include="GameOverScreen.hpp" />
@@ -72,7 +70,6 @@
     <ClInclude Include="Source\Utils\FPS.hpp" />
     <ClInclude Include="Source\GameEngine\GameObject.hpp" />
     <ClInclude Include="Source\Managers\InputManager.hpp" />
-    <ClInclude Include="Source\GameObjects\MenuBackground.hpp" />
     <ClInclude Include="Source\GameEngine\CollisionManager.hpp" />
     <ClInclude Include="Source\GameEngine\DisplayManager.hpp" />
     <ClInclude Include="Spawn.hpp" />
@@ -91,8 +88,6 @@
     <ClCompile Include="Castle.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Destroyer.cpp" />
-    <ClCompile Include="ExplosivTower.cpp" />
-    <ClCompile Include="FreezeTower.cpp" />
     <ClCompile Include="GameClearedScreen.cpp" />
     <ClCompile Include="GameOverScreen.cpp" />
     <ClCompile Include="GameWinScreen.cpp" />
@@ -123,7 +118,6 @@
     <ClCompile Include="Source\GameEngine\Debug.cpp" />
     <ClCompile Include="Source\GameEngine\GameObject.cpp" />
     <ClCompile Include="Source\Managers\InputManager.cpp" />
-    <ClCompile Include="Source\GameObjects\MenuBackground.cpp" />
     <ClCompile Include="Source\GameEngine\CollisionManager.cpp" />
     <ClCompile Include="Source\GameEngine\DisplayManager.cpp" />
     <ClCompile Include="Spawn.cpp" />

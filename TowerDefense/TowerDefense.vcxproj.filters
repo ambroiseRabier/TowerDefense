@@ -120,14 +120,8 @@
     <ClInclude Include="Source\Utils\Event.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="ExplosivTower.hpp">
-      <Filter>Header Files\TowerDefense\Game\Towers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Utils\FPS.hpp">
       <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="FreezeTower.hpp">
-      <Filter>Header Files\TowerDefense\Game\Towers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Managers\GameManager.hpp">
       <Filter>Header Files\TowerDefense\Managers</Filter>
@@ -152,9 +146,6 @@
     </ClInclude>
     <ClInclude Include="MapWaveManager.hpp">
       <Filter>Header Files\TowerDefense\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GameObjects\MenuBackground.hpp">
-      <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
     <ClInclude Include="MenuScreen.hpp">
       <Filter>Header Files\TowerDefense\UI</Filter>
@@ -311,12 +302,6 @@
     <ClCompile Include="Source\GameEngine\Debug.cpp">
       <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="ExplosivTower.cpp">
-      <Filter>Source Files\TowerDefense\Game\Towers</Filter>
-    </ClCompile>
-    <ClCompile Include="FreezeTower.cpp">
-      <Filter>Source Files\TowerDefense\Game\Towers</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Managers\GameManager.cpp">
       <Filter>Source Files\TowerDefense\Managers</Filter>
     </ClCompile>
@@ -340,9 +325,6 @@
     </ClCompile>
     <ClCompile Include="MapWaveManager.cpp">
       <Filter>Source Files\TowerDefense\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GameObjects\MenuBackground.cpp">
-      <Filter>Source Files\TowerDefense\UI</Filter>
     </ClCompile>
     <ClCompile Include="MenuScreen.cpp">
       <Filter>Source Files\TowerDefense\UI</Filter>
