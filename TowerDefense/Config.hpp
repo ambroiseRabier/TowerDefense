@@ -13,8 +13,8 @@ namespace TowerDefense
 		 */
 		namespace Config
 		{
-			const std::string game_name = "TowerDefense"; // if you change this, you probably need to change namespaces ;)
-			const unsigned int fps_limit = 30;
+			const std::string game_name = "Patchwork"; // if you change this, you probably need to change namespaces ;)
+			const unsigned int fps_limit = 144;
 			/**
 			 * \brief 
 			 * Assigned at start to CollisionManager::testedCollisions.
@@ -43,6 +43,7 @@ namespace TowerDefense
 			const std::string game_cleared_text = "Game Cleared !";
 			const std::string help_tower_build_text = "Left->build   Right->cancel";
 			const std::string score_text = "Your score is";
+			const std::string credits = "Ambroise Rabier\nEmeline Berenguier\nAlexis Alzoubaidy";
 		}
 		
 		/**

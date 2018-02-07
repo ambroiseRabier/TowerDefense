@@ -25,6 +25,7 @@ namespace TowerDefense
 			static std::unique_ptr<BaseButton> play_btn;
 			static std::unique_ptr<BaseButton> quit_btn;
 			static std::unique_ptr<BaseText> title_text;
+			static std::unique_ptr<BaseText> credits_text;
 			static void on_click_play();
 			static void on_click_quit();
 		};

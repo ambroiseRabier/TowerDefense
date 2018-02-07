@@ -14,12 +14,14 @@ namespace TowerDefense
 		std::unique_ptr<BaseButton> MenuScreen::play_btn;
 		std::unique_ptr<BaseButton> MenuScreen::quit_btn;
 		std::unique_ptr<BaseText> MenuScreen::title_text;
+		std::unique_ptr<BaseText> MenuScreen::credits_text;
 
 		void MenuScreen::init()
 		{
 			play_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::play_btn));
 			quit_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_name);
+			credits_text = std::make_unique<BaseText>(Constants::Config::credits);
 			Align::center(
 				play_btn->get_transformable(), 
 				sf::Vector2f(-play_btn->get_sprite().getGlobalBounds().width/2.f, 0)
@@ -32,12 +34,20 @@ namespace TowerDefense
 				title_text->get_transformable(),
 				sf::Vector2f(- title_text->get_text().getGlobalBounds().width/2.f, -170)
 			);
+			Align::bottom_right(
+				credits_text->get_transformable(),
+				sf::Vector2f(
+					credits_text->get_text().getGlobalBounds().width + 30,
+					credits_text->get_text().getGlobalBounds().height + 30
+				)
+			);
 			close();
 			play_btn->on_click += Sharp::EventHandler::Bind(&MenuScreen::on_click_play);
 			quit_btn->on_click += Sharp::EventHandler::Bind(&MenuScreen::on_click_quit);
 			play_btn->auto_start();
 			quit_btn->auto_start();
 			title_text->auto_start();
+			credits_text->auto_start();
 			GlobalShared::on_window_close += Sharp::EventHandler::Bind(&MenuScreen::destroy);
 		}
 
@@ -46,6 +56,7 @@ namespace TowerDefense
 			play_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_play);
 			play_btn.reset(nullptr);
 			title_text.reset(nullptr);
+			credits_text.reset(nullptr);
 			//You cannot do that here, because otherwise it is destroyed when the delagate iterate it's function
 			// the simplest solution is to destroy the quit_btn after everything.
 			//quit_btn.reset(nullptr); 
@@ -68,6 +79,7 @@ namespace TowerDefense
 			play_btn->isActive = true;
 			quit_btn->isActive = true;
 			title_text->isActive = true;
+			credits_text->isActive = true;
 		}
 
 		void MenuScreen::close()
@@ -75,6 +87,7 @@ namespace TowerDefense
 			play_btn->isActive = false;
 			quit_btn->isActive = false;
 			title_text->isActive = false;
+			credits_text->isActive = false;
 		}
 
 		void MenuScreen::destroy_quit_btn()
