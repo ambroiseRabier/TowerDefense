@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,25 +19,112 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Source\Managers\GameManager.hpp" />
-    <ClInclude Include="..\Source\Managers\UIManager.hpp" />
-    <ClInclude Include="..\Source\stdafx.h" />
-    <ClInclude Include="..\Source\targetver.h" />
-    <ClInclude Include="..\Source\Utils\Singleton.hpp" />
-    <ClInclude Include="BaseButton.hpp" />
-    <ClInclude Include="BaseMonoBehaviour.hpp" />
-    <ClInclude Include="MonoBehaviour.h" />
+    <ClInclude Include="Align.hpp" />
+    <ClInclude Include="AssetsConfig.hpp" />
+    <ClInclude Include="Assets.hpp" />
+    <ClInclude Include="BaseText.hpp" />
+    <ClInclude Include="Castle.hpp" />
+    <ClInclude Include="CastUtils.hpp" />
+    <ClInclude Include="Circle.hpp" />
+    <ClInclude Include="Config.hpp" />
+    <ClInclude Include="Destroyer.hpp" />
+    <ClInclude Include="GameClearedScreen.hpp" />
+    <ClInclude Include="GameDesign.hpp" />
+    <ClInclude Include="GameOverScreen.hpp" />
+    <ClInclude Include="GameWinScreen.hpp" />
+    <ClInclude Include="GlobalShared.hpp" />
+    <ClInclude Include="HealMinion.hpp" />
+    <ClInclude Include="Health.hpp" />
+    <ClInclude Include="HUD.hpp" />
+    <ClInclude Include="LevelDesign.hpp" />
+    <ClInclude Include="MapManager.hpp" />
+    <ClInclude Include="MapParams.hpp" />
+    <ClInclude Include="MapWaveManager.hpp" />
+    <ClInclude Include="Mathf.hpp" />
+    <ClInclude Include="MenuScreen.hpp" />
+    <ClInclude Include="Minion.hpp" />
+    <ClInclude Include="MinionAssets.hpp" />
+    <ClInclude Include="MinionParams.hpp" />
+    <ClInclude Include="PauseScreen.hpp" />
+    <ClInclude Include="Phantom.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Projectile.hpp" />
+    <ClInclude Include="ProjectileAssets.hpp" />
+    <ClInclude Include="ProjectileParams.hpp" />
     <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="Screen.hpp" />
+    <ClInclude Include="SetTimeout.hpp" />
+    <ClInclude Include="SoundManager.hpp" />
+    <ClInclude Include="SoundsAssets.hpp" />
+    <ClInclude Include="Source\Managers\GameManager.hpp" />
+    <ClInclude Include="Source\stdafx.h" />
+    <ClInclude Include="Source\targetver.h" />
+    <ClInclude Include="Source\Utils\Singleton.hpp" />
+    <ClInclude Include="Source\GameObjects\BaseButton.hpp" />
+    <ClInclude Include="Source\GameEngine\BaseGameObject.hpp" />
+    <ClInclude Include="Source\GameEngine\Collider.hpp" />
+    <ClInclude Include="Source\Utils\Collision.h" />
+    <ClInclude Include="Source\GameEngine\CollisionTest.hpp" />
+    <ClInclude Include="Source\GameEngine\Debug.hpp" />
+    <ClInclude Include="Source\Utils\Event.h" />
+    <ClInclude Include="Source\Utils\FPS.hpp" />
+    <ClInclude Include="Source\GameEngine\GameObject.hpp" />
+    <ClInclude Include="Source\Managers\InputManager.hpp" />
+    <ClInclude Include="Source\GameEngine\CollisionManager.hpp" />
+    <ClInclude Include="Source\GameEngine\DisplayManager.hpp" />
+    <ClInclude Include="Spawn.hpp" />
+    <ClInclude Include="Tile.hpp" />
+    <ClInclude Include="TileAssets.hpp" />
+    <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Tower.hpp" />
+    <ClInclude Include="TowerAssets.hpp" />
+    <ClInclude Include="TowerParams.hpp" />
+    <ClInclude Include="UIAssets.hpp" />
+    <ClInclude Include="UpgradeBtn.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\main.cpp" />
-    <ClCompile Include="..\Source\Managers\GameManager.cpp" />
-    <ClCompile Include="..\Source\Managers\UIManager.cpp" />
-    <ClCompile Include="..\Source\stdafx.cpp" />
-    <ClCompile Include="BaseButton.cpp" />
-    <ClCompile Include="BaseMonoBehaviour.cpp" />
-    <ClCompile Include="MonoBehaviour.cpp" />
+    <ClCompile Include="Align.cpp" />
+    <ClCompile Include="BaseText.cpp" />
+    <ClCompile Include="Castle.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Destroyer.cpp" />
+    <ClCompile Include="GameClearedScreen.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
+    <ClCompile Include="GameWinScreen.cpp" />
+    <ClCompile Include="HealMinion.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="MapWaveManager.cpp" />
+    <ClCompile Include="Mathf.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="PauseScreen.cpp" />
+    <ClCompile Include="Phantom.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Managers\GameManager.cpp" />
+    <ClCompile Include="Source\stdafx.cpp" />
+    <ClCompile Include="Source\GameObjects\BaseButton.cpp" />
+    <ClCompile Include="Source\GameEngine\BaseGameObject.cpp" />
+    <ClCompile Include="Source\GameEngine\Collider.cpp" />
+    <ClCompile Include="Source\Utils\Collision.cpp" />
+    <ClCompile Include="Source\GameEngine\CollisionTest.cpp" />
+    <ClCompile Include="Source\GlobalShared.cpp" />
+    <ClCompile Include="Source\GameEngine\Debug.cpp" />
+    <ClCompile Include="Source\GameEngine\GameObject.cpp" />
+    <ClCompile Include="Source\Managers\InputManager.cpp" />
+    <ClCompile Include="Source\GameEngine\CollisionManager.cpp" />
+    <ClCompile Include="Source\GameEngine\DisplayManager.cpp" />
+    <ClCompile Include="Spawn.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="UpgradeBtn.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -105,7 +192,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include; $(SolutionDir)Source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include; $(SolutionDir)TowerDefense/Source</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <ForcedIncludeFiles>$(SolutionDir)TowerDefense/Source/stdafx.h</ForcedIncludeFiles>
+      <PrecompiledHeaderFile>$(SolutionDir)TowerDefense/Source/stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Libs\SFML\lib</AdditionalLibraryDirectories>
@@ -134,7 +224,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include; $(SolutionDir)TowerDefense/Source</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

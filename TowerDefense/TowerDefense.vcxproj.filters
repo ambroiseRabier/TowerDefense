@@ -13,60 +13,387 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{a67a2b08-e8bc-4317-8323-7a661db0f2b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{3f199203-139e-4bc1-8703-33b5adfc8e3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense">
+      <UniqueIdentifier>{45e1460f-39bc-4433-9e0a-f06f992bdba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense">
+      <UniqueIdentifier>{45199e30-6e95-4b79-b401-a8619041ae75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Utils">
+      <UniqueIdentifier>{0a7dd4c8-ed61-4098-ad0a-2988afc1f393}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Game">
+      <UniqueIdentifier>{b2c93be1-194e-4678-a475-fa731cb660cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Game\Tiles">
+      <UniqueIdentifier>{b0322eaa-178e-4026-866f-2d2a2b5e929b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Game\Towers">
+      <UniqueIdentifier>{db6a8b37-3c4d-4065-9448-3dd9a17e1918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Game\Minions">
+      <UniqueIdentifier>{6d28442e-d013-4b62-9671-9a5db86c6bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\GameEngine">
+      <UniqueIdentifier>{6656bafa-92e3-4965-b29a-451f92f92e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Managers">
+      <UniqueIdentifier>{ef9bf7d3-4a32-41ff-a1c1-026879327fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\UI">
+      <UniqueIdentifier>{383d445e-5596-426a-99c7-18289237bf13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TowerDefense\Constants">
+      <UniqueIdentifier>{278d84bc-1609-423c-8da5-01e0e05057aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Game">
+      <UniqueIdentifier>{f89bc406-ddd7-4adf-9a4c-986bb04074a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Game\Minions">
+      <UniqueIdentifier>{5d9a6d86-e937-4fe2-9da1-89aadb9023ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Game\Towers">
+      <UniqueIdentifier>{91a81847-087c-488c-89ed-b26de9cc4cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Game\Tiles">
+      <UniqueIdentifier>{720ecbb0-00c0-4546-bc6c-dcd0d891005f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\GameEngine">
+      <UniqueIdentifier>{8f365dd7-f644-42e6-8dd0-6d5fb8edd2e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Managers">
+      <UniqueIdentifier>{70bb1463-a722-4a0c-8a22-cd5994966b42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Constants">
+      <UniqueIdentifier>{e58330f6-7000-4151-8176-e16dadcd7cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\Utils">
+      <UniqueIdentifier>{ad00bfc4-0ca4-447b-a88c-07ebe4f54dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TowerDefense\UI">
+      <UniqueIdentifier>{7dfe66ba-c852-4b60-afe3-d9a243f763d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Source\stdafx.h">
+    <ClInclude Include="Source\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\targetver.h">
+    <ClInclude Include="Source\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Utils\Singleton.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Align.hpp">
+      <Filter>Header Files\TowerDefense\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Managers\GameManager.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Source\GameObjects\BaseButton.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
-    <ClInclude Include="BaseMonoBehaviour.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Source\GameEngine\BaseGameObject.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Managers\UIManager.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BaseText.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
     </ClInclude>
-    <ClInclude Include="BaseButton.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Castle.hpp">
+      <Filter>Header Files\TowerDefense\Game\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\Collider.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CastUtils.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Collision.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\CollisionTest.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\Debug.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Event.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\FPS.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\GameManager.hpp">
+      <Filter>Header Files\TowerDefense\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\GameObject.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.hpp">
+      <Filter>Header Files\TowerDefense\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\InputManager.hpp">
+      <Filter>Header Files\TowerDefense\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.hpp">
+      <Filter>Header Files\TowerDefense\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="MapParams.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="MapWaveManager.hpp">
+      <Filter>Header Files\TowerDefense\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Minion.hpp">
+      <Filter>Header Files\TowerDefense\Game\Minions</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionParams.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Header Files\TowerDefense\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.hpp">
+      <Filter>Header Files\TowerDefense\Game\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileParams.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Singleton.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawn.hpp">
+      <Filter>Header Files\TowerDefense\Game\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.hpp">
+      <Filter>Header Files\TowerDefense\Game\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.hpp">
+      <Filter>Header Files\TowerDefense\Game\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerParams.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeBtn.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDesign.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelDesign.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Assets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalShared.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="SetTimeout.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Mathf.hpp">
+      <Filter>Header Files\TowerDefense\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="HealMinion.hpp">
+      <Filter>Header Files\TowerDefense\Game\Minions</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>Header Files\TowerDefense\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetsConfig.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWinScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="TileAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\DisplayManager.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\CollisionManager.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="Scene.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="MonoBehaviour.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SoundsAssets.hpp">
+      <Filter>Header Files\TowerDefense\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearedScreen.hpp">
+      <Filter>Header Files\TowerDefense\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Destroyer.hpp">
+      <Filter>Header Files\TowerDefense\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Phantom.hpp">
+      <Filter>Header Files\TowerDefense\Game\Towers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\main.cpp">
+    <ClCompile Include="Source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Managers\GameManager.cpp">
+    <ClCompile Include="Source\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\stdafx.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Align.cpp">
+      <Filter>Source Files\TowerDefense\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="BaseMonoBehaviour.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Source\GameObjects\BaseButton.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Managers\UIManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Source\GameEngine\BaseGameObject.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="BaseButton.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BaseText.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Castle.cpp">
+      <Filter>Source Files\TowerDefense\Game\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\Collider.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\Collision.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\CollisionTest.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\Debug.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\GameManager.cpp">
+      <Filter>Source Files\TowerDefense\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\GameObject.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="HealMinion.cpp">
+      <Filter>Source Files\TowerDefense\Game\Minions</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Source Files\TowerDefense\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\InputManager.cpp">
+      <Filter>Source Files\TowerDefense\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Source Files\TowerDefense\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="MapWaveManager.cpp">
+      <Filter>Source Files\TowerDefense\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Minion.cpp">
+      <Filter>Source Files\TowerDefense\Game\Minions</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\TowerDefense\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\TowerDefense\Game\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawn.cpp">
+      <Filter>Source Files\TowerDefense\Game\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files\TowerDefense\Game\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files\TowerDefense\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>Source Files\TowerDefense\Game\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeBtn.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GlobalShared.cpp">
+      <Filter>Source Files\TowerDefense\Constants</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathf.cpp">
+      <Filter>Source Files\TowerDefense\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWinScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\DisplayManager.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\CollisionManager.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Phantom.cpp">
+      <Filter>Source Files\TowerDefense\Game\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearedScreen.cpp">
+      <Filter>Source Files\TowerDefense\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Destroyer.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MonoBehaviour.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TowerDefense\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
