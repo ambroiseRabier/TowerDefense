@@ -24,11 +24,11 @@ namespace TowerDefense
 			credits_text = std::make_unique<BaseText>(Constants::Config::credits);
 			Align::center(
 				play_btn->get_transformable(), 
-				sf::Vector2f(-play_btn->get_sprite().getGlobalBounds().width/2.f, 0)
+				sf::Vector2f(-play_btn->get_sprite().getGlobalBounds().width/2.f, -50)
 			);
 			Align::center(
 				quit_btn->get_transformable(), 
-				sf::Vector2f(-quit_btn->get_sprite().getGlobalBounds().width/2.f, 70)
+				sf::Vector2f(-quit_btn->get_sprite().getGlobalBounds().width/2.f, 170)
 			);
 			Align::center(
 				title_text->get_transformable(),
