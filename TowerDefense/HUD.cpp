@@ -63,7 +63,7 @@ namespace TowerDefense
 				GlobalShared::get_texture(Constants::UIAssets::freeze_tower_btn),
 				std::to_string(static_cast<unsigned int>(std::floor(Managers::Player::get_tower_price(TowerId::FreezeTower)))),
 				sf::Vector2f(
-					GlobalShared::get_texture(Constants::UIAssets::freeze_tower_btn)->getSize().x/2 - 10, 
+					static_cast<float>(GlobalShared::get_texture(Constants::UIAssets::freeze_tower_btn)->getSize().x)/2.f - 10, 
 					-16.f - 10.f
 				)
 			);
@@ -71,7 +71,7 @@ namespace TowerDefense
 				GlobalShared::get_texture(Constants::UIAssets::explosiv_tower_btn),
 				std::to_string(static_cast<unsigned int>(std::floor(Managers::Player::get_tower_price(TowerId::ExplosivTower)))),
 				sf::Vector2f(
-					GlobalShared::get_texture(Constants::UIAssets::explosiv_tower_btn)->getSize().x/2 - 10, 
+					static_cast<float>(GlobalShared::get_texture(Constants::UIAssets::explosiv_tower_btn)->getSize().x)/2.f - 10, 
 					-16.f - 10.f
 				)
 			);
@@ -207,7 +207,7 @@ namespace TowerDefense
 
 		void Hud::set_money_text(const std::string& text)
 		{
-			money_text->set_text(truncate(text, text.find_first_of(".")+3) + " $");
+			money_text->set_text(truncate(text, text.find_first_of(".")+3) + " " + Constants::Config::money_sign);
 		}
 
 		void Hud::set_wave_text(const std::string& text)

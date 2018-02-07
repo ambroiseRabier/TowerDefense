@@ -6,15 +6,18 @@
 #include "Managers/GameManager.hpp"
 #include "Align.hpp"
 #include "Hud.hpp"
+#include "Assets.hpp"
 #include "MapWaveManager.hpp"
 #include "AssetsConfig.hpp"
 #include "TileAssets.hpp"
 #include "GameDesign.hpp"
+#include "GameEngine/DisplayManager.hpp"
 
 namespace TowerDefense
 {
 	namespace Managers
 	{
+		std::unique_ptr<GameObject> MapManager::background;
 		Castle* MapManager::castle;
 		Spawn* MapManager::spawn;
 		bool MapManager::level_loaded_flag;
@@ -38,7 +41,7 @@ namespace TowerDefense
 
 		void MapManager::init()
 		{
-			// nothing :/
+			// nothing :/ maybe could load background here, but would need to destroy it on quit game !
 		}
 
 		void MapManager::load_level(const MapParams& new_map_params)
@@ -49,6 +52,18 @@ namespace TowerDefense
 			}
 			load_level_internal(new_map_params);
 			level_loaded_flag = true;
+			background = std::make_unique<GameObject>(
+				std::make_shared<sf::Sprite>(*GlobalShared::get_texture(Constants::Assets::level_background)),
+				Constants::ZIndex::level_background
+			);
+			UI::Align::center(
+				background->get_transformable(),
+				sf::Vector2f(
+					-static_cast<float>(GlobalShared::get_texture(Constants::Assets::level_background)->getSize().x)/2.f,
+					-static_cast<float>(GlobalShared::get_texture(Constants::Assets::level_background)->getSize().y)/2.f
+				)
+			);
+			DisplayManager::addChild(*background);
 		}
 
 		void MapManager::destroy_current_level()
@@ -59,6 +74,9 @@ namespace TowerDefense
 				castle.reset();
 			if (spawn.get())
 				spawn.reset();*/
+			assert(background);
+			DisplayManager::remove_child(*background);
+			background.reset(nullptr);
 			if (castle)
 			{
 				castle = nullptr;

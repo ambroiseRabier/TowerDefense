@@ -6,11 +6,14 @@
 #include "Hud.hpp"
 #include "Config.hpp"
 #include "UIAssets.hpp"
+#include "GameEngine/DisplayManager.hpp"
+#include "Assets.hpp"
 
 namespace TowerDefense
 {
 	namespace UI
 	{
+		std::unique_ptr<GameObject> MenuScreen::background;
 		std::unique_ptr<BaseButton> MenuScreen::play_btn;
 		std::unique_ptr<BaseButton> MenuScreen::quit_btn;
 		std::unique_ptr<BaseText> MenuScreen::title_text;
@@ -18,6 +21,18 @@ namespace TowerDefense
 
 		void MenuScreen::init()
 		{
+			background = std::make_unique<GameObject>(
+				std::make_shared<sf::Sprite>(*GlobalShared::get_texture(Constants::Assets::menu_background)),
+				Constants::ZIndex::ui_background
+			);
+			UI::Align::center(
+				background->get_transformable(),
+				sf::Vector2f(
+					-static_cast<float>(GlobalShared::get_texture(Constants::Assets::menu_background)->getSize().x)/2.f,
+					-static_cast<float>(GlobalShared::get_texture(Constants::Assets::menu_background)->getSize().y)/2.f
+				)
+			);
+			DisplayManager::addChild(*background);
 			play_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::play_btn));
 			quit_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_name);
@@ -54,6 +69,8 @@ namespace TowerDefense
 		void MenuScreen::destroy()
 		{
 			play_btn->on_click -= Sharp::EventHandler::Bind(&MenuScreen::on_click_play);
+			DisplayManager::remove_child(*background);
+			background.reset(nullptr);
 			play_btn.reset(nullptr);
 			title_text.reset(nullptr);
 			credits_text.reset(nullptr);

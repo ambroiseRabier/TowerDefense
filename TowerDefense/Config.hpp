@@ -44,6 +44,7 @@ namespace TowerDefense
 			const std::string help_tower_build_text = "Left->build   Right->cancel";
 			const std::string score_text = "Your score is";
 			const std::string credits = "Ambroise Rabier\nEmeline Berenguier\nAlexis Alzoubaidy";
+			const std::string money_sign = "$";
 		}
 		
 		/**
@@ -53,6 +54,7 @@ namespace TowerDefense
 		namespace ZIndex // use a contexpr with math.max and math.min to check if in range ? use enum ?
 		{
 			const unsigned int min = 0;
+			const unsigned int level_background = 15;
 			const unsigned int tile_background = 20;
 			const unsigned int minions_dead = 199;
 			const unsigned int minions = 200;

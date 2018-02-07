@@ -49,6 +49,7 @@ namespace TowerDefense
 			static Sharp::Event<void> on_destroy_level;
 		private:
 			static sf::Transformable map_origin;
+			static std::unique_ptr<GameEngine::GameObject> background;
 			static Castle* castle;
 			static Spawn* spawn;
 			static bool level_loaded_flag;

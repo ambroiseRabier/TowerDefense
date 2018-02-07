@@ -22,6 +22,7 @@ namespace TowerDefense
 			static void destroy_quit_btn();
 		private:
 			static void destroy();
+			static std::unique_ptr<GameObject> background;
 			static std::unique_ptr<BaseButton> play_btn;
 			static std::unique_ptr<BaseButton> quit_btn;
 			static std::unique_ptr<BaseText> title_text;
