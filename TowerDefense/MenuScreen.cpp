@@ -97,6 +97,7 @@ namespace TowerDefense
 			quit_btn->isActive = true;
 			title_text->isActive = true;
 			credits_text->isActive = true;
+			background->isActive = true;
 		}
 
 		void MenuScreen::close()
@@ -105,6 +106,7 @@ namespace TowerDefense
 			quit_btn->isActive = false;
 			title_text->isActive = false;
 			credits_text->isActive = false;
+			background->isActive = false;
 		}
 
 		void MenuScreen::destroy_quit_btn()
