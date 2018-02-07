@@ -27,9 +27,6 @@ using namespace TowerDefense::Constants;
 using namespace TowerDefense;
 using namespace sf;
 
-float getFPS(const Time& time) {
-     return (1000000.0f / time.asMicroseconds());
-}
 
 void displayLoading(Texture& texture, Sprite& loading_sprite, RenderTarget& window)
 {
@@ -84,20 +81,9 @@ int main()
 	font->loadFromFile(Assets::default_font);
 	GlobalShared::default_font = font;
 	Debug::info("Preloading done.");
-
-	//fps text (debug only)
-	Text fpsText("*FPS", *GlobalShared::default_font);
-	fpsText.setCharacterSize(30);
-	fpsText.setStyle(Text::Bold);
-	fpsText.setFillColor(Color::Red);
-	fpsText.setOutlineColor(Color::Blue);
-
-	// FPS counter working variables
-	Clock fpsClock;
-	unsigned int fps = 0;
-	unsigned int frame_count = 0;
 	
 	// Init all managers
+	Debug::init();
 	Utils::Timer::init();
 	DisplayManager::init();
 	CollisionManager::init(Config::tested_collisions);
@@ -124,23 +110,6 @@ int main()
 	GameManager::start();
 	Debug::info("Game started.");
 
-	// exemples stuff, to delete.
-	//UI::BaseButton* base_button = new UI::BaseButton(); // you could also put it on the stack.
-	//base_button->get_transformable().setPosition(150,150);
-	//base_button->auto_start();
-
-	//std::unique_ptr<UI::BaseButton> base_button_unique = std::make_unique<UI::BaseButton>();
-	//base_button_unique->auto_start();
-
-	//UI::MenuBackground* menu_background = new UI::MenuBackground();
-	//menu_background->auto_start();
-	////base_button->destroy();
-	//delete base_button;
-	//base_button = nullptr;
-	//delete menu_background;
-	//base_button = nullptr;
-	//base_button_unique.reset(nullptr);
-
 	while (window.isOpen())
 	{
 		InputManager::update(window);
@@ -155,27 +124,14 @@ int main()
 		Destroyer::update();
 		window.clear();
 		DisplayManager::render(window);
-		// fps overlay
-		if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
-		{
-			fps = frame_count;
-			frame_count = 0;
-			fpsClock.restart();
-		}
-		++frame_count;
-		fpsText.setString(std::to_string(
-			// prefer the long way of doing it instead of this shortcut bellow, the fps displayed is more stable.
-			//static_cast<int>(std::floor(getFPS(fpsClock.restart())))
-			fps
-		));
-		window.draw(fpsText);
+		Debug::update(window);
 		window.display();
 	}
 	// destroying the quit_btn NOT when the quit_btn fire en click event avoid a null iterator problem.
 	UI::MenuScreen::destroy_quit_btn();
 	// destroy any global here.
 	GlobalShared::destroy();
-
+	Debug::destroy();
 	// do not use this, it take static variable as false positiv.
 	//_CrtDumpMemoryLeaks(); 
 	//system("pause");

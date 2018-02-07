@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Debug.hpp"
+#include "../../SoundsAssets.hpp"
+#include "../../BaseText.hpp"
 
 using namespace std;
 
@@ -7,6 +9,12 @@ namespace TowerDefense
 {
 	namespace GameEngine
 	{
+
+		// FPS counter working variables
+		sf::Clock Debug::fpsClock;
+		std::unique_ptr<sf::Text> Debug::fpsText;
+		unsigned int Debug::fps = 0;
+		unsigned int Debug::frame_count = 0;
 		sf::Clock Debug::clock;
 
 		void Debug::log(const string& message)
@@ -66,6 +74,43 @@ namespace TowerDefense
 			SS.insert(SS.begin(), 2 - SS.length(), '0');
 			ms.insert(ms.begin(), 4 - ms.length(), '0');
 			return HH + ":" + HH + ":" + SS + ":" + ms;
+		}
+
+		void Debug::init()
+		{
+			//fps text (debug only)
+			fpsText = std::make_unique<sf::Text>("*FPS", *GlobalShared::default_font);
+			fpsText->setCharacterSize(30);
+			fpsText->setStyle(sf::Text::Bold);
+			fpsText->setFillColor(sf::Color::Red);
+			fpsText->setOutlineColor(sf::Color::Blue);
+		}
+
+		void Debug::update(sf::RenderTarget& window)
+		{
+			// fps overlay
+			if(fpsClock.getElapsedTime().asSeconds() >= 1.f)
+			{
+				fps = frame_count;
+				frame_count = 0;
+				fpsClock.restart();
+			}
+			++frame_count;
+			fpsText->setString(std::to_string(
+				// prefer the long way of doing it instead of this shortcut bellow, the fps displayed is more stable.
+				//static_cast<int>(std::floor(getFPS(fpsClock.restart())))
+				fps
+			));
+			window.draw(*fpsText);
+		}
+		
+		float Debug::getFPS(const sf::Time& time) {
+			 return (1000000.0f / time.asMicroseconds());
+		}
+
+		void Debug::destroy()
+		{
+			fpsText.reset(nullptr);
 		}
 	}
 }

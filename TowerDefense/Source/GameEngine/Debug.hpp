@@ -32,8 +32,15 @@ namespace TowerDefense
 			 */
 			static void assert_m(bool assertion, const std::string& message);
 			static std::string get_time_as_string();
-			static void start_clock();
+			static void update(sf::RenderTarget& window);
+			static float getFPS(const sf::Time& time);
+			static void destroy();
+			static void init();
 		private:
+			static sf::Clock fpsClock;
+			static std::unique_ptr<sf::Text> fpsText;
+			static unsigned fps;
+			static unsigned frame_count;
 			static sf::Clock clock;
 		};
 	}
