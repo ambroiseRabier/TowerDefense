@@ -194,7 +194,8 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include; $(SolutionDir)TowerDefense/Source</AdditionalIncludeDirectories>
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(SolutionDir)TowerDefense/Source/stdafx.h</ForcedIncludeFiles>
+      <PrecompiledHeaderFile>$(SolutionDir)TowerDefense/Source/stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Libs\SFML\lib</AdditionalLibraryDirectories>
@@ -223,7 +224,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SFML\include; $(SolutionDir)TowerDefense/Source</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
