@@ -183,7 +183,7 @@ namespace TowerDefense
 
 		void Hud::set_money_text(const std::string& text)
 		{
-			money_text->set_text(truncate(text, text.find_first_of(".")+3));
+			money_text->set_text(truncate(text, text.find_first_of(".")+3) + " $");
 		}
 
 		void Hud::set_wave_text(const std::string& text)
