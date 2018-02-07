@@ -28,6 +28,7 @@ namespace TowerDefense
 		public:
 			BaseButton();
 			BaseButton(sf::Texture* pTexture, const unsigned int& new_z_index = Constants::ZIndex::ui);
+			BaseButton(sf::Texture* pTexture, const std::string& text, const sf::Vector2f& offset_text, const unsigned int& new_z_index = Constants::ZIndex::ui);
 			~BaseButton();
 			void on_mouse_overlap() override;
 			void on_mouse_overlap_front() override;
@@ -46,6 +47,7 @@ namespace TowerDefense
 			sf::Text text;
 			void init() override;
 			void create_button(sf::Texture* pTexture);
+			void create_text(const std::string& text, const sf::Vector2f& offset_text);
 			void update() override;
 		};
 	}

@@ -48,9 +48,33 @@ namespace TowerDefense
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::pause_btn));
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
 			up_speed_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::speedUp_btn));
-			stone_tower_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::stone_tower_btn));
-			freeze_tower_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::freeze_tower_btn));
-			explosiv_tower_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::explosiv_tower_btn));
+			stone_tower_btn = std::make_unique<BaseButton>(
+				GlobalShared::get_texture(Constants::UIAssets::stone_tower_btn),
+				// this floor is arbitrary, will be wrong if price is decimal and not integer.
+				std::to_string(static_cast<unsigned int>(std::floor(Managers::Player::get_tower_price(TowerId::StoneTower)))),
+				sf::Vector2f(
+					// 10 is arbitrary offset to center text.
+					GlobalShared::get_texture(Constants::UIAssets::stone_tower_btn)->getSize().x/2 - 10, 
+					// 16 is font size, and 10 is arbitrary offset.
+					-16.f - 10.f
+				)
+			);
+			freeze_tower_btn = std::make_unique<BaseButton>(
+				GlobalShared::get_texture(Constants::UIAssets::freeze_tower_btn),
+				std::to_string(static_cast<unsigned int>(std::floor(Managers::Player::get_tower_price(TowerId::FreezeTower)))),
+				sf::Vector2f(
+					GlobalShared::get_texture(Constants::UIAssets::freeze_tower_btn)->getSize().x/2 - 10, 
+					-16.f - 10.f
+				)
+			);
+			explosiv_tower_btn = std::make_unique<BaseButton>(
+				GlobalShared::get_texture(Constants::UIAssets::explosiv_tower_btn),
+				std::to_string(static_cast<unsigned int>(std::floor(Managers::Player::get_tower_price(TowerId::ExplosivTower)))),
+				sf::Vector2f(
+					GlobalShared::get_texture(Constants::UIAssets::explosiv_tower_btn)->getSize().x/2 - 10, 
+					-16.f - 10.f
+				)
+			);
 			Align::top_center(level_text->get_transformable(), sf::Vector2f(
 				-200, 
 				30

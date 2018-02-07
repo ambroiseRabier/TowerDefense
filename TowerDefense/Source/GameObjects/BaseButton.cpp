@@ -22,7 +22,17 @@ namespace TowerDefense
 		BaseButton::BaseButton(sf::Texture* pTexture, const unsigned int& new_z_index)
 		{
 			create_button(pTexture);
+			// not member of, so have to initialize here.
 			z_index = new_z_index;
+		}
+
+		BaseButton::BaseButton(sf::Texture* pTexture, const std::string& text, const sf::Vector2f& offset_text,
+			const unsigned int& new_z_index)
+		{
+			create_button(pTexture);
+			// not member of, so have to initialize here.
+			z_index = new_z_index;
+			create_text(text, offset_text);
 		}
 
 		BaseButton::~BaseButton()
@@ -53,6 +63,17 @@ namespace TowerDefense
 			);
 			//collider->tag = Collider::Tag::UI;
 			z_index = Constants::ZIndex::ui;
+		}
+
+		void BaseButton::create_text(const std::string& text, const sf::Vector2f& offset_text)
+		{
+			std::shared_ptr<sf::Text> my_text = std::make_shared<sf::Text>();
+			my_text->setString(text);
+			my_text->setPosition(offset_text);
+			my_text->setOutlineColor(sf::Color::White);
+			my_text->setFont(*GlobalShared::default_font);
+			my_text->setCharacterSize(16); // hard coded for hud tower btn.
+			add_drawable(std::move(my_text));
 		}
 
 		void BaseButton::init()
