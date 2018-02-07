@@ -21,6 +21,17 @@ namespace TowerDefense
 		Sharp::Event<void> on_window_close;
 		Sharp::Event<void> on_window_close_game_engine_pass;
 ;
+
+
+		void load_all_fonts()
+		{
+			// allocate on heap since this will stay longer then the stack of this function
+			// then copy pointer on GlobalShared
+			sf::Font* font = DBG_NEW sf::Font();
+			font->loadFromFile(Constants::Assets::default_font);
+			default_font = font;
+		}
+
 		void load_all_textures()
 		{
 			if (Constants::Assets::all_assets_textures.empty())
@@ -34,7 +45,6 @@ namespace TowerDefense
 				stringToTexture[string] = std::move(texture);
 			}
 		}
-
 
 		void load_all_sounds()
 		{

@@ -7,7 +7,6 @@
 #include "../MenuScreen.hpp"
 #include "../Hud.hpp"
 #include "../PauseScreen.hpp"
-#include "../Assets.hpp"
 #include "../UIAssets.hpp"
 #include "../GlobalShared.hpp"
 #include "../Config.hpp"
@@ -73,13 +72,9 @@ int main()
 	window.display();
 
 	// preloading
+	GlobalShared::load_all_fonts();
 	GlobalShared::load_all_textures();
 	GlobalShared::load_all_sounds();
-	// allocate on heap since this will stay longer then the stack of this function
-	// then copy pointer on GlobalShared
-	Font* font = DBG_NEW Font();
-	font->loadFromFile(Assets::default_font);
-	GlobalShared::default_font = font;
 	Debug::info("Preloading done.");
 	
 	// Init all managers

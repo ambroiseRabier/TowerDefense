@@ -35,6 +35,7 @@ namespace TowerDefense
 		 */
 		void destroy();
 
+		void load_all_fonts();
 		void load_all_textures();
 		void load_all_sounds();
 		sf::Texture* get_texture(const std::string& asset_path);
