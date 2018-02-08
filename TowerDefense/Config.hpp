@@ -31,8 +31,8 @@ namespace TowerDefense
 				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::HealMinion),
 				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::Minion),
 			};
-			const unsigned int window_width = 1280;
-			const unsigned int window_height = 720;
+			const unsigned int window_width = 1600;
+			const unsigned int window_height = 900;
 			const bool debug_draw_collider = false;
 			const sf::Color collider_debug_color = sf::Color(240,10,15,100);
 			const std::string final_wave_text = "Last wave !";

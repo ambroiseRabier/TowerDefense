@@ -3,6 +3,7 @@
 #include "Debug.hpp"
 #include "CollisionManager.hpp"
 #include "../../Config.hpp"
+#include "Managers/GameManager.hpp"
 
 using namespace std;
 namespace TowerDefense
@@ -10,10 +11,11 @@ namespace TowerDefense
 	namespace GameEngine
 	{
 		std::list<const GameObject*> DisplayManager::childrens;
+		sf::RenderWindow* DisplayManager::window_ref;
 
-		void DisplayManager::init()
+		void DisplayManager::init(sf::RenderWindow* new_window_ref)
 		{
-
+			window_ref = new_window_ref;
 		}
 
 		void DisplayManager::addChild(const GameObject& game_object)
@@ -64,6 +66,21 @@ namespace TowerDefense
 					}
 				}
 			}
+		}
+
+		sf::Vector2u DisplayManager::get_window_size()
+		{
+			return window_ref->getSize();
+		}
+
+		float DisplayManager::get_window_width()
+		{
+			return static_cast<float>(get_window_size().x);
+		}
+
+		float DisplayManager::get_window_height()
+		{
+			return static_cast<float>(get_window_size().y);
 		}
 
 		void DisplayManager::draw_debug_collider(sf::RenderTarget& window, const GameObject* game_object)

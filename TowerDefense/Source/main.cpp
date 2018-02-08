@@ -80,7 +80,7 @@ int main()
 	// Init all managers
 	Debug::init();
 	Utils::Timer::init();
-	DisplayManager::init();
+	DisplayManager::init(&window);
 	CollisionManager::init(Config::tested_collisions);
 	Destroyer::init();
 	SoundManager::init();

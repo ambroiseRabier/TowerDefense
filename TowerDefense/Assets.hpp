@@ -19,8 +19,9 @@ namespace TowerDefense
 			const std::string default_font = "Assets/Inconsolata-Regular.ttf";
 			const std::string missing_texture_tile = "Assets/Tile/missing_texture.png";
 			const std::string hpBar_jauge = "Assets/healthbar_jauge.png";
+			// todo: move to UI
 			const std::string level_background = "Assets/level_background.png";
-			const std::string menu_background = "Assets/menu_background_smaller.png";
+			const std::string menu_background = "Assets/menu_background_medium.png";
 
 
 			const std::vector<std::string> all_assets_textures {
@@ -29,7 +30,6 @@ namespace TowerDefense
 				level_background,
 				menu_background,
 				UIAssets::loading_background,
-				UIAssets::menu_background,
 				UIAssets::default_ui_btn,
 				UIAssets::pause_btn,
 				UIAssets::play_btn,

@@ -9,7 +9,6 @@ namespace TowerDefense
 		namespace UIAssets
 		{
 			const std::string loading_background = "Assets/loading_background_inverted.png";
-			const std::string menu_background = "Assets/menu_background.jpg";
 			const std::string default_ui_btn = "Assets/base_btn.png";
 			const std::string pause_btn = "Assets/pause_btn.png";
 			const std::string play_btn = "Assets/play_btn.png";
