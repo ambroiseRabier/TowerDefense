@@ -22,7 +22,7 @@ namespace TowerDefense
 		{
 			transformable.setPosition(
 				transformable.getPosition().x,
-				DisplayManager::get_window_height() - offset
+				DisplayManager::get_height() - offset
 			);
 		}
 
@@ -37,7 +37,7 @@ namespace TowerDefense
 		void Align::left(sf::Transformable& transformable, const float& offset)
 		{
 			transformable.setPosition(
-				DisplayManager::get_window_width() - offset,
+				DisplayManager::get_width() - offset,
 				transformable.getPosition().y
 			);
 		}
@@ -46,8 +46,8 @@ namespace TowerDefense
 		{
 			transformable.setPosition(
 				// dividing int by int ?
-				DisplayManager::get_window_width()/2 + offset.x,
-				DisplayManager::get_window_height()/2 + offset.y
+				DisplayManager::get_width()/2 + offset.x,
+				DisplayManager::get_height()/2 + offset.y
 			);
 		}
 
@@ -62,7 +62,7 @@ namespace TowerDefense
 		void Align::top_right(sf::Transformable& transformable, const sf::Vector2f& offset)
 		{
 			transformable.setPosition(
-				DisplayManager::get_window_width() - offset.x,
+				DisplayManager::get_width() - offset.x,
 				offset.y
 			);
 		}
@@ -71,15 +71,15 @@ namespace TowerDefense
 		{
 			transformable.setPosition(
 				offset.x,
-				DisplayManager::get_window_height() - offset.y
+				DisplayManager::get_height() - offset.y
 			);
 		}
 
 		void Align::bottom_right(sf::Transformable& transformable, const sf::Vector2f& offset)
 		{
 			transformable.setPosition(
-				DisplayManager::get_window_width() - offset.x,
-				DisplayManager::get_window_height() - offset.y
+				DisplayManager::get_width() - offset.x,
+				DisplayManager::get_height() - offset.y
 			);
 		}
 
@@ -87,7 +87,7 @@ namespace TowerDefense
 		{
 			transformable.setPosition(
 				// dividing int by int ?
-				DisplayManager::get_window_width()/2 + offset.x,
+				DisplayManager::get_width()/2 + offset.x,
 				offset.y
 			);
 		}
@@ -96,8 +96,8 @@ namespace TowerDefense
 		{
 			transformable.setPosition(
 				// dividing int by int ?
-				DisplayManager::get_window_width()/2 + offset.x,
-				DisplayManager::get_window_height() - offset.y
+				DisplayManager::get_width()/2 + offset.x,
+				DisplayManager::get_height() - offset.y
 			);
 		}
 		//todo surcharge avec 3 param au lieu de vec2

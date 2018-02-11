@@ -14,7 +14,7 @@ namespace TowerDefense
 		class DisplayManager
 		{
 		public:
-			static void init(sf::RenderWindow* new_window_ref);
+			static void init(sf::RenderWindow& new_window_ref);
 			/**
 			 * \brief Add and draw the MonoBehaviour from scene. 
 			 * (I use reference instead of pointer because the pointer you use to create the MonoBehaviour might become null.
@@ -33,10 +33,8 @@ namespace TowerDefense
 			 * \param window
 			 */
 			static void render(sf::RenderTarget& window);
-
-			static sf::Vector2u get_window_size();
-			static float get_window_width();
-			static float get_window_height();
+			static unsigned int get_width();
+			static unsigned int get_height();
 		private:
 			static std::list<const GameObject*> childrens;
 			static sf::RenderWindow* window_ref;
