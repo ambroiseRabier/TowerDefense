@@ -14,6 +14,7 @@ namespace TowerDefense
 		namespace Config
 		{
 			const std::string config_file = "Settings/config.json";
+			const std::string game_design_file = "Settings/game_design.json";
 			const std::string game_name = "Patchwork"; // if you change this, you probably need to change namespaces ;)
 			/**
 			 * \brief 
@@ -31,9 +32,6 @@ namespace TowerDefense
 				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::HealMinion),
 				std::make_pair(Collider::Tag::HealMinion, Collider::Tag::Minion),
 			};
-			const unsigned int window_width = 1600;
-			const unsigned int window_height = 900;
-			const bool debug_draw_collider = false;
 			const sf::Color collider_debug_color = sf::Color(240,10,15,100);
 			const std::string final_wave_text = "Last wave !";
 			const std::string wave_number_text = "Wave";
@@ -45,8 +43,6 @@ namespace TowerDefense
 			const std::string score_text = "Your score is";
 			const std::string credits = "Ambroise Rabier\nEmeline Berenguier\nAlexis Alzoubaidy";
 			const std::string money_sign = "$";
-
-
 		}
 		
 		/**

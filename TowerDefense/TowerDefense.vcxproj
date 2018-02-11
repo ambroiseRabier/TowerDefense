@@ -46,6 +46,7 @@
     <ClInclude Include="Minion.hpp" />
     <ClInclude Include="MinionAssets.hpp" />
     <ClInclude Include="MinionParams.hpp" />
+    <ClInclude Include="Others.hpp" />
     <ClInclude Include="PauseScreen.hpp" />
     <ClInclude Include="Phantom.hpp" />
     <ClInclude Include="Player.hpp" />

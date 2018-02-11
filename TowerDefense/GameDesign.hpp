@@ -49,6 +49,11 @@ namespace TowerDefense
 				{ Tank, 30 },
 				{ Heal, 50 },
 			};
+			const TowerParams cdj ={ // the fuck, compiler say no problem when I add this for towers bellow. Remove this and see...
+				{ // intelliSensse problem ?
+					{},
+				}
+			};
 
 			const std::unordered_map<TowerId, TowerParams> towers = { // need a quick tower, and high range tower, huum.
 				{

@@ -14,6 +14,7 @@ namespace TowerDefense
 	namespace GlobalShared
 	{
 		extern ExternalConstants::Config config;
+		extern ExternalConstants::GameDesign game_design;
 
 		extern sf::Font* default_font;
 
@@ -47,6 +48,8 @@ namespace TowerDefense
 		sf::Sound* get_sound(const std::string& asset_path);
 		sf::Music* get_music(const std::string& asset_path);
 		void validate_json(const std::string& path);
+
+		const ExternalConstants::Config& get_config();
 	}
 }
 #endif

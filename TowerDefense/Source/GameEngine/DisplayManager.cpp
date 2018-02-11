@@ -3,6 +3,7 @@
 #include "Debug.hpp"
 #include "CollisionManager.hpp"
 #include "../../Config.hpp"
+#include "../../GlobalShared.hpp"
 
 using namespace std;
 namespace TowerDefense
@@ -59,7 +60,7 @@ namespace TowerDefense
 					}
 
 					// ReSharper disable once CppRedundantBooleanExpressionArgument
-					if (Constants::Config::debug_draw_collider && children->get_collider())
+					if (GlobalShared::get_config().debug_draw_collider && children->get_collider())
 					{
 						draw_debug_collider(window, children);
 					}

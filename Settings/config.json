@@ -1,5 +1,6 @@
 {
 	"fps_limit":60,
 	"window_width":1280,
-	"window_height":720
+	"window_height":720,
+	"debug_draw_collider": true
 }

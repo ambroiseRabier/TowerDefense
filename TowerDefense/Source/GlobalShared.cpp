@@ -4,6 +4,7 @@
 #include "../Assets.hpp"
 #include "../SoundsAssets.hpp"
 #include "GameEngine/Debug.hpp"
+#include "../Others.hpp"
 
 namespace TowerDefense
 {
@@ -13,6 +14,7 @@ namespace TowerDefense
 	namespace GlobalShared
 	{
 		ExternalConstants::Config config;
+		ExternalConstants::GameDesign game_design;
 		sf::Font* default_font;
 		std::unordered_map<std::string, std::unique_ptr<sf::Texture>> stringToTexture;
 		std::unordered_map<std::string, std::unique_ptr<sf::SoundBuffer>> stringToSoundBuffer;
@@ -179,6 +181,11 @@ namespace TowerDefense
 				json::parse(std::ifstream(Constants::Config::config_file)),
 				config
 			);
+			validate_json(Constants::Config::game_design_file);
+			ExternalConstants::from_json(
+				json::parse(std::ifstream(Constants::Config::game_design_file)),
+				game_design
+			);
 			//config = config_j; operator = ambiguous :/, don't know why
 		}
 
@@ -188,7 +195,10 @@ namespace TowerDefense
 			std::ifstream in (Constants::Config::config_file);
 			// returning int c= 5; after throw only to avoid confusing 
 			// line number in debugger --' (it throw END of the next line otherwise)
-			if (!in.is_open() || !in )
+			// OK STREAM IS MAGIC THING, it should work, but it don't. so no warning omg.
+			// huum maybe just again this bad line exception --'
+			// !is_open() or !in or fail()
+			if (!fileExists(path))
 			{
 				Debug::warn(path + " was not found.");
 				throw path + " was not found.";
@@ -211,8 +221,11 @@ namespace TowerDefense
 			// I have to keep stream object alive in stack until i extract data fromp json ...
 			// and connot use a load_json method :/
 			// json load_json(const std::string& path);
-
 		}
 
+		const ExternalConstants::Config& get_config()
+		{
+			return config;
+		}
 	}
 }
