@@ -15,7 +15,6 @@ namespace TowerDefense
 		{
 			const std::string config_file = "Settings/config.json";
 			const std::string game_name = "Patchwork"; // if you change this, you probably need to change namespaces ;)
-			const unsigned int fps_limit = 144;
 			/**
 			 * \brief 
 			 * Assigned at start to CollisionManager::testedCollisions.

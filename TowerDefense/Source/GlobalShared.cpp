@@ -174,15 +174,44 @@ namespace TowerDefense
 
 		void load_all_settings()
 		{
-			std::ifstream config_stream(Constants::Config::config_file);
-			if (!config_stream.is_open())
-			{
-				Debug::warn(Constants::Config::config_file + " not found.");
-				throw Constants::Config::config_file + " not found.";
-			}
-			const json config_j = json::parse(config_stream);
-			ExternalConstants::from_json(config_j, config);
+			validate_json(Constants::Config::config_file);
+			ExternalConstants::from_json(
+				json::parse(std::ifstream(Constants::Config::config_file)),
+				config
+			);
 			//config = config_j; operator = ambiguous :/, don't know why
+		}
+
+		void validate_json(const std::string& path)
+		{
+			// since the stream become buggy after json::accept, i've created another stream here.
+			std::ifstream in (Constants::Config::config_file);
+			// returning int c= 5; after throw only to avoid confusing 
+			// line number in debugger --' (it throw END of the next line otherwise)
+			if (!in.is_open() || !in )
+			{
+				Debug::warn(path + " was not found.");
+				throw path + " was not found.";
+				int c= 5;
+			}
+			if (in.peek() == std::ifstream::traits_type::eof())
+			{
+				Debug::warn(path + " is an empty json.");
+				throw path + " is an empty json.";
+				int c= 5;
+			}
+			// using json::accept(in) invalidate the stream after (parse will throw an exception don't know why :/
+			if (!json::accept(in))
+			{
+				Debug::warn(path + " is not a valid json.");
+				throw path + " is not a valid json.";
+				int c= 5;
+			}
+			// parse use reference of stream, that's annoying because that mean
+			// I have to keep stream object alive in stack until i extract data fromp json ...
+			// and connot use a load_json method :/
+			// json load_json(const std::string& path);
+
 		}
 
 	}

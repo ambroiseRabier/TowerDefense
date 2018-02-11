@@ -1,3 +1,5 @@
 {
-    "fps_limit":60
+	"fps_limit":60,
+	"window_width":1456,
+	"window_height":1400
 }

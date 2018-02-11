@@ -38,14 +38,15 @@ namespace TowerDefense
 		 */
 		void destroy();
 
-		void load_all_settings();
 		void load_all_fonts();
 		void load_all_textures();
 		void load_all_sounds();
+		void load_all_settings();
 		sf::Texture* get_texture(const std::string& asset_path);
 		sf::SoundBuffer* get_sound_buffer(const std::string& asset_path);
 		sf::Sound* get_sound(const std::string& asset_path);
 		sf::Music* get_music(const std::string& asset_path);
+		void validate_json(const std::string& path);
 	}
 }
 #endif
