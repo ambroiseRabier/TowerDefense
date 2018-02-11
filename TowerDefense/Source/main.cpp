@@ -63,7 +63,6 @@ int main()
 			0 
 		)
 	);
-	window.setFramerateLimit(Config::fps_limit);
 	// loading init
 	// alocating on heap since I won't need it after loading.
 	std::unique_ptr<Texture> loading_texture = std::make_unique<Texture>();
@@ -72,11 +71,15 @@ int main()
 	window.display();
 
 	// preloading
+	GlobalShared::load_all_settings();
 	GlobalShared::load_all_fonts();
 	GlobalShared::load_all_textures();
 	GlobalShared::load_all_sounds();
 	Debug::info("Preloading done.");
-	
+
+	// set fps limit after loading settings
+	window.setFramerateLimit(GlobalShared::config.fps_limit);
+
 	// Init all managers
 	Debug::init();
 	Utils::Timer::init();
@@ -105,6 +108,7 @@ int main()
 	GameManager::start();
 	Debug::info("Game started.");
 
+
 	while (window.isOpen())
 	{
 		InputManager::update(window);
@@ -130,5 +134,6 @@ int main()
 	// do not use this, it take static variable as false positiv.
 	//_CrtDumpMemoryLeaks(); 
 	//system("pause");
+
 	return 0;
 }

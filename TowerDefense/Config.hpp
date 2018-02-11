@@ -13,6 +13,7 @@ namespace TowerDefense
 		 */
 		namespace Config
 		{
+			const std::string config_file = "Settings/config.json";
 			const std::string game_name = "Patchwork"; // if you change this, you probably need to change namespaces ;)
 			const unsigned int fps_limit = 144;
 			/**
@@ -45,6 +46,8 @@ namespace TowerDefense
 			const std::string score_text = "Your score is";
 			const std::string credits = "Ambroise Rabier\nEmeline Berenguier\nAlexis Alzoubaidy";
 			const std::string money_sign = "$";
+
+
 		}
 		
 		/**

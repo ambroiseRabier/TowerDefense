@@ -3,6 +3,7 @@
 #ifndef GLOBAL_SHARED_HPP
 #define GLOBAL_SHARED_HPP
 #include "Utils/Event.h"
+#include "ExternalConstants.hpp"
 
 namespace TowerDefense
 {
@@ -12,6 +13,8 @@ namespace TowerDefense
 	 */
 	namespace GlobalShared
 	{
+		extern ExternalConstants::Config config;
+
 		extern sf::Font* default_font;
 
 		/**
@@ -35,6 +38,7 @@ namespace TowerDefense
 		 */
 		void destroy();
 
+		void load_all_settings();
 		void load_all_fonts();
 		void load_all_textures();
 		void load_all_sounds();

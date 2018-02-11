@@ -12,6 +12,7 @@ namespace TowerDefense
 	 */
 	namespace GlobalShared
 	{
+		ExternalConstants::Config config;
 		sf::Font* default_font;
 		std::unordered_map<std::string, std::unique_ptr<sf::Texture>> stringToTexture;
 		std::unordered_map<std::string, std::unique_ptr<sf::SoundBuffer>> stringToSoundBuffer;
@@ -170,5 +171,19 @@ namespace TowerDefense
 			}
 			
 		}
+
+		void load_all_settings()
+		{
+			std::ifstream config_stream(Constants::Config::config_file);
+			if (!config_stream.is_open())
+			{
+				Debug::warn(Constants::Config::config_file + " not found.");
+				throw Constants::Config::config_file + " not found.";
+			}
+			const json config_j = json::parse(config_stream);
+			ExternalConstants::from_json(config_j, config);
+			//config = config_j; operator = ambiguous :/, don't know why
+		}
+
 	}
 }
