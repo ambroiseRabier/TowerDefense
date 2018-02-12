@@ -98,7 +98,7 @@ namespace TowerDefense
 		float Phantom::calc_collider_circle_radius() const
 		{
 			// remove one pixel at the end to avoid colliding with border of a tile.
-			return std::max(0.5f, Constants::GameDesign::towers.at(tower_id).projectile_params.at(0).range) * Constants::AssetsConfig::tile_size - 1;
+			return std::max(0.5f, GlobalShared::get_gd().towers.at(tower_id).projectile_params.at(0).range) * Constants::AssetsConfig::tile_size - 1;
 		}
 	}
 }

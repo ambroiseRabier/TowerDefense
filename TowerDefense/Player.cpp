@@ -6,6 +6,7 @@
 #include "GameDesign.hpp"
 #include "GameEngine/CollisionManager.hpp"
 #include "GameEngine/Debug.hpp"
+#include "SoundsAssets.hpp"
 
 using namespace sf;
 namespace TowerDefense
@@ -66,7 +67,7 @@ namespace TowerDefense
 
 		float Player::get_tower_price(TowerId tower_id, const unsigned int level)
 		{
-			return Constants::GameDesign::towers.at(tower_id).projectile_params.at(level).price;
+			return GlobalShared::get_gd().towers.at(tower_id).projectile_params.at(level).price;
 		}
 
 		void Player::set_money(const float& new_value)

@@ -9,7 +9,7 @@ namespace TowerDefense
 	{
 		struct TowerParams
 		{
-			TowerParams(const std::vector<ProjectileParams>& projectile_params)
+			TowerParams(const std::vector<ProjectileParams>& projectile_params={})
 				: projectile_params(projectile_params)
 			{
 			}
@@ -18,8 +18,13 @@ namespace TowerDefense
 			 * \brief What the tower shoot.
 			 * first projectile params is also cost of tower itself.
 			 */
-			const std::vector<ProjectileParams> projectile_params;
+			std::vector<ProjectileParams> projectile_params;
 		};
+
+		inline void from_json(json j, TowerParams& p)
+		{
+			p.projectile_params = j.at("projectile_params").get<std::vector<ProjectileParams>>();
+		}
 	}
 }
 #endif

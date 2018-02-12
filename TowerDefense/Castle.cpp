@@ -23,7 +23,7 @@ namespace TowerDefense
 				GameEngine::Collider::Tag::Castle
 			);
 			collider->mouse_enabled = false;
-			health = std::make_unique<Health>(std::max(1.f, Constants::GameDesign::castle_life));
+			health = std::make_unique<Health>(std::max(1.f, GlobalShared::get_gd().castle_life));
 			health->auto_start();
 		}
 

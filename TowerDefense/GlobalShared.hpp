@@ -50,6 +50,7 @@ namespace TowerDefense
 		void validate_json(const std::string& path);
 
 		const ExternalConstants::Config& get_config();
+		const ExternalConstants::GameDesign& get_gd();
 	}
 }
 #endif

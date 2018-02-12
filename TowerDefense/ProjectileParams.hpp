@@ -9,13 +9,13 @@ namespace TowerDefense
 		struct ProjectileParams
 		{
 			ProjectileParams(
-				const float reload_delay = 1.f,
-				const float speed = 1.f,
-				const float damage = 1.f,
-				const float range = 10.f,
-				const float freeze_factor = 0.f,
-				const float radius_effect = 0.f,
-				const float upgrade_cost = 0.f)
+				float reload_delay = 1.f,
+				float speed = 1.f,
+				float damage = 1.f,
+				float range = 10.f,
+				float freeze_factor = 0.f,
+				float radius_effect = 0.f,
+				float upgrade_cost = 0.f)
 				: reload_delay(reload_delay),
 				  speed(speed),
 				  damage(damage),
@@ -31,38 +31,48 @@ namespace TowerDefense
 			/**
 			 * \brief Seconds. (min is 0 for each frame, not recommended)
 			 */
-			const float reload_delay;
+			float reload_delay;
 			/**
 			 * \brief tile/s
 			 */
-			const float speed;
+			float speed;
 			/**
 			 * \brief 
 			 */
-			const float damage;
+			float damage;
 			/**
 			 * \brief tile (min is 0.5f)
 			 */
-			const float range;
+			float range;
 			/**
 			 * \brief % (infinite duration, might change) (0.f to 1.f)
 			 */
-			const float freeze_factor;
+			float freeze_factor;
 			/**
 			 * \brief m
 			 */
-			const float damage_radius;
+			float damage_radius;
 			/**
 			 * \brief money, cost to have this projectile. First is tower cost also.
 			 */
-			const float price;
+			float price;
 			/**
 			 * \brief Duration of life of the projectile. 30.f is maximum.
 			 * Calculated from range and speed.
 			 * In seconds.
 			 */
-			const float life_time;
+			float life_time;
 		};
+		
+		inline void from_json(json j, ProjectileParams& p)
+		{
+			p.reload_delay = j.at("reload_delay").get<float>();
+			p.speed = j.at("speed").get<float>();
+			p.range = j.at("range").get<float>();
+			p.freeze_factor = j.at("freeze_factor").get<float>();
+			p.damage_radius = j.at("damage_radius").get<float>();
+			p.price = j.at("price").get<float>();
+		}
 	}
 }
 #endif

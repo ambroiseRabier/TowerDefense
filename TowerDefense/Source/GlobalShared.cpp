@@ -227,5 +227,10 @@ namespace TowerDefense
 		{
 			return config;
 		}
+
+		const ExternalConstants::GameDesign& get_gd()
+		{
+			return game_design;
+		}
 	}
 }

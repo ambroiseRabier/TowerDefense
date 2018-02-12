@@ -27,8 +27,8 @@ namespace TowerDefense
 			Debug::warn("Minon: default contructor not supposed to be called.");
 		}
 
-		Minion::Minion(sf::Vector2u map_pos, const MinionId minion_id) 
-					  : id(minion_id), map_pos(map_pos), previous_map_pos(map_pos), params(Constants::GameDesign::minions.at(minion_id))
+		Minion::Minion(sf::Vector2u map_pos, const MinionId minion_id) //Constants::GameDesign::minions.at(minion_id)
+					  : id(minion_id), map_pos(map_pos), previous_map_pos(map_pos), params(GlobalShared::get_gd().minions.at(minion_id)) //GlobalShared::get_gd().minions.at(minion_id)
 		{
 			std::shared_ptr<sf::Sprite> my_sprite = std::make_shared<sf::Sprite>(
 				*Constants::MinionAssets::get_minion_texture(minion_id)
@@ -104,7 +104,7 @@ namespace TowerDefense
 				Constants::AssetsConfig::minion_death_delay
 			);
 			Managers::Player::add_money(params.money);
-			Managers::Player::add_score(Constants::GameDesign::minion_to_score.at(id));
+			Managers::Player::add_score(GlobalShared::get_gd().minions.at(id).score);
 			SoundManager::play_one_shoot(Constants::MinionAssets::get_death_death_sound(id));
 		}
 

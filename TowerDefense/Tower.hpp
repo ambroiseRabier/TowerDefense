@@ -21,6 +21,12 @@ namespace TowerDefense
 			FreezeTower,
 			ExplosivTower,
 		};
+		
+		static std::unordered_map<std::string, Game::TowerId> stringToTowerIdEnum = {
+			{"StoneTower", TowerId::StoneTower}, {"Stone", TowerId::StoneTower},
+			{"FreezeTower", TowerId::FreezeTower}, {"Freeze", TowerId::FreezeTower},
+			{"ExplosivTower", TowerId::ExplosivTower}, {"Explosiv", TowerId::ExplosivTower},
+		};
 
 		/**
 		 * \brief 

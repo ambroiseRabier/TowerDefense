@@ -164,16 +164,16 @@ namespace TowerDefense
 		void GameManager::up_game_speed()
 		{
 			Debug::log("GameManager: up_game_speed");
-			const auto array_size = sizeof(Constants::GameDesign::game_speed_choices)/sizeof(*Constants::GameDesign::game_speed_choices);
+			//const auto array_size = sizeof(Constants::GameDesign::game_speed_choices)/sizeof(*Constants::GameDesign::game_speed_choices);
 			game_speed_index++;
-			if (game_speed_index > array_size-1)
+			if (game_speed_index > GlobalShared::get_gd().game_speed_choices.size()-1)
 			{
 				game_speed_index = 0;
 			}
-			const auto array_size_pitch = sizeof(Constants::GameDesign::game_speed_choices)/sizeof(*Constants::GameDesign::game_speed_choices);
+			const auto array_size_pitch = sizeof(Constants::SoundsAssets::game_speed_pitch_choices)/sizeof(*Constants::SoundsAssets::game_speed_pitch_choices);
 
 			Debug::assert_m(
-				array_size == array_size_pitch, 
+				GlobalShared::get_gd().game_speed_choices.size() == array_size_pitch, 
 				"Constants::SoundsAssets::game_speed_pitch_choices and Constants::GameDesign::game_speed_choices need to have the same size !"
 			);
 			SoundManager::set_current_music_pitch(
@@ -233,7 +233,7 @@ namespace TowerDefense
 
 		const float& GameManager::get_game_speed()
 		{
-			return Constants::GameDesign::game_speed_choices[game_speed_index];
+			return GlobalShared::get_gd().game_speed_choices[game_speed_index];
 		}
 	}
 }

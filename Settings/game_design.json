@@ -1,3 +1,133 @@
 {
-	"game_speed_choices":[1.0, 2.0, 3.0, 0.5]
+  "game_speed_choices": [
+    1.0,
+    2.0,
+    3.0,
+    0.5
+  ],
+  "castle_life": 10,
+  "minions": {
+    "Peon": {
+      "speed": 0.5,
+      "health": 1,
+      "damage": 2,
+      "money": 10,
+      "heal_others_value": 0,
+      "heal_others_delay": 0,
+      "score": 10
+    },
+    "Tank": {
+      "speed": 0.25,
+      "health": 6,
+      "damage": 6,
+      "money": 30,
+      "heal_others_value": 0,
+      "heal_others_delay": 0,
+      "score": 30
+    },
+    "Heal": {
+      "speed": 0.333,
+      "health": 2,
+      "damage": 1,
+      "money": 50,
+      "heal_others_value": 0.020,
+      "heal_others_delay": 0.10,
+      "score": 50
+    }
+  },
+  "towers": {
+    "Stone": {
+      "projectile_params": [
+        {
+          "reload_delay": 1,
+          "speed": 1,
+          "damage": 1,
+          "range": 1.5,
+          "freeze_factor": 0,
+          "damage_radius": 0,
+          "price": 50
+        },
+        {
+          "reload_delay": 0.75,
+          "speed": 1.5,
+          "damage": 1,
+          "range": 2,
+          "freeze_factor": 0,
+          "damage_radius": 0,
+          "price": 0
+        },
+        {
+          "reload_delay": 0.5,
+          "speed": 2,
+          "damage": 1,
+          "range": 2.5,
+          "freeze_factor": 0,
+          "damage_radius": 0,
+          "price": 150
+        }
+      ]
+    },
+    "Freeze": {
+      "projectile_params": [
+        {
+          "reload_delay": 1.8,
+          "speed": 1,
+          "damage": 0.5,
+          "range": 1.5,
+          "freeze_factor": 0.30,
+          "damage_radius": 5,
+          "price": 60
+        },
+        {
+          "reload_delay": 1.2,
+          "speed": 1,
+          "damage": 0.5,
+          "range": 2,
+          "freeze_factor": 0.30,
+          "damage_radius": 5,
+          "price": 120
+        },
+        {
+          "reload_delay": 1.2,
+          "speed": 1,
+          "damage": 0.5,
+          "range": 2,
+          "freeze_factor": 0.60,
+          "damage_radius": 10,
+          "price": 180
+        }
+      ]
+    },
+    "Explosiv": {
+      "projectile_params": [
+        {
+          "reload_delay": 2,
+          "speed": 2,
+          "damage": 0.5,
+          "range": 2,
+          "freeze_factor": 0,
+          "damage_radius": 15,
+          "price": 100
+        },
+        {
+          "reload_delay": 2.1,
+          "speed": 1.9,
+          "damage": 0.75,
+          "range": 2.5,
+          "freeze_factor": 0,
+          "damage_radius": 30,
+          "price": 200
+        },
+        {
+          "reload_delay": 2.2,
+          "speed": 1.8,
+          "damage": 1,
+          "range": 3.5,
+          "freeze_factor": 0,
+          "damage_radius": 45,
+          "price": 300
+        }
+      ]
+    }
+  }
 }

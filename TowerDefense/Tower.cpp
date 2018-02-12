@@ -21,13 +21,13 @@ namespace TowerDefense
 {
 	namespace Game
 	{
-		Tower::Tower() : params(Constants::GameDesign::towers.at(TowerId::StoneTower))
+		Tower::Tower() : params(GlobalShared::get_gd().towers.at(TowerId::StoneTower))
 		{
 			Debug::warn("Tower: default constructor should not be used.");
 		}
 
 		Tower::Tower(TowerId id, const Vector2u map_pos) 
-					: map_pos(map_pos), id(id), params(Constants::GameDesign::towers.at(id))
+					: map_pos(map_pos), id(id), params(GlobalShared::get_gd().towers.at(id))
 		{
 			auto temp_sprite = std::make_shared<Sprite>(
 				*Constants::TowerAssets::get_tower_texture(id)	
@@ -187,7 +187,7 @@ namespace TowerDefense
 
 		bool Tower::is_max_level() const
 		{
-			return level >= Constants::GameDesign::towers.at(id).projectile_params.size()-1;
+			return level >= GlobalShared::get_gd().towers.at(id).projectile_params.size()-1;
 		}
 
 		TowerId Tower::get_tile_id() const
