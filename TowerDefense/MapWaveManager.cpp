@@ -62,8 +62,7 @@ namespace TowerDefense
 			}
 			else
 			{
-				// happen after the last wave has been fully spawned.
-				is_last_wave_fully_spawned = true;
+				// happen after the last wave has been fully spawned AND wait time for next wave has been waited.
 				UI::Hud::set_wave_text(Constants::Config::final_wave_text);
 			}
 		}
@@ -82,6 +81,9 @@ namespace TowerDefense
 						get_delay_before_next_wave()
 					);
 					wave_index++;
+					// I should not be waiting for the delay.
+					// if you wait for the delay and player kill the minions before the delay then game is stuck.
+					is_last_wave_fully_spawned = is_end_of_level();
 				} 
 				else
 				{

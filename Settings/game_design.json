@@ -54,7 +54,7 @@
           "range": 2,
           "freeze_factor": 0,
           "damage_radius": 0,
-          "price": 0
+          "price": 100
         },
         {
           "reload_delay": 0.5,
