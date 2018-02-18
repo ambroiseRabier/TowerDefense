@@ -10,15 +10,29 @@ namespace TowerDefense
 	{
 		struct MinionWaveParams
 		{
+			MinionWaveParams(){}
+
 			MinionWaveParams(float delay_before_next, MinionId minion_id)
 				: delay_before_next(delay_before_next),
 				  minion_id(minion_id)
 			{
 			}
 
-			const float delay_before_next;
-			const MinionId minion_id;
+			float delay_before_next;
+			MinionId minion_id;
 		};
+
+		inline void from_json(json j, MinionWaveParams& p) {
+			try
+			{
+				p.delay_before_next = j.at("delay_before_next").get<float>();
+				p.minion_id = Game::stringToMinionIdEnum.at(j.at("minion_id").get<std::string>());
+			}
+			catch (json::exception& e)
+			{
+				std::cout << e.what() << '\n';
+			}
+		}
 
 		/**
 		 * \brief 
@@ -26,6 +40,8 @@ namespace TowerDefense
 		 */
 		struct WaveParams
 		{
+			WaveParams(){}
+
 			WaveParams(float delay_before_next, const std::vector<MinionWaveParams>& minion_params_vector)
 				: delay_before_next(delay_before_next),
 				  minion_params_vector(minion_params_vector)
@@ -35,9 +51,21 @@ namespace TowerDefense
 			/**
 			 * \brief This correpond to an additionnal delay after all minion wave has been played.
 			 */
-			const float delay_before_next;
-			const std::vector<MinionWaveParams> minion_params_vector{};
+			float delay_before_next;
+			std::vector<MinionWaveParams> minion_params_vector{};
 		};
+
+		inline void from_json(json j, WaveParams& p) {
+			try
+			{
+				p.delay_before_next = j.at("delay_before_next").get<float>();
+				p.minion_params_vector = j.at("minion_params_vector").get<std::vector<MinionWaveParams>>();
+			}
+			catch (json::exception& e)
+			{
+				std::cout << e.what() << '\n';
+			}
+		}
 
 		/**
 		 * \brief 
@@ -46,6 +74,8 @@ namespace TowerDefense
 		 */
 		struct MapParams
 		{
+			MapParams(){};
+
 			MapParams(const std::string name,
 					  const unsigned int preparation_time,
 					  const float start_money,
@@ -60,18 +90,46 @@ namespace TowerDefense
 			{
 			}
 
-			const std::string name;
-			const unsigned int preparation_time;
-			const float start_money;
+			std::string name;
+			unsigned int preparation_time;
+			float start_money;
 			/**
 			 * \brief 
 			 * Fixed size to 28 on x, 21 on y (should be choose according to default screen size and gd).
 			 * We could use a vector to make the size variable. 
 			 * No we use a vector because we need initializing list in Constants.
 			 */
-			const std::vector<std::vector<TileId>> map_background_tile_array;
-			const std::vector<WaveParams> wave_params_vector{};
+			std::vector<std::vector<TileId>> map_background_tile_array;
+			std::vector<WaveParams> wave_params_vector{};
 		};
+
+		
+		inline void from_json(json j, MapParams& p) {
+			// if one exception occur, multiple settings might use default.
+			// solution would be use a try catch for every field.
+			try
+			{
+				p.name = j.at("name").get<std::string>();
+				p.preparation_time = j.at("preparation_time").get<unsigned int>();
+				p.start_money = j.at("start_money").get<float>();
+
+				auto temp_tile_array = j.at("map_background_tile_array").get<std::vector<std::vector<std::string>>>();
+				for (const auto tileRow : temp_tile_array)
+				{
+					std::vector<TileId> row;
+					for (const std::string tileId : tileRow)
+					{
+						row.push_back(Game::stringToTileIdEnum.at(tileId));
+					}
+					p.map_background_tile_array.push_back(row);
+				}
+				p.wave_params_vector = j.at("wave_params_vector").get<std::vector<WaveParams>>();
+			}
+			catch (json::exception& e)
+			{
+				std::cout << e.what() << '\n';
+			}
+		}
 	}
 }
 #endif

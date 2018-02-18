@@ -15,6 +15,7 @@ namespace TowerDefense
 	{
 		extern ExternalConstants::Config config;
 		extern ExternalConstants::GameDesign game_design;
+		extern ExternalConstants::LevelDesign level_design;
 
 		extern sf::Font* default_font;
 
@@ -51,6 +52,7 @@ namespace TowerDefense
 
 		const ExternalConstants::Config& get_config();
 		const ExternalConstants::GameDesign& get_gd();
+		const ExternalConstants::LevelDesign& get_ld();
 	}
 }
 #endif

@@ -11,7 +11,7 @@ namespace TowerDefense
 		namespace LevelDesign
 		{
 
-			const MapParams level0 = {
+			/*const MapParams level0 = {
 				// name displayed
 				"Hello world",
 				// preparation time
@@ -200,7 +200,7 @@ namespace TowerDefense
 			const std::array<MapParams,2> map_array = {
 				level0,
 				level1
-			};
+			};*/
 
 		}
 	}

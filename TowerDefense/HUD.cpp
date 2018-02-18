@@ -54,7 +54,7 @@ namespace TowerDefense
 				std::to_string(static_cast<unsigned int>(std::floor(Managers::Player::get_tower_price(TowerId::StoneTower)))),
 				sf::Vector2f(
 					// 10 is arbitrary offset to center text.
-					GlobalShared::get_texture(Constants::UIAssets::stone_tower_btn)->getSize().x/2 - 10, 
+					static_cast<float>(GlobalShared::get_texture(Constants::UIAssets::stone_tower_btn)->getSize().x/2 - 1), 
 					// 16 is font size, and 10 is arbitrary offset.
 					-16.f - 10.f
 				)

@@ -15,6 +15,7 @@ namespace TowerDefense
 		{
 			const std::string config_file = "Settings/config.json";
 			const std::string game_design_file = "Settings/game_design.json";
+			const std::string level_design_file = "Settings/level_design.json";
 			const std::string game_name = "Patchwork"; // if you change this, you probably need to change namespaces ;)
 			/**
 			 * \brief 

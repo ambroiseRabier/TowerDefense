@@ -1,0 +1,26 @@
+{
+	"map_array":[
+		{
+			"name":"Hello world",
+			"preparation_time": 3,
+			"start_money": 50,
+			"map_background_tile_array":[
+				["i", "i", "i", "o", "_", "_", "_", "i", "i"],
+				["i", "o", "o", "o", "_", "o", "_", "o", "i"],
+				["@", "_", "o", "_", "_", "o", "_", "_", "M"],
+				["i", "_", "o", "_", "o", "o", "o", "o", "i"],
+				["i", "_", "_", "_", "o", "i", "i", "o", "i"]
+			],
+			"wave_params_vector":[
+				{
+					"delay_before_next": 4,
+					"minion_params_vector":[
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" }
+					]
+				}
+			]
+		}
+	]
+}

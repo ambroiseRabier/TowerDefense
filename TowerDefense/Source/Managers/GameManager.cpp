@@ -74,7 +74,7 @@ namespace TowerDefense
 		void GameManager::start_level(const unsigned int& i)
 		{
 			Debug::assert_m(
-				i >= 0 && i < Constants::LevelDesign::map_array.size(),
+				i >= 0 && i < GlobalShared::level_design.map_array.size(),
 				"GameManager: trying to start a level that do not exist ! index of level: " + std::to_string(i)
 			);
 			Debug::info("GameManager: start_level " + std::to_string(i));
@@ -88,9 +88,9 @@ namespace TowerDefense
 			level_index = i;
 			game_speed_index = 0;
 			UI::Hud::open(); // if next level then hud already here, this is useless, unless there is a winscreen.
-			MapManager::load_level(Constants::LevelDesign::map_array.at(level_index));
+			MapManager::load_level(GlobalShared::level_design.map_array.at(level_index));
 			Player::start();
-			const auto start_wave_delay = Constants::LevelDesign::map_array.at(level_index).preparation_time;
+			const auto start_wave_delay = GlobalShared::level_design.map_array.at(level_index).preparation_time;
 			UI::Hud::start_count_down(start_wave_delay);
 			start_wave_time_out_id = Utils::Timer::set_time_out(
 				Sharp::EventHandler::Bind(&GameManager::start_wave),
@@ -198,7 +198,7 @@ namespace TowerDefense
 			SoundManager::stop_music();
 			Player::on_game_win();
 			UI::Hud::close();
-			const bool was_last_level = level_index >= Constants::LevelDesign::map_array.size()-1;
+			const bool was_last_level = level_index >= GlobalShared::level_design.map_array.size()-1;
 			if (was_last_level)
 			{
 				UI::GameClearedScreen::open();

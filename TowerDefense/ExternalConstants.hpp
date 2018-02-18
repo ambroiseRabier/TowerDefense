@@ -3,6 +3,7 @@
 #include "Minion.hpp"
 #include "TowerParams.hpp"
 #include "Tower.hpp"
+#include "MapParams.hpp"
 
 namespace TowerDefense
 {
@@ -45,14 +46,14 @@ namespace TowerDefense
 			 */
 			float castle_life = 10.f;
 
-			std::unordered_map<Game::MinionId, Game::MinionParams> minions = {
+			std::unordered_map<Game::MinionId, Game::MinionParams> minions;/* = {
 				// { speed, health, damage, money, heal_others, heal_delay, score }
 				{Game::Peon, {0.5f, 1.f, 2.f, 10.f, 0.f, 0.f, 10.f}},
 				{Game::Tank, {0.25f, 6.f, 6.f, 30.f, 0.f, 0.f, 30.f}},
 				{Game::Heal, {0.333f, 2.f, 1.f, 50.f, 0.02f, 0.1f, 50.f}},
-			};
+			};*/
 
-			std::unordered_map<Game::TowerId, Game::TowerParams> towers = { // need a quick tower, and high range tower, huum.
+			std::unordered_map<Game::TowerId, Game::TowerParams> towers;/* = { // need a quick tower, and high range tower, huum.
 				{
 					Game::TowerId::StoneTower, 
 					// towerParams
@@ -88,7 +89,7 @@ namespace TowerDefense
 						},
 					},
 				},
-			};
+			};*/
 		};
 
 		inline void from_json(json j, GameDesign& p) {
@@ -123,5 +124,26 @@ namespace TowerDefense
 				std::cout << e.what() << '\n';
 			}
 		}
+
+		
+		struct LevelDesign
+		{
+			std::vector<Game::MapParams> map_array;
+		};
+		
+		inline void from_json(const json& j, LevelDesign& p) {
+			// if one exception occur, multiple settings might use default.
+			// solution would be use a try catch for every field.
+			try
+			{
+				p.map_array = j.at("map_array").get<std::vector<Game::MapParams>>();
+			}
+			catch (json::exception& e)
+			{
+				std::cout << e.what() << '\n';
+			}
+		}
+
+		
 	}
 }

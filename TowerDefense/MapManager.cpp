@@ -189,7 +189,7 @@ namespace TowerDefense
 			Player::set_castle(castle);
 		}
 
-		void MapManager::align_center_map(const MapParams l_map_params)
+		void MapManager::align_center_map(const MapParams& l_map_params)
 		{
 			auto game_object_hightest_z = *std::max_element(
 			l_map_params.map_background_tile_array.begin(),
@@ -203,9 +203,9 @@ namespace TowerDefense
 			);
 			UI::Align::center(
 				map_origin,
-				sf::Vector2f(
-					-map_size.x/2,
-					-map_size.y/2
+				sf::Vector2f( // x and y inverted, don't ask why :o
+					-map_size.y/2,
+					-map_size.x/2
 				)
 			);
 		}

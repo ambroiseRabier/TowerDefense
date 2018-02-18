@@ -61,7 +61,7 @@ namespace TowerDefense
 				float money = 10.f,
 				float heal_others_value = 0.f,
 				float heal_others_delay = 0.f,
-				float score = 0.f
+				unsigned int score = 0.f
 			)
 				: speed(speed),
 				  health(health),
@@ -90,7 +90,7 @@ namespace TowerDefense
 			 * note that range depend on healer hitbox.
 			 */
 			float heal_others_delay;
-			float score;
+			unsigned int score;
 		};
 
 		inline void from_json(json j, MinionParams& p)
@@ -101,6 +101,7 @@ namespace TowerDefense
 			p.money = j.at("money").get<float>();
 			p.heal_others_value = j.at("heal_others_value").get<float>();
 			p.heal_others_delay = j.at("heal_others_delay").get<float>();
+			p.score = j.at("score").get<unsigned int>();
 		}
 	}
 }
