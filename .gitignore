@@ -325,3 +325,6 @@ ASALocalRun/
 TowerDefense/Assets/
 TowerDefense/Assets/Music
 TowerDefense/Assets/SFX
+
+# SFML doc
+Libs/SFML/doc/**
