@@ -328,3 +328,6 @@ TowerDefense/Assets/SFX
 
 # Duplicated of config
 TowerDefense/Settings/
+
+# SFML doc
+Libs/SFML/doc/**
