@@ -21,6 +21,28 @@
 					]
 				}
 			]
+		},
+		{
+			"name":"Explosiv bomb",
+			"preparation_time": 3,
+			"start_money": 100,
+			"map_background_tile_array":[
+				["_", "_", "_", "_", "_", "_", "_", "_", "_"],
+				["_", " ", " ", " ", "_", "o", "o", "o", "_"],
+				["@", " ", "o", " ", "_", "o", " ", "o",, "_" "M"],
+				["_", " ", " ", " ", "_", "o", "o", "o", "_"],
+				["_", "_", "_", "_", "_", "_", "_", "_", "_"]
+			],
+			"wave_params_vector":[
+				{
+					"delay_before_next": 4,
+					"minion_params_vector":[
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" }
+					]
+				}
+			]
 		}
 	]
 }

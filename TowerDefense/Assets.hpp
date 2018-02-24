@@ -64,6 +64,7 @@ namespace TowerDefense
 				TileAssets::grass_build,
 				TileAssets::moutain_deco,
 				TileAssets::castle_death,
+				TileAssets::transparent_deco,
 			};
 		}
 	}

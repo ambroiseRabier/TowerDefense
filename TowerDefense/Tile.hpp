@@ -43,6 +43,10 @@ namespace TowerDefense
 			 * \brief Decoration grass;
 			 */
 			Moutain_Deco,
+			/**
+			 * \brief Transparent tile to make non sqaured LD.
+			 */
+			Transparent_Deco,
 		};
 
 		/**
@@ -59,6 +63,7 @@ namespace TowerDefense
 			{"o", Grass_Build},
 			{"#", Wall_Deco},
 			{"i", Moutain_Deco},
+			{" ", Transparent_Deco},
 		};
 
 

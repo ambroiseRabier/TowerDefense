@@ -16,6 +16,7 @@ namespace TowerDefense
 			const std::string grass_build = "Assets/Tile/grass.png";
 			const std::string moutain_deco = "Assets/Tile/moutain_deco.png";
 			const std::string castle_death = "Assets/Tile/castle_negated_destroyed.png";
+			const std::string transparent_deco = "Assets/Tile/transparent.png";
 
 			const std::unordered_map<Game::TileId, std::string> tile_id_map {
 				{Game::TileId::Castle_Other, castle_others},
@@ -24,6 +25,7 @@ namespace TowerDefense
 				{Game::TileId::Grass_Build, grass_build},
 				{Game::TileId::Wall_Deco, grass_build},
 				{Game::TileId::Moutain_Deco, moutain_deco},
+				{Game::TileId::Transparent_Deco, transparent_deco},
 			};
 
 			inline sf::Texture* get_tile_texture(Game::TileId tile_id)
