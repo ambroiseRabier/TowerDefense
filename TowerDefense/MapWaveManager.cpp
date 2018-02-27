@@ -63,7 +63,7 @@ namespace TowerDefense
 			else
 			{
 				// happen after the last wave has been fully spawned AND wait time for next wave has been waited.
-				UI::Hud::set_wave_text(Constants::Config::final_wave_text);
+				UI::Hud::set_wave_text(GlobalShared::get_trans().final_wave_text); 
 			}
 		}
 

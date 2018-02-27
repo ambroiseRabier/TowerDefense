@@ -144,6 +144,41 @@ namespace TowerDefense
 			}
 		}
 
+		struct Translation
+		{
+			std::string final_wave_text = "Last wave !*";
+			std::string wave_number_text = "Wave*";
+			std::string win_screen_text = "You saved the castle !*";
+			std::string game_over_screen_text = "The castle has been lost !*";
+			std::string pause_text = "Pause*";
+			std::string game_cleared_text = "Game Cleared !*";
+			std::string help_tower_build_text = "Left->build   Right->cancel*";
+			std::string score_text = "Your score is*";
+			std::string credits = "Ambroise Rabier\nSpecial thanks for all placeholders ;)*";
+			std::string money_sign = "$*";
+		};
 		
+		inline void from_json(const json& j, Translation& p) {
+			// if one exception occur, multiple settings might use default.
+			// solution would be use a try catch for every field.
+			try
+			{
+				p.final_wave_text = j.at("final_wave_text").get<std::string>();
+				p.wave_number_text = j.at("wave_number_text").get<std::string>();
+				p.win_screen_text = j.at("win_screen_text").get<std::string>();
+				p.game_over_screen_text = j.at("game_over_screen_text").get<std::string>();
+				p.pause_text = j.at("pause_text").get<std::string>();
+				p.game_cleared_text = j.at("game_cleared_text").get<std::string>();
+				p.help_tower_build_text = j.at("help_tower_build_text").get<std::string>();
+				p.score_text = j.at("score_text").get<std::string>();
+				p.credits = j.at("credits").get<std::string>();
+				p.money_sign = j.at("money_sign").get<std::string>();
+			}
+			catch (json::exception& e)
+			{
+				std::cout << e.what() << '\n';
+			}
+		}
+
 	}
 }

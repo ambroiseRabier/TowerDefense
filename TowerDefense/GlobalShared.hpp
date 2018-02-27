@@ -53,6 +53,7 @@ namespace TowerDefense
 		const ExternalConstants::Config& get_config();
 		const ExternalConstants::GameDesign& get_gd();
 		const ExternalConstants::LevelDesign& get_ld();
+		const ExternalConstants::Translation& get_trans();
 	}
 }
 #endif

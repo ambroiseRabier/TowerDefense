@@ -16,6 +16,7 @@ namespace TowerDefense
 		ExternalConstants::Config config;
 		ExternalConstants::GameDesign game_design;
 		ExternalConstants::LevelDesign level_design;
+		ExternalConstants::Translation translation;
 		sf::Font* default_font;
 		std::unordered_map<std::string, std::unique_ptr<sf::Texture>> stringToTexture;
 		std::unordered_map<std::string, std::unique_ptr<sf::SoundBuffer>> stringToSoundBuffer;
@@ -194,6 +195,11 @@ namespace TowerDefense
 				json::parse(std::ifstream(Constants::Config::level_design_file)),
 				level_design
 			);
+			validate_json(Constants::Config::translation_file);
+			ExternalConstants::from_json(
+				json::parse(std::ifstream(Constants::Config::translation_file)),
+				translation
+			);
 			//config = config_j; operator = ambiguous :/, don't know why
 		}
 
@@ -244,6 +250,11 @@ namespace TowerDefense
 		const ExternalConstants::LevelDesign& get_ld()
 		{
 			return level_design;
+		}
+
+		const ExternalConstants::Translation& get_trans()
+		{
+			return translation;
 		}
 	}
 }

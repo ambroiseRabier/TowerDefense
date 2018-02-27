@@ -20,8 +20,8 @@ namespace TowerDefense
 		void GameClearedScreen::init()
 		{
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
-			title_text = std::make_unique<BaseText>(Constants::Config::game_cleared_text);
-			score_text = std::make_unique<BaseText>(Constants::Config::score_text);
+			title_text = std::make_unique<BaseText>(GlobalShared::get_trans().game_cleared_text);
+			score_text = std::make_unique<BaseText>(GlobalShared::get_trans().score_text);
 			Align::center(
 				menu_return_btn->get_transformable(),
 				sf::Vector2f(-menu_return_btn->get_sprite().getGlobalBounds().width/2.f, 70)
@@ -75,7 +75,7 @@ namespace TowerDefense
 
 		void GameClearedScreen::set_score_text(const unsigned int& value)
 		{
-			score_text->set_text(Constants::Config::score_text + " " + std::to_string(value));
+			score_text->set_text(GlobalShared::get_trans().score_text + " " + std::to_string(value));
 		}
 	}
 }

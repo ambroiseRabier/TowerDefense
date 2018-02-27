@@ -1,0 +1,12 @@
+{
+	"final_wave_text" : "Last wave !",
+	"wave_number_text" : "Wave",
+	"win_screen_text" : "You saved the castle !",
+	"game_over_screen_text" : "The castle has been lost !",
+	"pause_text" : "Pause",
+	"game_cleared_text" : "Game Cleared !",
+	"help_tower_build_text" : "Left->build   Right->cancel",
+	"score_text" : "Your score is",
+	"credits" : "Ambroise Rabier\nSpecial thanks for all placeholders",
+	"money_sign" : "$"
+}

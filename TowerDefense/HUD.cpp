@@ -43,7 +43,7 @@ namespace TowerDefense
 			money_text = std::make_unique<BaseText>("*Money");
 			wave_text = std::make_unique<BaseText>("*Wave");
 			score_text = std::make_unique<BaseText>("*Score");
-			help_tower_text = std::make_unique<BaseText>(Constants::Config::help_tower_build_text);
+			help_tower_text = std::make_unique<BaseText>(GlobalShared::get_trans().help_tower_build_text);
 			count_down_text = std::make_unique<BaseText>("3", 108);
 			pause_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::pause_btn));
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
@@ -207,12 +207,12 @@ namespace TowerDefense
 
 		void Hud::set_money_text(const std::string& text)
 		{
-			money_text->set_text(truncate(text, text.find_first_of(".")+3) + " " + Constants::Config::money_sign);
+			money_text->set_text(truncate(text, text.find_first_of(".")+3) + " " + GlobalShared::get_trans().money_sign);
 		}
 
 		void Hud::set_wave_text(const std::string& text)
 		{
-			wave_text->set_text(Constants::Config::wave_number_text + " " + text);
+			wave_text->set_text(GlobalShared::get_trans().wave_number_text + " " + text);
 		}
 
 		void Hud::set_score_text(const std::string& text)

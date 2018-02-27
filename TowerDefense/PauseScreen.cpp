@@ -23,7 +23,7 @@ namespace TowerDefense
 			resume_btn_2 = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::play_btn));
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
-			title_text = std::make_unique<BaseText>(Constants::Config::pause_text);
+			title_text = std::make_unique<BaseText>(GlobalShared::get_trans().pause_text);
 			Align::top_right(resume_btn->get_transformable(), sf::Vector2f(
 				30 + resume_btn->get_sprite().getGlobalBounds().width, 
 				30

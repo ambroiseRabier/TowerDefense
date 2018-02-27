@@ -36,7 +36,7 @@ namespace TowerDefense
 			play_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::play_btn));
 			quit_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
 			title_text = std::make_unique<BaseText>(Constants::Config::game_name);
-			credits_text = std::make_unique<BaseText>(Constants::Config::credits);
+			credits_text = std::make_unique<BaseText>(GlobalShared::get_trans().credits);
 			Align::center(
 				play_btn->get_transformable(), 
 				sf::Vector2f(-play_btn->get_sprite().getGlobalBounds().width/2.f, -50)

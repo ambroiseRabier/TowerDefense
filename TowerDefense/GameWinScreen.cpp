@@ -25,8 +25,8 @@ namespace TowerDefense
 			next_level_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::next_level_btn));
 			retry_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::restart_btn));
 			menu_return_btn = std::make_unique<BaseButton>(GlobalShared::get_texture(Constants::UIAssets::quit_btn));
-			title_text = std::make_unique<BaseText>(Constants::Config::win_screen_text);
-			score_text = std::make_unique<BaseText>(Constants::Config::score_text);
+			title_text = std::make_unique<BaseText>(GlobalShared::get_trans().win_screen_text);
+			score_text = std::make_unique<BaseText>(GlobalShared::get_trans().score_text);
 
 			Align::center(
 				next_level_btn->get_transformable(),
@@ -112,7 +112,7 @@ namespace TowerDefense
 
 		void GameWinScreen::set_score_text(const unsigned int& value)
 		{
-			score_text->set_text(Constants::Config::score_text + " " + std::to_string(value));
+			score_text->set_text(GlobalShared::get_trans().score_text + " " + std::to_string(value));
 		}
 	}
 }
