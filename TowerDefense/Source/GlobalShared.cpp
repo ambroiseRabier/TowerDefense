@@ -177,6 +177,8 @@ namespace TowerDefense
 
 		void load_all_settings()
 		{
+			// the other option is with is_discarded with allow_exceptions to false on parse()
+			// https://github.com/nlohmann/json/issues/458 
 			validate_json(Constants::Config::config_file);
 			ExternalConstants::from_json(
 				json::parse(std::ifstream(Constants::Config::config_file)),
@@ -198,7 +200,7 @@ namespace TowerDefense
 		void validate_json(const std::string& path)
 		{
 			// since the stream become buggy after json::accept, i've created another stream here.
-			std::ifstream in (Constants::Config::config_file);
+			std::ifstream in (path);
 			// returning int c= 5; after throw only to avoid confusing 
 			// line number in debugger --' (it throw END of the next line otherwise)
 			// OK STREAM IS MAGIC THING, it should work, but it don't. so no warning omg.
@@ -216,7 +218,7 @@ namespace TowerDefense
 				throw path + " is an empty json.";
 				int c= 5;
 			}
-			// using json::accept(in) invalidate the stream after (parse will throw an exception don't know why :/
+			// using json::accept(in) invalidate the stream after (parse will throw an exception don't know why :/)
 			if (!json::accept(in))
 			{
 				Debug::warn(path + " is not a valid json.");
