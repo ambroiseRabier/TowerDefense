@@ -7,6 +7,6 @@
 	"game_cleared_text" : "Game Cleared !",
 	"help_tower_build_text" : "Left->build   Right->cancel",
 	"score_text" : "Your score is",
-	"credits" : "Ambroise Rabier\nSpecial thanks for all placeholders",
+	"credits" : "Ambroise Rabier\nSpecial thanks for all placeholders used.",
 	"money_sign" : "$"
 }

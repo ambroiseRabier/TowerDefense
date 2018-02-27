@@ -17,7 +17,102 @@
 					"minion_params_vector":[
 						{ "delay_before_next":1, "minion_id":"Peon" },
 						{ "delay_before_next":1, "minion_id":"Peon" },
-						{ "delay_before_next":1, "minion_id":"Peon" }
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0.5, "minion_id":"Peon" },
+						{ "delay_before_next":0.5, "minion_id":"Peon" }
+					]
+				}
+			]
+		},
+		{
+			"name":"Freeze",
+			"preparation_time": 3,
+			"start_money": 60,
+			"map_background_tile_array":[
+				["i", "i", "i", "i"],
+				["i", "@", "_", "o", "i"],
+				["i", "_", "_", "_", "o", "i"],
+				["i", "o", "_", "_", "_", "o", "i"],
+				[" ", "i", "o", "_", "_", "_", "o", "i"],
+				[" ", " ", "i", "o", "_", "_", "_", "i"],
+				[" ", " ", " ", "i", "o", "_", "M", "i"],
+				[" ", " ", " ", " ", "i", "i", "i", "i"]
+			],
+			"wave_params_vector":[
+				{
+					"delay_before_next": 4,
+					"minion_params_vector":[
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0.5, "minion_id":"Peon" },
+						{ "delay_before_next":0.5, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Tank" },
+
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Heal" }
+					]
+				},
+				{
+					"delay_before_next": 5,
+					"minion_params_vector":[
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1.5, "minion_id":"Peon" },
+						
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1.5, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1.5, "minion_id":"Tank" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1.5, "minion_id":"Tank" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1.5, "minion_id":"Heal" }
 					]
 				}
 			]
@@ -39,7 +134,171 @@
 					"minion_params_vector":[
 						{ "delay_before_next":1, "minion_id":"Peon" },
 						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":2, "minion_id":"Tank" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1.5, "minion_id":"Peon" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+						{ "delay_before_next":1.5, "minion_id":"Tank" },
+
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Heal" }
+					]
+				},
+				{
+					"delay_before_next": 4,
+					"minion_params_vector":[
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":1, "minion_id":"Peon" },
+
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
+						{ "delay_before_next":0.1, "minion_id":"Peon" },
+						{ "delay_before_next":0.3, "minion_id":"Peon" },
 						{ "delay_before_next":1, "minion_id":"Peon" }
+					]
+				},
+				{
+					"delay_before_next": 5,
+					"minion_params_vector":[
+						{ "delay_before_next":2, "minion_id":"Tank" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":2, "minion_id":"Peon" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":2, "minion_id":"Tank" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":2, "minion_id":"Tank" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":2, "minion_id":"Tank" },
+
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":3, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Heal" }
+					]
+				},
+				{
+					"delay_before_next": 5,
+					"minion_params_vector":[
+						{ "delay_before_next":2, "minion_id":"Heal" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":2, "minion_id":"Heal" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":2, "minion_id":"Heal" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+						{ "delay_before_next":2, "minion_id":"Heal" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+						{ "delay_before_next":2, "minion_id":"Heal" },
+
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.7, "minion_id":"Heal" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.7, "minion_id":"Heal" },
+						{ "delay_before_next":0.3, "minion_id":"Tank" },
+						{ "delay_before_next":0.7, "minion_id":"Heal" },
+
+
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Peon" },
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":0.3, "minion_id":"Heal" },
+
+
+						{ "delay_before_next":0, "minion_id":"Tank" },
+						{ "delay_before_next":1, "minion_id":"Tank" },
+						{ "delay_before_next":0, "minion_id":"Heal" },
+						{ "delay_before_next":0, "minion_id":"Heal" },
+						{ "delay_before_next":0, "minion_id":"Heal" },
+						{ "delay_before_next":0, "minion_id":"Heal" },
+						{ "delay_before_next":0, "minion_id":"Heal" },
+						{ "delay_before_next":1, "minion_id":"Heal" },
+						{ "delay_before_next":0, "minion_id":"Heal" }
 					]
 				}
 			]

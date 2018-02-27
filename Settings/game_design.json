@@ -11,10 +11,10 @@
       "speed": 0.5,
       "health": 1,
       "damage": 2,
-      "money": 10,
+      "money": 5,
       "heal_others_value": 0,
       "heal_others_delay": 0,
-      "score": 10
+      "score": 5
     },
     "Tank": {
       "speed": 0.25,
@@ -29,10 +29,10 @@
       "speed": 0.333,
       "health": 2,
       "damage": 1,
-      "money": 50,
+      "money": 20,
       "heal_others_value": 0.020,
       "heal_others_delay": 0.10,
-      "score": 50
+      "score": 20
     }
   },
   "towers": {
