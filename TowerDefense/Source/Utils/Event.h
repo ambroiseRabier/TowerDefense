@@ -477,6 +477,8 @@ namespace Sharp    // short for SharpTools
 	class Event : public EventBase<T>
 	{
 	public:
+		std::list< EventHandlerImpl<T>* > m_eventHandlers;  ///< all handlers will be notified when operator() is called.
+
 		/**
 		* this call actually raises the event.
 		* It does so by passing the event data to all event handlers.
