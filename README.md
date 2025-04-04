@@ -1,5 +1,9 @@
 Game made by **Ambroise rabier**, my first project in **c++**.
 
+[![Watch the video](https://img.youtube.com/vi/exampleID/maxresdefault.jpg)]([https://www.youtube.com/watch?v=exampleID](https://youtu.be/kVutlHpBx_o))
+
+https://youtu.be/kVutlHpBx_o
+
 http://ambroise-rabier.fr/  
 https://github.com/ambroiseRabier/TowerDefense
 
